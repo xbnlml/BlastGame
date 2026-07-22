@@ -1,0 +1,122 @@
+[
+  {
+    "wr": 93.0,
+    "sd": "32",
+    "sc": "5",
+    "ratios": "10,1,1,1,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 372,
+    "tier": "T2",
+    "source": "bot",
+    "created_at": "2026-07-04T22:06:42"
+  },
+  {
+    "wr": 90.75,
+    "sd": "7",
+    "sc": "5",
+    "ratios": "1,1,10,1,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 363,
+    "tier": "T2",
+    "source": "bot",
+    "created_at": "2026-07-04T23:56:55"
+  },
+  {
+    "wr": 89.0,
+    "sd": "12",
+    "sc": "5",
+    "ratios": "1,1,1,1,10",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 356,
+    "tier": "T3",
+    "source": "bot",
+    "created_at": "2026-07-04T23:15:32"
+  },
+  {
+    "wr": 88.0,
+    "sd": "3",
+    "sc": "5",
+    "ratios": "1,1,1,1,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 352,
+    "tier": "T1",
+    "source": "bot",
+    "created_at": "2026-07-04T23:50:19"
+  },
+  {
+    "wr": 88.0,
+    "sd": "24",
+    "sc": "5",
+    "ratios": "10,1,1,1,10",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 352,
+    "tier": "T5",
+    "source": "bot",
+    "created_at": "2026-07-05T00:17:27"
+  },
+  {
+    "wr": 88.0,
+    "sd": "14",
+    "sc": "5",
+    "ratios": "1,1,1,1,10",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 352,
+    "tier": "T3",
+    "source": "bot",
+    "created_at": "2026-07-05T00:03:44"
+  },
+  {
+    "wr": 86.0,
+    "sd": "39",
+    "sc": "5",
+    "ratios": "1,10,10,10,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 344,
+    "tier": "T3",
+    "source": "bot",
+    "created_at": "2026-07-04T22:15:44"
+  },
+  {
+    "wr": 86.0,
+    "sd": "39",
+    "sc": "5",
+    "ratios": "1,10,10,10,0",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 344,
+    "tier": "T5",
+    "source": "bot",
+    "created_at": "2026-07-04T22:33:24"
+  },
+  {
+    "wr": 82.75,
+    "sd": "10",
+    "sc": "4",
+    "ratios": "1,1,1,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 331,
+    "tier": "T1",
+    "source": "bot",
+    "created_at": "2026-07-08T11:35:24"
+  },
+  {
+    "wr": 68.75,
+    "sd": "18",
+    "sc": "5",
+    "ratios": "10,1,1,1,1",
+    "of": "0.5",
+    "totalGames": 400,
+    "winGames": 275,
+    "tier": "T4",
+    "source": "bot",
+    "created_at": "2026-07-05T00:10:31"
+  }
+]

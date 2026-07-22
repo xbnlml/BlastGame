@@ -1,0 +1,29 @@
+# Hermes 个人数据（本地生成，机器相关）
+hermes/.hermes-blastgame/.env
+hermes/.hermes-blastgame/sessions/
+hermes/.hermes-blastgame/logs/
+hermes/.hermes-blastgame/memories/
+hermes/.hermes-blastgame/audio_cache/
+hermes/.hermes-blastgame/image_cache/
+hermes/.hermes-blastgame/pairing/
+hermes/.hermes-blastgame/hooks/
+hermes/.hermes-blastgame/home/
+hermes/.hermes-blastgame/workspace/
+hermes/.hermes-blastgame/skins/
+hermes/.hermes-blastgame/state.db*
+hermes/.hermes-blastgame/cron/.jobs.lock
+hermes/.hermes-blastgame/cron/.tick.lock
+hermes/.hermes-blastgame/cron/executions.db
+hermes/.hermes-blastgame/cron/ticker_*
+hermes/.hermes/
+
+# 备份
+hermes/asset_backups/
+hermes/assets_backup/
+
+# Python 自动生成
+**/__pycache__/
+*.pyc
+
+# 杂文件
+hermes/ai_daily_report.txt

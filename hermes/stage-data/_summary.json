@@ -1,0 +1,1958 @@
+{
+  "updated_at": "2026-07-21T00:35:56",
+  "levels_covered": 150,
+  "total_reliable": 3301,
+  "total_reference": 2561,
+  "levels": {
+    "51": {
+      "reliable_count": 43,
+      "reference_count": 48,
+      "sources": {
+        "bot": 20,
+        "summary": 0,
+        "phase2": 23,
+        "phase1": 48
+      },
+      "wr_min": 16.75,
+      "wr_max": 98.0,
+      "wr_span": 81.25
+    },
+    "52": {
+      "reliable_count": 47,
+      "reference_count": 41,
+      "sources": {
+        "bot": 18,
+        "summary": 1,
+        "phase2": 28,
+        "phase1": 41
+      },
+      "wr_min": 4.25,
+      "wr_max": 78.25,
+      "wr_span": 74.0
+    },
+    "53": {
+      "reliable_count": 32,
+      "reference_count": 50,
+      "sources": {
+        "bot": 11,
+        "summary": 0,
+        "phase2": 21,
+        "phase1": 50
+      },
+      "wr_min": 32.75,
+      "wr_max": 92.5,
+      "wr_span": 59.75
+    },
+    "54": {
+      "reliable_count": 49,
+      "reference_count": 106,
+      "sources": {
+        "bot": 18,
+        "summary": 3,
+        "phase2": 28,
+        "phase1": 106
+      },
+      "wr_min": 12.25,
+      "wr_max": 58.5,
+      "wr_span": 46.25
+    },
+    "55": {
+      "reliable_count": 63,
+      "reference_count": 34,
+      "sources": {
+        "bot": 24,
+        "summary": 3,
+        "phase2": 36,
+        "phase1": 34
+      },
+      "wr_min": 51.5,
+      "wr_max": 95.0,
+      "wr_span": 43.5
+    },
+    "56": {
+      "reliable_count": 66,
+      "reference_count": 19,
+      "sources": {
+        "bot": 19,
+        "summary": 0,
+        "phase2": 47,
+        "phase1": 19
+      },
+      "wr_min": 45.5,
+      "wr_max": 85.25,
+      "wr_span": 39.75
+    },
+    "57": {
+      "reliable_count": 54,
+      "reference_count": 48,
+      "sources": {
+        "bot": 28,
+        "summary": 0,
+        "phase2": 26,
+        "phase1": 48
+      },
+      "wr_min": 29.25,
+      "wr_max": 83.5,
+      "wr_span": 54.25
+    },
+    "58": {
+      "reliable_count": 56,
+      "reference_count": 37,
+      "sources": {
+        "bot": 18,
+        "summary": 3,
+        "phase2": 35,
+        "phase1": 37
+      },
+      "wr_min": 17.5,
+      "wr_max": 78.0,
+      "wr_span": 60.5
+    },
+    "59": {
+      "reliable_count": 63,
+      "reference_count": 123,
+      "sources": {
+        "bot": 8,
+        "summary": 1,
+        "phase2": 54,
+        "phase1": 123
+      },
+      "wr_min": 41.0,
+      "wr_max": 91.5,
+      "wr_span": 50.5
+    },
+    "60": {
+      "reliable_count": 81,
+      "reference_count": 86,
+      "sources": {
+        "bot": 10,
+        "summary": 6,
+        "phase2": 65,
+        "phase1": 86
+      },
+      "wr_min": 46.0,
+      "wr_max": 93.0,
+      "wr_span": 47.0
+    },
+    "61": {
+      "reliable_count": 15,
+      "reference_count": 0,
+      "sources": {
+        "bot": 15,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 0.25,
+      "wr_max": 84.25,
+      "wr_span": 84.0
+    },
+    "62": {
+      "reliable_count": 17,
+      "reference_count": 0,
+      "sources": {
+        "bot": 17,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 53.0,
+      "wr_max": 83.0,
+      "wr_span": 30.0
+    },
+    "63": {
+      "reliable_count": 49,
+      "reference_count": 34,
+      "sources": {
+        "bot": 17,
+        "summary": 0,
+        "phase2": 32,
+        "phase1": 34
+      },
+      "wr_min": 27.75,
+      "wr_max": 81.25,
+      "wr_span": 53.5
+    },
+    "64": {
+      "reliable_count": 16,
+      "reference_count": 0,
+      "sources": {
+        "bot": 16,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 23.25,
+      "wr_max": 79.5,
+      "wr_span": 56.25
+    },
+    "65": {
+      "reliable_count": 70,
+      "reference_count": 14,
+      "sources": {
+        "bot": 0,
+        "summary": 5,
+        "phase2": 65,
+        "phase1": 14
+      },
+      "wr_min": 10.5,
+      "wr_max": 82.0,
+      "wr_span": 71.5
+    },
+    "66": {
+      "reliable_count": 24,
+      "reference_count": 57,
+      "sources": {
+        "bot": 7,
+        "summary": 1,
+        "phase2": 16,
+        "phase1": 57
+      },
+      "wr_min": 46.0,
+      "wr_max": 83.0,
+      "wr_span": 37.0
+    },
+    "67": {
+      "reliable_count": 41,
+      "reference_count": 39,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 36,
+        "phase1": 39
+      },
+      "wr_min": 46.5,
+      "wr_max": 83.5,
+      "wr_span": 37.0
+    },
+    "68": {
+      "reliable_count": 119,
+      "reference_count": 32,
+      "sources": {
+        "bot": 22,
+        "summary": 3,
+        "phase2": 94,
+        "phase1": 32
+      },
+      "wr_min": 8.0,
+      "wr_max": 78.0,
+      "wr_span": 70.0
+    },
+    "69": {
+      "reliable_count": 52,
+      "reference_count": 35,
+      "sources": {
+        "bot": 17,
+        "summary": 1,
+        "phase2": 34,
+        "phase1": 35
+      },
+      "wr_min": 49.5,
+      "wr_max": 95.75,
+      "wr_span": 46.25
+    },
+    "70": {
+      "reliable_count": 31,
+      "reference_count": 0,
+      "sources": {
+        "bot": 31,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 0.0,
+      "wr_max": 93.0,
+      "wr_span": 93.0
+    },
+    "71": {
+      "reliable_count": 21,
+      "reference_count": 65,
+      "sources": {
+        "bot": 10,
+        "summary": 1,
+        "phase2": 10,
+        "phase1": 65
+      },
+      "wr_min": 46.5,
+      "wr_max": 85.0,
+      "wr_span": 38.5
+    },
+    "72": {
+      "reliable_count": 65,
+      "reference_count": 19,
+      "sources": {
+        "bot": 14,
+        "summary": 3,
+        "phase2": 48,
+        "phase1": 19
+      },
+      "wr_min": 0.0,
+      "wr_max": 100.0,
+      "wr_span": 100.0
+    },
+    "73": {
+      "reliable_count": 1,
+      "reference_count": 178,
+      "sources": {
+        "bot": 1,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 178
+      },
+      "wr_min": 100.0,
+      "wr_max": 100.0,
+      "wr_span": null
+    },
+    "74": {
+      "reliable_count": 48,
+      "reference_count": 98,
+      "sources": {
+        "bot": 8,
+        "summary": 2,
+        "phase2": 38,
+        "phase1": 98
+      },
+      "wr_min": 40.0,
+      "wr_max": 93.5,
+      "wr_span": 53.5
+    },
+    "75": {
+      "reliable_count": 22,
+      "reference_count": 59,
+      "sources": {
+        "bot": 6,
+        "summary": 2,
+        "phase2": 14,
+        "phase1": 59
+      },
+      "wr_min": 49.0,
+      "wr_max": 89.25,
+      "wr_span": 40.25
+    },
+    "76": {
+      "reliable_count": 36,
+      "reference_count": 44,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 31,
+        "phase1": 44
+      },
+      "wr_min": 41.0,
+      "wr_max": 92.25,
+      "wr_span": 51.25
+    },
+    "77": {
+      "reliable_count": 65,
+      "reference_count": 20,
+      "sources": {
+        "bot": 19,
+        "summary": 0,
+        "phase2": 46,
+        "phase1": 20
+      },
+      "wr_min": 23.0,
+      "wr_max": 75.5,
+      "wr_span": 52.5
+    },
+    "78": {
+      "reliable_count": 22,
+      "reference_count": 59,
+      "sources": {
+        "bot": 3,
+        "summary": 1,
+        "phase2": 18,
+        "phase1": 59
+      },
+      "wr_min": 46.25,
+      "wr_max": 89.0,
+      "wr_span": 42.75
+    },
+    "79": {
+      "reliable_count": 14,
+      "reference_count": 0,
+      "sources": {
+        "bot": 14,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 50.25,
+      "wr_max": 94.75,
+      "wr_span": 44.5
+    },
+    "80": {
+      "reliable_count": 43,
+      "reference_count": 39,
+      "sources": {
+        "bot": 11,
+        "summary": 1,
+        "phase2": 31,
+        "phase1": 39
+      },
+      "wr_min": 9.0,
+      "wr_max": 93.75,
+      "wr_span": 84.75
+    },
+    "81": {
+      "reliable_count": 47,
+      "reference_count": 40,
+      "sources": {
+        "bot": 12,
+        "summary": 1,
+        "phase2": 34,
+        "phase1": 40
+      },
+      "wr_min": 56.5,
+      "wr_max": 91.0,
+      "wr_span": 34.5
+    },
+    "82": {
+      "reliable_count": 46,
+      "reference_count": 57,
+      "sources": {
+        "bot": 7,
+        "summary": 2,
+        "phase2": 37,
+        "phase1": 57
+      },
+      "wr_min": 21.79,
+      "wr_max": 75.48,
+      "wr_span": 53.69
+    },
+    "83": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 18.75,
+      "wr_max": 75.0,
+      "wr_span": 56.25
+    },
+    "84": {
+      "reliable_count": 4,
+      "reference_count": 0,
+      "sources": {
+        "bot": 4,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 61.75,
+      "wr_max": 93.75,
+      "wr_span": 32.0
+    },
+    "85": {
+      "reliable_count": 4,
+      "reference_count": 0,
+      "sources": {
+        "bot": 4,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 52.75,
+      "wr_max": 85.5,
+      "wr_span": 32.75
+    },
+    "86": {
+      "reliable_count": 52,
+      "reference_count": 39,
+      "sources": {
+        "bot": 19,
+        "summary": 1,
+        "phase2": 32,
+        "phase1": 39
+      },
+      "wr_min": 39.25,
+      "wr_max": 93.5,
+      "wr_span": 54.25
+    },
+    "87": {
+      "reliable_count": 48,
+      "reference_count": 42,
+      "sources": {
+        "bot": 15,
+        "summary": 1,
+        "phase2": 32,
+        "phase1": 42
+      },
+      "wr_min": 35.25,
+      "wr_max": 85.0,
+      "wr_span": 49.75
+    },
+    "88": {
+      "reliable_count": 6,
+      "reference_count": 0,
+      "sources": {
+        "bot": 6,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 8.0,
+      "wr_max": 71.5,
+      "wr_span": 63.5
+    },
+    "89": {
+      "reliable_count": 35,
+      "reference_count": 60,
+      "sources": {
+        "bot": 0,
+        "summary": 2,
+        "phase2": 33,
+        "phase1": 60
+      },
+      "wr_min": 46.5,
+      "wr_max": 97.06,
+      "wr_span": 50.56
+    },
+    "90": {
+      "reliable_count": 37,
+      "reference_count": 63,
+      "sources": {
+        "bot": 0,
+        "summary": 3,
+        "phase2": 34,
+        "phase1": 63
+      },
+      "wr_min": 57.0,
+      "wr_max": 90.86,
+      "wr_span": 33.86
+    },
+    "91": {
+      "reliable_count": 29,
+      "reference_count": 71,
+      "sources": {
+        "bot": 0,
+        "summary": 4,
+        "phase2": 25,
+        "phase1": 71
+      },
+      "wr_min": 43.5,
+      "wr_max": 94.0,
+      "wr_span": 50.5
+    },
+    "92": {
+      "reliable_count": 68,
+      "reference_count": 87,
+      "sources": {
+        "bot": 5,
+        "summary": 2,
+        "phase2": 61,
+        "phase1": 87
+      },
+      "wr_min": 51.0,
+      "wr_max": 99.25,
+      "wr_span": 48.25
+    },
+    "93": {
+      "reliable_count": 43,
+      "reference_count": 33,
+      "sources": {
+        "bot": 14,
+        "summary": 3,
+        "phase2": 26,
+        "phase1": 33
+      },
+      "wr_min": 50.0,
+      "wr_max": 79.5,
+      "wr_span": 29.5
+    },
+    "94": {
+      "reliable_count": 58,
+      "reference_count": 31,
+      "sources": {
+        "bot": 15,
+        "summary": 3,
+        "phase2": 40,
+        "phase1": 31
+      },
+      "wr_min": 11.5,
+      "wr_max": 67.0,
+      "wr_span": 55.5
+    },
+    "95": {
+      "reliable_count": 4,
+      "reference_count": 0,
+      "sources": {
+        "bot": 4,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 57.75,
+      "wr_max": 98.75,
+      "wr_span": 41.0
+    },
+    "96": {
+      "reliable_count": 49,
+      "reference_count": 33,
+      "sources": {
+        "bot": 11,
+        "summary": 1,
+        "phase2": 37,
+        "phase1": 33
+      },
+      "wr_min": 2.94,
+      "wr_max": 75.5,
+      "wr_span": 72.56
+    },
+    "97": {
+      "reliable_count": 4,
+      "reference_count": 0,
+      "sources": {
+        "bot": 4,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 47.75,
+      "wr_max": 86.25,
+      "wr_span": 38.5
+    },
+    "98": {
+      "reliable_count": 71,
+      "reference_count": 46,
+      "sources": {
+        "bot": 27,
+        "summary": 4,
+        "phase2": 40,
+        "phase1": 46
+      },
+      "wr_min": 0.5,
+      "wr_max": 46.25,
+      "wr_span": 45.75
+    },
+    "99": {
+      "reliable_count": 41,
+      "reference_count": 35,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 36,
+        "phase1": 35
+      },
+      "wr_min": 44.75,
+      "wr_max": 92.75,
+      "wr_span": 48.0
+    },
+    "100": {
+      "reliable_count": 45,
+      "reference_count": 40,
+      "sources": {
+        "bot": 10,
+        "summary": 0,
+        "phase2": 35,
+        "phase1": 40
+      },
+      "wr_min": 26.0,
+      "wr_max": 91.5,
+      "wr_span": 65.5
+    },
+    "101": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 34.75,
+      "wr_max": 36.25,
+      "wr_span": 1.5
+    },
+    "102": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 9.5,
+      "wr_max": 35.25,
+      "wr_span": 25.75
+    },
+    "103": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 12.25,
+      "wr_max": 65.25,
+      "wr_span": 53.0
+    },
+    "104": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 60.0,
+      "wr_max": 96.25,
+      "wr_span": 36.25
+    },
+    "105": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 68.5,
+      "wr_max": 89.75,
+      "wr_span": 21.25
+    },
+    "106": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 43.5,
+      "wr_max": 91.25,
+      "wr_span": 47.75
+    },
+    "107": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 87.0,
+      "wr_max": 97.25,
+      "wr_span": 10.25
+    },
+    "108": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 2.0,
+      "wr_max": 17.0,
+      "wr_span": 15.0
+    },
+    "109": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 47.5,
+      "wr_max": 72.0,
+      "wr_span": 24.5
+    },
+    "110": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 15.75,
+      "wr_max": 53.5,
+      "wr_span": 37.75
+    },
+    "111": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 2.25,
+      "wr_max": 41.0,
+      "wr_span": 38.75
+    },
+    "112": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 40.0,
+      "wr_max": 68.25,
+      "wr_span": 28.25
+    },
+    "113": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 53.5,
+      "wr_max": 84.5,
+      "wr_span": 31.0
+    },
+    "114": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 87.75,
+      "wr_max": 95.25,
+      "wr_span": 7.5
+    },
+    "115": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 4.75,
+      "wr_max": 59.75,
+      "wr_span": 55.0
+    },
+    "116": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 49.0,
+      "wr_max": 89.25,
+      "wr_span": 40.25
+    },
+    "117": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 48.5,
+      "wr_max": 68.0,
+      "wr_span": 19.5
+    },
+    "118": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 9.75,
+      "wr_max": 27.25,
+      "wr_span": 17.5
+    },
+    "119": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 52.75,
+      "wr_max": 68.5,
+      "wr_span": 15.75
+    },
+    "120": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 25.75,
+      "wr_max": 35.5,
+      "wr_span": 9.75
+    },
+    "121": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 52.5,
+      "wr_max": 96.5,
+      "wr_span": 44.0
+    },
+    "122": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 53.5,
+      "wr_max": 81.0,
+      "wr_span": 27.5
+    },
+    "123": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 36.75,
+      "wr_max": 81.25,
+      "wr_span": 44.5
+    },
+    "124": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 25.25,
+      "wr_max": 77.25,
+      "wr_span": 52.0
+    },
+    "125": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 39.5,
+      "wr_max": 90.0,
+      "wr_span": 50.5
+    },
+    "126": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 80.5,
+      "wr_max": 94.75,
+      "wr_span": 14.25
+    },
+    "127": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 38.5,
+      "wr_max": 77.75,
+      "wr_span": 39.25
+    },
+    "128": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 11.75,
+      "wr_max": 41.25,
+      "wr_span": 29.5
+    },
+    "129": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 47.5,
+      "wr_max": 65.5,
+      "wr_span": 18.0
+    },
+    "130": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 26.25,
+      "wr_max": 51.0,
+      "wr_span": 24.75
+    },
+    "131": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 6.0,
+      "wr_max": 79.0,
+      "wr_span": 73.0
+    },
+    "132": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 51.25,
+      "wr_max": 63.0,
+      "wr_span": 11.75
+    },
+    "133": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 75.5,
+      "wr_max": 88.5,
+      "wr_span": 13.0
+    },
+    "134": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 6.25,
+      "wr_max": 23.25,
+      "wr_span": 17.0
+    },
+    "135": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 54.75,
+      "wr_max": 90.25,
+      "wr_span": 35.5
+    },
+    "136": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 71.5,
+      "wr_max": 85.5,
+      "wr_span": 14.0
+    },
+    "137": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 6.5,
+      "wr_max": 26.0,
+      "wr_span": 19.5
+    },
+    "138": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 26.0,
+      "wr_max": 45.75,
+      "wr_span": 19.75
+    },
+    "139": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 73.75,
+      "wr_max": 94.75,
+      "wr_span": 21.0
+    },
+    "140": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 28.0,
+      "wr_max": 52.75,
+      "wr_span": 24.75
+    },
+    "141": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 39.75,
+      "wr_max": 60.75,
+      "wr_span": 21.0
+    },
+    "142": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 29.5,
+      "wr_max": 65.25,
+      "wr_span": 35.75
+    },
+    "143": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 60.5,
+      "wr_max": 97.75,
+      "wr_span": 37.25
+    },
+    "144": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 59.0,
+      "wr_max": 73.5,
+      "wr_span": 14.5
+    },
+    "145": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 6.5,
+      "wr_max": 81.25,
+      "wr_span": 74.75
+    },
+    "146": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 64.0,
+      "wr_max": 76.0,
+      "wr_span": 12.0
+    },
+    "147": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 37.0,
+      "wr_max": 43.0,
+      "wr_span": 6.0
+    },
+    "148": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 56.5,
+      "wr_max": 76.5,
+      "wr_span": 20.0
+    },
+    "149": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 64.0,
+      "wr_max": 84.75,
+      "wr_span": 20.75
+    },
+    "150": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 31.75,
+      "wr_max": 53.25,
+      "wr_span": 21.5
+    },
+    "151": {
+      "reliable_count": 66,
+      "reference_count": 18,
+      "sources": {
+        "bot": 5,
+        "summary": 5,
+        "phase2": 56,
+        "phase1": 18
+      },
+      "wr_min": 9.75,
+      "wr_max": 70.0,
+      "wr_span": 60.25
+    },
+    "152": {
+      "reliable_count": 42,
+      "reference_count": 40,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 37,
+        "phase1": 40
+      },
+      "wr_min": 63.0,
+      "wr_max": 92.5,
+      "wr_span": 29.5
+    },
+    "153": {
+      "reliable_count": 33,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 27,
+        "phase1": 0
+      },
+      "wr_min": 40.0,
+      "wr_max": 75.5,
+      "wr_span": 35.5
+    },
+    "154": {
+      "reliable_count": 68,
+      "reference_count": 2,
+      "sources": {
+        "bot": 5,
+        "summary": 5,
+        "phase2": 58,
+        "phase1": 2
+      },
+      "wr_min": 0.0,
+      "wr_max": 59.5,
+      "wr_span": 59.5
+    },
+    "155": {
+      "reliable_count": 43,
+      "reference_count": 7,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 37,
+        "phase1": 7
+      },
+      "wr_min": 20.25,
+      "wr_max": 74.25,
+      "wr_span": 54.0
+    },
+    "156": {
+      "reliable_count": 39,
+      "reference_count": 38,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 33,
+        "phase1": 38
+      },
+      "wr_min": 35.0,
+      "wr_max": 93.5,
+      "wr_span": 58.5
+    },
+    "157": {
+      "reliable_count": 58,
+      "reference_count": 14,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 52,
+        "phase1": 14
+      },
+      "wr_min": 43.5,
+      "wr_max": 88.0,
+      "wr_span": 44.5
+    },
+    "158": {
+      "reliable_count": 56,
+      "reference_count": 16,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 51,
+        "phase1": 16
+      },
+      "wr_min": 12.5,
+      "wr_max": 88.0,
+      "wr_span": 75.5
+    },
+    "159": {
+      "reliable_count": 5,
+      "reference_count": 89,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 89
+      },
+      "wr_min": 30.25,
+      "wr_max": 50.0,
+      "wr_span": 19.75
+    },
+    "160": {
+      "reliable_count": 58,
+      "reference_count": 22,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 53,
+        "phase1": 22
+      },
+      "wr_min": 41.25,
+      "wr_max": 94.5,
+      "wr_span": 53.25
+    },
+    "161": {
+      "reliable_count": 71,
+      "reference_count": 9,
+      "sources": {
+        "bot": 5,
+        "summary": 4,
+        "phase2": 62,
+        "phase1": 9
+      },
+      "wr_min": 2.5,
+      "wr_max": 59.5,
+      "wr_span": 57.0
+    },
+    "162": {
+      "reliable_count": 67,
+      "reference_count": 16,
+      "sources": {
+        "bot": 5,
+        "summary": 4,
+        "phase2": 58,
+        "phase1": 16
+      },
+      "wr_min": 5.0,
+      "wr_max": 79.0,
+      "wr_span": 74.0
+    },
+    "163": {
+      "reliable_count": 51,
+      "reference_count": 31,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 45,
+        "phase1": 31
+      },
+      "wr_min": 27.0,
+      "wr_max": 85.0,
+      "wr_span": 58.0
+    },
+    "164": {
+      "reliable_count": 56,
+      "reference_count": 14,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 50,
+        "phase1": 14
+      },
+      "wr_min": 25.5,
+      "wr_max": 82.0,
+      "wr_span": 56.5
+    },
+    "165": {
+      "reliable_count": 43,
+      "reference_count": 59,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 37,
+        "phase1": 59
+      },
+      "wr_min": 22.75,
+      "wr_max": 91.0,
+      "wr_span": 68.25
+    },
+    "166": {
+      "reliable_count": 5,
+      "reference_count": 87,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 87
+      },
+      "wr_min": 4.25,
+      "wr_max": 79.75,
+      "wr_span": 75.5
+    },
+    "167": {
+      "reliable_count": 42,
+      "reference_count": 4,
+      "sources": {
+        "bot": 3,
+        "summary": 2,
+        "phase2": 37,
+        "phase1": 4
+      },
+      "wr_min": 11.25,
+      "wr_max": 73.5,
+      "wr_span": 62.25
+    },
+    "168": {
+      "reliable_count": 74,
+      "reference_count": 4,
+      "sources": {
+        "bot": 5,
+        "summary": 5,
+        "phase2": 64,
+        "phase1": 4
+      },
+      "wr_min": 2.5,
+      "wr_max": 73.25,
+      "wr_span": 70.75
+    },
+    "169": {
+      "reliable_count": 62,
+      "reference_count": 19,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 56,
+        "phase1": 19
+      },
+      "wr_min": 35.5,
+      "wr_max": 94.5,
+      "wr_span": 59.0
+    },
+    "170": {
+      "reliable_count": 57,
+      "reference_count": 11,
+      "sources": {
+        "bot": 3,
+        "summary": 3,
+        "phase2": 51,
+        "phase1": 11
+      },
+      "wr_min": 30.5,
+      "wr_max": 88.0,
+      "wr_span": 57.5
+    },
+    "171": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 13.0,
+      "wr_max": 54.25,
+      "wr_span": 41.25
+    },
+    "172": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 55.0,
+      "wr_max": 83.5,
+      "wr_span": 28.5
+    },
+    "173": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 30.5,
+      "wr_max": 69.0,
+      "wr_span": 38.5
+    },
+    "174": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 29.5,
+      "wr_max": 73.0,
+      "wr_span": 43.5
+    },
+    "175": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 30.75,
+      "wr_max": 82.25,
+      "wr_span": 51.5
+    },
+    "176": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 54.75,
+      "wr_max": 93.25,
+      "wr_span": 38.5
+    },
+    "177": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 6.25,
+      "wr_max": 9.5,
+      "wr_span": 3.25
+    },
+    "178": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 8.75,
+      "wr_max": 65.0,
+      "wr_span": 56.25
+    },
+    "179": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 64.75,
+      "wr_max": 91.25,
+      "wr_span": 26.5
+    },
+    "180": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 52.75,
+      "wr_max": 68.75,
+      "wr_span": 16.0
+    },
+    "181": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 77.75,
+      "wr_max": 95.0,
+      "wr_span": 17.25
+    },
+    "182": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 17.5,
+      "wr_max": 37.75,
+      "wr_span": 20.25
+    },
+    "183": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 23.75,
+      "wr_max": 45.0,
+      "wr_span": 21.25
+    },
+    "184": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 65.0,
+      "wr_max": 70.75,
+      "wr_span": 5.75
+    },
+    "185": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 48.5,
+      "wr_max": 72.5,
+      "wr_span": 24.0
+    },
+    "186": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 20.25,
+      "wr_max": 35.5,
+      "wr_span": 15.25
+    },
+    "187": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 32.25,
+      "wr_max": 47.25,
+      "wr_span": 15.0
+    },
+    "188": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 60.5,
+      "wr_max": 83.5,
+      "wr_span": 23.0
+    },
+    "189": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 59.5,
+      "wr_max": 68.25,
+      "wr_span": 8.75
+    },
+    "190": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 13.0,
+      "wr_max": 55.25,
+      "wr_span": 42.25
+    },
+    "191": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 44.0,
+      "wr_max": 85.0,
+      "wr_span": 41.0
+    },
+    "192": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 34.5,
+      "wr_max": 92.75,
+      "wr_span": 58.25
+    },
+    "193": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 70.5,
+      "wr_max": 83.75,
+      "wr_span": 13.25
+    },
+    "194": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 15.75,
+      "wr_max": 72.0,
+      "wr_span": 56.25
+    },
+    "195": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 60.25,
+      "wr_max": 66.75,
+      "wr_span": 6.5
+    },
+    "196": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 63.25,
+      "wr_max": 76.75,
+      "wr_span": 13.5
+    },
+    "197": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 29.0,
+      "wr_max": 62.75,
+      "wr_span": 33.75
+    },
+    "198": {
+      "reliable_count": 3,
+      "reference_count": 0,
+      "sources": {
+        "bot": 3,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 66.5,
+      "wr_max": 86.25,
+      "wr_span": 19.75
+    },
+    "199": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 32.5,
+      "wr_max": 57.75,
+      "wr_span": 25.25
+    },
+    "200": {
+      "reliable_count": 5,
+      "reference_count": 0,
+      "sources": {
+        "bot": 5,
+        "summary": 0,
+        "phase2": 0,
+        "phase1": 0
+      },
+      "wr_min": 11.75,
+      "wr_max": 30.0,
+      "wr_span": 18.25
+    }
+  }
+}
