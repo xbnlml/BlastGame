@@ -1,0 +1,75 @@
+[16:44:59] ============================================================
+[16:44:59]  auto_loop.py — 全自动调优编排器
+[16:44:59] ============================================================
+[16:44:59]  Log:        D:\download\BlastGame\hermes\auto-log\20260808_164459.log
+[16:44:59]  Levels:     [85, 119, 120]
+[16:44:59]  Tiers:      [1, 2, 3, 4, 5]
+[16:44:59]  Games/tier: 400
+[16:44:59]  Strategy:   scoring_opt_vg
+[16:44:59]  Max rounds: 6
+[16:44:59]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[16:44:59]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[16:44:59] 
+[16:44:59] [Auto-recovery] 检查 Unity 进程...
+[16:45:00]   Unity.exe 仍在运行，自动关闭...
+[16:45:01]   Unity.exe 已关闭
+[16:45:01] 
+[16:45:01] ————————————————————————————————————————————————————————————
+[16:45:01]  ROUND 1/6
+[16:45:01]  Pending (3): 85, 119, 120
+[16:45:01] ————————————————————————————————————————————————————————————
+[16:45:01] 
+[16:45:01] [Phase 1/5] agent_analyze → combo + design_probes
+[16:45:01]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 85,119,120 --output json
+[16:45:05]   planner: could not parse JSON output
+[16:45:05]   stdout preview: L120 [normal] ① 当前最优: 无合格组合（数据不足）
+  ② 无组合 → 反推需求 [85.0, 85.0, 65.0, 50.0, 50.0]，未覆盖 [3, 4]
+  ③ 探针目标: [(3, 'raise', 50.0), (4, 'raise', 50.0), (3, 'raise', 55.0), (4, 'raise', 55.0)]
+  ④ 池子候选: 5/5 槽
+  ⑤ 组装: 5 槽
+  ⑥ 最终: [('T1', 10, '1,10,10,10,1'), ('T2', 20, '10,10,0,10,10'), ('T3', 20, '10,1,1,1,1'), ('T4', 20, '10,0,10,0,10'), ('T5', 20, '1,1,10,1,1')]
+{
+  "85": {
+    "agent_analyze_rc": 0,
+    "difficulty": "normal",
+    "verified_count": 6,
+    "total_records": 42,
+    "combo": {
+      "quali
+[16:45:05]   3 level(s) missing probes — running fallback design_probes...
+[16:45:05]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 85 --write
+[16:45:06]   L85: design_probes --write OK
+[16:45:06]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 119 --write
+[16:45:06]   L119: design_probes --write OK
+[16:45:06]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 120 --write
+[16:45:07]   L120: design_probes --write OK
+[16:45:07]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 85,119,120 --output json
+[16:45:09]   planner: could not parse JSON output
+[16:45:09]   stdout preview: L120 [normal] ① 当前最优: 无合格组合（数据不足）
+  ② 无组合 → 反推需求 [85.0, 85.0, 65.0, 50.0, 50.0]，未覆盖 [3, 4]
+  ③ 探针目标: [(3, 'raise', 50.0), (4, 'raise', 50.0), (3, 'raise', 55.0), (4, 'raise', 55.0)]
+  ④ 池子候选: 5/5 槽
+  ⑤ 组装: 5 槽
+  ⑥ 最终: [('T1', 10, '1,10,10,10,1'), ('T2', 20, '10,10,0,10,10'), ('T3', 20, '10,1,1,1,1'), ('T4', 20, '10,0,10,0,10'), ('T5', 20, '1,1,10,1,1')]
+{
+  "85": {
+    "agent_analyze_rc": 0,
+    "difficulty": "normal",
+    "verified_count": 6,
+    "total_records": 42,
+    "combo": {
+      "quali
+[16:45:09]   ❌ 3 level(s) still missing probes after fallback: ['85', '119', '120']
+[16:45:09]   No pending levels remain after probe design — stopping
+[16:45:09]  FINAL SUMMARY
+[16:45:09] ============================================================
+[16:45:09]  ✅ Passed (入库):  0 levels
+[16:45:09]  ❌ Failed (改关卡): 0 levels
+[16:45:09]  ⚠ Errors:           3 levels
+[16:45:09]     L85: probe_design_failed_r1
+[16:45:09]     L119: probe_design_failed_r1
+[16:45:09]     L120: probe_design_failed_r1
+[16:45:09]  🔄 Still pending:    0 levels
+[16:45:09] 
+[16:45:09]  Full log: D:\download\BlastGame\hermes\auto-log\20260808_164459.log
+[16:45:09]  Curator: pattern analysis complete

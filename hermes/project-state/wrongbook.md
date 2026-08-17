@@ -4,6 +4,18 @@ Agent 层面的错题本。记录 BlastGame 调优/探针/判级过程中的错�
 
 ---
 
+## WB-011: 探针设计绕过设计 agent，手工拍配置
+
+- **日期**: 2026-07-31
+- **场景**: L136/L176 探针设计时主 agent 手工写 sd/ratios，未走 design_probes.py
+- **错误**: 手工设计导致反复出错（先凑目标胜率、再用已验证配置占槽、5槽不利用）
+- **正确**: 探针必须走 design_probes.py（Warden W01-W03 闸门保证质量），主 agent 只编排不设计
+- **执行层**: `apply_probes.py` 写入前 Warden 闸门 + `auto_design()` 自动生成
+
+## WB-010: 探针写入未过 Warden 闸门（原记录，7-17 后补注）
+
+- 已修复：apply_probes 写入前强制 W01/W02/W03 检查
+
 ## WB-007: 数据池去重键未归一化导致重复
 
 - **日期**: 2026-07-10
@@ -36,8 +48,7 @@ Agent 层面的错题本。记录 BlastGame 调优/探针/判级过程中的错�
 
 ## WB-010（已修正）: 工作目录以 Hermes 为准
 
-- **原记录日期**: 2026-07-10（修正于 2026-07-17）
-- **原错误**: 以为 reasonix 是 agent 工作目录
-- **正确认知**: `D:\download\Hermes` 是当前工作目录。reasonix 是其他 AI 工程目录，与本项目无关。所有工具/配置/规则以 Hermes 目录为准。
-- **工具路径**: tools/probe_configs.json、tools/**/.py、scripts/submit_batch.py 均在 `D:\download\Hermes` 下
+- **原记录日期**: 2026-07-10（修正于 2026-07-17，再修正 2026-08-05）
+- **正确认知**: `D:\download\BlastGame\hermes` 是当前工作目录。reasonix 是其他 AI 工程目录，与本项目无关。所有工具/配置/规则以 `D:\download\BlastGame\hermes` 为准。
+- **工具路径**: tools/probe_configs.json、tools/**/.py、scripts/submit_batch_unity.py 均在 `D:\download\BlastGame\hermes` 下
 

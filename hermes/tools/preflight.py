@@ -9,11 +9,14 @@ import os, sys, json, subprocess
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
-REPO = r'C:\Users\Administrator\Documents\BlastGame'
+REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_asset_path(lv):
-    return os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test', '{}.asset'.format(lv))
+    for root, dirs, files in os.walk(os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test')):
+        if f'{lv}.asset' in files:
+            return os.path.join(root, f'{lv}.asset')
+    return os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test', f'{lv}.asset')
 
 def get_board_levels():
     """读取 board.md 的入库/改关卡列表"""
@@ -30,7 +33,7 @@ def get_board_levels():
                 for w in line.replace(',', ' ').split():
                     try:
                         lv = int(w)
-                        if 51 <= lv <= 100:
+                        if 51 <= lv <= 200:
                             if section == 'done': done.add(lv)
                             elif section == 'retired': retired.add(lv)
                             elif section == 'pending': pending.add(lv)

@@ -28,7 +28,7 @@ from get_level_pool import (
     parse_levels, print_summary_table, strip_meta
 )
 
-# stage-data 根目录（在 reasonix 仓库下）
+# stage-data 根目录（在 hermes 项目下）
 STAGE_DIR = os.path.join(os.path.dirname(TOOLS_DIR), 'stage-data')
 
 
@@ -181,22 +181,65 @@ def main():
     levels = get_level_range()
     print(f'关卡范围: L{levels[0]} ~ L{levels[-1]} ({len(levels)} 关)')
 
-    # 从 _last_refresh.json 读取时间防线
-    tracking_path = os.path.join(STAGE_DIR, '_last_refresh.json')
+    # 时间防线：动态读取每关 asset 文件 mtime（2026-08-04 新机制）
+    # asset mtime 只反映"改关卡配置(牌面)"的时间——write_ddc 写 DDC 后恢复 mtime，
+    # 不再污染。批次子目录时间 < asset mtime → 该关该批次数据无效（老牌面）。
+    # 【补丁 2026-08-04】mtime 防线只对生效时刻之后修改的 asset 生效——
+    # 生效时刻之前 write_ddc 已污染过 27 关的 mtime（8-04 写入时间），
+    # 那些 mtime 不代表牌面修改时间，一律忽略；此刻之后 mtime 才可信。
     min_mtime_map = {}
+    tracking_path = os.path.join(STAGE_DIR, '_last_refresh.json')
+    manual_map = {}
+    mtime_filter_since = None
     if os.path.isfile(tracking_path):
         try:
             tracking = json.load(open(tracking_path, encoding='utf-8'))
             updated_at = tracking.get('asset_updated_at', {})
             for lv, iso in updated_at.items():
                 try:
-                    min_mtime_map[lv] = datetime.fromisoformat(iso).timestamp()
+                    manual_map[lv] = datetime.fromisoformat(iso).timestamp()
                 except (ValueError, TypeError):
                     pass
-            if min_mtime_map:
-                print(f'时间防线激活: {len(min_mtime_map)} 关')
+            since = tracking.get('mtime_filter_since')
+            if since:
+                try:
+                    mtime_filter_since = datetime.fromisoformat(since).timestamp()
+                except (ValueError, TypeError):
+                    pass
         except (json.JSONDecodeError, OSError):
             pass
+    if mtime_filter_since is None:
+        # 首次运行：记录生效时刻（此刻之前的 asset mtime 均不可信）
+        mtime_filter_since = datetime.now().timestamp()
+        try:
+            tracking = json.load(open(tracking_path, encoding='utf-8')) if os.path.isfile(tracking_path) else {}
+            tracking['mtime_filter_since'] = datetime.fromtimestamp(mtime_filter_since).isoformat()
+            with open(tracking_path, 'w', encoding='utf-8') as f:
+                json.dump(tracking, f, ensure_ascii=False, indent=2)
+        except OSError:
+            pass
+        print(f'mtime 防线生效时刻: {datetime.fromtimestamp(mtime_filter_since).isoformat()} (首次)')
+    else:
+        print(f'mtime 防线生效时刻: {datetime.fromtimestamp(mtime_filter_since).isoformat()}')
+
+    # asset mtime 防线（自动，每关；仅生效时刻之后的 mtime 可信）
+    from tools.asset_patcher import _asset_path
+    auto_count = 0
+    for lv in levels:
+        ap = _asset_path(lv)
+        if ap and os.path.isfile(ap):
+            mt = os.path.getmtime(ap)
+            if mt > mtime_filter_since:
+                # 生效时刻之后修改过 → mtime 可信，作防线
+                if lv in manual_map:
+                    mt = max(mt, manual_map[lv])
+                min_mtime_map[lv] = mt
+                auto_count += 1
+            elif lv in manual_map:
+                # mtime 不可信（污染），但手动防线仍生效
+                min_mtime_map[lv] = manual_map[lv]
+    if min_mtime_map:
+        print(f'时间防线激活: {len(min_mtime_map)} 关 (asset mtime 自动 {auto_count} + 手动兼容)')
 
     # 构建数据池
     reliable, reference = build_level_pools(levels, min_mtime_map)

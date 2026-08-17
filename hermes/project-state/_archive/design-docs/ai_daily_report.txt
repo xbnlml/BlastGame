@@ -1,0 +1,43 @@
+AI 日报 | 2026年7月27日 星期一
+
+🔥重磅
+
+1. Anthropic 发布 Claude Opus 5。7月24日上线，价格维持 $5/$25 每百万 tokens 不变，Frontier-Bench 得分翻倍，ARC-AGI 3 达次优三倍，编程与知识工作逼近旗舰 Fable 5 但价格仅一半，是企业与开发者当前最实用的前沿模型。
+来源：anthropic.com/news/claude-opus-5
+
+2. Kimi K3 刺激月之暗面冲刺港股 IPO。2.8 万亿参数开源模型，Frontend Code Arena 登顶超越 Claude Fable 5。公司计划 8 月 Pre-IPO，估值 500 亿美元，争取 6 个月内登陆港股。
+来源：ithome.com/0/979/817
+
+💰省钱情报
+
+1. OpenRouter 估值 2 个月从 88 亿暴涨到 680 亿，寻求卖身。全球最大 AI API 聚合平台，年收入 5000 万美元但半年翻 5 倍，已收到多家科技巨头收购意向。
+来源：finance.sina.com.cn/wm/2026-07-24
+
+2. 2026 免费 AI 清单更新：DeepSeek + Kimi + 通义千问可零成本覆盖日常需求，另外 15 款工具覆盖对话、写作、生图等场景。
+来源：cnblogs.com/ai-observe-diary/p/20074088
+
+🏢行业动向
+
+1. WAIC 2026 在上海落幕（7月17-20日），300+ 创新产品首发。AI 产业从"展示能力"走向"证明价值"，智驾、AI Infra、端侧芯片成三大热点。
+来源：36kr.com/p/3909033052722310
+
+2. 三星与 Google 合作 AI 眼镜即将发布，支持手势识别，歌尔代工，Gentle Monster 操刀设计，搭载 Gemini AI。
+来源：wearable.ofweek.com/2026-07
+
+3. Manus 被 Meta 收购，成为 Meta 旗下 AI 企业服务产品。
+来源：manus.im
+
+🔧实用工具
+
+- Mureka V9.5：昆仑万维 AI 音乐工具，告别"AI 味"，WAIC 首发。
+ 来源：jazzyear.com/article_info.html?id=1809
+- TRAE：字节跳动 AI 编程 IDE，号称 10x 效率。
+ 来源：trae.ai
+- Gemini Notebook：Google AI 研究与思维伴侣工具。
+ 来源：notebooklm.google
+- Mew.Design：免费在线 AI 设计生成器。
+ 来源：mew.design
+
+📚今日一课：Model I/O 与模型接入
+
+Model I/O 是 LangChain 中最基础的核心模块，定义了三步流程：Format（输入格式化）-> Predict（模型调用）-> Parse（输出解析）。关键认知：LangChain 将模型分为 LLM（文本补全）、Chat Model（多轮对话）、Embeddings（向量化）三类，实际开发最常用 Chat Model。调用后返回的不是字符串而是 AIMessage 对象，正文在 response.content。参数中 temperature 控制随机性，max_tokens 控制长度与费用。接入方式有三种：官方 SDK 直连、LangChain provider 类、统一入口 init_chat_model，新项目推荐后者。记住：底层模型能力、Prompt 设计与上下文质量比单纯调参更重要。

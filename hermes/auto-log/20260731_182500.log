@@ -1,0 +1,180 @@
+[18:25:00] ============================================================
+[18:25:00]  auto_loop.py — 全自动调优编排器
+[18:25:00] ============================================================
+[18:25:00]  Log:        D:\download\BlastGame\hermes\auto-log\20260731_182500.log
+[18:25:00]  Levels:     [136, 176]
+[18:25:00]  Tiers:      [1, 2, 3, 4, 5]
+[18:25:00]  Games/tier: 400
+[18:25:00]  Strategy:   scoring_opt_vg
+[18:25:00]  Max rounds: 6
+[18:25:00]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[18:25:00]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[18:25:00] 
+[18:25:00] 
+[18:25:00] ————————————————————————————————————————————————————————————
+[18:25:00]  ROUND 1/6
+[18:25:00]  Pending (2): 136, 176
+[18:25:00] ————————————————————————————————————————————————————————————
+[18:25:00] 
+[18:25:00] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:00]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:03]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:03]   L136: 5/5 tiers configured
+[18:25:03]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:03]   L176: 5/5 tiers configured
+[18:25:03] [Phase 2/5] apply_probes → write asset
+[18:25:03]   probe_configs.json updated: 2 levels
+[18:25:03]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:03]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:03]     L136: ✅ 写入成功
+[18:25:03]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:03]     L176: ✅ 写入成功
+[18:25:03]     ✅ 全部完成
+[18:25:03] [Preflight] asset & config check...
+[18:25:03]   ✅ Preflight passed
+[18:25:03] [Warden] pre-batch check...
+[18:25:03]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:03]     [WARDEN] BLOCKED:
+[18:25:03]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:03] 
+[18:25:03] ————————————————————————————————————————————————————————————
+[18:25:03]  ROUND 2/6
+[18:25:03]  Pending (2): 136, 176
+[18:25:03] ————————————————————————————————————————————————————————————
+[18:25:03] 
+[18:25:03] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:03]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:05]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:05]   L136: 5/5 tiers configured
+[18:25:05]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:05]   L176: 5/5 tiers configured
+[18:25:05] [Phase 2/5] apply_probes → write asset
+[18:25:05]   probe_configs.json updated: 2 levels
+[18:25:05]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:05]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:05]     L136: ✅ 写入成功
+[18:25:05]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:05]     L176: ✅ 写入成功
+[18:25:05]     ✅ 全部完成
+[18:25:05] [Preflight] asset & config check...
+[18:25:06]   ✅ Preflight passed
+[18:25:06] [Warden] pre-batch check...
+[18:25:06]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:06]     [WARDEN] BLOCKED:
+[18:25:06]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:06] 
+[18:25:06] ————————————————————————————————————————————————————————————
+[18:25:06]  ROUND 3/6
+[18:25:06]  Pending (2): 136, 176
+[18:25:06] ————————————————————————————————————————————————————————————
+[18:25:06] 
+[18:25:06] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:06]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:08]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:08]   L136: 5/5 tiers configured
+[18:25:08]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:08]   L176: 5/5 tiers configured
+[18:25:08] [Phase 2/5] apply_probes → write asset
+[18:25:08]   probe_configs.json updated: 2 levels
+[18:25:08]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:08]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:08]     L136: ✅ 写入成功
+[18:25:08]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:08]     L176: ✅ 写入成功
+[18:25:08]     ✅ 全部完成
+[18:25:08] [Preflight] asset & config check...
+[18:25:08]   ✅ Preflight passed
+[18:25:08] [Warden] pre-batch check...
+[18:25:08]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:08]     [WARDEN] BLOCKED:
+[18:25:08]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:08] 
+[18:25:08] ————————————————————————————————————————————————————————————
+[18:25:08]  ROUND 4/6
+[18:25:08]  Pending (2): 136, 176
+[18:25:08] ————————————————————————————————————————————————————————————
+[18:25:08] 
+[18:25:08] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:08]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:10]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:10]   L136: 5/5 tiers configured
+[18:25:10]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:10]   L176: 5/5 tiers configured
+[18:25:10] [Phase 2/5] apply_probes → write asset
+[18:25:10]   probe_configs.json updated: 2 levels
+[18:25:10]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:11]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:11]     L136: ✅ 写入成功
+[18:25:11]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:11]     L176: ✅ 写入成功
+[18:25:11]     ✅ 全部完成
+[18:25:11] [Preflight] asset & config check...
+[18:25:11]   ✅ Preflight passed
+[18:25:11] [Warden] pre-batch check...
+[18:25:11]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:11]     [WARDEN] BLOCKED:
+[18:25:11]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:11] 
+[18:25:11] ————————————————————————————————————————————————————————————
+[18:25:11]  ROUND 5/6
+[18:25:11]  Pending (2): 136, 176
+[18:25:11] ————————————————————————————————————————————————————————————
+[18:25:11] 
+[18:25:11] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:11]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:13]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:13]   L136: 5/5 tiers configured
+[18:25:13]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:13]   L176: 5/5 tiers configured
+[18:25:13] [Phase 2/5] apply_probes → write asset
+[18:25:13]   probe_configs.json updated: 2 levels
+[18:25:13]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:13]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:13]     L136: ✅ 写入成功
+[18:25:13]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:13]     L176: ✅ 写入成功
+[18:25:13]     ✅ 全部完成
+[18:25:13] [Preflight] asset & config check...
+[18:25:13]   ✅ Preflight passed
+[18:25:13] [Warden] pre-batch check...
+[18:25:14]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:14]     [WARDEN] BLOCKED:
+[18:25:14]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:14] 
+[18:25:14] ————————————————————————————————————————————————————————————
+[18:25:14]  ROUND 6/6
+[18:25:14]  Pending (2): 136, 176
+[18:25:14] ————————————————————————————————————————————————————————————
+[18:25:14] 
+[18:25:14] [Phase 1/5] agent_analyze → combo + design_probes
+[18:25:14]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 136,176 --output json
+[18:25:16]   L136: 5 probes, judge=接近, combo quality=66.0
+[18:25:16]   L136: 5/5 tiers configured
+[18:25:16]   L176: 5 probes, judge=不合格, combo quality=101.8
+[18:25:16]   L176: 5/5 tiers configured
+[18:25:16] [Phase 2/5] apply_probes → write asset
+[18:25:16]   probe_configs.json updated: 2 levels
+[18:25:16]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176
+[18:25:16]     L136: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:16]     L136: ✅ 写入成功
+[18:25:16]     L176: ✅ Warden 通过 (sd跨度/5槽/ratios多样性)
+[18:25:16]     L176: ✅ 写入成功
+[18:25:16]     ✅ 全部完成
+[18:25:16] [Preflight] asset & config check...
+[18:25:16]   ✅ Preflight passed
+[18:25:16] [Warden] pre-batch check...
+[18:25:16]   ⛔ Warden BLOCKED batch. Fix violations before retry.
+[18:25:16]     [WARDEN] BLOCKED:
+[18:25:16]     [W08] probe_vs_verify — 关卡 ['136', '176'] 已有探针配置且已在 board 入库列表中（探针/验证混淆）
+[18:25:16] 
+[18:25:16] ============================================================
+[18:25:16]  FINAL SUMMARY
+[18:25:16] ============================================================
+[18:25:16]  ✅ Passed (入库):  0 levels
+[18:25:16]  ❌ Failed (改关卡): 0 levels
+[18:25:16]  ⚠ Errors:           0 levels
+[18:25:16]  🔄 Still pending:    2 levels
+[18:25:16]     L136
+[18:25:16]     L176
+[18:25:16] 
+[18:25:16]  Full log: D:\download\BlastGame\hermes\auto-log\20260731_182500.log

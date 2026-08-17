@@ -1,0 +1,68 @@
+[
+  {"question": "游戏计分逻辑是怎样的", "expected_source": "Game_Score_Logic", "expected_keyword": "计分", "note": "计分模块"},
+  {"question": "命中计分和连击是怎么计算的", "expected_source": "Game_Score_Logic", "expected_keyword": "连击", "note": "计分/连击"},
+  {"question": "结算时胜负连败怎么累计", "expected_source": "Game_Score_Logic", "expected_keyword": "streak", "note": "结算累计"},
+  {"question": "星级阈值和结算怎么算的", "expected_source": "Game_Score_Logic", "expected_keyword": "星级", "note": "星级结算"},
+  {"question": "连击窗口时间由什么控制", "expected_source": "Game_Score_Logic", "expected_keyword": "shootIntervalMs", "note": "连击窗口参数"},
+
+  {"question": "金币经济系统是怎么运作的", "expected_source": "Coin_Economy", "expected_keyword": "金币", "note": "经济模块"},
+  {"question": "金币通胀或数值膨胀是怎么处理的", "expected_source": "Coin_Economy", "expected_keyword": "膨胀", "note": "经济/膨胀"},
+  {"question": "经济里的阶段系数和动态定价在哪配置", "expected_source": "Coin_Economy", "expected_keyword": "定价", "note": "经济/定价"},
+
+  {"question": "回放系统怎么工作", "expected_source": "Blast_Replay", "expected_keyword": "回放", "note": "回放模块"},
+  {"question": "回放动作记录有哪些字段", "expected_source": "Blast_Replay", "expected_keyword": "BlastReplayActionRecord", "note": "回放数据模型"},
+  {"question": "回放和实际落子逻辑是否共用", "expected_source": "Blast_Replay", "expected_keyword": "candidate", "note": "回放落子一致性"},
+
+  {"question": "玩家数据模块管理哪些内容", "expected_source": "Player_Data", "expected_keyword": "体力", "note": "玩家数据"},
+  {"question": "体力进关和回体怎么处理", "expected_source": "Player_Data", "expected_keyword": "体力", "note": "体力机制"},
+  {"question": "Profile 同步是干嘛的", "expected_source": "Player_Data", "expected_keyword": "Profile", "note": "Profile 同步"},
+
+  {"question": "炮台道具系统是怎么设计的", "expected_source": "POWERUP", "expected_keyword": "道具", "note": "道具系统"},
+  {"question": "道具暂停主攻击期间连击怎么处理", "expected_source": "POWERUP", "expected_keyword": "暂停", "note": "道具与连击"},
+
+  {"question": "动态难度是怎么计算的", "expected_source": "Blast_DynamicDifficulty", "expected_keyword": "动态难度", "note": "动态难度"},
+  {"question": "动态难度有哪些配置字段", "expected_source": "Blast_DynamicDifficulty", "expected_keyword": "dynamicSkillEma", "note": "动态难度配置"},
+  {"question": "难度评估的权重字段有哪些", "expected_source": "Blast_DynamicDifficulty", "expected_keyword": "dynamicSkillDeathsWeight", "note": "难度权重"},
+
+  {"question": "游戏通行证数据由什么管理", "expected_source": "Game_Pass", "expected_keyword": "GamePassModel", "note": "通行证"},
+  {"question": "通行证的奖励配置在哪", "expected_source": "Game_Pass", "expected_keyword": "chefs_pass_reward", "note": "通行证奖励配置"},
+  {"question": "过关加星是怎么写入的", "expected_source": "Game_Pass", "expected_keyword": "TryAddWinStars", "note": "加星写入"},
+
+  {"question": "失败续命礼包是什么", "expected_source": "PlayOn_Offer", "expected_keyword": "复活礼包", "note": "礼包模块"},
+  {"question": "复活礼包什么条件下会弹出", "expected_source": "PlayOn_Offer", "expected_keyword": "ScoreProbability", "note": "礼包触发条件"},
+  {"question": "礼包拒绝多少次会降档", "expected_source": "PlayOn_Offer", "expected_keyword": "DownshiftDayNeed", "note": "礼包降档"},
+
+  {"question": "失败复活逻辑是怎样的", "expected_source": "Fail_Revive", "expected_keyword": "复活", "note": "复活模块"},
+  {"question": "金币复活和礼包复活有什么区别", "expected_source": "Fail_Revive", "expected_keyword": "金币", "note": "复活方式"},
+
+  {"question": "关卡进入初始化逻辑是怎样的", "expected_source": "Level_Entry", "expected_keyword": "Init", "note": "关卡入口"},
+  {"question": "进关时会做哪些初始化", "expected_source": "Level_Entry", "expected_keyword": "初始化", "note": "关卡初始化"},
+
+  {"question": "玩法主流程是怎么编排的", "expected_source": "Gameplay_Flow", "expected_keyword": "流程", "note": "玩法流程"},
+  {"question": "玩法规则逻辑在哪里", "expected_source": "Gameplay_Rules", "expected_keyword": "规则", "note": "玩法规则"},
+
+  {"question": "每日签到逻辑是干嘛的", "expected_source": "Daily_Delivery", "expected_keyword": "签到", "note": "每日签到"},
+  {"question": "每日奖励是怎么发放的", "expected_source": "Daily_Delivery", "expected_keyword": "奖励", "note": "每日奖励"},
+
+  {"question": "游戏 BI 打点字段在哪说明", "expected_source": "Game_BI", "expected_keyword": "打点", "note": "BI 打点"},
+  {"question": "分析逻辑模块是干嘛的", "expected_source": "Game_Analysis", "expected_keyword": "分析", "note": "分析模块"},
+
+  {"question": "槽位区域逻辑是怎样的", "expected_source": "Slot_Area", "expected_keyword": "槽位", "note": "槽位模块"},
+  {"question": "动物动画播放怎么处理", "expected_source": "Stage_Animal", "expected_keyword": "动画", "note": "动画播放"},
+
+  {"question": "游戏主模块总览在哪", "expected_source": "Blast_MainGame", "expected_keyword": "主", "note": "主模块"},
+  {"question": "Common 运行时基础设施包含什么", "expected_source": "Common_Runtime", "expected_keyword": "基础设施", "note": "运行时基础设施"},
+
+  {"question": "怎么定位一个类在哪个文件", "expected_source": "gamemain-class-function-index", "expected_keyword": "类", "note": "类定位"},
+  {"question": "模块索引 keyword map 是干嘛的", "expected_source": "keyword-map", "expected_keyword": "关键词", "note": "关键词地图"},
+
+  {"question": "金币经济和计分逻辑怎么交互", "expected_source": "Coin_Economy", "expected_keyword": "金币", "note": "跨模块：经济与计分"},
+  {"question": "动态难度和玩家技能评估的关系", "expected_source": "Blast_DynamicDifficulty", "expected_keyword": "技能", "note": "跨模块：难度与技能"},
+  {"question": "复活礼包和金币复活哪个更划算", "expected_source": "PlayOn_Offer", "expected_keyword": "复活", "note": "跨模块：礼包与复活"},
+
+  {"question": "如何做云存档", "expected_source": "__NONE__", "expected_keyword": "__NONE__", "note": "负例：云存档不在语料"},
+  {"question": "游戏怎么接入广告变现", "expected_source": "__NONE__", "expected_keyword": "__NONE__", "note": "负例：广告不在语料"},
+  {"question": "怎么实现社交分享功能", "expected_source": "__NONE__", "expected_keyword": "__NONE__", "note": "负例：社交不在语料"},
+  {"question": "玩家对战 PVP 是怎么设计的", "expected_source": "__NONE__", "expected_keyword": "__NONE__", "note": "负例：PVP 不在语料"},
+  {"question": "游戏的付费订阅怎么设置", "expected_source": "__NONE__", "expected_keyword": "__NONE__", "note": "负例：订阅不在语料"}
+]

@@ -1,0 +1,1047 @@
+[19:27:04] ============================================================
+[19:27:04]  auto_loop.py — 全自动调优编排器
+[19:27:04] ============================================================
+[19:27:04]  Log:        D:\download\BlastGame\hermes\auto-log\20260803_192704.log
+[19:27:04]  Levels:     [159, 174, 186, 197]
+[19:27:04]  Tiers:      [1, 2, 3, 4, 5]
+[19:27:04]  Games/tier: 400
+[19:27:04]  Strategy:   scoring_opt_vg
+[19:27:04]  Max rounds: 6
+[19:27:04]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[19:27:04]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[19:27:04] 
+[19:27:04] 
+[19:27:04] ————————————————————————————————————————————————————————————
+[19:27:04]  ROUND 1/6
+[19:27:04]  Pending (4): 159, 174, 186, 197
+[19:27:04] ————————————————————————————————————————————————————————————
+[19:27:04] 
+[19:27:04] [Phase 1/5] agent_analyze → combo + design_probes
+[19:27:04]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:27:06]   4 level(s) missing probes — running fallback design_probes...
+[19:27:06]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:27:07]   FAIL (exit=1) attempt 1/2
+[19:27:07]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:07]   Retrying in 5s...
+[19:27:12]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:27:12]   FAIL (exit=1) attempt 2/2
+[19:27:12]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:12]   All retries exhausted — giving up
+[19:27:12]   L159: design_probes --write FAILED
+[19:27:12]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:27:13]   FAIL (exit=1) attempt 1/2
+[19:27:13]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:13]   Retrying in 5s...
+[19:27:18]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:27:19]   FAIL (exit=1) attempt 2/2
+[19:27:19]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:19]   All retries exhausted — giving up
+[19:27:19]   L174: design_probes --write FAILED
+[19:27:19]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:27:19]   FAIL (exit=1) attempt 1/2
+[19:27:19]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:19]   Retrying in 5s...
+[19:27:24]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:27:25]   FAIL (exit=1) attempt 2/2
+[19:27:25]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:25]   All retries exhausted — giving up
+[19:27:25]   L186: design_probes --write FAILED
+[19:27:25]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:27:25]   FAIL (exit=1) attempt 1/2
+[19:27:25]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:25]   Retrying in 5s...
+[19:27:30]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:27:31]   FAIL (exit=1) attempt 2/2
+[19:27:31]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:31]   All retries exhausted — giving up
+[19:27:31]   L197: design_probes --write FAILED
+[19:27:31]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:27:31] [Phase 2/5] apply_probes → write asset
+[19:27:31]   probe_configs.json updated: 0 levels
+[19:27:31]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:27:31]   FAIL (exit=1) attempt 1/2
+[19:27:31]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:27:31]   Retrying in 5s...
+[19:27:36]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:27:37]   FAIL (exit=1) attempt 2/2
+[19:27:37]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:27:37]   All retries exhausted — giving up
+[19:27:37]   apply_probes FAILED
+[19:27:37]   apply_probes failed — skipping this round
+[19:27:37] 
+[19:27:37] ————————————————————————————————————————————————————————————
+[19:27:37]  ROUND 2/6
+[19:27:37]  Pending (4): 159, 174, 186, 197
+[19:27:37] ————————————————————————————————————————————————————————————
+[19:27:37] 
+[19:27:37] [Phase 1/5] agent_analyze → combo + design_probes
+[19:27:37]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:27:39]   4 level(s) missing probes — running fallback design_probes...
+[19:27:39]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:27:39]   FAIL (exit=1) attempt 1/2
+[19:27:39]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:39]   Retrying in 5s...
+[19:27:44]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:27:45]   FAIL (exit=1) attempt 2/2
+[19:27:45]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:45]   All retries exhausted — giving up
+[19:27:45]   L159: design_probes --write FAILED
+[19:27:45]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:27:45]   FAIL (exit=1) attempt 1/2
+[19:27:45]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:45]   Retrying in 5s...
+[19:27:50]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:27:51]   FAIL (exit=1) attempt 2/2
+[19:27:51]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:51]   All retries exhausted — giving up
+[19:27:51]   L174: design_probes --write FAILED
+[19:27:51]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:27:51]   FAIL (exit=1) attempt 1/2
+[19:27:51]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:51]   Retrying in 5s...
+[19:27:56]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:27:57]   FAIL (exit=1) attempt 2/2
+[19:27:57]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:57]   All retries exhausted — giving up
+[19:27:57]   L186: design_probes --write FAILED
+[19:27:57]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:27:57]   FAIL (exit=1) attempt 1/2
+[19:27:57]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:27:57]   Retrying in 5s...
+[19:28:02]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:28:03]   FAIL (exit=1) attempt 2/2
+[19:28:03]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:03]   All retries exhausted — giving up
+[19:28:03]   L197: design_probes --write FAILED
+[19:28:03]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:28:04] [Phase 2/5] apply_probes → write asset
+[19:28:04]   probe_configs.json updated: 0 levels
+[19:28:04]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:28:04]   FAIL (exit=1) attempt 1/2
+[19:28:04]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:28:04]   Retrying in 5s...
+[19:28:09]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:28:09]   FAIL (exit=1) attempt 2/2
+[19:28:09]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:28:09]   All retries exhausted — giving up
+[19:28:09]   apply_probes FAILED
+[19:28:09]   apply_probes failed — skipping this round
+[19:28:09] 
+[19:28:09] ————————————————————————————————————————————————————————————
+[19:28:09]  ROUND 3/6
+[19:28:09]  Pending (4): 159, 174, 186, 197
+[19:28:09] ————————————————————————————————————————————————————————————
+[19:28:09] 
+[19:28:09] [Phase 1/5] agent_analyze → combo + design_probes
+[19:28:09]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:28:11]   4 level(s) missing probes — running fallback design_probes...
+[19:28:11]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:28:11]   FAIL (exit=1) attempt 1/2
+[19:28:11]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:11]   Retrying in 5s...
+[19:28:16]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:28:17]   FAIL (exit=1) attempt 2/2
+[19:28:17]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:17]   All retries exhausted — giving up
+[19:28:17]   L159: design_probes --write FAILED
+[19:28:17]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:28:17]   FAIL (exit=1) attempt 1/2
+[19:28:17]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:17]   Retrying in 5s...
+[19:28:22]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:28:23]   FAIL (exit=1) attempt 2/2
+[19:28:23]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:23]   All retries exhausted — giving up
+[19:28:23]   L174: design_probes --write FAILED
+[19:28:23]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:28:24]   FAIL (exit=1) attempt 1/2
+[19:28:24]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:24]   Retrying in 5s...
+[19:28:29]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:28:29]   FAIL (exit=1) attempt 2/2
+[19:28:29]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:29]   All retries exhausted — giving up
+[19:28:29]   L186: design_probes --write FAILED
+[19:28:29]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:28:30]   FAIL (exit=1) attempt 1/2
+[19:28:30]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:30]   Retrying in 5s...
+[19:28:35]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:28:35]   FAIL (exit=1) attempt 2/2
+[19:28:35]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:35]   All retries exhausted — giving up
+[19:28:35]   L197: design_probes --write FAILED
+[19:28:35]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:28:36] [Phase 2/5] apply_probes → write asset
+[19:28:36]   probe_configs.json updated: 0 levels
+[19:28:36]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:28:36]   FAIL (exit=1) attempt 1/2
+[19:28:36]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:28:36]   Retrying in 5s...
+[19:28:41]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:28:41]   FAIL (exit=1) attempt 2/2
+[19:28:41]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:28:41]   All retries exhausted — giving up
+[19:28:41]   apply_probes FAILED
+[19:28:41]   apply_probes failed — skipping this round
+[19:28:41] 
+[19:28:41] ————————————————————————————————————————————————————————————
+[19:28:41]  ROUND 4/6
+[19:28:41]  Pending (4): 159, 174, 186, 197
+[19:28:41] ————————————————————————————————————————————————————————————
+[19:28:41] 
+[19:28:41] [Phase 1/5] agent_analyze → combo + design_probes
+[19:28:41]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:28:43]   4 level(s) missing probes — running fallback design_probes...
+[19:28:43]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:28:44]   FAIL (exit=1) attempt 1/2
+[19:28:44]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:44]   Retrying in 5s...
+[19:28:49]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:28:49]   FAIL (exit=1) attempt 2/2
+[19:28:49]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:49]   All retries exhausted — giving up
+[19:28:49]   L159: design_probes --write FAILED
+[19:28:49]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:28:50]   FAIL (exit=1) attempt 1/2
+[19:28:50]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:50]   Retrying in 5s...
+[19:28:55]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:28:55]   FAIL (exit=1) attempt 2/2
+[19:28:55]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:55]   All retries exhausted — giving up
+[19:28:55]   L174: design_probes --write FAILED
+[19:28:55]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:28:56]   FAIL (exit=1) attempt 1/2
+[19:28:56]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:28:56]   Retrying in 5s...
+[19:29:01]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:29:01]   FAIL (exit=1) attempt 2/2
+[19:29:01]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:01]   All retries exhausted — giving up
+[19:29:01]   L186: design_probes --write FAILED
+[19:29:01]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:29:02]   FAIL (exit=1) attempt 1/2
+[19:29:02]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:02]   Retrying in 5s...
+[19:29:07]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:29:07]   FAIL (exit=1) attempt 2/2
+[19:29:07]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:07]   All retries exhausted — giving up
+[19:29:07]   L197: design_probes --write FAILED
+[19:29:07]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:29:08] [Phase 2/5] apply_probes → write asset
+[19:29:08]   probe_configs.json updated: 0 levels
+[19:29:08]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:29:08]   FAIL (exit=1) attempt 1/2
+[19:29:08]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:29:08]   Retrying in 5s...
+[19:29:13]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:29:13]   FAIL (exit=1) attempt 2/2
+[19:29:13]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:29:13]   All retries exhausted — giving up
+[19:29:13]   apply_probes FAILED
+[19:29:13]   apply_probes failed — skipping this round
+[19:29:13] 
+[19:29:13] ————————————————————————————————————————————————————————————
+[19:29:13]  ROUND 5/6
+[19:29:13]  Pending (4): 159, 174, 186, 197
+[19:29:13] ————————————————————————————————————————————————————————————
+[19:29:13] 
+[19:29:13] [Phase 1/5] agent_analyze → combo + design_probes
+[19:29:13]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:29:15]   4 level(s) missing probes — running fallback design_probes...
+[19:29:15]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:29:16]   FAIL (exit=1) attempt 1/2
+[19:29:16]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:16]   Retrying in 5s...
+[19:29:21]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:29:21]   FAIL (exit=1) attempt 2/2
+[19:29:21]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:21]   All retries exhausted — giving up
+[19:29:21]   L159: design_probes --write FAILED
+[19:29:21]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:29:22]   FAIL (exit=1) attempt 1/2
+[19:29:22]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:22]   Retrying in 5s...
+[19:29:27]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:29:27]   FAIL (exit=1) attempt 2/2
+[19:29:27]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:27]   All retries exhausted — giving up
+[19:29:27]   L174: design_probes --write FAILED
+[19:29:27]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:29:28]   FAIL (exit=1) attempt 1/2
+[19:29:28]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:28]   Retrying in 5s...
+[19:29:33]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:29:33]   FAIL (exit=1) attempt 2/2
+[19:29:33]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:33]   All retries exhausted — giving up
+[19:29:33]   L186: design_probes --write FAILED
+[19:29:33]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:29:34]   FAIL (exit=1) attempt 1/2
+[19:29:34]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:34]   Retrying in 5s...
+[19:29:39]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:29:39]   FAIL (exit=1) attempt 2/2
+[19:29:39]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:39]   All retries exhausted — giving up
+[19:29:39]   L197: design_probes --write FAILED
+[19:29:39]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:29:40] [Phase 2/5] apply_probes → write asset
+[19:29:40]   probe_configs.json updated: 0 levels
+[19:29:40]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:29:40]   FAIL (exit=1) attempt 1/2
+[19:29:40]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:29:40]   Retrying in 5s...
+[19:29:45]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:29:45]   FAIL (exit=1) attempt 2/2
+[19:29:45]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:29:45]   All retries exhausted — giving up
+[19:29:45]   apply_probes FAILED
+[19:29:45]   apply_probes failed — skipping this round
+[19:29:45] 
+[19:29:45] ————————————————————————————————————————————————————————————
+[19:29:45]  ROUND 6/6
+[19:29:45]  Pending (4): 159, 174, 186, 197
+[19:29:45] ————————————————————————————————————————————————————————————
+[19:29:45] 
+[19:29:45] [Phase 1/5] agent_analyze → combo + design_probes
+[19:29:45]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 159,174,186,197 --output json
+[19:29:47]   4 level(s) missing probes — running fallback design_probes...
+[19:29:47]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:29:48]   FAIL (exit=1) attempt 1/2
+[19:29:48]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:48]   Retrying in 5s...
+[19:29:53]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 159 --write
+[19:29:53]   FAIL (exit=1) attempt 2/2
+[19:29:53]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:53]   All retries exhausted — giving up
+[19:29:53]   L159: design_probes --write FAILED
+[19:29:53]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:29:54]   FAIL (exit=1) attempt 1/2
+[19:29:54]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:54]   Retrying in 5s...
+[19:29:59]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 174 --write
+[19:29:59]   FAIL (exit=1) attempt 2/2
+[19:29:59]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:29:59]   All retries exhausted — giving up
+[19:29:59]   L174: design_probes --write FAILED
+[19:29:59]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:30:00]   FAIL (exit=1) attempt 1/2
+[19:30:00]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:30:00]   Retrying in 5s...
+[19:30:05]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 186 --write
+[19:30:05]   FAIL (exit=1) attempt 2/2
+[19:30:05]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:30:05]   All retries exhausted — giving up
+[19:30:05]   L186: design_probes --write FAILED
+[19:30:05]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:30:06]   FAIL (exit=1) attempt 1/2
+[19:30:06]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:30:06]   Retrying in 5s...
+[19:30:11]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\design_probes.py 197 --write
+[19:30:11]   FAIL (exit=1) attempt 2/2
+[19:30:11]   stderr: e 278, in <module>
+    main()
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 269, in main
+    probes = design(str(lv))
+             ^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\design_probes.py", line 37, in design
+    uniq = pool.dedup_records(recs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\..\tools\data\pool.py", line 129, in dedup_records
+    if key not in seen:
+                  ^^^^
+NameError: name 'seen' is not defined
+
+[19:30:11]   All retries exhausted — giving up
+[19:30:11]   L197: design_probes --write FAILED
+[19:30:11]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels  --output json
+[19:30:12] [Phase 2/5] apply_probes → write asset
+[19:30:12]   probe_configs.json updated: 0 levels
+[19:30:12]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:30:12]   FAIL (exit=1) attempt 1/2
+[19:30:12]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:30:12]   Retrying in 5s...
+[19:30:17]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 
+[19:30:17]   FAIL (exit=1) attempt 2/2
+[19:30:17]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 68, in <module>
+    levels = parse_levels(args.levels)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\download\BlastGame\hermes\tools\apply_probes.py", line 57, in parse_levels
+    levels.add(int(part))
+               ^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+[19:30:17]   All retries exhausted — giving up
+[19:30:17]   apply_probes FAILED
+[19:30:17]   apply_probes failed — skipping this round
+[19:30:17] 
+[19:30:17] ============================================================
+[19:30:17]  FINAL SUMMARY
+[19:30:17] ============================================================
+[19:30:17]  ✅ Passed (入库):  0 levels
+[19:30:17]  ❌ Failed (改关卡): 0 levels
+[19:30:17]  ⚠ Errors:           0 levels
+[19:30:17]  🔄 Still pending:    4 levels
+[19:30:17]     L159
+[19:30:17]     L174
+[19:30:17]     L186
+[19:30:17]     L197
+[19:30:17] 
+[19:30:17]  Full log: D:\download\BlastGame\hermes\auto-log\20260803_192704.log
+[19:30:17]  Curator: pattern analysis complete

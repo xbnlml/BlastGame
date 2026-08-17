@@ -1,0 +1,44 @@
+[12:18:12] ============================================================
+[12:18:12]  auto_loop.py — 全自动调优编排器
+[12:18:12] ============================================================
+[12:18:12]  Log:        D:\download\BlastGame\hermes\auto-log\20260810_121812.log
+[12:18:12]  Levels:     [57, 163]
+[12:18:12]  Tiers:      [1, 2, 3, 4, 5]
+[12:18:12]  Games/tier: 400
+[12:18:12]  Strategy:   scoring_opt_vg
+[12:18:12]  Max rounds: 6
+[12:18:12]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[12:18:12]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[12:18:12] 
+[12:18:12] [Auto-recovery] 检查 Unity 进程...
+[12:18:12]   无 Unity 进程
+[12:18:12] 
+[12:18:12] ————————————————————————————————————————————————————————————
+[12:18:12]  ROUND 1/6
+[12:18:12]  Pending (2): 57, 163
+[12:18:12] ————————————————————————————————————————————————————————————
+[12:18:12] 
+[12:18:12] [Phase 1/5] agent_analyze → combo + design_probes
+[12:18:12]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 57,163 --output json
+[12:18:14]   L57: 5 probes, judge=不合格, combo quality=30.4
+[12:18:14]   L57: 5/5 tiers configured
+[12:18:14]   L163: 5 probes, judge=不合格, combo quality=26.4
+[12:18:14]   L163: 5/5 tiers configured
+[12:18:14] [Phase 2/5] apply_probes → write asset
+[12:18:14]   💾 调优前 asset 备份: 2 关 → pre_tune_backup_20260810/
+[12:18:14]   probe_configs.json updated: 2 levels
+[12:18:14]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 57,163
+[12:18:14]     L57: ✅ Warden 通过 (5槽完整)
+[12:18:14]     L57: ✅ 写入成功
+[12:18:14]     L163: ✅ Warden 通过 (5槽完整)
+[12:18:14]     L163: ✅ 写入成功
+[12:18:14]     ✅ 全部完成
+[12:18:14] [Preflight] asset & config check...
+[12:18:14]   ✅ Preflight passed
+[12:18:14] [Warden] pre-batch check...
+[12:18:14]   ✅ Warden passed
+[12:18:14] [Phase 3/5] submit_batch_unity → Unity bot batch
+[12:18:14]   adaptive_stop=ON (round 1/6)
+[12:18:14]   games=200 (探针轮200/验证轮400)
+[12:18:14]   Submitting Unity batch: 2 levels × 5 tiers, timeout=7200s (120min)
+[12:18:14]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 57,163 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop

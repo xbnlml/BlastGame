@@ -1,0 +1,328 @@
+[14:00:52] ============================================================
+[14:00:52]  auto_loop.py — 全自动调优编排器
+[14:00:52] ============================================================
+[14:00:52]  Log:        D:\download\BlastGame\hermes\auto-log\20260817_140052.log
+[14:00:52]  Levels:     [158, 176, 188]
+[14:00:52]  Tiers:      [1, 2, 3, 4, 5]
+[14:00:52]  Games/tier: 400
+[14:00:52]  Strategy:   scoring_opt_vg
+[14:00:52]  Max rounds: 6
+[14:00:52]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[14:00:52]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[14:00:52] 
+[14:00:52] [Auto-recovery] 检查 Unity 进程...
+[14:00:52]   无 Unity 进程
+[14:00:52] 
+[14:00:52] ————————————————————————————————————————————————————————————
+[14:00:52]  ROUND 1/6
+[14:00:52]  Pending (3): 158, 176, 188
+[14:00:52] ————————————————————————————————————————————————————————————
+[14:00:52] 
+[14:00:52] [Phase 1/5] agent_analyze → combo + design_probes
+[14:00:52]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 158,176,188 --output json
+[14:00:56]   L158: 5 probes, judge=接近, combo quality=22.5
+[14:00:56]   L158: 5/5 tiers configured
+[14:00:56]   L176: 5 probes, judge=不合格, combo quality=495.5
+[14:00:56]   L176: 5/5 tiers configured
+[14:00:56]   L188: 5 probes, judge=不合格, combo quality=172.4
+[14:00:56]   L188: 5/5 tiers configured
+[14:00:56] [Phase 2/5] apply_probes → write asset
+[14:00:56]   💾 调优前 asset 备份: 3 关 → pre_tune_backup_20260817/
+[14:00:56]   probe_configs.json updated: 3 levels
+[14:00:56]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 158,176,188
+[14:00:56]     L158: ✅ Warden 通过 (5槽完整)
+[14:00:56]     L158: ✅ 写入成功
+[14:00:56]     L176: ✅ Warden 通过 (5槽完整)
+[14:00:56]     L176: ✅ 写入成功
+[14:00:56]     L188: ✅ Warden 通过 (5槽完整)
+[14:00:56]     L188: ✅ 写入成功
+[14:00:56]     ✅ 全部完成
+[14:00:56] [Preflight] asset & config check...
+[14:00:56]   ✅ Preflight passed
+[14:00:56] [Warden] pre-batch check...
+[14:00:58]   ✅ Warden passed
+[14:00:58] [Phase 3/5] submit_batch_unity → Unity bot batch
+[14:00:58]   adaptive_stop=ON (round 1/6)
+[14:00:58]   games=200 (探针轮200/验证轮400)
+[14:00:58]   Submitting Unity batch: 3 levels × 5 tiers, timeout=7200s (120min)
+[14:00:58]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 158,176,188 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[14:25:34]   Unity batch completed
+[14:25:34]     === DONE ===
+[14:25:34] [Phase 4/5] dump_level_pools → refresh stage-data
+[14:25:34]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[14:25:35]     可靠池覆盖分布:
+[14:25:35]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[14:25:35]     总计: 150 关, 1072 条可靠, 1157 条参考
+[14:25:35]     ✅ 完成！stage-data 已更新。
+[14:25:35] [Phase 5/5] judge_level → review & verdict
+[14:25:36]   ❓ L158 [normal] r0/6: 接近 — 继续调优(接近) — 76.5% → 76.5% → 58.5% → 35.0% → 35.0%
+[14:25:36]     • (接近) 目标偏差: T4=35.0% 离目标45.0%偏差10.0pp>5.0pp; T5=35.0% 离目标45.0%偏差10.0pp>5.0pp
+[14:25:36]   🔄 L176 [normal] r3/6: 不合格 — 下一轮(3/6) — 95.0% → 95.0% → 81.0% → 73.5% → 73.5%
+[14:25:36]     • T1→T3 gap=14.0<20pp (接近)
+[14:25:36]     • T3→T5 gap=7.5<10pp
+[14:25:36]     • 硬性违规: 目标偏差超标 — T1=95.0% 离目标80.0%偏差15.0pp>10.0pp; T2=95.0% 离目标80.0%偏差15.0pp>10.0pp; T3=81.0% 离目标60.0%偏差21.0pp>10.0pp; T4=73.5% 离目标45.0%偏差28.5pp>10.0pp; T5=73.5% 离目标45.0%偏差28.5pp>10.0pp
+[14:25:36]   🔄 L188 [normal] r1/6: 不合格 — 下一轮(1/6) — 72.5% → 72.5% → 59.0% → 47.0% → 47.0%
+[14:25:36]     • T1→T3 gap=13.5<15pp
+[14:25:36]     • T3→T5 gap=12.0<15pp (接近)
+[14:25:36]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp
+[14:25:36]   Round 1 done: 0 passed, 3 pending, 0 failed
+[14:25:36]   💾 checkpoint saved: round 1, pending=3
+[14:25:36] 
+[14:25:36] ————————————————————————————————————————————————————————————
+[14:25:36]  ROUND 2/6
+[14:25:36]  Pending (3): 158, 176, 188
+[14:25:36] ————————————————————————————————————————————————————————————
+[14:25:36] 
+[14:25:36] [Phase 1/5] agent_analyze → combo + design_probes
+[14:25:36]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 158,176,188 --output json
+[14:25:40]   L158: 5 probes, judge=接近, combo quality=24.2
+[14:25:40]   L158: 5/5 tiers configured
+[14:25:40]   L176: 5 probes, judge=不合格, combo quality=481.5
+[14:25:40]   L176: 5/5 tiers configured
+[14:25:40]   L188: 5 probes, judge=不合格, combo quality=82.5
+[14:25:40]   L188: 5/5 tiers configured
+[14:25:40] [Phase 2/5] apply_probes → write asset
+[14:25:40]   probe_configs.json updated: 3 levels
+[14:25:40]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 158,176,188
+[14:25:40]     L158: ✅ Warden 通过 (5槽完整)
+[14:25:40]     L158: ✅ 写入成功
+[14:25:40]     L176: ✅ Warden 通过 (5槽完整)
+[14:25:40]     L176: ✅ 写入成功
+[14:25:40]     L188: ✅ Warden 通过 (5槽完整)
+[14:25:40]     L188: ✅ 写入成功
+[14:25:40]     ✅ 全部完成
+[14:25:40] [Preflight] asset & config check...
+[14:25:40]   ✅ Preflight passed
+[14:25:40] [Warden] pre-batch check...
+[14:25:42]   ✅ Warden passed
+[14:25:42] [Phase 3/5] submit_batch_unity → Unity bot batch
+[14:25:42]   adaptive_stop=ON (round 2/6)
+[14:25:42]   games=200 (探针轮200/验证轮400)
+[14:25:42]   Submitting Unity batch: 3 levels × 5 tiers, timeout=7200s (120min)
+[14:25:42]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 158,176,188 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[14:51:47]   Unity batch completed
+[14:51:47]     === DONE ===
+[14:51:47] [Phase 4/5] dump_level_pools → refresh stage-data
+[14:51:47]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[14:51:49]     可靠池覆盖分布:
+[14:51:49]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[14:51:49]     总计: 150 关, 1077 条可靠, 1155 条参考
+[14:51:49]     ✅ 完成！stage-data 已更新。
+[14:51:49] [Phase 5/5] judge_level → review & verdict
+[14:51:49]   ❓ L158 [normal] r0/6: 接近 — 继续调优(接近) — 76.5% → 76.5% → 58.5% → 35.0% → 35.0%
+[14:51:49]     • (接近) 目标偏差: T4=35.0% 离目标45.0%偏差10.0pp>5.0pp; T5=35.0% 离目标45.0%偏差10.0pp>5.0pp
+[14:51:49]   🔄 L176 [normal] r4/6: 不合格 — 下一轮(4/6) — 95.0% → 95.0% → 81.5% → 73.5% → 73.5%
+[14:51:49]     • T1→T3 gap=13.5<15pp
+[14:51:49]     • T3→T5 gap=8.0<10pp
+[14:51:49]     • 硬性违规: 目标偏差超标 — T1=95.0% 离目标80.0%偏差15.0pp>10.0pp; T2=95.0% 离目标80.0%偏差15.0pp>10.0pp; T3=81.5% 离目标60.0%偏差21.5pp>10.0pp; T4=73.5% 离目标45.0%偏差28.5pp>10.0pp; T5=73.5% 离目标45.0%偏差28.5pp>10.0pp
+[14:51:49]   ❓ L188 [normal] r1/6: 接近 — 继续调优(接近) — 72.5% → 72.5% → 50.0% → 36.5% → 36.5%
+[14:51:49]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp; T3=50.0% 离目标60.0%偏差10.0pp>5.0pp; T4=36.5% 离目标45.0%偏差8.5pp>5.0pp; T5=36.5% 离目标45.0%偏差8.5pp>5.0pp
+[14:51:49]   Round 2 done: 0 passed, 3 pending, 0 failed
+[14:51:49]   💾 checkpoint saved: round 2, pending=3
+[14:51:49] 
+[14:51:49] ————————————————————————————————————————————————————————————
+[14:51:49]  ROUND 3/6
+[14:51:49]  Pending (3): 158, 176, 188
+[14:51:49] ————————————————————————————————————————————————————————————
+[14:51:49] 
+[14:51:49] [Phase 1/5] agent_analyze → combo + design_probes
+[14:51:49]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 158,176,188 --output json
+[14:51:52]   L158: 5 probes, judge=接近, combo quality=24.2
+[14:51:52]   L158: 5/5 tiers configured
+[14:51:52]   L176: 5 probes, judge=不合格, combo quality=495.5
+[14:51:52]   L176: 5/5 tiers configured
+[14:51:52]   L188: 5 probes, judge=接近, combo quality=40.8
+[14:51:52]   L188: 5/5 tiers configured
+[14:51:52] [Phase 2/5] apply_probes → write asset
+[14:51:52]   probe_configs.json updated: 3 levels
+[14:51:52]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 158,176,188
+[14:51:53]     L158: ✅ Warden 通过 (5槽完整)
+[14:51:53]     L158: ✅ 写入成功
+[14:51:53]     L176: ✅ Warden 通过 (5槽完整)
+[14:51:53]     L176: ✅ 写入成功
+[14:51:53]     L188: ✅ Warden 通过 (5槽完整)
+[14:51:53]     L188: ✅ 写入成功
+[14:51:53]     ✅ 全部完成
+[14:51:53] [Preflight] asset & config check...
+[14:51:53]   ✅ Preflight passed
+[14:51:53] [Warden] pre-batch check...
+[14:51:54]   ✅ Warden passed
+[14:51:54] [Phase 3/5] submit_batch_unity → Unity bot batch
+[14:51:54]   adaptive_stop=ON (round 3/6)
+[14:51:54]   games=200 (探针轮200/验证轮400)
+[14:51:54]   Submitting Unity batch: 3 levels × 5 tiers, timeout=7200s (120min)
+[14:51:54]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 158,176,188 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[15:18:45]   Unity batch completed
+[15:18:45]     === DONE ===
+[15:18:45] [Phase 4/5] dump_level_pools → refresh stage-data
+[15:18:45]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[15:18:47]     可靠池覆盖分布:
+[15:18:47]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[15:18:47]     总计: 150 关, 1081 条可靠, 1154 条参考
+[15:18:47]     ✅ 完成！stage-data 已更新。
+[15:18:47] [Phase 5/5] judge_level → review & verdict
+[15:18:48]   ❓ L158 [normal] r0/6: 接近 — 继续调优(接近) — 77.0% → 77.0% → 59.0% → 35.0% → 35.0%
+[15:18:48]     • (接近) 目标偏差: T4=35.0% 离目标45.0%偏差10.0pp>5.0pp; T5=35.0% 离目标45.0%偏差10.0pp>5.0pp
+[15:18:48]   🔄 L176 [normal] r5/6: 不合格 — 下一轮(5/6) — 95.0% → 95.0% → 80.5% → 73.5% → 73.5%
+[15:18:48]     • T1→T3 gap=14.5<20pp (接近)
+[15:18:48]     • T3→T5 gap=7.0<10pp
+[15:18:48]     • 硬性违规: 目标偏差超标 — T1=95.0% 离目标80.0%偏差15.0pp>10.0pp; T2=95.0% 离目标80.0%偏差15.0pp>10.0pp; T3=80.5% 离目标60.0%偏差20.5pp>10.0pp; T4=73.5% 离目标45.0%偏差28.5pp>10.0pp; T5=73.5% 离目标45.0%偏差28.5pp>10.0pp
+[15:18:48]   ❓ L188 [normal] r1/6: 接近 — 继续调优(接近) — 72.5% → 72.5% → 50.0% → 36.5% → 36.5%
+[15:18:48]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp; T3=50.0% 离目标60.0%偏差10.0pp>5.0pp; T4=36.5% 离目标45.0%偏差8.5pp>5.0pp; T5=36.5% 离目标45.0%偏差8.5pp>5.0pp
+[15:18:48]   Round 3 done: 0 passed, 3 pending, 0 failed
+[15:18:48]   💾 checkpoint saved: round 3, pending=3
+[15:18:48] 
+[15:18:48] ————————————————————————————————————————————————————————————
+[15:18:48]  ROUND 4/6
+[15:18:48]  Pending (3): 158, 176, 188
+[15:18:48] ————————————————————————————————————————————————————————————
+[15:18:48] 
+[15:18:48] [Phase 1/5] agent_analyze → combo + design_probes
+[15:18:48]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 158,176,188 --output json
+[15:18:51]   L158: 5 probes, judge=接近, combo quality=22.5
+[15:18:51]   L158: 5/5 tiers configured
+[15:18:51]   L176: 5 probes, judge=不合格, combo quality=482.5
+[15:18:51]   L176: 5/5 tiers configured
+[15:18:51]   L188: 5 probes, judge=接近, combo quality=40.8
+[15:18:51]   L188: 5/5 tiers configured
+[15:18:51] [Phase 2/5] apply_probes → write asset
+[15:18:51]   probe_configs.json updated: 3 levels
+[15:18:51]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 158,176,188
+[15:18:51]     L158: ✅ Warden 通过 (5槽完整)
+[15:18:51]     L158: ✅ 写入成功
+[15:18:51]     L176: ✅ Warden 通过 (5槽完整)
+[15:18:51]     L176: ✅ 写入成功
+[15:18:51]     L188: ✅ Warden 通过 (5槽完整)
+[15:18:51]     L188: ✅ 写入成功
+[15:18:51]     ✅ 全部完成
+[15:18:51] [Preflight] asset & config check...
+[15:18:51]   ✅ Preflight passed
+[15:18:51] [Warden] pre-batch check...
+[15:18:53]   ✅ Warden passed
+[15:18:53] [Phase 3/5] submit_batch_unity → Unity bot batch
+[15:18:53]   adaptive_stop=ON (round 4/6)
+[15:18:53]   games=200 (探针轮200/验证轮400)
+[15:18:53]   Submitting Unity batch: 3 levels × 5 tiers, timeout=7200s (120min)
+[15:18:53]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 158,176,188 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[15:46:12]   Unity batch completed
+[15:46:12]     === DONE ===
+[15:46:12] [Phase 4/5] dump_level_pools → refresh stage-data
+[15:46:12]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[15:46:14]     可靠池覆盖分布:
+[15:46:14]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[15:46:14]     总计: 150 关, 1086 条可靠, 1149 条参考
+[15:46:14]     ✅ 完成！stage-data 已更新。
+[15:46:14] [Phase 5/5] judge_level → review & verdict
+[15:46:14]   ❓ L158 [normal] r0/6: 接近 — 继续调优(接近) — 82.0% → 82.0% → 60.0% → 35.0% → 35.0%
+[15:46:14]     • (接近) 目标偏差: T4=35.0% 离目标45.0%偏差10.0pp>5.0pp; T5=35.0% 离目标45.0%偏差10.0pp>5.0pp
+[15:46:14]   🔄 L176 [normal] r6/6: 不合格 — 改关卡 — 95.0% → 95.0% → 80.5% → 73.5% → 73.5%
+[15:46:14]     • T1→T3 gap=14.5<20pp (接近)
+[15:46:14]     • T3→T5 gap=7.0<10pp
+[15:46:14]     • 硬性违规: 目标偏差超标 — T1=95.0% 离目标80.0%偏差15.0pp>10.0pp; T2=95.0% 离目标80.0%偏差15.0pp>10.0pp; T3=80.5% 离目标60.0%偏差20.5pp>10.0pp; T4=73.5% 离目标45.0%偏差28.5pp>10.0pp; T5=73.5% 离目标45.0%偏差28.5pp>10.0pp
+[15:46:15]   ❓ L188 [normal] r1/6: 接近 — 继续调优(接近) — 72.5% → 72.5% → 50.0% → 36.5% → 36.5%
+[15:46:15]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp; T3=50.0% 离目标60.0%偏差10.0pp>5.0pp; T4=36.5% 离目标45.0%偏差8.5pp>5.0pp; T5=36.5% 离目标45.0%偏差8.5pp>5.0pp
+[15:46:15]   ❌ L176 MAX ROUNDS (6) → 待用户确认改关卡
+[15:46:15]     ⏳ L176 满 6 轮仍不合格，待用户确认是否改关卡
+[15:46:15]     ⏳   判定原因: T1→T3 gap=14.5<20pp (接近); T3→T5 gap=7.0<10pp; 硬性违规: 目标偏差超标 — T1=95.0% 离目标80.0%偏差15.0pp>10.0pp; T2=95.0% 离目标80.0%偏差15.0pp>10.0pp; T3=80.5% 离目标60.0%偏差20.5pp>10.0pp; T4=73.5% 离目标45.0%偏差28.5pp>10.0pp; T5=73.5% 离目标45.0%偏差28.5pp>10.0pp
+[15:46:15]     ⏳   需要时由主 agent 手动 retire_level 设时间防线
+[15:46:15]   Round 4 done: 0 passed, 2 pending, 1 failed
+[15:46:15]   💾 checkpoint saved: round 4, pending=2
+[15:46:15] 
+[15:46:15] ————————————————————————————————————————————————————————————
+[15:46:15]  ROUND 5/6
+[15:46:15]  Pending (2): 158, 188
+[15:46:15] ————————————————————————————————————————————————————————————
+[15:46:15] 
+[15:46:15] [Phase 1/5] agent_analyze → combo + design_probes
+[15:46:15]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 158,188 --output json
+[15:46:17]   L158: 5 probes, judge=接近, combo quality=18.0
+[15:46:17]   L158: 5/5 tiers configured
+[15:46:17]   L188: 5 probes, judge=接近, combo quality=40.8
+[15:46:17]   L188: 5/5 tiers configured
+[15:46:17] [Phase 2/5] apply_probes → write asset
+[15:46:17]   probe_configs.json updated: 2 levels
+[15:46:17]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 158,188
+[15:46:17]     L158: ✅ Warden 通过 (5槽完整)
+[15:46:17]     L158: ✅ 写入成功
+[15:46:17]     L188: ✅ Warden 通过 (5槽完整)
+[15:46:17]     L188: ✅ 写入成功
+[15:46:17]     ✅ 全部完成
+[15:46:17] [Preflight] asset & config check...
+[15:46:17]   ✅ Preflight passed
+[15:46:17] [Warden] pre-batch check...
+[15:46:19]   ✅ Warden passed
+[15:46:19] [Phase 3/5] submit_batch_unity → Unity bot batch
+[15:46:19]   adaptive_stop=ON (round 5/6)
+[15:46:19]   games=200 (探针轮200/验证轮400)
+[15:46:19]   Submitting Unity batch: 2 levels × 5 tiers, timeout=7200s (120min)
+[15:46:19]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 158,188 --tiers 1,2,3,4,5 --games 200 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[16:07:49]   Unity batch completed
+[16:07:49]     === DONE ===
+[16:07:49] [Phase 4/5] dump_level_pools → refresh stage-data
+[16:07:49]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[16:07:51]     可靠池覆盖分布:
+[16:07:51]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[16:07:51]     总计: 150 关, 1092 条可靠, 1144 条参考
+[16:07:51]     ✅ 完成！stage-data 已更新。
+[16:07:51] [Phase 5/5] judge_level → review & verdict
+[16:07:52]   ✅ L158 [normal] r0/6: 合格 — 入库 — 82.0% → 82.0% → 63.0% → 49.0% → 49.0%
+[16:07:52]   ❓ L188 [normal] r1/6: 接近 — 继续调优(接近) — 72.5% → 72.5% → 50.0% → 36.5% → 36.5%
+[16:07:52]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp; T3=50.0% 离目标60.0%偏差10.0pp>5.0pp; T4=36.5% 离目标45.0%偏差8.5pp>5.0pp; T5=36.5% 离目标45.0%偏差8.5pp>5.0pp
+[16:07:52]   ✅ L158 PASSED → 已入库 (round 0)
+[16:07:53]     ⏳ L158 合格待确认入库（未落盘）: WR=['82.0%', '82.0%', '63.0%', '49.0%', '49.0%']
+[16:07:53]     ⏳   配置: sd40/5/10,10,10,0,0/of1.0 | sd40/5/10,10,10,0,0/of1.0 | sd30/5/1,10,1,1,1/of0.5 | sd40/5/1,1,1,1,1/of0.1 | sd40/5/1,1,1,1,1/of0.1
+[16:07:53]     ⏳   难度=normal 目标=[80.0, 80.0, 60.0, 45.0, 45.0]
+[16:07:53]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[16:07:53]   Round 5 done: 1 passed, 1 pending, 1 failed
+[16:07:53]   💾 checkpoint saved: round 5, pending=1
+[16:07:53] 
+[16:07:53] ————————————————————————————————————————————————————————————
+[16:07:53]  ROUND 6/6
+[16:07:53]  Pending (1): 188
+[16:07:53] ————————————————————————————————————————————————————————————
+[16:07:53] 
+[16:07:53] [Phase 1/5] agent_analyze → combo + design_probes
+[16:07:53]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 188 --output json
+[16:07:54]   L188: 5 probes, judge=接近, combo quality=40.8
+[16:07:54]   L188: 5/5 tiers configured
+[16:07:54] [Phase 2/5] apply_probes → write asset
+[16:07:54]   probe_configs.json updated: 1 levels
+[16:07:54]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 188
+[16:07:54]     L188: ✅ Warden 通过 (5槽完整)
+[16:07:54]     L188: ✅ 写入成功
+[16:07:54]     ✅ 全部完成
+[16:07:54] [Preflight] asset & config check...
+[16:07:55]   ✅ Preflight passed
+[16:07:55] [Warden] pre-batch check...
+[16:07:56]   ✅ Warden passed
+[16:07:56] [Phase 3/5] submit_batch_unity → Unity bot batch
+[16:07:56]   adaptive_stop=OFF (round 6/6)
+[16:07:56]   games=400 (探针轮200/验证轮400)
+[16:07:56]   Submitting Unity batch: 1 levels × 5 tiers, timeout=7200s (120min)
+[16:07:56]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 188 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes --skip-agent-pipeline
+[16:35:18]   Unity batch completed
+[16:35:18]     === DONE ===
+[16:35:18] [Phase 4/5] dump_level_pools → refresh stage-data
+[16:35:18]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[16:35:20]     可靠池覆盖分布:
+[16:35:20]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[16:35:20]     总计: 150 关, 1095 条可靠, 1141 条参考
+[16:35:20]     ✅ 完成！stage-data 已更新。
+[16:35:20] [Phase 5/5] judge_level → review & verdict
+[16:35:20]   ❓ L188 [normal] r1/6: 接近 — 继续调优(接近) — 72.5% → 72.5% → 53.5% → 36.5% → 36.5%
+[16:35:20]     • (接近) 目标偏差: T1=72.5% 离目标80.0%偏差7.5pp>5.0pp; T2=72.5% 离目标80.0%偏差7.5pp>5.0pp; T3=53.5% 离目标60.0%偏差6.5pp>5.0pp; T4=36.5% 离目标45.0%偏差8.5pp>5.0pp; T5=36.5% 离目标45.0%偏差8.5pp>5.0pp
+[16:35:20]   Round 6 done: 1 passed, 1 pending, 1 failed
+[16:35:20]   💾 checkpoint saved: round 6, pending=1
+[16:35:20]  FINAL SUMMARY
+[16:35:20] ============================================================
+[16:35:20]  ✅ Passed (入库):  1 levels
+[16:35:20]     L158 [normal] r0  82.0% → 82.0% → 63.0% → 49.0% → 49.0%
+[16:35:20]  ❌ Failed (改关卡): 1 levels
+[16:35:20]     L176 [normal] r6 — 95.0% → 95.0% → 80.5% → 73.5% → 73.5%
+[16:35:20]         T1→T3 gap=14.5<20pp (接近); T3→T5 gap=7.0<10pp
+[16:35:20]  ⚠ Errors:           0 levels
+[16:35:20]  🔄 Still pending:    1 levels
+[16:35:20]     L188
+[16:35:20] 
+[16:35:20]  Full log: D:\download\BlastGame\hermes\auto-log\20260817_140052.log
+[16:35:20]  Curator: pattern analysis complete

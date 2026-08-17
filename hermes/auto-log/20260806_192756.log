@@ -1,0 +1,216 @@
+[19:27:56] ============================================================
+[19:27:56]  auto_loop.py — 全自动调优编排器
+[19:27:56] ============================================================
+[19:27:56]  Log:        D:\download\BlastGame\hermes\auto-log\20260806_192756.log
+[19:27:56]  Levels:     [102, 130, 132, 153, 154]
+[19:27:56]  Tiers:      [1, 2, 3, 4, 5]
+[19:27:56]  Games/tier: 400
+[19:27:56]  Strategy:   scoring_opt_vg
+[19:27:56]  Max rounds: 6
+[19:27:56]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[19:27:56]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[19:27:56] 
+[19:27:56] [Auto-recovery] 检查 Unity 进程...
+[19:27:57]   无 Unity 进程
+[19:27:57] 
+[19:27:57] ————————————————————————————————————————————————————————————
+[19:27:57]  ROUND 1/6
+[19:27:57]  Pending (5): 102, 130, 132, 153, 154
+[19:27:57] ————————————————————————————————————————————————————————————
+[19:27:57] 
+[19:27:57] [Phase 1/5] agent_analyze → combo + design_probes
+[19:27:57]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,130,132,153,154 --output json
+[19:28:00]   L102: 5 probes, judge=合格, combo quality=48.1
+[19:28:00]   L102: 5/5 tiers configured
+[19:28:00]   L130: 5 probes, judge=不合格, combo quality=355.2
+[19:28:00]   L130: 5/5 tiers configured
+[19:28:00]   L132: 5 probes, judge=不合格, combo quality=151.9
+[19:28:00]   L132: 5/5 tiers configured
+[19:28:00]   L153: 5 probes, judge=不合格, combo quality=90.5
+[19:28:00]   L153: 5/5 tiers configured
+[19:28:00]   L154: 5 probes, judge=不合格, combo quality=96.5
+[19:28:00]   L154: 5/5 tiers configured
+[19:28:00] [Phase 2/5] apply_probes → write asset
+[19:28:00]   probe_configs.json updated: 5 levels
+[19:28:00]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,130,132,153,154
+[19:28:00]     L130: ✅ Warden 通过 (5槽完整)
+[19:28:00]     L130: ✅ 写入成功
+[19:28:00]     L132: ✅ Warden 通过 (5槽完整)
+[19:28:00]     L132: ✅ 写入成功
+[19:28:00]     L153: ✅ Warden 通过 (5槽完整)
+[19:28:00]     L153: ✅ 写入成功
+[19:28:00]     L154: ✅ Warden 通过 (5槽完整)
+[19:28:00]     L154: ✅ 写入成功
+[19:28:00]     ✅ 全部完成
+[19:28:00] [Preflight] asset & config check...
+[19:28:00]   ✅ Preflight passed
+[19:28:00] [Warden] pre-batch check...
+[19:28:00]   ✅ Warden passed
+[19:28:00] [Phase 3/5] submit_batch_unity → Unity bot batch
+[19:28:00]   adaptive_stop=ON (round 1/6)
+[19:28:00]   Submitting Unity batch: 5 levels × 5 tiers, timeout=7500s (125min)
+[19:28:00]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 102,130,132,153,154 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[20:16:17]   Unity batch completed
+[20:16:17]     === DONE ===
+[20:16:17] [Phase 4/5] dump_level_pools → refresh stage-data
+[20:16:17]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[20:16:21]     可靠池覆盖分布:
+[20:16:21]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[20:16:21]     总计: 150 关, 2227 条可靠, 1834 条参考
+[20:16:21]     ✅ 完成！stage-data 已更新。
+[20:16:21] [Phase 5/5] judge_level → review & verdict
+[20:16:21]   🔄 L102 [normal] r1/6: 不合格 — 下一轮(1/6) — 72.5% → 72.5% → 51.5% → 38.4% → 38.4%
+[20:16:21]     • 硬性违规: Normal T3=51.5<60%
+[20:16:21]   ✅ L130 [normal] r0/6: 合格 — 入库 — 94.5% → 94.5% → 73.8% → 59.0% → 59.0%
+[20:16:21]   🔄 L132 [normal] r1/6: 不合格 — 下一轮(1/6) — 83.0% → 83.0% → 54.5% → 34.2% → 34.2%
+[20:16:21]     • 硬性违规: Normal T3=54.5<60%
+[20:16:21]     • 硬性违规: 目标偏差超标 — T4=34.2% 离目标50.0%偏差15.8pp>15.0pp; T5=34.2% 离目标50.0%偏差15.8pp>15.0pp
+[20:16:21]   🔄 L153 [normal] r1/6: 不合格 — 下一轮(1/6) — 80.4% → 80.4% → 67.5% → 49.5% → 49.5%
+[20:16:21]     • T1→T3 gap=12.9<15pp
+[20:16:21]   ❓ L154 [superhard] r0/6: 接近 — 入库(接近) — 42.8% → 32.6% → 25.2% → 17.1% → 8.6%
+[20:16:21]     • T2→T3 gap=7.4<10pp (接近)
+[20:16:21]   ✅ L130 PASSED → 已入库 (round 0)
+[20:16:21]     ⏳ L130 合格待确认入库（未落盘）: WR=['94.5%', '94.5%', '73.8%', '59.0%', '59.0%']
+[20:16:21]     ⏳   配置: sd18/5/1,0,1,1,1/of0.0 | sd18/5/1,0,1,1,1/of0.0 | sd30/5/1,10,10,10,1/of0.5 | sd30/5/1,1,10,1,1/of0.5 | sd30/5/1,1,10,1,1/of0.5
+[20:16:21]     ⏳   难度=normal 目标=[85.0, 85.0, 65.0, 50.0, 50.0]
+[20:16:21]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[20:16:21]   ✅ L154 PASSED → 入库(接近) (round 0)
+[20:16:21]     ⏳ L154 合格待确认入库（未落盘）: WR=['42.8%', '32.6%', '25.2%', '17.1%', '8.6%']
+[20:16:21]     ⏳   配置: sd19/5/10,10,10,1,1/of0.5 | sd20/5/10,10,10,1,1/of0.45 | sd20/5/1,10,10,10,1/of0.45 | sd20/5/7,8,10,4,3/of0.45 | sd50/5/1,1,1,1,1/of0.7
+[20:16:21]     ⏳   难度=superhard 目标=[50.0, 40.0, 30.0, 20.0, 10.0]
+[20:16:21]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[20:16:21]   Round 1 done: 2 passed, 3 pending, 0 failed
+[20:16:21] 
+[20:16:21] ————————————————————————————————————————————————————————————
+[20:16:21]  ROUND 2/6
+[20:16:21]  Pending (3): 102, 132, 153
+[20:16:21] ————————————————————————————————————————————————————————————
+[20:16:21] 
+[20:16:21] [Phase 1/5] agent_analyze → combo + design_probes
+[20:16:21]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[20:16:25]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:16:25]   L102: 5/5 tiers configured
+[20:16:25]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:16:25]   L132: 5/5 tiers configured
+[20:16:25]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:16:25]   L153: 5/5 tiers configured
+[20:16:25] [Phase 2/5] apply_probes → write asset
+[20:16:25]   probe_configs.json updated: 3 levels
+[20:16:25]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:25]   FAIL (exit=1) attempt 1/2
+[20:16:25]   Retrying in 5s...
+[20:16:30]   CMD [attempt 2/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:30]   FAIL (exit=1) attempt 2/2
+[20:16:30]   All retries exhausted — giving up
+[20:16:30]   apply_probes FAILED
+[20:16:30]   apply_probes failed — skipping this round
+[20:16:30] 
+[20:16:30] ————————————————————————————————————————————————————————————
+[20:16:30]  ROUND 3/6
+[20:16:30]  Pending (3): 102, 132, 153
+[20:16:30] ————————————————————————————————————————————————————————————
+[20:16:30] 
+[20:16:30] [Phase 1/5] agent_analyze → combo + design_probes
+[20:16:30]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[20:16:32]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:16:32]   L102: 5/5 tiers configured
+[20:16:32]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:16:32]   L132: 5/5 tiers configured
+[20:16:32]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:16:32]   L153: 5/5 tiers configured
+[20:16:32] [Phase 2/5] apply_probes → write asset
+[20:16:32]   probe_configs.json updated: 3 levels
+[20:16:32]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:32]   FAIL (exit=1) attempt 1/2
+[20:16:32]   Retrying in 5s...
+[20:16:37]   CMD [attempt 2/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:37]   FAIL (exit=1) attempt 2/2
+[20:16:37]   All retries exhausted — giving up
+[20:16:37]   apply_probes FAILED
+[20:16:37]   apply_probes failed — skipping this round
+[20:16:37] 
+[20:16:37] ————————————————————————————————————————————————————————————
+[20:16:37]  ROUND 4/6
+[20:16:37]  Pending (3): 102, 132, 153
+[20:16:37] ————————————————————————————————————————————————————————————
+[20:16:37] 
+[20:16:37] [Phase 1/5] agent_analyze → combo + design_probes
+[20:16:37]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[20:16:39]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:16:39]   L102: 5/5 tiers configured
+[20:16:39]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:16:39]   L132: 5/5 tiers configured
+[20:16:39]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:16:39]   L153: 5/5 tiers configured
+[20:16:39] [Phase 2/5] apply_probes → write asset
+[20:16:39]   probe_configs.json updated: 3 levels
+[20:16:39]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:39]   FAIL (exit=1) attempt 1/2
+[20:16:39]   Retrying in 5s...
+[20:16:44]   CMD [attempt 2/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:44]   FAIL (exit=1) attempt 2/2
+[20:16:44]   All retries exhausted — giving up
+[20:16:44]   apply_probes FAILED
+[20:16:44]   apply_probes failed — skipping this round
+[20:16:44] 
+[20:16:44] ————————————————————————————————————————————————————————————
+[20:16:44]  ROUND 5/6
+[20:16:44]  Pending (3): 102, 132, 153
+[20:16:44] ————————————————————————————————————————————————————————————
+[20:16:44] 
+[20:16:44] [Phase 1/5] agent_analyze → combo + design_probes
+[20:16:44]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[20:16:46]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:16:46]   L102: 5/5 tiers configured
+[20:16:46]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:16:46]   L132: 5/5 tiers configured
+[20:16:46]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:16:46]   L153: 5/5 tiers configured
+[20:16:46] [Phase 2/5] apply_probes → write asset
+[20:16:46]   probe_configs.json updated: 3 levels
+[20:16:46]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:47]   FAIL (exit=1) attempt 1/2
+[20:16:47]   Retrying in 5s...
+[20:16:52]   CMD [attempt 2/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:52]   FAIL (exit=1) attempt 2/2
+[20:16:52]   All retries exhausted — giving up
+[20:16:52]   apply_probes FAILED
+[20:16:52]   apply_probes failed — skipping this round
+[20:16:52] 
+[20:16:52] ————————————————————————————————————————————————————————————
+[20:16:52]  ROUND 6/6
+[20:16:52]  Pending (3): 102, 132, 153
+[20:16:52] ————————————————————————————————————————————————————————————
+[20:16:52] 
+[20:16:52] [Phase 1/5] agent_analyze → combo + design_probes
+[20:16:52]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[20:16:54]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:16:54]   L102: 5/5 tiers configured
+[20:16:54]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:16:54]   L132: 5/5 tiers configured
+[20:16:54]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:16:54]   L153: 5/5 tiers configured
+[20:16:54] [Phase 2/5] apply_probes → write asset
+[20:16:54]   probe_configs.json updated: 3 levels
+[20:16:54]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:54]   FAIL (exit=1) attempt 1/2
+[20:16:54]   Retrying in 5s...
+[20:16:59]   CMD [attempt 2/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[20:16:59]   FAIL (exit=1) attempt 2/2
+[20:16:59]   All retries exhausted — giving up
+[20:16:59]   apply_probes FAILED
+[20:16:59]   apply_probes failed — skipping this round
+[20:16:59]  FINAL SUMMARY
+[20:16:59] ============================================================
+[20:16:59]  ✅ Passed (入库):  2 levels
+[20:16:59]     L130 [normal] r0  94.5% → 94.5% → 73.8% → 59.0% → 59.0%
+[20:16:59]     L154 [superhard] r0  42.8% → 32.6% → 25.2% → 17.1% → 8.6%
+[20:16:59]  ❌ Failed (改关卡): 0 levels
+[20:16:59]  ⚠ Errors:           0 levels
+[20:16:59]  🔄 Still pending:    3 levels
+[20:16:59]     L102
+[20:16:59]     L132
+[20:16:59]     L153
+[20:16:59] 
+[20:16:59]  Full log: D:\download\BlastGame\hermes\auto-log\20260806_192756.log
+[20:16:59]  Curator: pattern analysis complete

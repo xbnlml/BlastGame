@@ -11,10 +11,13 @@ import os, sys, json, subprocess, glob, re, csv
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 STAGE_DIR = os.path.join(TOOL_DIR, '..', 'stage-data')
 BOARD_FILE = os.path.join(TOOL_DIR, '..', 'project-state', 'board.md')
-REPO = r'C:\Users\Administrator\Documents\BlastGame'
+REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
 
 def get_asset_path(lv):
-    return os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test', '{}.asset'.format(lv))
+    for root, dirs, files in os.walk(os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test')):
+        if f'{lv}.asset' in files:
+            return os.path.join(root, f'{lv}.asset')
+    return os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test', f'{lv}.asset')
 
 def get_excel_tiers(lv):
     import openpyxl
@@ -121,12 +124,12 @@ if __name__ == '__main__':
             for m in re2.finditer(r'(\d+[\d,]*)', content):
                 nums = [int(x) for x in re2.findall(r'\d+', m.group(0))]
                 for n in nums:
-                    if 51 <= n <= 100:
+                    if 51 <= n <= 200:
                         total += 1
-            if total == 50:
-                print('✅ Board 总数 50')
+            if total == 150:
+                print('✅ Board 总数 150')
             else:
-                print('⚠️ Board 仅 {} 关（应 50）'.format(total))
+                print('⚠️ Board 仅 {} 关（应 150）'.format(total))
 
     elif args.cmd == '改关卡':
         lv = args.lv

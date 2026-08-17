@@ -1,0 +1,26 @@
+{
+  "142": {
+    "tierConfigs": [
+      {"startDifficulty": 7, "shuffleSplitCount": 6, "shuffleSplitRatios": [1,0,1,1,0,0], "shuffleOverflowFactor": 0.0},
+      {"startDifficulty": 7, "shuffleSplitCount": 6, "shuffleSplitRatios": [1,0,1,1,0,0], "shuffleOverflowFactor": 0.0},
+      {"startDifficulty": 20, "shuffleSplitCount": 5, "shuffleSplitRatios": [10,1,1,1,10], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 12, "shuffleSplitCount": 5, "shuffleSplitRatios": [1,1,1,1,10], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 12, "shuffleSplitCount": 5, "shuffleSplitRatios": [1,1,1,1,10], "shuffleOverflowFactor": 0.5}
+    ],
+    "tierWinRates": [0.86, 0.86, 0.64, 0.597, 0.597],
+    "importedAt": "2026-08-06T23:05:00",
+    "sourceFileName": "reimport-20260806-142.json"
+  },
+  "198": {
+    "tierConfigs": [
+      {"startDifficulty": 35, "shuffleSplitCount": 5, "shuffleSplitRatios": [1,1,1,1,10], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 35, "shuffleSplitCount": 5, "shuffleSplitRatios": [1,1,1,1,10], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 24, "shuffleSplitCount": 5, "shuffleSplitRatios": [5,5,1,5,4], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 20, "shuffleSplitCount": 5, "shuffleSplitRatios": [5,5,1,5,5], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 20, "shuffleSplitCount": 5, "shuffleSplitRatios": [5,5,1,5,5], "shuffleOverflowFactor": 0.5}
+    ],
+    "tierWinRates": [0.921, 0.921, 0.592, 0.48, 0.48],
+    "importedAt": "2026-08-06T23:05:00",
+    "sourceFileName": "reimport-20260806-198.json"
+  }
+}

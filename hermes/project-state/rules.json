@@ -1,0 +1,154 @@
+{
+  "_meta": {
+    "version": "1.0.0",
+    "source": "merged from wrongbook.md + judgment-rules.md",
+    "updated": "2026-08-05"
+  },
+  "warden_checks": {
+    "pre_batch": [
+      {
+        "id": "W00",
+        "name": "pre_tune_asset_backup",
+        "severity": "warn"
+      },
+      {
+        "id": "W02",
+        "name": "5_slots_filled",
+        "desc": "5槽位全部填入",
+        "check": "len(tiers)==5",
+        "severity": "block"
+      },
+      {
+        "id": "W04",
+        "name": "unity_lock",
+        "desc": "无Unity残留",
+        "check": "tasklist Unity.exe==0",
+        "severity": "block"
+      },
+      {
+        "id": "W05",
+        "name": "no_git",
+        "desc": "无git命令",
+        "check": "scan for git/checkout/reset",
+        "severity": "block"
+      },
+      {
+        "id": "W06",
+        "name": "asset_hash",
+        "desc": "asset签名一致",
+        "check": "level_sig matches",
+        "severity": "block"
+      },
+      {
+        "id": "W07",
+        "name": "board_conflict",
+        "desc": "无board冲突",
+        "check": "level not in入库list",
+        "severity": "warn"
+      },
+      {
+        "id": "W08",
+        "name": "probe_vs_verify",
+        "desc": "探针验证分开",
+        "check": "not mixing probe+verify",
+        "severity": "warn"
+      },
+      {
+        "id": "W10",
+        "name": "probe_direction",
+        "desc": "探针方向对准缺口段",
+        "check": "probe sd/of targets gap",
+        "severity": "warn"
+      }
+    ]
+  },
+  "judge_rules": {
+    "_note": "默认按较高档WR分档(20/15/10/6)；仅当目标档位差与分档冲突时按目标档位差(接近下限=档位差×0.7)",
+    "normal": {
+      "gap_bands": {
+        "wr_ge_70": 20,
+        "wr_ge_50": 15,
+        "wr_ge_30": 10,
+        "wr_lt_30": 6
+      },
+      "near_bands": {
+        "wr_ge_70": 15,
+        "wr_ge_50": 10,
+        "wr_ge_30": 7,
+        "wr_lt_30": 4
+      },
+      "anchor": {
+        "t3_min": 50
+      },
+      "hard_violations": [
+        "inverted>1",
+        "wr<5",
+        "t3<50",
+        "low_count>1",
+        "gap>40"
+      ]
+    },
+    "hard": {
+      "gap_bands": {
+        "wr_ge_70": 20,
+        "wr_ge_50": 15,
+        "wr_ge_30": 10,
+        "wr_lt_30": 6
+      },
+      "near_bands": {
+        "wr_ge_70": 15,
+        "wr_ge_50": 10,
+        "wr_ge_30": 7,
+        "wr_lt_30": 4
+      },
+      "anchor": {
+        "t3_range": [
+          30,
+          50
+        ]
+      },
+      "hard_violations": [
+        "inverted>1",
+        "wr<5",
+        "t3<30 or>50",
+        "low_count>1",
+        "gap>40"
+      ]
+    },
+    "superhard": {
+      "gap_bands": {
+        "wr_ge_70": 20,
+        "wr_ge_50": 15,
+        "wr_ge_30": 10,
+        "wr_lt_30": 6
+      },
+      "near_bands": {
+        "wr_ge_70": 15,
+        "wr_ge_50": 10,
+        "wr_ge_30": 7,
+        "wr_lt_30": 4
+      },
+      "anchor": {
+        "t3_max": 50
+      },
+      "hard_violations": [
+        "inverted>1",
+        "wr<5",
+        "t3>50",
+        "low_count>1",
+        "gap>40"
+      ]
+    },
+    "rounds": {
+      "max": 6,
+      "file": "project-state/_rounds.json"
+    },
+    "target_deviation": {
+      "max": 5,
+      "near": 10,
+      "severity": "hard"
+    },
+    "tolerance_pp": 2,
+    "near_tolerance_pp": 1
+  }
+}

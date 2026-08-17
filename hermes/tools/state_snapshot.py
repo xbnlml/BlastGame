@@ -34,7 +34,7 @@ def get_board_levels():
                 for w in line.replace(',', ' ').split():
                     try:
                         lv = int(w)
-                        if 51 <= lv <= 100:
+                        if 51 <= lv <= 200:
                             targets = {
                                 'done': done,
                                 'retired': retired,

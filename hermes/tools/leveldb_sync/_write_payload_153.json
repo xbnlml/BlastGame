@@ -1,0 +1,14 @@
+{
+  "153": {
+    "tierConfigs": [
+      {"startDifficulty": 20, "shuffleSplitCount": 4, "shuffleSplitRatios": [1,1,1,1], "shuffleOverflowFactor": 0.015},
+      {"startDifficulty": 20, "shuffleSplitCount": 4, "shuffleSplitRatios": [1,1,1,1], "shuffleOverflowFactor": 0.015},
+      {"startDifficulty": 17, "shuffleSplitCount": 5, "shuffleSplitRatios": [1,1,1,1,1], "shuffleOverflowFactor": 0.5},
+      {"startDifficulty": 2, "shuffleSplitCount": 5, "shuffleSplitRatios": [8,6,1,8,7], "shuffleOverflowFactor": 0.1},
+      {"startDifficulty": 2, "shuffleSplitCount": 5, "shuffleSplitRatios": [8,6,1,8,7], "shuffleOverflowFactor": 0.1}
+    ],
+    "tierWinRates": [0.804, 0.804, 0.675, 0.495, 0.495],
+    "importedAt": "2026-08-06T21:40:00",
+    "sourceFileName": "reimport-20260806-153.json"
+  }
+}

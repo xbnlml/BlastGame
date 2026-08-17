@@ -1,0 +1,2502 @@
+{
+ "151": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,0,4",
+    "shuffleOverflowFactor": 0.58
+   },
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,0,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,0,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,0,7,3,1",
+    "shuffleOverflowFactor": 0.66
+   }
+  ],
+  "tierWinRates": [
+   0.7121,
+   0.5175,
+   0.3088,
+   0.3088,
+   0.225
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.432,0.053,0.021,0.021,0.063,0.032,0.253,0.126",
+   "0.000,0.000,0.275,0.083,0.021,0.041,0.150,0.181,0.233,0.016",
+   "0.000,0.000,0.179,0.421,0.102,0.077,0.077,0.043,0.081,0.021",
+   "0.000,0.000,0.179,0.421,0.102,0.077,0.077,0.043,0.081,0.021",
+   "0.000,0.000,0.157,0.051,0.014,0.406,0.166,0.124,0.055,0.028"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "152": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "7,5,5",
+    "shuffleOverflowFactor": 0.42
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "7,5,5",
+    "shuffleOverflowFactor": 0.42
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.775,
+   0.775,
+   0.7,
+   0.5225,
+   0.5225
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.079,0.841,0.079,0.000",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.079,0.841,0.079,0.000",
+   "0.000,0.000,0.000,0.000,0.167,0.422,0.412,0.000,0.000,0.000",
+   "0.000,0.000,0.000,0.000,0.021,0.079,0.555,0.293,0.052,0.000",
+   "0.000,0.000,0.000,0.000,0.021,0.079,0.555,0.293,0.052,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "153": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "1,1,1,1",
+    "shuffleOverflowFactor": 0.015
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "1,1,1,1",
+    "shuffleOverflowFactor": 0.015
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 1.0
+   }
+  ],
+  "tierWinRates": [
+   0.7889,
+   0.7889,
+   0.6714,
+   0.515,
+   0.515
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.193,0.579,0.105,0.035,0.035,0.018,0.035",
+   "0.000,0.000,0.000,0.193,0.579,0.105,0.035,0.035,0.018,0.035",
+   "0.000,0.000,0.009,0.209,0.365,0.183,0.043,0.009,0.009,0.174",
+   "0.000,0.000,0.005,0.082,0.247,0.196,0.026,0.093,0.144,0.206",
+   "0.000,0.000,0.005,0.082,0.247,0.196,0.026,0.093,0.144,0.206"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "154": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 38,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.45
+   },
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,10,0",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,0,0",
+    "shuffleOverflowFactor": 1.0
+   }
+  ],
+  "tierWinRates": [
+   0.5025,
+   0.3842,
+   0.2879,
+   0.2111,
+   0.0692
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.457,0.065,0.070,0.025,0.025,0.085,0.271",
+   "0.000,0.000,0.000,0.265,0.598,0.064,0.034,0.004,0.000,0.034",
+   "0.000,0.000,0.000,0.851,0.085,0.038,0.013,0.000,0.004,0.009",
+   "0.000,0.000,0.000,0.765,0.080,0.009,0.023,0.028,0.066,0.028",
+   "0.000,0.000,0.008,0.793,0.124,0.041,0.008,0.017,0.008,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "155": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 6,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,1,0,1,0,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 6,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,1,0,1,0,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8304,
+   0.8304,
+   0.6459,
+   0.54,
+   0.54
+  ],
+  "tierFailDistribution": [
+   "0.026,0.000,0.000,0.103,0.026,0.000,0.000,0.000,0.051,0.795",
+   "0.026,0.000,0.000,0.103,0.026,0.000,0.000,0.000,0.051,0.795",
+   "0.008,0.000,0.000,0.046,0.038,0.046,0.298,0.351,0.191,0.023",
+   "0.005,0.000,0.000,0.038,0.745,0.065,0.033,0.065,0.005,0.043",
+   "0.005,0.000,0.000,0.038,0.745,0.065,0.033,0.065,0.005,0.043"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "156": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 28,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 28,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8391,
+   0.8391,
+   0.68,
+   0.4625,
+   0.4625
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.027,0.054,0.108,0.514,0.297",
+   "0.000,0.000,0.000,0.000,0.000,0.027,0.054,0.108,0.514,0.297",
+   "0.000,0.000,0.000,0.000,0.000,0.009,0.009,0.107,0.723,0.152",
+   "0.000,0.000,0.000,0.000,0.000,0.005,0.000,0.563,0.330,0.102",
+   "0.000,0.000,0.000,0.000,0.000,0.005,0.000,0.563,0.330,0.102"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "157": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,2,1",
+    "shuffleOverflowFactor": 0.08
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,2,1",
+    "shuffleOverflowFactor": 0.08
+   },
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,2,4",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 35,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,4,3,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 35,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,4,3,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8476,
+   0.8476,
+   0.6324,
+   0.515,
+   0.515
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.031,0.188,0.063,0.188,0.156,0.281,0.063,0.031",
+   "0.000,0.000,0.031,0.188,0.063,0.188,0.156,0.281,0.063,0.031",
+   "0.000,0.000,0.015,0.059,0.022,0.654,0.037,0.044,0.096,0.074",
+   "0.000,0.000,0.015,0.134,0.206,0.500,0.113,0.031,0.000,0.000",
+   "0.000,0.000,0.015,0.134,0.206,0.500,0.113,0.031,0.000,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "158": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "6,1,1",
+    "shuffleOverflowFactor": 0.05
+   },
+   {
+    "startDifficulty": 8,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,0,1,0,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 8,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,0,1,0,1,0",
+    "shuffleOverflowFactor": 0.0
+   }
+  ],
+  "tierWinRates": [
+   0.7484,
+   0.7484,
+   0.6026,
+   0.35,
+   0.35
+  ],
+  "tierFailDistribution": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "159": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,2",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 14,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,1,3,0,0",
+    "shuffleOverflowFactor": 0.02
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,0",
+    "shuffleOverflowFactor": 1.0
+   }
+  ],
+  "tierWinRates": [
+   0.68,
+   0.52,
+   0.3895,
+   0.3088,
+   0.2148
+  ],
+  "tierFailDistribution": [
+   "0.018,0.071,0.009,0.071,0.071,0.098,0.161,0.116,0.080,0.304",
+   "0.005,0.042,0.010,0.042,0.203,0.109,0.151,0.115,0.083,0.240",
+   "0.004,0.034,0.004,0.017,0.310,0.328,0.142,0.056,0.039,0.065",
+   "0.009,0.034,0.000,0.004,0.264,0.315,0.132,0.068,0.034,0.140",
+   "0.005,0.028,0.014,0.019,0.203,0.198,0.288,0.075,0.085,0.085"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "160": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "2,0,0,0,0,2",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "2,0,0,0,0,2",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,9,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.95,
+   0.95,
+   0.6405,
+   0.55,
+   0.55
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.400,0.600",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.400,0.600",
+   "0.000,0.000,0.173,0.000,0.000,0.060,0.158,0.143,0.226,0.241",
+   "0.000,0.000,0.156,0.089,0.028,0.094,0.011,0.106,0.344,0.172",
+   "0.000,0.000,0.156,0.089,0.028,0.094,0.011,0.106,0.344,0.172"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "161": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,2,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,0,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,1",
+    "shuffleOverflowFactor": 0.03
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,1",
+    "shuffleOverflowFactor": 0.07
+   }
+  ],
+  "tierWinRates": [
+   0.4975,
+   0.4077,
+   0.2971,
+   0.192,
+   0.1591
+  ],
+  "tierFailDistribution": [
+   "0.000,0.005,0.030,0.070,0.149,0.393,0.169,0.050,0.119,0.015",
+   "0.000,0.004,0.026,0.013,0.251,0.281,0.165,0.121,0.087,0.052",
+   "0.000,0.004,0.021,0.017,0.192,0.331,0.113,0.167,0.155,0.000",
+   "0.000,0.005,0.015,0.010,0.376,0.213,0.228,0.134,0.010,0.010",
+   "0.000,0.005,0.011,0.011,0.162,0.281,0.222,0.232,0.076,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "162": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 45,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.7
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 0.75
+   }
+  ],
+  "tierWinRates": [
+   0.6583,
+   0.5692,
+   0.3895,
+   0.3143,
+   0.1923
+  ],
+  "tierFailDistribution": [
+   "0.000,0.333,0.114,0.049,0.065,0.089,0.057,0.163,0.081,0.049",
+   "0.000,0.262,0.107,0.012,0.107,0.077,0.083,0.173,0.167,0.012",
+   "0.000,0.203,0.065,0.009,0.047,0.069,0.108,0.142,0.259,0.099",
+   "0.000,0.183,0.079,0.017,0.079,0.075,0.104,0.121,0.208,0.133",
+   "0.000,0.176,0.071,0.029,0.105,0.119,0.086,0.248,0.133,0.033"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "163": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "5,3,3,5",
+    "shuffleOverflowFactor": 0.24
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "5,3,3,5",
+    "shuffleOverflowFactor": 0.24
+   },
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "8,8,8,3,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.0
+   }
+  ],
+  "tierWinRates": [
+   0.9455,
+   0.9455,
+   0.6639,
+   0.8476,
+   0.8476
+  ],
+  "tierFailDistribution": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "164": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 28,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,4,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8304,
+   0.8304,
+   0.6351,
+   0.51,
+   0.51
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.051,0.026,0.154,0.179,0.436,0.077,0.026,0.051",
+   "0.000,0.000,0.051,0.026,0.154,0.179,0.436,0.077,0.026,0.051",
+   "0.000,0.000,0.022,0.037,0.141,0.230,0.437,0.081,0.030,0.022",
+   "0.000,0.077,0.031,0.031,0.117,0.306,0.122,0.163,0.122,0.031",
+   "0.000,0.077,0.031,0.031,0.117,0.306,0.122,0.163,0.122,0.031"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "165": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 36,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 1.0
+   }
+  ],
+  "tierWinRates": [
+   0.8524,
+   0.8524,
+   0.6639,
+   0.4725,
+   0.4725
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.032,0.000,0.000,0.000,0.161,0.194,0.484,0.129",
+   "0.000,0.000,0.032,0.000,0.000,0.000,0.161,0.194,0.484,0.129",
+   "0.000,0.025,0.017,0.050,0.132,0.281,0.174,0.132,0.157,0.033",
+   "0.000,0.024,0.066,0.066,0.251,0.213,0.109,0.085,0.175,0.009",
+   "0.000,0.024,0.066,0.066,0.251,0.213,0.109,0.085,0.175,0.009"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "166": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,2,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 36,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,2,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.6771,
+   0.515,
+   0.4128,
+   0.3088,
+   0.2
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.062,0.062,0.150,0.053,0.673",
+   "0.000,0.000,0.000,0.000,0.000,0.052,0.067,0.247,0.320,0.314",
+   "0.000,0.000,0.000,0.000,0.000,0.009,0.017,0.109,0.747,0.118",
+   "0.000,0.000,0.000,0.000,0.000,0.051,0.115,0.396,0.366,0.072",
+   "0.000,0.000,0.000,0.000,0.005,0.038,0.125,0.466,0.346,0.019"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "167": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "2,0,2,1",
+    "shuffleOverflowFactor": 0.077
+   },
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "2,0,2,1",
+    "shuffleOverflowFactor": 0.077
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,10,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,10,10,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7621,
+   0.7621,
+   0.7387,
+   0.5025,
+   0.5025
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.029,0.029,0.116,0.174,0.116,0.246,0.290",
+   "0.000,0.000,0.000,0.029,0.029,0.116,0.174,0.116,0.246,0.290",
+   "0.000,0.000,0.000,0.000,0.086,0.259,0.198,0.210,0.210,0.037",
+   "0.000,0.000,0.000,0.000,0.010,0.095,0.231,0.241,0.387,0.035",
+   "0.000,0.000,0.000,0.000,0.010,0.095,0.231,0.241,0.387,0.035"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "168": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 38,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,10,0,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 38,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "4,5,1",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 34,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,6,4",
+    "shuffleOverflowFactor": 0.15
+   }
+  ],
+  "tierWinRates": [
+   0.515,
+   0.3868,
+   0.3114,
+   0.1696,
+   0.1059
+  ],
+  "tierFailDistribution": [
+   "0.010,0.041,0.196,0.119,0.134,0.253,0.103,0.041,0.082,0.021",
+   "0.004,0.009,0.155,0.112,0.292,0.090,0.116,0.077,0.069,0.077",
+   "0.000,0.249,0.178,0.075,0.116,0.112,0.108,0.091,0.050,0.021",
+   "0.000,0.084,0.340,0.115,0.063,0.021,0.026,0.209,0.094,0.047",
+   "0.000,0.217,0.066,0.039,0.059,0.112,0.217,0.112,0.164,0.013"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "169": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,4,6",
+    "shuffleOverflowFactor": 0.28
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,4,6",
+    "shuffleOverflowFactor": 0.28
+   },
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.9067,
+   0.9067,
+   0.7121,
+   0.65,
+   0.65
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.071,0.000,0.071,0.143,0.000,0.143,0.571,0.000",
+   "0.000,0.000,0.071,0.000,0.071,0.143,0.000,0.143,0.571,0.000",
+   null,
+   "0.000,0.000,0.000,0.056,0.325,0.286,0.032,0.056,0.103,0.143",
+   "0.000,0.000,0.000,0.056,0.325,0.286,0.032,0.056,0.103,0.143"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "170": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,0,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,0,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,0,5",
+    "shuffleOverflowFactor": 0.24
+   },
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8077,
+   0.8077,
+   0.6583,
+   0.495,
+   0.495
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.800,0.060,0.040,0.100,0.000,0.000,0.000",
+   "0.000,0.000,0.000,0.800,0.060,0.040,0.100,0.000,0.000,0.000",
+   "0.000,0.000,0.000,0.724,0.049,0.000,0.024,0.033,0.138,0.033",
+   "0.000,0.000,0.000,0.302,0.005,0.416,0.005,0.005,0.094,0.173",
+   "0.000,0.000,0.000,0.302,0.005,0.416,0.005,0.005,0.094,0.173"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "171": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,10",
+    "shuffleOverflowFactor": 0.75
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,10",
+    "shuffleOverflowFactor": 0.75
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 0.75
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,0,0",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8619,
+   0.8619,
+   0.6297,
+   0.4575,
+   0.4575
+  ],
+  "tierFailDistribution": [
+   "0.000,0.103,0.000,0.069,0.034,0.448,0.207,0.103,0.000,0.034",
+   "0.000,0.103,0.000,0.069,0.034,0.448,0.207,0.103,0.000,0.034",
+   "0.000,0.051,0.022,0.204,0.372,0.168,0.175,0.007,0.000,0.000",
+   "0.000,0.032,0.014,0.396,0.419,0.069,0.065,0.005,0.000,0.000",
+   "0.000,0.032,0.014,0.396,0.419,0.069,0.065,0.005,0.000,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "172": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "5,2,5",
+    "shuffleOverflowFactor": 0.21
+   },
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,10,0",
+    "shuffleOverflowFactor": 0.75
+   },
+   {
+    "startDifficulty": 31,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,10,0",
+    "shuffleOverflowFactor": 0.75
+   }
+  ],
+  "tierWinRates": [
+   0.87,
+   0.87,
+   0.7419,
+   0.515,
+   0.515
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.038,0.077,0.000,0.000,0.038,0.462,0.385",
+   "0.000,0.000,0.000,0.038,0.077,0.000,0.000,0.038,0.462,0.385",
+   "0.000,0.000,0.000,0.025,0.038,0.063,0.000,0.000,0.663,0.213",
+   "0.000,0.000,0.000,0.046,0.010,0.005,0.000,0.052,0.753,0.134",
+   "0.000,0.000,0.000,0.046,0.010,0.005,0.000,0.052,0.753,0.134"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "173": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 14,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,0,1,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,0,1,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 1,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,1,1,1,1",
+    "shuffleOverflowFactor": 0.0
+   }
+  ],
+  "tierWinRates": [
+   0.6829,
+   0.5949,
+   0.3333,
+   0.3333,
+   0.24
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.261,0.135,0.243,0.207,0.063,0.081,0.009",
+   "0.000,0.082,0.006,0.013,0.038,0.120,0.222,0.152,0.184,0.184",
+   "0.000,0.446,0.071,0.025,0.050,0.125,0.104,0.063,0.104,0.013",
+   "0.000,0.446,0.071,0.025,0.050,0.125,0.104,0.063,0.104,0.013",
+   "0.000,0.373,0.070,0.022,0.057,0.140,0.039,0.079,0.184,0.035"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "174": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,1,1,1,0,0",
+    "shuffleOverflowFactor": 0.27
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 29,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,1,5",
+    "shuffleOverflowFactor": 0.69
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "9,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,0",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7567,
+   0.5575,
+   0.3568,
+   0.2781,
+   0.2516
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.110,0.548,0.164,0.068,0.000,0.110",
+   "0.000,0.000,0.000,0.000,0.056,0.418,0.158,0.249,0.034,0.085",
+   "0.000,0.000,0.000,0.000,0.034,0.256,0.139,0.076,0.181,0.315",
+   "0.000,0.000,0.000,0.000,0.052,0.433,0.087,0.182,0.095,0.152",
+   "0.000,0.000,0.000,0.000,0.034,0.513,0.172,0.078,0.060,0.142"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "175": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,2,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,2,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8455,
+   0.8455,
+   0.6743,
+   0.4975,
+   0.4975
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.118,0.206,0.206,0.118,0.059,0.206,0.088,0.000",
+   "0.000,0.000,0.118,0.206,0.206,0.118,0.059,0.206,0.088,0.000",
+   "0.000,0.000,0.035,0.421,0.202,0.132,0.132,0.070,0.009,0.000",
+   "0.000,0.000,0.075,0.458,0.234,0.124,0.095,0.015,0.000,0.000",
+   "0.000,0.000,0.075,0.458,0.234,0.124,0.095,0.015,0.000,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "176": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8571,
+   0.8571,
+   0.8476,
+   0.8778,
+   0.8778
+  ],
+  "tierFailDistribution": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "177": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7567,
+   0.7567,
+   0.6882,
+   0.5846,
+   0.5846
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.041,0.205,0.726,0.027",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.041,0.205,0.726,0.027",
+   "0.000,0.000,0.009,0.000,0.000,0.028,0.217,0.528,0.198,0.019",
+   "0.000,0.000,0.000,0.006,0.000,0.395,0.019,0.130,0.315,0.136",
+   "0.000,0.000,0.000,0.006,0.000,0.395,0.019,0.130,0.315,0.136"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "178": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,2,1",
+    "shuffleOverflowFactor": 0.67
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,0,10",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.4282,
+   0.3763,
+   0.3286,
+   0.2037,
+   0.0667
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.040,0.004,0.202,0.269,0.179,0.193,0.090,0.022",
+   "0.000,0.000,0.021,0.008,0.236,0.215,0.186,0.169,0.084,0.080",
+   "0.000,0.000,0.030,0.013,0.157,0.289,0.251,0.136,0.077,0.047",
+   "0.000,0.000,0.014,0.019,0.247,0.219,0.228,0.163,0.102,0.009",
+   "0.000,0.000,0.036,0.000,0.170,0.518,0.170,0.063,0.036,0.009"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "179": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "6,4,4",
+    "shuffleOverflowFactor": 0.33
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "6,4,4",
+    "shuffleOverflowFactor": 0.33
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.865,
+   0.865,
+   0.6158,
+   0.441,
+   0.441
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.074,0.407,0.519,0.000",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.074,0.407,0.519,0.000",
+   "0.000,0.000,0.000,0.000,0.000,0.185,0.411,0.233,0.164,0.007",
+   "0.000,0.000,0.000,0.000,0.000,0.124,0.417,0.381,0.078,0.000",
+   "0.000,0.000,0.000,0.000,0.000,0.124,0.417,0.381,0.078,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "180": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,2,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,2,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,3,2",
+    "shuffleOverflowFactor": 0.14
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8938,
+   0.8938,
+   0.627,
+   0.4231,
+   0.4231
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.059,0.235,0.235,0.294,0.059,0.118",
+   "0.000,0.000,0.000,0.000,0.059,0.235,0.235,0.294,0.059,0.118",
+   "0.000,0.000,0.000,0.000,0.014,0.333,0.130,0.319,0.152,0.051",
+   "0.000,0.000,0.000,0.000,0.004,0.333,0.427,0.124,0.067,0.044",
+   "0.000,0.000,0.000,0.000,0.004,0.333,0.427,0.124,0.067,0.044"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "181": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 27,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.86,
+   0.86,
+   0.68,
+   0.48,
+   0.48
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.321,0.571,0.071,0.000,0.036,0.000,0.000",
+   "0.000,0.000,0.000,0.321,0.571,0.071,0.000,0.036,0.000,0.000",
+   "0.000,0.000,0.018,0.348,0.170,0.286,0.152,0.000,0.027,0.000",
+   "0.000,0.000,0.067,0.274,0.091,0.231,0.168,0.091,0.077,0.000",
+   "0.000,0.000,0.067,0.274,0.091,0.231,0.168,0.091,0.077,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "182": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,2,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,2,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,10,0,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 0.25
+   }
+  ],
+  "tierWinRates": [
+   0.8348,
+   0.8348,
+   0.6882,
+   0.5,
+   0.5
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.079,0.105,0.263,0.105,0.079,0.368",
+   "0.000,0.000,0.000,0.000,0.079,0.105,0.263,0.105,0.079,0.368",
+   "0.000,0.000,0.000,0.019,0.613,0.104,0.066,0.009,0.075,0.113",
+   "0.000,0.000,0.000,0.020,0.415,0.470,0.040,0.015,0.020,0.020",
+   "0.000,0.000,0.000,0.020,0.415,0.470,0.040,0.015,0.020,0.020"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "183": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 13,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,1,1,1,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 9,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,1,1,1,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.6297,
+   0.5225,
+   0.3541,
+   0.2939,
+   0.2038
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.036,0.073,0.007,0.044,0.051,0.234,0.358,0.197",
+   "0.000,0.000,0.026,0.063,0.042,0.110,0.115,0.136,0.351,0.157",
+   "0.000,0.000,0.021,0.059,0.042,0.029,0.096,0.280,0.448,0.025",
+   "0.000,0.000,0.017,0.090,0.039,0.013,0.155,0.189,0.489,0.009",
+   "0.000,0.000,0.019,0.068,0.029,0.034,0.039,0.372,0.430,0.010"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "184": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8833,
+   0.8833,
+   0.6432,
+   0.465,
+   0.465
+  ],
+  "tierFailDistribution": [
+   "0.619,0.000,0.000,0.000,0.000,0.000,0.143,0.048,0.095,0.095",
+   "0.619,0.000,0.000,0.000,0.000,0.000,0.143,0.048,0.095,0.095",
+   "0.114,0.023,0.000,0.000,0.030,0.098,0.159,0.258,0.220,0.098",
+   "0.103,0.000,0.000,0.000,0.065,0.037,0.229,0.220,0.196,0.150",
+   "0.103,0.000,0.000,0.000,0.065,0.037,0.229,0.220,0.196,0.150"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "185": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "5,0,2",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "5,0,2",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "6,0,3",
+    "shuffleOverflowFactor": 0.17
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7889,
+   0.7889,
+   0.7419,
+   0.5,
+   0.5
+  ],
+  "tierFailDistribution": [
+   "0.000,0.018,0.123,0.000,0.123,0.123,0.123,0.158,0.228,0.105",
+   "0.000,0.018,0.123,0.000,0.123,0.123,0.123,0.158,0.228,0.105",
+   "0.000,0.013,0.013,0.050,0.063,0.238,0.013,0.075,0.025,0.513",
+   "0.000,0.010,0.210,0.005,0.035,0.030,0.065,0.045,0.340,0.260",
+   "0.000,0.010,0.210,0.005,0.035,0.030,0.065,0.045,0.340,0.260"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "186": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 7,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,1,1,1,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "1,1,1,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.485,
+   0.5075,
+   0.275,
+   0.3088,
+   0.1524
+  ],
+  "tierFailDistribution": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "187": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,0",
+    "shuffleOverflowFactor": 1.0
+   }
+  ],
+  "tierWinRates": [
+   0.8435,
+   0.8435,
+   0.6556,
+   0.5075,
+   0.5075
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.194,0.000,0.500,0.250,0.000,0.028,0.028",
+   "0.000,0.000,0.000,0.194,0.000,0.500,0.250,0.000,0.028,0.028",
+   "0.000,0.000,0.000,0.065,0.000,0.145,0.395,0.121,0.242,0.032",
+   "0.000,0.000,0.000,0.051,0.020,0.447,0.274,0.173,0.025,0.010",
+   "0.000,0.000,0.000,0.051,0.020,0.447,0.274,0.173,0.025,0.010"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "188": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,9",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 21,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,9",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,0,10,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7,
+   0.7,
+   0.65,
+   0.5,
+   0.5
+  ],
+  "tierFailDistribution": [
+   "0.324,0.039,0.167,0.147,0.020,0.039,0.029,0.049,0.176,0.010",
+   "0.324,0.039,0.167,0.147,0.020,0.039,0.029,0.049,0.176,0.010",
+   "0.302,0.048,0.167,0.127,0.048,0.095,0.032,0.056,0.119,0.008",
+   "0.045,0.260,0.450,0.170,0.030,0.015,0.005,0.005,0.015,0.005",
+   "0.045,0.260,0.450,0.170,0.030,0.015,0.005,0.005,0.015,0.005"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "189": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 38,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,10,0",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 23,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,0,0",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8077,
+   0.8077,
+   0.6378,
+   0.5949,
+   0.5949
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.040,0.080,0.700,0.180,0.000,0.000",
+   "0.000,0.000,0.000,0.000,0.040,0.080,0.700,0.180,0.000,0.000",
+   "0.000,0.000,0.000,0.000,0.022,0.045,0.373,0.485,0.060,0.015",
+   "0.000,0.000,0.000,0.000,0.000,0.019,0.272,0.386,0.285,0.038",
+   "0.000,0.000,0.000,0.000,0.000,0.019,0.272,0.386,0.285,0.038"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "190": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,4",
+    "shuffleOverflowFactor": 0.06
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.4925,
+   0.3361,
+   0.3,
+   0.1696,
+   0.05
+  ],
+  "tierFailDistribution": [
+   "0.000,0.069,0.015,0.099,0.128,0.103,0.227,0.177,0.054,0.128",
+   "0.000,0.017,0.013,0.029,0.209,0.289,0.339,0.075,0.013,0.017",
+   "0.000,0.004,0.034,0.408,0.067,0.172,0.172,0.134,0.004,0.004",
+   "0.000,0.021,0.000,0.147,0.524,0.079,0.126,0.084,0.005,0.016",
+   "0.000,0.000,0.011,0.347,0.053,0.411,0.105,0.021,0.021,0.032"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "191": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,0",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,0",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 12,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,1,1,0",
+    "shuffleOverflowFactor": 0.02
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8348,
+   0.8348,
+   0.7182,
+   0.51,
+   0.51
+  ],
+  "tierFailDistribution": [
+   "0.000,0.237,0.132,0.026,0.026,0.000,0.079,0.263,0.237,0.000",
+   "0.000,0.237,0.132,0.026,0.026,0.000,0.079,0.263,0.237,0.000",
+   "0.000,0.161,0.054,0.043,0.011,0.000,0.312,0.312,0.097,0.011",
+   "0.730,0.097,0.077,0.041,0.000,0.000,0.000,0.041,0.015,0.000",
+   "0.730,0.097,0.077,0.041,0.000,0.000,0.000,0.041,0.015,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "192": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "2,0,1,0,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 15,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "2,0,1,0,0,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 38,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "2,2,3,4",
+    "shuffleOverflowFactor": 0.32
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,0,4",
+    "shuffleOverflowFactor": 0.04
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,0,4",
+    "shuffleOverflowFactor": 0.04
+   }
+  ],
+  "tierWinRates": [
+   0.9231,
+   0.9231,
+   0.7344,
+   0.4,
+   0.4
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.100,0.000,0.000,0.000,0.400,0.300,0.200",
+   "0.000,0.000,0.000,0.100,0.000,0.000,0.000,0.400,0.300,0.200",
+   "0.000,0.000,0.000,0.024,0.106,0.047,0.235,0.282,0.212,0.094",
+   "0.000,0.000,0.004,0.018,0.048,0.031,0.136,0.294,0.298,0.171",
+   "0.000,0.000,0.004,0.018,0.048,0.031,0.136,0.294,0.298,0.171"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "193": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 36,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "4,3,2",
+    "shuffleOverflowFactor": 0.16
+   },
+   {
+    "startDifficulty": 36,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "4,3,2",
+    "shuffleOverflowFactor": 0.16
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "2,1,1,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.9231,
+   0.9231,
+   0.6405,
+   0.4525,
+   0.4525
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.300,0.100,0.200,0.300,0.100,0.000,0.000",
+   "0.000,0.000,0.000,0.300,0.100,0.200,0.300,0.100,0.000,0.000",
+   "0.000,0.000,0.323,0.015,0.015,0.120,0.241,0.128,0.143,0.015",
+   "0.000,0.014,0.023,0.005,0.023,0.018,0.050,0.082,0.763,0.023",
+   "0.000,0.014,0.023,0.005,0.023,0.018,0.050,0.082,0.763,0.023"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "194": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "4,1,1,1",
+    "shuffleOverflowFactor": 0.06
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "5,3,1",
+    "shuffleOverflowFactor": 0.1
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,10",
+    "shuffleOverflowFactor": 0.21
+   }
+  ],
+  "tierWinRates": [
+   0.7029,
+   0.555,
+   0.3444,
+   0.3389,
+   0.1923
+  ],
+  "tierFailDistribution": [
+   "0.000,0.465,0.030,0.010,0.010,0.050,0.188,0.020,0.040,0.188",
+   "0.000,0.264,0.034,0.011,0.017,0.022,0.118,0.326,0.129,0.079",
+   "0.000,0.203,0.021,0.047,0.034,0.047,0.199,0.280,0.114,0.055",
+   "0.000,0.223,0.017,0.055,0.151,0.055,0.067,0.239,0.092,0.101",
+   "0.000,0.162,0.200,0.395,0.052,0.052,0.014,0.019,0.038,0.067"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "195": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,10,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 13,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,1,1,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,10,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8167,
+   0.8167,
+   0.6158,
+   0.485,
+   0.485
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.159,0.273,0.523,0.045",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.159,0.273,0.523,0.045",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.137,0.452,0.404,0.007",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.083,0.534,0.383,0.000",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.083,0.534,0.383,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "196": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 32,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "4,3,2,1",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 32,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "4,3,2,1",
+    "shuffleOverflowFactor": 0.13
+   },
+   {
+    "startDifficulty": 11,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,10,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,1,2",
+    "shuffleOverflowFactor": 0.07
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,1,2",
+    "shuffleOverflowFactor": 0.07
+   }
+  ],
+  "tierWinRates": [
+   0.8208,
+   0.8208,
+   0.6556,
+   0.4308,
+   0.4308
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.047,0.163,0.093,0.209,0.116,0.047,0.302,0.023",
+   "0.000,0.000,0.047,0.163,0.093,0.209,0.116,0.047,0.302,0.023",
+   "0.000,0.000,0.048,0.169,0.161,0.290,0.081,0.081,0.113,0.056",
+   "0.000,0.000,0.050,0.041,0.027,0.248,0.311,0.176,0.135,0.014",
+   "0.000,0.000,0.050,0.041,0.027,0.248,0.311,0.176,0.135,0.014"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "197": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 29,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,2",
+    "shuffleOverflowFactor": 0.1
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "0,1,2",
+    "shuffleOverflowFactor": 0.1
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,1,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.6639,
+   0.5872,
+   0.3789,
+   0.3029,
+   0.2818
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.182,0.091,0.116,0.140,0.041,0.215,0.058,0.157",
+   "0.000,0.000,0.137,0.031,0.329,0.180,0.037,0.106,0.093,0.087",
+   "0.000,0.000,0.114,0.068,0.140,0.097,0.047,0.157,0.229,0.148",
+   "0.000,0.000,0.084,0.042,0.063,0.034,0.139,0.093,0.278,0.266",
+   "0.000,0.000,0.093,0.131,0.114,0.084,0.278,0.114,0.101,0.084"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "198": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,4",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 24,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,4",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,0,0,10",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "5,5,1,5,5",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8348,
+   0.8348,
+   0.6486,
+   0.48,
+   0.48
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.000,0.289,0.237,0.395,0.053,0.026",
+   "0.000,0.000,0.000,0.000,0.000,0.289,0.237,0.395,0.053,0.026",
+   "0.000,0.000,0.000,0.000,0.038,0.854,0.046,0.054,0.008,0.000",
+   "0.000,0.000,0.000,0.000,0.029,0.740,0.125,0.101,0.005,0.000",
+   "0.000,0.000,0.000,0.000,0.029,0.740,0.125,0.101,0.005,0.000"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "199": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,10,0,0",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,3,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,0,0,0,10",
+    "shuffleOverflowFactor": 1.0
+   },
+   {
+    "startDifficulty": 10,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,0,10,0,0",
+    "shuffleOverflowFactor": 0.25
+   },
+   {
+    "startDifficulty": 30,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "0,10,0,0,0",
+    "shuffleOverflowFactor": 0.75
+   }
+  ],
+  "tierWinRates": [
+   0.6237,
+   0.5475,
+   0.4026,
+   0.2879,
+   0.2038
+  ],
+  "tierFailDistribution": [
+   "0.007,0.000,0.000,0.818,0.035,0.028,0.021,0.021,0.035,0.035",
+   "0.006,0.000,0.000,0.547,0.094,0.039,0.039,0.033,0.044,0.199",
+   "0.004,0.000,0.000,0.391,0.030,0.172,0.047,0.082,0.167,0.107",
+   "0.004,0.000,0.000,0.362,0.153,0.026,0.162,0.106,0.123,0.064",
+   "0.005,0.000,0.000,0.459,0.188,0.072,0.106,0.058,0.034,0.077"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ },
+ "200": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,0,1,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 18,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.52,
+   0.3842,
+   0.3171,
+   0.2,
+   0.2038
+  ],
+  "tierFailDistribution": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "reimport_35_151_200_20260814.json"
+ }
+}

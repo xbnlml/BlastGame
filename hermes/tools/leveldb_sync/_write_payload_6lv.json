@@ -1,0 +1,302 @@
+{
+ "158": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 17,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "6,1,1",
+    "shuffleOverflowFactor": 0.05
+   },
+   {
+    "startDifficulty": 8,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,0,1,0,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 8,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,0,1,0,1,0",
+    "shuffleOverflowFactor": 0.0
+   }
+  ],
+  "tierWinRates": [
+   0.7621,
+   0.7621,
+   0.6026,
+   0.4282,
+   0.4282
+  ],
+  "tierFailDistribution": [
+   "0.000,0.130,0.000,0.203,0.290,0.058,0.058,0.217,0.043,0.000",
+   "0.000,0.130,0.000,0.203,0.290,0.058,0.058,0.217,0.043,0.000",
+   null,
+   null,
+   null
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ },
+ "174": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "1,1,1,1,0,0",
+    "shuffleOverflowFactor": 0.27
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 29,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "1,1,5",
+    "shuffleOverflowFactor": 0.69
+   },
+   {
+    "startDifficulty": 22,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "9,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "10,10,1,1,0",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.7061,
+   0.535,
+   0.3868,
+   0.3,
+   0.231
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.258,0.485,0.144,0.062,0.010,0.041",
+   "0.000,0.000,0.000,0.000,0.123,0.402,0.162,0.201,0.045,0.067",
+   "0.000,0.000,0.000,0.000,0.043,0.275,0.124,0.086,0.176,0.296",
+   "0.000,0.000,0.000,0.000,0.046,0.429,0.092,0.176,0.092,0.164",
+   "0.000,0.000,0.000,0.000,0.040,0.493,0.179,0.076,0.045,0.166"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ },
+ "180": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,2,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,2,1",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 33,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,3,2",
+    "shuffleOverflowFactor": 0.14
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 19,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.8938,
+   0.8938,
+   0.6667,
+   0.5615,
+   0.5615
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.000,0.000,0.118,0.176,0.235,0.294,0.059,0.118",
+   "0.000,0.000,0.000,0.000,0.118,0.176,0.235,0.294,0.059,0.118",
+   null,
+   "0.000,0.000,0.000,0.000,0.012,0.175,0.398,0.193,0.129,0.094",
+   "0.000,0.000,0.000,0.000,0.012,0.175,0.398,0.193,0.129,0.094"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ },
+ "196": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "9,1,10,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "9,1,10,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,1,2",
+    "shuffleOverflowFactor": 0.06
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,1,2",
+    "shuffleOverflowFactor": 0.07
+   },
+   {
+    "startDifficulty": 26,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "3,1,2",
+    "shuffleOverflowFactor": 0.07
+   }
+  ],
+  "tierWinRates": [
+   0.8167,
+   0.8167,
+   0.65,
+   0.4625,
+   0.4625
+  ],
+  "tierFailDistribution": [
+   "0.000,0.000,0.159,0.318,0.136,0.205,0.114,0.068,0.000,0.000",
+   "0.000,0.000,0.159,0.318,0.136,0.205,0.114,0.068,0.000,0.000",
+   null,
+   "0.000,0.000,0.070,0.028,0.023,0.330,0.367,0.116,0.060,0.005",
+   "0.000,0.000,0.070,0.028,0.023,0.330,0.367,0.116,0.060,0.005"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ },
+ "199": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 40,
+    "shuffleSplitCount": 3,
+    "shuffleSplitRatios": "2,1,1",
+    "shuffleOverflowFactor": 0.24
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,2,10,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 25,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 37,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,3,1,1",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 35,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "2,1,4,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.6882,
+   0.5667,
+   0.4026,
+   0.3029,
+   0.1565
+  ],
+  "tierFailDistribution": [
+   null,
+   "0.006,0.000,0.000,0.479,0.053,0.124,0.071,0.065,0.095,0.107",
+   "0.004,0.000,0.000,0.365,0.219,0.060,0.043,0.034,0.090,0.185",
+   "0.004,0.000,0.000,0.840,0.013,0.000,0.017,0.030,0.021,0.076",
+   "0.005,0.000,0.000,0.412,0.129,0.263,0.149,0.000,0.031,0.010"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ },
+ "200": {
+  "tierConfigs": [
+   {
+    "startDifficulty": 28,
+    "shuffleSplitCount": 4,
+    "shuffleSplitRatios": "0,1,3,6",
+    "shuffleOverflowFactor": 0.099
+   },
+   {
+    "startDifficulty": 0,
+    "shuffleSplitCount": 6,
+    "shuffleSplitRatios": "0,0,0,1,1,0",
+    "shuffleOverflowFactor": 0.0
+   },
+   {
+    "startDifficulty": 39,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 20,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,1,1,1,10",
+    "shuffleOverflowFactor": 0.5
+   },
+   {
+    "startDifficulty": 16,
+    "shuffleSplitCount": 5,
+    "shuffleSplitRatios": "1,10,1,1,1",
+    "shuffleOverflowFactor": 0.5
+   }
+  ],
+  "tierWinRates": [
+   0.6941,
+   0.5846,
+   0.4051,
+   0.2645,
+   0.1708
+  ],
+  "tierFailDistribution": [
+   null,
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.006,0.228,0.765",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.017,0.220,0.763",
+   "0.000,0.000,0.000,0.000,0.000,0.000,0.000,0.022,0.167,0.811",
+   "0.000,0.000,0.000,0.000,0.000,0.005,0.000,0.045,0.251,0.698"
+  ],
+  "importedAt": "2026-08-05T16:00:00.000Z",
+  "sourceFileName": "hermes-import-20260805c.csv"
+ }
+}

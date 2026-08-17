@@ -1,35 +1,71 @@
 #!/usr/bin/env python3
-"""通过 Unity batch mode 提交并运行 bot 批跑（使用 Jenkins 官方入口）。
+"""批量跑 bot——只跑，不碰 asset 配置。
 
 用法:
-  python scripts/submit_batch_unity.py "56,57,71,86" --games 400
-  python scripts/submit_batch_unity.py "70" --games 400 --tiers "1,2,3,4,5"
-  python scripts/submit_batch_unity.py "56" --games 400 --tiers 3 --skip-patch
+  python scripts/submit_batch_unity.py "172" --tiers "1,3,5"
+  python scripts/submit_batch_unity.py "170-185" --tiers "1,2,3,4,5" --games 400
+
+局数标准（2026-08-10）:
+  探针批（筛选方向）: --games 200 --adaptive-stop   # 200 局足够看出方向
+  验证批（入库前）:   --games 400                    # 400 局精测，跑满
+
+Asset 配置请通过 write_ddc 或 apply_probes.py 单独管理。
 """
-import os, sys, time, subprocess, re
 
-REPO = r'C:\Users\Administrator\Documents\BlastGame'
-TOOLS = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tools')
+import csv, glob, os, re, subprocess, sys, time
+from datetime import datetime
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+HERMES = os.path.dirname(SCRIPT_DIR)
+TOOLS = os.path.join(HERMES, 'tools')
+SCRIPTS = SCRIPT_DIR
+BATCH_LOG_DIR = os.path.join(HERMES, 'batch-logs')
+
+def _find_unity_exe():
+    """从 ProjectSettings/ProjectVersion.txt 读取版本，拼 Hub 路径。"""
+    pv_file = os.path.join(
+        os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame'),
+        'ProjectSettings', 'ProjectVersion.txt')
+    try:
+        with open(pv_file, encoding='utf-8') as f:
+            for line in f:
+                if 'm_EditorVersion:' in line:
+                    ver = line.split(':', 1)[1].strip()
+                    exe = os.path.expandvars(
+                        r'%ProgramFiles%\Unity\Hub\Editor\{0}\Editor\Unity.exe'.format(ver))
+                    if os.path.exists(exe):
+                        return exe
+    except OSError:
+        pass
+    return r'%ProgramFiles%\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe'
+
+
+UNITY_EXE = _find_unity_exe()
+REPO = os.environ.get('BLASTGAME_REPO',
+    r'C:\Users\Administrator\Documents\BlastGame')
 BOT_DIR = os.path.join(REPO, 'telemetry', 'bot')
-UNITY_EXE = r'C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe'
 
-# Jenkins 官方入口（不用 request.json，用命令行参数）
-EXECUTE_METHOD = "BlastGame.Editor.BlastBotJenkinsBatchEntry.RunFromCommandLine"
+EXECUTE_METHOD = 'BlastGame.Editor.BlastBotJenkinsBatchEntry.RunFromCommandLine'
+
+
+def echo(s):
+    print(s, flush=True)
+
+
+def eprint(s, end='\n'):
+    print(s, end=end, flush=True)
 
 
 def parse_levels(spec):
-    levels = []
+    levels = set()
     for part in spec.split(','):
         part = part.strip()
         if '-' in part:
             a, b = part.split('-')
-            levels.extend(str(i) for i in range(int(a), int(b)+1))
+            levels.update(range(int(a), int(b) + 1))
         else:
-            levels.append(part)
-    return levels
-
-
-def echo(m): print(m, flush=True)
+            levels.add(int(part))
+    return sorted(levels)
 
 
 if __name__ == '__main__':
@@ -38,50 +74,65 @@ if __name__ == '__main__':
     parser.add_argument('levels', help='关卡范围')
     parser.add_argument('--games', type=int, default=400)
     parser.add_argument('--tiers', default='', help='要跑的档位（必填）')
-    parser.add_argument('--skip-patch', action='store_true')
     parser.add_argument('--tag', default='')
-    parser.add_argument('--dry-run', action='store_true', help='验证配置但不执行（检查 probe_configs + asset 完整性）')
+    parser.add_argument('--strategy', default='scoring_opt_vg',
+                        choices=['visible_greedy', 'scoring_opt_vg'],
+                        help="Bot 策略（默认 scoring_opt_vg）")
+    parser.add_argument('--yes', action='store_true',
+                        help='跳过确认，直接执行')
+    parser.add_argument('--dry-run', action='store_true',
+                        help='验证 asset 完整性但不执行')
+    parser.add_argument('--adaptive-stop', action='store_true',
+                        help='开启贝叶斯自适应提前停止（默认关闭=跑满局数）')
+    parser.add_argument('--skip-agent-pipeline', action='store_true',
+                        help='跳过步骤4-6：agent_data/agent_analyze/agent_review（auto_loop 统筹时使用）')
     args = parser.parse_args()
 
     LEVELS = parse_levels(args.levels)
     tier_str = args.tiers
     run_count = args.games
 
-    # ── 0. Dry-run：验证不执行 ──
-    if args.dry_run:
-        echo('=== DRY RUN: %d level(s) tiers=%s games=%d ===' % (len(LEVELS), tier_str, run_count))
-        echo('    ' + ', '.join(LEVELS))
-        sys.path.insert(0, TOOLS)
-        import json as j
-        with open(os.path.join(TOOLS, 'probe_configs.json')) as f:
-            pc = j.load(f)
-        ok = True
-        for lv in LEVELS:
-            cfg = pc.get(lv)
-            if not cfg:
-                echo('  !! L%s: no probe config in probe_configs.json' % lv)
-                ok = False
-                continue
-            for i in range(1, 6):
-                key = 'T%d' % i
-                t = cfg.get(key)
-                if not t:
-                    echo('  !! L%s: missing %s' % (lv, key))
-                    ok = False
-                    continue
-                n_vals = len(str(t.get('ratios','')).split(','))
-                if n_vals != t.get('sc', 0):
-                    echo('  !! L%s %s: sc=%d but ratios has %d values' % (lv, key, t.get('sc'), n_vals))
-                    ok = False
-        if ok:
-            echo('  All probe configs: OK')
-        # Asset integrity
-        sys.path.insert(0, os.path.join(TOOLS, '..'))
-        from tools.asset_patcher import verify_all
-        all_ok, results = verify_all([int(lv) for lv in LEVELS])
-        for lv, (ok2, msg) in sorted(results.items()):
+    if not args.yes:
+        echo('=== 即将提交 ===')
+        echo('  关卡: ' + ', '.join(str(l) for l in LEVELS))
+        echo('  档位: %s' % tier_str)
+        echo('  策略: %s' % args.strategy)
+        echo('  每档: %d 局' % run_count)
+        echo('')
+        eprint('加 --yes 跳过此确认。继续？(y/N) ')
+        try:
+            resp = input().strip().lower()
+        except EOFError:
+            resp = 'n'
+        if resp not in ('y', 'yes'):
+            echo('已取消')
+            sys.exit(0)
+
+    # ── 0a. 提交前验证 asset 完整性 ──
+    sys.path.insert(0, TOOLS)
+    sys.path.insert(0, os.path.join(TOOLS, '..'))
+    from tools.asset_patcher import verify_all, read_ddc
+    fails = verify_all([int(lv) for lv in LEVELS])
+    if fails:
+        for lv, msg in fails:
             echo('  L%d: %s' % (lv, msg))
-        if not all_ok:
+        echo('❌ asset 校验不通过，终止提交')
+        sys.exit(1)
+    echo('  asset 校验: %d/%d 通过' % (len(LEVELS) - len(fails), len(LEVELS)))
+
+    # ── 0. Dry-run：只验证不执行 ──
+    if args.dry_run:
+        echo('=== DRY RUN: %d level(s) tiers=%s games=%d ===' %
+             (len(LEVELS), tier_str, run_count))
+        echo('    ' + ', '.join(str(l) for l in LEVELS))
+        sys.path.insert(0, TOOLS)
+        sys.path.insert(0, os.path.join(TOOLS, '..'))
+        ok = True
+        from tools.asset_patcher import verify_all
+        fails = verify_all([int(lv) for lv in LEVELS])
+        for lv, msg in fails:
+            echo('  L%d: %s' % (lv, msg))
+        if fails:
             echo('  !! Some assets corrupt')
             ok = False
         if ok:
@@ -90,133 +141,301 @@ if __name__ == '__main__':
             echo('❌ DRY RUN FAILED — fix errors before real submit')
         sys.exit(0 if ok else 1)
 
-    echo('=== BATCH MODE SUBMIT: %d level(s) tiers=%s games=%d ===' % (len(LEVELS), tier_str, run_count))
-    echo('    ' + ', '.join(LEVELS))
+    echo('=== BATCH MODE SUBMIT: %d level(s) tiers=%s games=%d ===' %
+         (len(LEVELS), tier_str, run_count))
+    echo('    ' + ', '.join(str(l) for l in LEVELS))
 
-    # 1. Patch assets
-    if not args.skip_patch:
-        sys.path.insert(0, TOOLS)
-        import json as j
-        with open(os.path.join(TOOLS, 'probe_configs.json')) as f:
-            pc = j.load(f)
-        sys.path.insert(0, os.path.join(TOOLS, '..'))
-        from tools.asset_patcher import write_ddc
-        for lv in LEVELS:
-            cfg = pc.get(lv)
-            if not cfg:
-                echo('  !! No probe config for L%s, skipping' % lv)
-                continue
-            tiers = []
-            for i in range(1, 6):
-                key = 'T%d' % i
-                if key in cfg:
-                    tiers.append(cfg[key])
-                else:
-                    tiers.append({'sd': 0, 'sc': 5, 'ratios': '1,1,1,1,1', 'of': 0.5})
-            write_ddc(int(lv), tiers)
-            # 写后回读对比 probe_configs（防写入错误）
-            from tools.asset_patcher import read_ddc as _rd
-            _readback = _rd(int(lv))
-            if not _readback:
-                echo('  ❌ L%s: 写后 asset 读不出' % lv)
-                sys.exit(1)
-            _ok = True
-            for _i in range(5):
-                _key = 'T%d' % (_i + 1)
-                _exp = cfg.get(_key) or {'sd': 0, 'sc': 5, 'ratios': '1,1,1,1,1', 'of': 0.5}
-                _got = _readback[_i]
-                for _f in ('sd', 'sc', 'ratios', 'of'):
-                    if str(_exp.get(_f)) != str(_got.get(_f)):
-                        echo('  ❌ L%s %s %s: 预期=%s asset=%s' % (lv, _key, _f, _exp.get(_f), _got.get(_f)))
-                        _ok = False
-            if not _ok:
-                echo('  ❌ L%s: asset 写入内容与 probe_configs 不一致，终止提交' % lv)
-                sys.exit(1)
-        echo('  Patched %d assets' % len(LEVELS))
-    else:
-        echo('  --skip-patch: asset unchanged')
-
-    # 2. 拼 Unity 命令行（使用 Jenkins 官方入口，无需 request.json）
+    # 1. 拼 Unity 命令行
     cmd = [
         UNITY_EXE,
         '-batchMode',
         '-nographics',
         '-projectPath', REPO,
         '-executeMethod', EXECUTE_METHOD,
-        '-BlastBotBatchLevels', ','.join(LEVELS),
+        '-BlastBotBatchLevels', ','.join(str(l) for l in LEVELS),
         '-BlastBotBatchRunCount', str(run_count),
         '-BlastBotBatchTiers', tier_str,
         '-BlastBotBatchLevelFolder', 'test',
         '-BlastBotBatchRecordReplay', 'false',
         '-BlastBotBatchDedupeEnabled', 'false',
-        '-logFile', '-',  # 日志输出到 stdout，实时可见
+        '-BlastBotBatchStrategy', args.strategy,
+                '-BlastBotBatchAdaptiveStop', 'true' if args.adaptive_stop else 'false',
+                '-BlastBotBatchBayesStdThreshold', '0.025',
+                '-BlastBotBatchBayesBatchSize', '10',
+        '-logFile', '-',
         '-quit',
     ]
-    echo('  Starting Unity...')
+    echo('  Strategy: %s' % args.strategy)
 
-    # 3. 启动 Unity 并实时捕获输出
+    # ── 2. 启动 Unity（stdout 全程 tee 落盘，防异常丢失）──
+    # 2026-08-14 事故：-logFile - 让 Unity 日志只进管道内存，批跑失败/被吞后
+    # 事后无日志可查。现在每行同时写入 hermes/batch-logs/，异常可事后排查。
+    os.makedirs(BATCH_LOG_DIR, exist_ok=True)
+    log_path = os.path.join(
+        BATCH_LOG_DIR,
+        'unity_%s_%dL%s.log' % (datetime.now().strftime('%Y%m%d_%H%M%S'),
+                                len(LEVELS), re.sub(r'[^\d,]', '', tier_str)))
+    log_fh = open(log_path, 'w', encoding='utf-8', errors='replace')
+    def tee(line):
+        """写一行到批跑日志（flush 保证 kill/崩溃时已落盘）。"""
+        log_fh.write(line + '\n')
+        log_fh.flush()
+    echo('  Unity 日志落盘: %s' % log_path)
+
     timeout = max(len(LEVELS) * len(tier_str.split(',')) * 300, 7200)
     deadline = time.time() + timeout
 
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                            cwd=REPO, bufsize=1, text=True, encoding='utf-8', errors='replace')
+                            cwd=REPO, bufsize=1, text=True, encoding='utf-8',
+                            errors='replace')
 
     completed = False
+    fatal_reason = None
+    seen_export_dir = ''   # 主循环里捕获的导出目录（修复 communicate 空返回导致丢失）
     while time.time() < deadline:
-        # 读一行输出（非阻塞）
         line = proc.stdout.readline() if proc.stdout else ''
         if line:
             line = line.strip()
-            # 实时输出进度，过滤掉噪声
-            if 'Bot Batch' in line or 'BotCampaign' in line or '完成' in line or '结果' in line or 'error' in line.lower() or 'exception' in line.lower():
+            tee(line)   # ← 落盘
+            if any(k in line for k in ['Bot Batch', 'BotCampaign', '完成', '结果',
+                                        'error', 'exception', 'Fatal']):
                 echo('  [Unity] ' + line)
-            # 检测完成标志
+            # 2026-08-10 P1b：结构化捕获 Unity 失败原因（另一个实例占用/致命错误）
+            if 'Fatal Error!' in line or 'Aborting batchmode' in line:
+                if 'another Unity instance' in line or 'another instance' in line:
+                    fatal_reason = 'unity_conflict'
+                else:
+                    fatal_reason = 'unity_fatal_error'
             if 'Bot Batch Jenkins' in line and '完成' in line:
                 completed = True
+            # 导出目录行在循环内就捕获（否则 communicate 返回空，current_batch 恒为空）
+            if ('导出目录' in line or '最后导出目录' in line) and 'bot' in line:
+                m = re.search(r'bot[/\\]([^/\\]+)$', line.strip().replace('\\', '/'))
+                if m:
+                    seen_export_dir = m.group(1)
         else:
-            # 检查进程是否已退出
             ret = proc.poll()
             if ret is not None:
                 echo('  Unity exited with code %d' % ret)
+                if ret != 0 and fatal_reason is None:
+                    # 非零退出但没有 Fatal 标记 → 通用失败
+                    fatal_reason = 'unity_exit_%d' % ret
                 break
             time.sleep(0.5)
 
     if not completed and proc.poll() is None:
         echo('  TIMEOUT: killing Unity')
         proc.kill()
+        fatal_reason = fatal_reason or 'unity_timeout'
 
-    # 4. 读取剩余 stdout
+    # 3. 读取剩余 stdout，获取 batch 目录（正常退出时 communicate 返回空——用循环内捕获的）
+    current_batch = seen_export_dir
     stdout, _ = proc.communicate(timeout=10) if proc.stdout else ('', '')
-    # 查找完成标记
     for line in (stdout or '').split('\n'):
+        if line.strip():
+            tee(line.strip())
         if '完成' in line and '导出目录' in line:
+            m = re.search(r'bot[/\\]([^/\\]+)$', line.strip().replace('\\', '/'))
+            if m:
+                current_batch = m.group(1)
+                echo('  Batch dir: ' + current_batch)
+        elif '[Bot Batch Jenkins]' in line:
             echo('  [Unity] ' + line.strip())
+    if current_batch:
+        echo('  Batch dir: ' + current_batch)
+    log_fh.close()
 
-    # 5. 刷新池子
-    dump_script = os.path.join(TOOLS, 'dump_level_pools.py')
-    if os.path.exists(dump_script):
-        subprocess.run([sys.executable, '-X', 'utf8', dump_script], capture_output=True)
-        echo('  Pool refreshed')
-    
-    # 读取本次 batch 的新 CSV 数据
-    if os.path.isdir(BOT_DIR):
-        dirs = sorted(d for d in os.listdir(BOT_DIR) if not d.startswith('_'))
-        if dirs:
-            latest = dirs[-1]
-            dp = os.path.join(BOT_DIR, latest)
-            echo('  Batch dir: ' + latest)
-            if os.path.isdir(dp):
-                for td in sorted(os.listdir(dp)):
-                    tdir = os.path.join(dp, td)
-                    if not os.path.isdir(tdir): continue
-                    m = re.search(r'T(\d+)', td)
-                    if not m: continue
-                    for sf in glob.glob(os.path.join(tdir, 'campaign-summary-*.csv')):
-                        with open(sf, encoding='utf-8-sig') as fh:
-                            for row in csv.DictReader(fh):
-                                lv = row.get('level', '')
-                                wr = row.get('winkate', '')
-                                if lv in LEVELS and wr:
-                                    echo('  L{} T{}: {:.1f}%'.format(lv, m.group(1), float(wr)*100))
-    
+    # ── 3.5 导出验证（2026-08-14 事故防线）：每档必须有 campaign-summary CSV ──
+    # 异常症状：每档 2 个时间戳子目录（导出抛异常被 catch 重导一次）+ 无 CSV。
+    # 只靠池子时间核对太晚——这里在批跑结束立即检查，缺 CSV 直接报结构化失败。
+    export_issues = []
+    if current_batch:
+        bp = os.path.join(BOT_DIR, current_batch)
+        if os.path.isdir(bp):
+            tiers_to_check = [t for t in tier_str.split(',') if t.strip()]
+            for t in tiers_to_check:
+                tdirs = [d for d in os.listdir(bp)
+                         if re.match(r'^.*-T%s(-|$)' % t, d)]
+                if not tdirs:
+                    export_issues.append('T%s: 无批次子目录' % t)
+                    continue
+                csvs = []
+                for td in tdirs:
+                    td_path = os.path.join(bp, td)
+                    if os.path.isdir(td_path):
+                        csvs.extend(glob.glob(
+                            os.path.join(td_path, 'campaign-summary-*.csv')))
+                if not csvs:
+                    export_issues.append(
+                        'T%s: %d 个子目录但无 campaign-summary CSV (%s)'
+                        % (t, len(tdirs), ' / '.join(tdirs)))
+            if not export_issues:
+                echo('  ✅ 导出验证: %d 档全部有 campaign-summary CSV' % len(tiers_to_check))
+            else:
+                echo('  ❌ 导出验证失败:')
+                for e in export_issues:
+                    echo('     - ' + e)
+                echo('     → 查 Unity 日志: %s' % log_path)
+        else:
+            export_issues.append('batch 目录不存在: %s' % bp)
+    else:
+        export_issues.append('未捕获 batch 目录（日志: %s）' % log_path)
+
+    # 4. Agent Data — 刷新池子 + 签名验证（skip-agent-pipeline 时跳过）
+    if not args.skip_agent_pipeline:
+        agent_data = os.path.join(TOOLS, 'agent_data.py')
+        levels_str = ','.join(str(l) for l in LEVELS)
+        if os.path.exists(agent_data):
+            echo('  Agent data: refreshing pool...')
+            ad_result = subprocess.run([sys.executable, '-X', 'utf8', agent_data,
+                         '--levels', levels_str, '--output', 'json'],
+                         capture_output=True, text=True, timeout=120)
+            if ad_result.returncode == 0:
+                try:
+                    ad = json.loads(ad_result.stdout)
+                    echo('  Agent data: %s rel, %s ref, %s levels' %
+                         (ad.get('pool',{}).get('reliable','?'),
+                          ad.get('pool',{}).get('reference','?'),
+                          ad.get('levels_processed','?')))
+                except:
+                    echo('  Agent data: done (parse skipped)')
+        else:
+            echo('  Agent data: FAIL — falling back to dump_level_pools')
+            dump_script = os.path.join(TOOLS, 'dump_level_pools.py')
+            if os.path.exists(dump_script):
+                subprocess.run([sys.executable, '-X', 'utf8', dump_script],
+                              capture_output=True, text=True, timeout=120)
+                echo('  Pool refreshed (fallback)')
+    else:
+        dump_script = os.path.join(TOOLS, 'dump_level_pools.py')
+        result = subprocess.run([sys.executable, '-X', 'utf8', dump_script],
+                                capture_output=True, text=True)
+        if result.returncode == 0:
+            echo('  Pool refreshed')
+        else:
+            echo('  !! Pool refresh failed: ' +
+                 (result.stderr.strip()[-200:] if result.stderr else '?'))
+
+    # 5. 自动运行 post_batch_review
+    # 2026-08-14 修：post_batch_review 是批跑后附加分析——它超时/失败不应判定批跑失败
+    # （此前 11关大批次 find_best_monotonic O(k^5) 超 60s → TimeoutExpired 冒泡 →
+    #   整批被误判失败重跑 4 小时）。现在 try/except 包裹：失败仅警告不中断。
+    review_script = os.path.join(TOOLS, 'post_batch_review.py')
+    if os.path.exists(review_script) and current_batch:
+        echo('  Running post_batch_review...')
+        try:
+            review_result = subprocess.run(
+                [sys.executable, '-X', 'utf8', review_script, '--batch', current_batch,
+                 '--full'], capture_output=True, text=True, timeout=300)
+            if review_result.returncode == 0:
+                echo('  post_batch_review done')
+            else:
+                echo('  !! post_batch_review failed (exit=' + str(review_result.returncode) +
+                     '): ' + (review_result.stderr.strip()[-300:] or review_result.stdout.strip()[-300:]))
+        except subprocess.TimeoutExpired:
+            echo('  !! post_batch_review timed out (>300s) — 批跑数据已落盘，跳过分析')
+        except Exception as _review_ex:
+            echo('  !! post_batch_review error: ' + str(_review_ex)[-200:])
+
+    # 6. Agent 流水线：analyze → review（2026-08-05 修复：--skip-agent-pipeline 时跳过，
+        #    否则 auto_loop 传 --skip-agent-pipeline 仍会跑 agent_analyze 超时 120s 整批 FAIL）
+        agent_analyze = os.path.join(TOOLS, 'agent_analyze.py')
+        agent_review = os.path.join(TOOLS, 'agent_review.py')
+        if not args.skip_agent_pipeline and os.path.exists(agent_analyze):
+            levels_str = ','.join(str(l) for l in LEVELS)
+            echo('  Agent analyze...')
+            ar = subprocess.run([sys.executable, '-X', 'utf8', agent_analyze,
+                 '--levels', levels_str, '--filter-verified', '--output', 'json'],
+                 capture_output=True, text=True, timeout=120)
+            if ar.returncode == 0:
+                echo('  Agent analyze: done')
+                if os.path.exists(agent_review):
+                    try:
+                        analyze_data = json.loads(ar.stdout)
+                        # Build combo plan for review
+                        combo = {'levels': {}}
+                        for r in analyze_data.get('results', []):
+                            c = r.get('combo')
+                            if c:
+                                combo['levels'][str(r['level'])] = {
+                                    'difficulty': r.get('difficulty','normal'),
+                                    'tiers': [{'wr':t['wr'],'sd':t['sd'],'sc':t['sc'],
+                                              'ratios':t['ratios'],'of':t['of']}
+                                             for t in c['tiers']]
+                                }
+                        if combo['levels']:
+                            import tempfile
+                            with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as tf:
+                                json.dump(combo, tf)
+                                combo_path = tf.name
+                            rr = subprocess.run([sys.executable, '-X', 'utf8', agent_review,
+                                 '--combo-file', combo_path, '--output', 'json'],
+                                 capture_output=True, text=True, timeout=60)
+                            os.unlink(combo_path)
+                            if rr.returncode == 0:
+                                try:
+                                    review_data = json.loads(rr.stdout)
+                                    p = sum(1 for r in review_data.get('results',[]) if r.get('passed'))
+                                    t = len(review_data.get('results',[]))
+                                    echo('  Agent review: %d/%d passed' % (p, t))
+                                except:
+                                    echo('  Agent review: parse error')
+                    except:
+                        echo('  Agent review: skipped')
+            else:
+                echo('  Agent analyze: FAIL')
+        else:
+            echo('  Agent pipeline skipped (--skip-agent-pipeline)')
+    # 5.5 展示 post_batch_review 结果（如果可用）
+    try:
+        review_result
+    except NameError:
+        pass
+    else:
+        if review_result.returncode == 0:
+            for line in review_result.stdout.split('\n'):
+                if any(k in line for k in ['差异', '变化', '汇总', '推荐', '⚠',
+                                           '✅', '❌', 'diff']):
+                    echo('    ' + line.strip())
+            echo('  post_batch_review done')
+        else:
+            echo('  !! post_batch_review partial: ' +
+                 (review_result.stdout.strip()[-200:] or 'check output'))
+
+    # 6. 输出本次结果摘要
+    if current_batch:
+        dp = os.path.join(BOT_DIR, current_batch)
+        if os.path.isdir(dp):
+            for td in sorted(os.listdir(dp)):
+                tdir = os.path.join(dp, td)
+                if not os.path.isdir(tdir):
+                    continue
+                m = re.search(r'T(\d+)', td)
+                if not m:
+                    continue
+                for sf in glob.glob(os.path.join(tdir, 'campaign-summary-*.csv')):
+                    with open(sf, encoding='utf-8-sig') as fh:
+                        for row in csv.DictReader(fh):
+                            lv = row.get('level', '')
+                            wr = row.get('winkate', '')
+                            if lv in [str(x) for x in LEVELS] and wr:
+                                echo('  L{} T{}: {:.1f}%'.format(
+                                    lv, m.group(1), float(wr) * 100))
+
     echo('=== DONE ===')
+
+    # 7. 2026-08-10 P1b：结构化失败摘要（带恢复路径）——Agent 不用猜失败原因
+    # 2026-08-14：新增 export_missing —— Unity 退出码正常但 CSV 没导出（ROUND1 事故）
+    if not completed or export_issues:
+        RECOVERY = {
+            'unity_conflict': '另一个 Unity 实例占用项目——等它关闭或手动关闭后重试',
+            'unity_fatal_error': 'Unity 致命错误——查看上方 [Unity] 输出定位具体原因',
+            'unity_timeout': 'Unity 超时被杀——检查关卡数量/局数是否过大',
+            'export_missing': 'Unity 退出但 CSV 未导出——查 batch-logs/ 下本次日志，定位 ExportCampaignResultToExcel 异常',
+        }
+        reason = fatal_reason or ('export_missing' if export_issues else 'unknown')
+        rec = RECOVERY.get(reason, '查看上方 [Unity] 输出定位原因')
+        detail = '; '.join(export_issues[:3]) + ('…' if len(export_issues) > 3 else '')
+        echo('RESULT: {"status": "failed", "reason": "%s", "recovery": "%s", "detail": "%s", "log": "%s"}' %
+             (reason, rec, detail.replace('"', "'"), log_path))
+        sys.exit(1)

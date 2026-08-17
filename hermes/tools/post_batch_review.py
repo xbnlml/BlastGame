@@ -11,7 +11,7 @@ from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
-REPO = r'C:\Users\Administrator\Documents\BlastGame'
+REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
 BOT_DIR = os.path.join(REPO, 'telemetry', 'bot')
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 TARGETS = {
@@ -159,8 +159,8 @@ def review_batch(batch_name, levels=None, full=False):
             print(f' {"死亡(初/过/中/后)"}', end='')
         print()
 
-        for rec in sorted(batch_recs, key=lambda x: int(x['tier'][1:])):
-            r_tier = rec['tier']
+        for rec in sorted(batch_recs, key=lambda x: int((x.get('source_tier', x.get('tier','T0'))[1:])) if (x.get('source_tier', x.get('tier','')).startswith('T')) else 0):
+            r_tier = rec.get('source_tier', rec.get('tier',''))
             t_idx = int(r_tier[1:]) - 1
             target = targets[t_idx] if t_idx < len(targets) else 0
             diff_wr = rec['wr'] - target

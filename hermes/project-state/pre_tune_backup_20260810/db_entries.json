@@ -1,0 +1,813 @@
+{
+  "57": [
+    {
+      "level": 57,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "7a5d7d8cf86333e397cec2d8ea5401a94e40c54b964f7000c64d7e08feea0c64",
+      "dealFingerprint": "6aa9c7a3605f8418a18ffeca4965d829cf2d10187ea15effc1b1e2b2d5a648cf",
+      "fingerprint": "6aa9c7a3605f8418a18ffeca4965d829cf2d10187ea15effc1b1e2b2d5a648cf",
+      "legacyFingerprint": "6ff6ee6b4b4e2c8c",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 0,
+        "shuffleSplitCount": 6,
+        "shuffleSplitRatios": "0,1,0,1,0,1",
+        "shuffleOverflowFactor": "0.410"
+      },
+      "matchedAssetSlots": [
+        3,
+        4
+      ],
+      "winRate": 0.308824,
+      "failDistribution": "0,0.004,0.004,0.004,0.009,0,0.013,0.043,0.026,0.898",
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:41.410Z",
+        "sourceFileName": "campaign-summary-l51-200-t5.csv"
+      },
+      "importedAt": "2026-07-30T06:56:41.410Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "A",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 57,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "7a5d7d8cf86333e397cec2d8ea5401a94e40c54b964f7000c64d7e08feea0c64",
+      "dealFingerprint": "7848e73088da24ae7e002f931e9b2fabfbed5187dcbf6e76a24d4beb5ccf1c9e",
+      "fingerprint": "7848e73088da24ae7e002f931e9b2fabfbed5187dcbf6e76a24d4beb5ccf1c9e",
+      "legacyFingerprint": "6ff6ee6b4b4e2c8c",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 10,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,10,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.302941,
+      "failDistribution": "0,0.004,0.004,0.004,0,0,0.008,0.03,0.025,0.924",
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:32.923Z",
+        "sourceFileName": "campaign-summary-l51-200-t3.csv"
+      },
+      "importedAt": "2026-07-30T06:56:32.923Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "A",
+      "lastResolvedAt": null
+    },
+    {
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "068e26d1473a09dec3c48553e909e417f83300d4fe8ecb16f7c9687cc8ed62f0",
+      "dealFingerprint": "7848e73088da24ae7e002f931e9b2fabfbed5187dcbf6e76a24d4beb5ccf1c9e",
+      "fingerprint": "7848e73088da24ae7e002f931e9b2fabfbed5187dcbf6e76a24d4beb5ccf1c9e",
+      "identitySource": "hermes-import",
+      "identityStatus": "verified",
+      "dealConfig": {
+        "startDifficulty": 10,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,10,1",
+        "shuffleOverflowFactor": "0.5"
+      },
+      "matchedAssetSlots": [
+        0,
+        1
+      ],
+      "winRate": 0.933,
+      "failDistribution": null,
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-09T19:20:00",
+        "sourceFileName": "reimport-20260809-57.json"
+      },
+      "importedAt": "2026-08-09T19:20:00",
+      "sourceFileName": "reimport-20260809-57.json",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-09T16:11:47.677Z",
+      "level": "57"
+    },
+    {
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "068e26d1473a09dec3c48553e909e417f83300d4fe8ecb16f7c9687cc8ed62f0",
+      "dealFingerprint": "79f781650523dd4ab7aed7caf3ade84d7df47d90a3a8c0238826065c5e957cb1",
+      "fingerprint": "79f781650523dd4ab7aed7caf3ade84d7df47d90a3a8c0238826065c5e957cb1",
+      "identitySource": "hermes-import",
+      "identityStatus": "verified",
+      "dealConfig": {
+        "startDifficulty": 10,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,1,1,1,10",
+        "shuffleOverflowFactor": "0.25"
+      },
+      "matchedAssetSlots": [
+        3,
+        4
+      ],
+      "winRate": 0.49,
+      "failDistribution": null,
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-09T19:20:00",
+        "sourceFileName": "reimport-20260809-57.json"
+      },
+      "importedAt": "2026-08-09T19:20:00",
+      "sourceFileName": "reimport-20260809-57.json",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-09T16:11:47.678Z",
+      "level": "57"
+    },
+    {
+      "level": 57,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "7a5d7d8cf86333e397cec2d8ea5401a94e40c54b964f7000c64d7e08feea0c64",
+      "dealFingerprint": "7a8c3088c8d59afa604851885295f898e1d6efc85e2a6daaf7d426096f1b16e7",
+      "fingerprint": "7a8c3088c8d59afa604851885295f898e1d6efc85e2a6daaf7d426096f1b16e7",
+      "legacyFingerprint": "6ff6ee6b4b4e2c8c",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 1,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "0,2,0,1,0",
+        "shuffleOverflowFactor": "0.450"
+      },
+      "matchedAssetSlots": [
+        0,
+        1
+      ],
+      "winRate": 0.231035,
+      "failDistribution": "0,0.004,0.004,0.004,0.009,0,0.018,0.049,0.004,0.906",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:29.742Z",
+        "sourceFileName": "campaign-summary-l51-200-t2.csv"
+      },
+      "importedAt": "2026-07-30T06:56:29.742Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "A",
+      "lastResolvedAt": null
+    },
+    {
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "068e26d1473a09dec3c48553e909e417f83300d4fe8ecb16f7c9687cc8ed62f0",
+      "dealFingerprint": "81191015f320579fe2567bb4da29e553ae319e6e4c1c9b4610646db9beef491c",
+      "fingerprint": "81191015f320579fe2567bb4da29e553ae319e6e4c1c9b4610646db9beef491c",
+      "identitySource": "hermes-import",
+      "identityStatus": "verified",
+      "dealConfig": {
+        "startDifficulty": 10,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,10,0,10,10",
+        "shuffleOverflowFactor": "0.25"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.64,
+      "failDistribution": null,
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-09T19:20:00",
+        "sourceFileName": "reimport-20260809-57.json"
+      },
+      "importedAt": "2026-08-09T19:20:00",
+      "sourceFileName": "reimport-20260809-57.json",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-09T16:11:47.678Z",
+      "level": "57"
+    }
+  ],
+  "147": [
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "05bf2692fda51febd4bbb9c78b5c0c40f94bef518685afa9917ce89492cd3a7f",
+      "fingerprint": "05bf2692fda51febd4bbb9c78b5c0c40f94bef518685afa9917ce89492cd3a7f",
+      "legacyFingerprint": "b826d4cd50603447",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,10,10",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.243333,
+      "failDistribution": "0,0.793,0.031,0.137,0.035,0.004,0,0,0,0",
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:32.949Z",
+        "sourceFileName": "campaign-summary-l51-200-t3.csv"
+      },
+      "importedAt": "2026-07-30T06:56:32.949Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "0b57ab5719bdc0f6977e797205f461297bd12775b81fe1f0be7cfaa18d122a18",
+      "fingerprint": "0b57ab5719bdc0f6977e797205f461297bd12775b81fe1f0be7cfaa18d122a18",
+      "legacyFingerprint": "b826d4cd50603447",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,10,10,10",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        1
+      ],
+      "winRate": 0.243333,
+      "failDistribution": "0,0.793,0.031,0.132,0.031,0.004,0,0,0.004,0.004",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:29.768Z",
+        "sourceFileName": "campaign-summary-l51-200-t2.csv"
+      },
+      "importedAt": "2026-07-30T06:56:29.768Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "0c4ee72643214a1737f830263b062aa4c079889d0f62d06f502a12e1b6fbc910",
+      "fingerprint": "0c4ee72643214a1737f830263b062aa4c079889d0f62d06f502a12e1b6fbc910",
+      "legacyFingerprint": "499b393bef031971",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 19,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,10,1,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        0
+      ],
+      "winRate": 0.5769,
+      "failDistribution": null,
+      "sourceTierLabels": [
+        "T1"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-06T03:46:44.000Z",
+        "sourceFileName": "hermes-import-20260806.csv"
+      },
+      "importedAt": "2026-08-06T03:46:44.000Z",
+      "sourceFileName": "hermes-import-20260806.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-06T03:46:58.318Z"
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "53494260e95b56c7148f28e6c3415484f634fb7183b8cb406a4938f5f6c33438",
+      "fingerprint": "53494260e95b56c7148f28e6c3415484f634fb7183b8cb406a4938f5f6c33438",
+      "legacyFingerprint": "499b393bef031971",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,10,1,10,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        4
+      ],
+      "winRate": 0.0667,
+      "failDistribution": "0.000,0.000,0.018,0.491,0.375,0.054,0.009,0.009,0.009,0.036",
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-06T03:46:44.000Z",
+        "sourceFileName": "hermes-import-20260806.csv"
+      },
+      "importedAt": "2026-08-06T03:46:44.000Z",
+      "sourceFileName": "hermes-import-20260806.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-06T03:46:58.318Z"
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "5562b2e127b1e470821733d8d841d2e5fded64de77f47e883666e0cd60c801b7",
+      "fingerprint": "5562b2e127b1e470821733d8d841d2e5fded64de77f47e883666e0cd60c801b7",
+      "legacyFingerprint": "499b393bef031971",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 26,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,1,1,1,10",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        1
+      ],
+      "winRate": 0.4675,
+      "failDistribution": "0.000,0.000,0.033,0.155,0.239,0.014,0.000,0.000,0.033,0.526",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-06T03:46:44.000Z",
+        "sourceFileName": "hermes-import-20260806.csv"
+      },
+      "importedAt": "2026-08-06T03:46:44.000Z",
+      "sourceFileName": "hermes-import-20260806.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-06T03:46:58.318Z"
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "e89ec66bd52a5e674f9024e5eaf703fa00ef8478afd2784017f5306c0b7483df",
+      "fingerprint": "e89ec66bd52a5e674f9024e5eaf703fa00ef8478afd2784017f5306c0b7483df",
+      "legacyFingerprint": "499b393bef031971",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,10,1,10,10",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.4128,
+      "failDistribution": "0.000,0.000,0.013,0.249,0.017,0.009,0.100,0.013,0.039,0.559",
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-06T03:46:44.000Z",
+        "sourceFileName": "hermes-import-20260806.csv"
+      },
+      "importedAt": "2026-08-06T03:46:44.000Z",
+      "sourceFileName": "hermes-import-20260806.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-06T03:46:58.318Z"
+    },
+    {
+      "level": 147,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "9bc5404f690d18e8a3d321184f107f0a8f59e7f88cace7fc2d095087a71b0bb4",
+      "dealFingerprint": "f9cce3fff6dfce057c4b2d4de7f41cf45489e6eb3e6364a674cd72cc617764e6",
+      "fingerprint": "f9cce3fff6dfce057c4b2d4de7f41cf45489e6eb3e6364a674cd72cc617764e6",
+      "legacyFingerprint": "499b393bef031971",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,10,10,10,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        3
+      ],
+      "winRate": 0.2781,
+      "failDistribution": "0.000,0.000,0.013,0.455,0.268,0.004,0.039,0.000,0.039,0.182",
+      "sourceTierLabels": [
+        "T4"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-06T03:46:44.000Z",
+        "sourceFileName": "hermes-import-20260806.csv"
+      },
+      "importedAt": "2026-08-06T03:46:44.000Z",
+      "sourceFileName": "hermes-import-20260806.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-06T03:46:58.318Z"
+    }
+  ],
+  "162": [
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "026496b4c37e42d772d6795543547277767984451470bdc7bcb99a704c9f5e67",
+      "fingerprint": "026496b4c37e42d772d6795543547277767984451470bdc7bcb99a704c9f5e67",
+      "legacyFingerprint": "124c24f22417392a",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 20,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,1,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        0
+      ],
+      "winRate": 0.6583,
+      "failDistribution": "0.000,0.333,0.114,0.049,0.065,0.089,0.057,0.163,0.081,0.049",
+      "sourceTierLabels": [
+        "T1"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-05T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260805g.csv"
+      },
+      "importedAt": "2026-08-05T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260805g.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-05T15:01:48.054Z"
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "3ac022df9f70b069acb8d77a36f75466826678463f0ad4fbd7f37a3e69d1606a",
+      "fingerprint": "3ac022df9f70b069acb8d77a36f75466826678463f0ad4fbd7f37a3e69d1606a",
+      "legacyFingerprint": "66e8b8cb55030aef",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 32,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,10,1,1,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        4
+      ],
+      "winRate": 0.2645,
+      "failDistribution": "0,0.154,0.096,0.079,0.101,0.149,0.105,0.083,0.162,0.07",
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T02:50:48.210Z",
+        "sourceFileName": "summary-150-200.csv"
+      },
+      "importedAt": "2026-08-04T02:50:48.210Z",
+      "sourceFileName": "summary-150-200.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "505b9d47dcf204cbabfab26b7c5b4edc79a972c226016cd0e094b33ff413354d",
+      "fingerprint": "505b9d47dcf204cbabfab26b7c5b4edc79a972c226016cd0e094b33ff413354d",
+      "legacyFingerprint": "66e8b8cb55030aef",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 35,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,10,1,1,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        3
+      ],
+      "winRate": 0.2971,
+      "failDistribution": "0,0.184,0.071,0.121,0.138,0.121,0.113,0.138,0.1,0.013",
+      "sourceTierLabels": [
+        "T4"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T02:50:48.210Z",
+        "sourceFileName": "summary-150-200.csv"
+      },
+      "importedAt": "2026-08-04T02:50:48.210Z",
+      "sourceFileName": "summary-150-200.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "856e1876f9fdfb3c29a974c9587efde8d3a511b6fb019212db690cdf0884ddb7",
+      "fingerprint": "856e1876f9fdfb3c29a974c9587efde8d3a511b6fb019212db690cdf0884ddb7",
+      "legacyFingerprint": "124c24f22417392a",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 40,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,10,1,1,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        1
+      ],
+      "winRate": 0.47,
+      "failDistribution": "0.000,0.203,0.118,0.042,0.085,0.123,0.123,0.099,0.052,0.156",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-05T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260805g.csv"
+      },
+      "importedAt": "2026-08-05T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260805g.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-05T15:01:48.054Z"
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "89c97ddac413fa85604248cc7a5d9fb6b43064e39dac3515114b10eda7fce1cd",
+      "fingerprint": "89c97ddac413fa85604248cc7a5d9fb6b43064e39dac3515114b10eda7fce1cd",
+      "legacyFingerprint": "124c24f22417392a",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 50,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,1,1",
+        "shuffleOverflowFactor": "0.700"
+      },
+      "matchedAssetSlots": [
+        4
+      ],
+      "winRate": 0.3029,
+      "failDistribution": "0.000,0.224,0.110,0.034,0.034,0.034,0.059,0.101,0.105,0.300",
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-05T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260805g.csv"
+      },
+      "importedAt": "2026-08-05T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260805g.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-05T15:01:48.054Z"
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "89c9da42e7c675f1fab732a544ac8417b387acc9e4c3fe9716db4d0f395bd03c",
+      "fingerprint": "89c9da42e7c675f1fab732a544ac8417b387acc9e4c3fe9716db4d0f395bd03c",
+      "legacyFingerprint": "124c24f22417392a",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 40,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "10,1,1,1,10",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.188,
+      "failDistribution": "0.000,0.206,0.088,0.010,0.044,0.044,0.064,0.123,0.074,0.348",
+      "sourceTierLabels": [
+        "T4"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-05T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260805g.csv"
+      },
+      "importedAt": "2026-08-05T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260805g.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-05T15:01:48.054Z"
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "a4bd1bb306fcafb42c6906578cb88e445c059043b207473680555f492b60e791",
+      "fingerprint": "a4bd1bb306fcafb42c6906578cb88e445c059043b207473680555f492b60e791",
+      "legacyFingerprint": "124c24f22417392a",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 45,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,10,1,1",
+        "shuffleOverflowFactor": "0.700"
+      },
+      "matchedAssetSlots": [
+        3
+      ],
+      "winRate": 0.1118,
+      "failDistribution": "0.000,0.179,0.086,0.013,0.040,0.046,0.073,0.152,0.139,0.272",
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-05T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260805g.csv"
+      },
+      "importedAt": "2026-08-05T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260805g.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-05T15:01:48.054Z"
+    },
+    {
+      "level": 162,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "e841cf8cdd6b9090e37ffa99718de50fb3159a075065b03a8e384e6882e6f5fe",
+      "dealFingerprint": "d7d33a6fd42da20e0913785277ac41a4234f3cd6d72d0ec3a42ad6bd8d37c972",
+      "fingerprint": "d7d33a6fd42da20e0913785277ac41a4234f3cd6d72d0ec3a42ad6bd8d37c972",
+      "legacyFingerprint": "66e8b8cb55030aef",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 5,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "1,1,1,10,1",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        1
+      ],
+      "winRate": 0.5615,
+      "failDistribution": "0,0.275,0.117,0.058,0.041,0.117,0.053,0.175,0.135,0.029",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T02:50:48.210Z",
+        "sourceFileName": "summary-150-200.csv"
+      },
+      "importedAt": "2026-08-04T02:50:48.210Z",
+      "sourceFileName": "summary-150-200.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": null
+    }
+  ],
+  "163": [
+    {
+      "level": 163,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "40d2046da37e7cb8fcc0064519c59b9142239176ac6d4e48510216acb87b5a57",
+      "dealFingerprint": "7cf6b5b24652ea72ac0251dbf4e8d2d6b4f5c11c83607fcddd878868b2713e77",
+      "fingerprint": "7cf6b5b24652ea72ac0251dbf4e8d2d6b4f5c11c83607fcddd878868b2713e77",
+      "legacyFingerprint": "a51333a8021f0625",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 16,
+        "shuffleSplitCount": 5,
+        "shuffleSplitRatios": "8,8,8,3,0",
+        "shuffleOverflowFactor": "0.500"
+      },
+      "matchedAssetSlots": [
+        2
+      ],
+      "winRate": 0.65,
+      "failDistribution": "0.048,0.000,0.000,0.000,0.278,0.587,0.000,0.000,0.008,0.079",
+      "sourceTierLabels": [
+        "T3"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260804.csv"
+      },
+      "importedAt": "2026-08-04T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260804.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-04T08:12:16.445Z"
+    },
+    {
+      "level": 163,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "40d2046da37e7cb8fcc0064519c59b9142239176ac6d4e48510216acb87b5a57",
+      "dealFingerprint": "85eaf24dca45e5e406152b392a59dc875917dd0533377b3e6967cf4732ee4011",
+      "fingerprint": "85eaf24dca45e5e406152b392a59dc875917dd0533377b3e6967cf4732ee4011",
+      "legacyFingerprint": "da44be356154d545",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 37,
+        "shuffleSplitCount": 4,
+        "shuffleSplitRatios": "5,3,3,5",
+        "shuffleOverflowFactor": "0.240"
+      },
+      "matchedAssetSlots": [
+        1
+      ],
+      "winRate": 0.95,
+      "failDistribution": "0,0,0,0,0.2,0.6,0,0,0,0.2",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-07-30T06:56:29.773Z",
+        "sourceFileName": "campaign-summary-l51-200-t2.csv"
+      },
+      "importedAt": "2026-07-30T06:56:29.773Z",
+      "sourceFileName": "campaign-summary-l51-200-t5.csv",
+      "sourceFormat": "A",
+      "lastResolvedAt": null
+    },
+    {
+      "level": 163,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "40d2046da37e7cb8fcc0064519c59b9142239176ac6d4e48510216acb87b5a57",
+      "dealFingerprint": "a43744c2db7d89298b76afde24daf3c381e14c37fb1656d7a4d154a871bfa695",
+      "fingerprint": "a43744c2db7d89298b76afde24daf3c381e14c37fb1656d7a4d154a871bfa695",
+      "legacyFingerprint": "a51333a8021f0625",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 35,
+        "shuffleSplitCount": 4,
+        "shuffleSplitRatios": "4,2,3,3",
+        "shuffleOverflowFactor": "0.150"
+      },
+      "matchedAssetSlots": [
+        0,
+        1
+      ],
+      "winRate": 0.7926,
+      "failDistribution": "0.000,0.000,0.000,0.000,0.125,0.054,0.000,0.000,0.018,0.804",
+      "sourceTierLabels": [
+        "T2"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260804.csv"
+      },
+      "importedAt": "2026-08-04T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260804.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-04T08:12:16.445Z"
+    },
+    {
+      "level": 163,
+      "fingerprintAlgorithm": "sha256-v1",
+      "boardFingerprint": "40d2046da37e7cb8fcc0064519c59b9142239176ac6d4e48510216acb87b5a57",
+      "dealFingerprint": "b56c7a0ca8802514237d4766825a41147109206bec0d69a563d50cd49f7cfa87",
+      "fingerprint": "b56c7a0ca8802514237d4766825a41147109206bec0d69a563d50cd49f7cfa87",
+      "legacyFingerprint": "a51333a8021f0625",
+      "identitySource": "bootstrap-current",
+      "identityStatus": "bootstrap",
+      "dealConfig": {
+        "startDifficulty": 19,
+        "shuffleSplitCount": 3,
+        "shuffleSplitRatios": "1,0,1",
+        "shuffleOverflowFactor": "0.010"
+      },
+      "matchedAssetSlots": [
+        3,
+        4
+      ],
+      "winRate": 0.3947,
+      "failDistribution": null,
+      "sourceTierLabels": [
+        "T5"
+      ],
+      "perResultMeta": {
+        "importedAt": "2026-08-04T16:00:00.000Z",
+        "sourceFileName": "hermes-import-20260804.csv"
+      },
+      "importedAt": "2026-08-04T16:00:00.000Z",
+      "sourceFileName": "hermes-import-20260804.csv",
+      "sourceFormat": "B",
+      "lastResolvedAt": "2026-08-04T08:12:16.445Z"
+    }
+  ]
+}

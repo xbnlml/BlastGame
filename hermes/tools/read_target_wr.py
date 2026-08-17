@@ -81,7 +81,8 @@ def main():
         if lv in targets:
             t = targets[lv]
             tiers = t['tiers']
-            print(f'{lv:>4d} {t[\"diff\"]:>12s} {tiers[0]:>5.0f}% {tiers[1]:>5.0f}% {tiers[2]:>5.0f}% {tiers[3]:>5.0f}% {tiers[4]:>5.0f}%')
+            diff = t['diff']
+            print(f'{lv:>4d} {diff:>12s} {tiers[0]:>5.0f}% {tiers[1]:>5.0f}% {tiers[2]:>5.0f}% {tiers[3]:>5.0f}% {tiers[4]:>5.0f}%')
 
 
 if __name__ == '__main__':

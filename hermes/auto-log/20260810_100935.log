@@ -1,0 +1,98 @@
+[10:09:35] ============================================================
+[10:09:35]  auto_loop.py — 全自动调优编排器
+[10:09:35] ============================================================
+[10:09:35]  Log:        D:\download\BlastGame\hermes\auto-log\20260810_100935.log
+[10:09:35]  Levels:     [57, 147, 162, 163]
+[10:09:35]  Tiers:      [1, 2, 3, 4, 5]
+[10:09:35]  Games/tier: 400
+[10:09:35]  Strategy:   scoring_opt_vg
+[10:09:35]  Max rounds: 6
+[10:09:35]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[10:09:35]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[10:09:35] 
+[10:09:35] [Auto-recovery] 检查 Unity 进程...
+[10:09:35]   无 Unity 进程
+[10:09:35] 
+[10:09:35] ————————————————————————————————————————————————————————————
+[10:09:35]  ROUND 1/6
+[10:09:35]  Pending (4): 57, 147, 162, 163
+[10:09:35] ————————————————————————————————————————————————————————————
+[10:09:35] 
+[10:09:35] [Phase 1/5] agent_analyze → combo + design_probes
+[10:09:35]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 57,147,162,163 --output json
+[10:09:40]   L57: 5 probes, judge=合格, combo quality=38.3
+[10:09:40]   L57: 5/5 tiers configured
+[10:09:40]   L147: 5 probes, judge=不合格, combo quality=69.6
+[10:09:40]   L147: 5/5 tiers configured
+[10:09:40]   L162: 5 probes, judge=接近, combo quality=50.7
+[10:09:40]   L162: 5/5 tiers configured
+[10:09:40]   L163: 5 probes, judge=合格, combo quality=26.4
+[10:09:40]   L163: 5/5 tiers configured
+[10:09:40] [Phase 2/5] apply_probes → write asset
+[10:09:40]   probe_configs.json updated: 4 levels
+[10:09:40]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 57,147,162,163
+[10:09:40]     L57: ✅ Warden 通过 (5槽完整)
+[10:09:40]     L57: ✅ 写入成功
+[10:09:40]     L147: ✅ Warden 通过 (5槽完整)
+[10:09:40]     L147: ✅ 写入成功
+[10:09:40]     L162: ✅ Warden 通过 (5槽完整)
+[10:09:40]     L162: ✅ 写入成功
+[10:09:40]     L163: ✅ Warden 通过 (5槽完整)
+[10:09:40]     L163: ✅ 写入成功
+[10:09:40]     ✅ 全部完成
+[10:09:40] [Preflight] asset & config check...
+[10:09:40]   ✅ Preflight passed
+[10:09:40] [Warden] pre-batch check...
+[10:09:41]   ✅ Warden passed
+[10:09:41] [Phase 3/5] submit_batch_unity → Unity bot batch
+[10:09:41]   adaptive_stop=ON (round 1/6)
+[10:09:41]   Submitting Unity batch: 4 levels × 5 tiers, timeout=7200s (120min)
+[10:09:41]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 57,147,162,163 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[10:38:43]   Unity batch completed
+[10:38:43]     === DONE ===
+[10:38:43] [Phase 4/5] dump_level_pools → refresh stage-data
+[10:38:43]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[10:38:48]     可靠池覆盖分布:
+[10:38:48]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[10:38:48]     总计: 150 关, 2852 条可靠, 2437 条参考
+[10:38:48]     ✅ 完成！stage-data 已更新。
+[10:38:48] [Phase 5/5] judge_level → review & verdict
+[10:38:48]   ✅ L57 [normal] r0/6: 合格 — 入库 — 93.3% → 93.3% → 64.0% → 50.5% → 50.5%
+[10:38:48]   ✅ L147 [superhard] r0/6: 合格 — 入库 — 58.7% → 49.8% → 41.3% → 27.8% → 6.7%
+[10:38:48]   ❓ L162 [hard] r0/6: 接近 — 入库(接近) — 65.8% → 55.2% → 36.0% → 26.4% → 11.2%
+[10:38:48]     • T1→T2 gap=10.6<14.999999999999993pp (接近)
+[10:38:48]   ✅ L163 [normal] r0/6: 合格 — 入库 — 90.7% → 90.7% → 65.0% → 39.5% → 39.5%
+[10:38:48]   ✅ L57 PASSED → 已入库 (round 0)
+[10:38:48]     ⏳ L57 合格待确认入库（未落盘）: WR=['93.3%', '93.3%', '64.0%', '50.5%', '50.5%']
+[10:38:48]     ⏳   配置: sd10/5/1,1,1,10,1/of0.5 | sd10/5/1,1,1,10,1/of0.5 | sd10/5/10,10,0,10,10/of0.25 | sd10/5/10,0,0,0,10/of0.25 | sd10/5/10,0,0,0,10/of0.25
+[10:38:48]     ⏳   难度=normal 目标=[90.0, 90.0, 75.0, 60.0, 60.0]
+[10:38:48]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[10:38:48]   ✅ L147 PASSED → 已入库 (round 0)
+[10:38:48]     ⏳ L147 合格待确认入库（未落盘）: WR=['58.7%', '49.8%', '41.3%', '27.8%', '6.7%']
+[10:38:48]     ⏳   配置: sd20/5/1,1,10,10,10/of0.5 | sd40/5/1,1,1,1,1/of0.5 | sd20/5/10,10,1,10,10/of0.5 | sd20/5/1,10,10,10,1/of0.5 | sd20/5/1,10,1,10,1/of0.5
+[10:38:48]     ⏳   难度=superhard 目标=[50.0, 40.0, 30.0, 20.0, 10.0]
+[10:38:48]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[10:38:48]   ✅ L162 PASSED → 入库(接近) (round 0)
+[10:38:48]     ⏳ L162 合格待确认入库（未落盘）: WR=['65.8%', '55.2%', '36.0%', '26.4%', '11.2%']
+[10:38:48]     ⏳   配置: sd20/5/1,1,1,1,1/of0.5 | sd30/5/10,10,1,10,10/of0.5 | sd30/5/1,1,10,10,10/of0.5 | sd32/5/10,10,1,1,1/of0.5 | sd45/5/1,1,10,1,1/of0.7
+[10:38:48]     ⏳   难度=hard 目标=[70.0, 55.00000000000001, 40.0, 30.0, 20.0]
+[10:38:48]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[10:38:48]   ✅ L163 PASSED → 已入库 (round 0)
+[10:38:48]     ⏳ L163 合格待确认入库（未落盘）: WR=['90.7%', '90.7%', '65.0%', '39.5%', '39.5%']
+[10:38:48]     ⏳   配置: sd37/4/5,3,3,5/of0.24 | sd37/4/5,3,3,5/of0.24 | sd16/5/8,8,8,3,0/of0.5 | sd19/3/1,0,1/of0.01 | sd19/3/1,0,1/of0.01
+[10:38:48]     ⏳   难度=normal 目标=[85.0, 85.0, 65.0, 50.0, 50.0]
+[10:38:48]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[10:38:48]   Round 1 done: 4 passed, 0 pending, 0 failed
+[10:38:48]  FINAL SUMMARY
+[10:38:48] ============================================================
+[10:38:48]  ✅ Passed (入库):  4 levels
+[10:38:48]     L57 [normal] r0  93.3% → 93.3% → 64.0% → 50.5% → 50.5%
+[10:38:48]     L147 [superhard] r0  58.7% → 49.8% → 41.3% → 27.8% → 6.7%
+[10:38:48]     L162 [hard] r0  65.8% → 55.2% → 36.0% → 26.4% → 11.2%
+[10:38:48]     L163 [normal] r0  90.7% → 90.7% → 65.0% → 39.5% → 39.5%
+[10:38:48]  ❌ Failed (改关卡): 0 levels
+[10:38:48]  ⚠ Errors:           0 levels
+[10:38:48]  🔄 Still pending:    0 levels
+[10:38:48] 
+[10:38:48]  Full log: D:\download\BlastGame\hermes\auto-log\20260810_100935.log
+[10:38:48]  Curator: pattern analysis complete

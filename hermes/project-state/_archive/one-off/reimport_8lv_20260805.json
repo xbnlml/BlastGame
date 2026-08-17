@@ -1,0 +1,72 @@
+{
+  "151": {
+    "diff": "hard", "targets": [70, 55, 40, 30, 20], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 75.3, "sd": 27, "sc": 3, "ratios": "2,0,8", "of": 0.67, "note": "bot 300局"},
+      {"wr": 54.2, "sd": 31, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.5, "note": "summary 400局"},
+      {"wr": 39.2, "sd": 23, "sc": 5, "ratios": "1,0,1,10,1", "of": 0.5, "note": "summary 380局"},
+      {"wr": 27.5, "sd": 26, "sc": 5, "ratios": "2,0,7,3,1", "of": 0.66, "note": "summary 320局"},
+      {"wr": 17.0, "sd": 35, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.5, "note": "summary 230局"}
+    ]
+  },
+  "157": {
+    "diff": "normal", "targets": [85, 85, 65, 50, 50], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 84.8, "sd": 26, "sc": 3, "ratios": "2,2,1", "of": 0.08, "note": "summary 210局"},
+      {"wr": 64.9, "sd": 31, "sc": 3, "ratios": "3,2,4", "of": 0.13, "note": "summary 370局"},
+      {"wr": 50.5, "sd": 35, "sc": 5, "ratios": "2,4,3,1,1", "of": 0.5, "note": "summary 400局"}
+    ]
+  },
+  "177": {
+    "diff": "normal", "targets": [85, 85, 65, 50, 50], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 85.2, "sd": 15, "sc": 5, "ratios": "1,1,10,10,10", "of": 0.5, "note": "summary 210局"},
+      {"wr": 65.0, "sd": 20, "sc": 5, "ratios": "10,1,1,1,10", "of": 0.5, "note": "summary 360局"},
+      {"wr": 49.8, "sd": 20, "sc": 5, "ratios": "1,1,10,1,1", "of": 0.5, "note": "summary 400局"}
+    ]
+  },
+  "178": {
+    "diff": "superhard", "targets": [50, 40, 30, 20, 10], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 49.5, "sd": 20, "sc": 5, "ratios": "5,5,1,5,5", "of": 0.5, "note": "summary 400局"},
+      {"wr": 40.5, "sd": 27, "sc": 3, "ratios": "1,2,1", "of": 0.67, "note": "bot 400局"},
+      {"wr": 29.4, "sd": 20, "sc": 5, "ratios": "1,1,1,10,10", "of": 0.5, "note": "summary 330局"},
+      {"wr": 20.0, "sd": 25, "sc": 5, "ratios": "10,1,1,1,10", "of": 0.5, "note": "summary 260局"},
+      {"wr": 9.3, "sd": 23, "sc": 5, "ratios": "10,1,1,0,10", "of": 0.5, "note": "summary 150局"}
+    ]
+  },
+  "179": {
+    "diff": "normal", "targets": [85, 85, 65, 50, 50], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 91.4, "sd": 40, "sc": 3, "ratios": "6,4,4", "of": 0.33, "note": "summary 140局"},
+      {"wr": 64.3, "sd": 20, "sc": 5, "ratios": "10,10,1,1,1", "of": 0.5, "note": "summary 370局"},
+      {"wr": 51.2, "sd": 20, "sc": 5, "ratios": "5,5,1,5,5", "of": 0.5, "note": "bot 400局"}
+    ]
+  },
+  "181": {
+    "diff": "normal", "targets": [85, 85, 65, 50, 50], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 85.2, "sd": 20, "sc": 5, "ratios": "10,10,10,1,1", "of": 0.5, "note": "summary 210局"},
+      {"wr": 63.0, "sd": 25, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.5, "note": "summary 370局"},
+      {"wr": 48.5, "sd": 27, "sc": 5, "ratios": "0,10,1,1,1", "of": 0.5, "note": "summary 400局"}
+    ]
+  },
+  "190": {
+    "diff": "superhard", "targets": [50, 40, 30, 20, 10], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 58.2, "sd": 16, "sc": 6, "ratios": "1,0,0,1,1,1", "of": 0, "note": "phase0 390局"},
+      {"wr": 39.5, "sd": 20, "sc": 5, "ratios": "10,10,1,1,1", "of": 0.5, "note": "summary 380局"},
+      {"wr": 26.9, "sd": 20, "sc": 5, "ratios": "1,10,1,1,1", "of": 0.5, "note": "summary 320局"},
+      {"wr": 18.4, "sd": 24, "sc": 3, "ratios": "0,1,4", "of": 0.06, "note": "summary 250局"},
+      {"wr": 9.3, "sd": 20, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.5, "note": "summary 150局"}
+    ]
+  },
+  "193": {
+    "diff": "normal", "targets": [85, 85, 65, 50, 50], "date": "2026-08-05重录", "note": "重新入库 8-05",
+    "tiers": [
+      {"wr": 92.3, "sd": 36, "sc": 3, "ratios": "4,3,2", "of": 0.16, "note": "summary 130局"},
+      {"wr": 72.8, "sd": 19, "sc": 4, "ratios": "2,1,1,1", "of": 0, "note": "summary 320局"},
+      {"wr": 48.0, "sd": 20, "sc": 5, "ratios": "1,1,10,1,1", "of": 0.5, "note": "summary 400局"}
+    ]
+  }
+}

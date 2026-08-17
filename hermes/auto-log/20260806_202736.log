@@ -1,0 +1,114 @@
+[20:27:36] ============================================================
+[20:27:36]  auto_loop.py — 全自动调优编排器
+[20:27:36] ============================================================
+[20:27:36]  Log:        D:\download\BlastGame\hermes\auto-log\20260806_202736.log
+[20:27:36]  Levels:     [102, 130, 132, 153, 154]
+[20:27:36]  Tiers:      [1, 2, 3, 4, 5]
+[20:27:36]  Games/tier: 400
+[20:27:36]  Strategy:   scoring_opt_vg
+[20:27:36]  Max rounds: 6
+[20:27:36]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[20:27:36]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[20:27:36] 
+[20:27:36] [Auto-recovery] 检查 Unity 进程...
+[20:27:37]   无 Unity 进程
+[20:27:37] 
+[20:27:37] ————————————————————————————————————————————————————————————
+[20:27:37]  ROUND 1/6
+[20:27:37]  Pending (5): 102, 130, 132, 153, 154
+[20:27:37] ————————————————————————————————————————————————————————————
+[20:27:37] 
+[20:27:37] [Phase 1/5] agent_analyze → combo + design_probes
+[20:27:37]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,130,132,153,154 --output json
+[20:27:40]   L102: 5 probes, judge=合格, combo quality=48.1
+[20:27:40]   L102: 5/5 tiers configured
+[20:27:40]   L130: 5 probes, judge=合格, combo quality=45.4
+[20:27:40]   L130: 5/5 tiers configured
+[20:27:40]   L132: 5 probes, judge=不合格, combo quality=71.8
+[20:27:40]   L132: 5/5 tiers configured
+[20:27:40]   L153: 5 probes, judge=不合格, combo quality=68.0
+[20:27:40]   L153: 5/5 tiers configured
+[20:27:40]   L154: 5 probes, judge=接近, combo quality=36.6
+[20:27:40]   L154: 5/5 tiers configured
+[20:27:40] [Phase 2/5] apply_probes → write asset
+[20:27:40]   probe_configs.json updated: 5 levels
+[20:27:40]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,130,132,153,154
+[20:27:40]     L130: ✅ Warden 通过 (5槽完整)
+[20:27:40]     L130: ✅ 写入成功
+[20:27:40]     L132: ✅ Warden 通过 (5槽完整)
+[20:27:40]     L132: ✅ 写入成功
+[20:27:40]     L153: ✅ Warden 通过 (5槽完整)
+[20:27:40]     L153: ✅ 写入成功
+[20:27:40]     L154: ✅ Warden 通过 (5槽完整)
+[20:27:40]     L154: ✅ 写入成功
+[20:27:40]     ✅ 全部完成
+[20:27:40] [Preflight] asset & config check...
+[20:27:40]   ✅ Preflight passed
+[20:27:40] [Warden] pre-batch check...
+[20:27:40]   ✅ Warden passed
+[20:27:40] [Phase 3/5] submit_batch_unity → Unity bot batch
+[20:27:40]   adaptive_stop=ON (round 1/6)
+[20:27:40]   Submitting Unity batch: 5 levels × 5 tiers, timeout=7500s (125min)
+[20:27:40]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 102,130,132,153,154 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop
+[21:11:03]   Unity batch completed
+[21:11:03]     === DONE ===
+[21:11:03] [Phase 4/5] dump_level_pools → refresh stage-data
+[21:11:03]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\dump_level_pools.py
+[21:11:07]     可靠池覆盖分布:
+[21:11:07]     ✅ D:\download\BlastGame\hermes\stage-data\_summary.json
+[21:11:07]     总计: 150 关, 2245 条可靠, 1831 条参考
+[21:11:07]     ✅ 完成！stage-data 已更新。
+[21:11:07] [Phase 5/5] judge_level → review & verdict
+[21:11:07]   🔄 L102 [normal] r2/6: 不合格 — 下一轮(2/6) — 72.5% → 72.5% → 56.4% → 42.8% → 42.8%
+[21:11:07]     • 硬性违规: Normal T3=56.4<60%
+[21:11:07]     • T1→T3 gap=16.1<20pp (接近)
+[21:11:07]   ✅ L130 [normal] r0/6: 合格 — 入库 — 89.4% → 89.4% → 66.1% → 47.0% → 47.0%
+[21:11:07]   🔄 L132 [normal] r2/6: 不合格 — 下一轮(2/6) — 83.0% → 83.0% → 58.0% → 39.0% → 39.0%
+[21:11:07]     • 硬性违规: Normal T3=58.0<60%
+[21:11:07]   🔄 L153 [normal] r2/6: 不合格 — 下一轮(2/6) — 80.4% → 80.4% → 67.5% → 49.5% → 49.5%
+[21:11:07]     • T1→T3 gap=12.9<15pp
+[21:11:07]   ❓ L154 [superhard] r0/6: 接近 — 入库(接近) — 42.8% → 32.6% → 25.2% → 17.1% → 8.6%
+[21:11:07]     • T2→T3 gap=7.4<10pp (接近)
+[21:11:07]   ✅ L130 PASSED → 已入库 (round 0)
+[21:11:07]     ⏳ L130 合格待确认入库（未落盘）: WR=['89.4%', '89.4%', '66.1%', '47.0%', '47.0%']
+[21:11:07]     ⏳   配置: sd19/4/1,0,1,1/of0.02 | sd19/4/1,0,1,1/of0.02 | sd25/5/1,9,1,1,1/of0.5 | sd30/5/1,10,1,1,1/of0.5 | sd30/5/1,10,1,1,1/of0.5
+[21:11:07]     ⏳   难度=normal 目标=[85.0, 85.0, 65.0, 50.0, 50.0]
+[21:11:07]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[21:11:07]   ✅ L154 PASSED → 入库(接近) (round 0)
+[21:11:07]     ⏳ L154 合格待确认入库（未落盘）: WR=['42.8%', '32.6%', '25.2%', '17.1%', '8.6%']
+[21:11:07]     ⏳   配置: sd19/5/10,10,10,1,1/of0.5 | sd20/5/10,10,10,1,1/of0.45 | sd20/5/1,10,10,10,1/of0.45 | sd20/5/7,8,10,4,3/of0.45 | sd50/5/1,1,1,1,1/of0.7
+[21:11:07]     ⏳   难度=superhard 目标=[50.0, 40.0, 30.0, 20.0, 10.0]
+[21:11:07]     ⏳   确认后由主 agent 用 reimport.py 落盘 asset/Excel/board
+[21:11:07]   Round 1 done: 2 passed, 3 pending, 0 failed
+[21:11:07] 
+[21:11:07] ————————————————————————————————————————————————————————————
+[21:11:07]  ROUND 2/6
+[21:11:07]  Pending (3): 102, 132, 153
+[21:11:07] ————————————————————————————————————————————————————————————
+[21:11:07] 
+[21:11:07] [Phase 1/5] agent_analyze → combo + design_probes
+[21:11:07]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\planner.py --levels 102,132,153 --output json
+[21:11:10]   L102: 5 probes, judge=合格, combo quality=48.1
+[21:11:10]   L102: 5/5 tiers configured
+[21:11:10]   L132: 5 probes, judge=不合格, combo quality=32.7
+[21:11:10]   L132: 5/5 tiers configured
+[21:11:10]   L153: 5 probes, judge=不合格, combo quality=68.0
+[21:11:10]   L153: 5/5 tiers configured
+[21:11:10] [Phase 2/5] apply_probes → write asset
+[21:11:10]   probe_configs.json updated: 3 levels
+[21:11:10]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 102,132,153
+[21:11:10]     L102: ✅ Warden 通过 (5槽完整)
+[21:11:10]     L102: ✅ 写入成功
+[21:11:10]     L132: ✅ Warden 通过 (5槽完整)
+[21:11:10]     L132: ✅ 写入成功
+[21:11:10]     L153: ✅ Warden 通过 (5槽完整)
+[21:11:10]     L153: ✅ 写入成功
+[21:11:10]     ✅ 全部完成
+[21:11:10] [Preflight] asset & config check...
+[21:11:10]   ✅ Preflight passed
+[21:11:10] [Warden] pre-batch check...
+[21:11:11]   ✅ Warden passed
+[21:11:11] [Phase 3/5] submit_batch_unity → Unity bot batch
+[21:11:11]   adaptive_stop=ON (round 2/6)
+[21:11:11]   Submitting Unity batch: 3 levels × 5 tiers, timeout=7200s (120min)
+[21:11:11]   CMD [attempt 1/2]: D:\software\Python 3.13.2\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 102,132,153 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes --skip-agent-pipeline --adaptive-stop

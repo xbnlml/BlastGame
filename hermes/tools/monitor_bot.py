@@ -9,7 +9,7 @@
 import os, sys, time, glob, re, subprocess, json
 from datetime import datetime
 
-REPO = r'C:\Users\Administrator\Documents\BlastGame'
+REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
 BOT_DIR = os.path.join(REPO, 'telemetry', 'bot')
 
 

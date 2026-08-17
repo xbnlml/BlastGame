@@ -56,7 +56,7 @@ def get_retired_from_board():
                 for word in line.replace(',', ' ').split():
                     try:
                         lv = int(word)
-                        if 51 <= lv <= 100:
+                        if 51 <= lv <= 200:
                             lvs.append(str(lv))
                     except:
                         pass

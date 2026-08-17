@@ -16,7 +16,24 @@ def _norm_of(v):
     except: return v
 
 def _config_key(r):
-    return (r.get('sd', ''), r.get('sc', ''), r.get('ratios', ''), _norm_of(r.get('of', '')))
+    """配置四元组键（sd/sc/ratios/of）。2026-08-06：sd/sc 统一 str()——
+    read_ddc 返回 int（1）而池子存 str（'1'），类型不一致导致同配置匹配失败。"""
+    return (str(r.get('sd', '')), str(r.get('sc', '')), str(r.get('ratios', '')), _norm_of(r.get('of', '')))
+
+
+def _source_penalty(source, games):
+    """按来源+局数计算优先级：越小越可靠。
+    局数分档: >=400(0), 300-399(1), 200-299(2), <200(3)
+    2026-07-31 语义：bot/summary/phase0 同级（rank 全 0）。
+    2026-08-04 修正：同级来源不再按局数分档（penalty 全 0）——
+    去重时同级比 created_at，新数据优先。phase1/phase2 仍按局数分档+来源罚。
+    """
+    rank = {'bot': 0, 'summary': 0, 'phase0': 0, 'phase2': 1, 'phase1': 2}.get(source, 3)
+    if rank == 0:
+        return 0
+    tier = 0 if games >= 400 else (1 if games >= 300 else (2 if games >= 200 else 3))
+    return tier * 5 + rank
+
 
 def load_json(path):
     if os.path.exists(path):
@@ -37,19 +54,13 @@ def load_bot_data(lv):
     return load_json(_lv_path(lv, '.bot.json'))
 
 def save_bot_data(lv, records):
-    """写入 bot 数据，同时从 assist 中删除同配置记录"""
-    # Dedup within bot records (newest created_at wins for same config)
+    """写入 bot 数据。2026-07-31：不再 cross-dedup assist——
+    去重统一交给 dedup_records（同级新数据优先），避免丢掉更新的 summary 数据"""
     seen = {}
     for r in records:
         key = _config_key(r)
         if key not in seen or r.get('created_at', '') > seen[key].get('created_at', ''):
             seen[key] = r
-    # Cross-dedup: remove matching configs from assist
-    bot_keys = set(seen.keys())
-    assist = load_assist_data(lv)
-    assist = [r for r in assist if _config_key(r) not in bot_keys]
-    save_json(_lv_path(lv, '.assist.json'), assist)
-    # Write bot data
     save_json(_lv_path(lv, '.bot.json'), list(seen.values()))
     return list(seen.values())
 
@@ -60,25 +71,15 @@ def load_assist_data(lv):
     return load_json(fp)
 
 def save_assist_data(lv, records):
-    """写入 assist 数据，跳过 bot 已有的同配置"""
-    # Dedup within assist (lowest priority wins)
-    from collections import defaultdict
-    groups = defaultdict(list)
+    """写入 assist 数据。2026-07-31：不再跳过 bot 同配置——
+    去重统一交给 dedup_records（同级新数据优先）"""
+    seen = {}
     for r in records:
         key = _config_key(r)
-        groups[key].append(r)
-    deduped = []
-    for key, group in groups.items():
-        group.sort(key=lambda x: _source_penalty(x.get('source',''), x.get('totalGames',0)))
-        deduped.append(group[0])
-    # Cross-dedup: skip configs already in bot
-    bot_keys = set()
-    bot = load_bot_data(lv)
-    for r in bot:
-        bot_keys.add(_config_key(r))
-    deduped = [r for r in deduped if _config_key(r) not in bot_keys]
-    save_json(_lv_path(lv, '.assist.json'), deduped)
-    return deduped
+        if key not in seen or r.get('created_at', '') > seen[key].get('created_at', ''):
+            seen[key] = r
+    save_json(_lv_path(lv, '.assist.json'), list(seen.values()))
+    return list(seen.values())
 
 def load_ref_data(lv):
     """读取 phase1 参考数据"""
@@ -131,11 +132,23 @@ def get_preferred_records(lv):
     return bot + assist + ref
 
 
+def filter_verified(records):
+    """过滤只保留可入库数据源（bot/summary/phase0），排除 phase1/phase2。
+    2026-07-31 铁则：phase1/phase2 任何情况下不能直接用于入库决策。
+    """
+    return [r for r in records if r.get('source') in ('bot', 'summary', 'phase0')]
+
+
 def dedup_records(records):
-    """按 (sd, sc, ratios, of) 去重，保留来源+局数最可靠的；同可靠性取最新批次"""
+    """按 (sd, sc, ratios, of) 去重。
+    2026-08-04 规则：bot/summary/phase0 同级——同级时新数据优先（created_at 最新）；
+    phase1/phase2 受罚（永不压过 bot/summary/phase0），phase1/phase2 之间按局数+新数据。
+    2026-08-07 修复：键改用 _config_key（sd/sc 统一 str 规范化）——
+    之前用原始类型做键，read_ddc 返回 int(sd=20) 与池子 str('20') 判定为两条，
+    导致重复配置（审计 B1）。"""
     seen = {}
     for r in records:
-        key = (r.get('sd', ''), r.get('sc', ''), r.get('ratios', ''), _norm_of(r.get('of', '')))
+        key = _config_key(r)
         pen = _source_penalty(r.get('source', ''), r.get('totalGames', 0))
         if key not in seen:
             seen[key] = r
@@ -146,151 +159,18 @@ def dedup_records(records):
     return list(seen.values())
 
 
-def _gap_score(wrs, difficulty='hard'):
-    """档差品质分：越低越好。在最优区间 0 分，偏出按距离罚分，硬违规重罚。
-    
-    Normal (3-tier): 不罚 gap 上限，因为只有 3 档有效，T1→T3、T3→T5 可自然达到 30-50pp。
-    """
-    score = 0
-    is_normal = difficulty == 'normal'
-    if is_normal:
-        gaps = [(0, 2, wrs[0] - wrs[2]), (2, 4, wrs[2] - wrs[4])]
-    else:
-        gaps = [(i, i+1, wrs[i] - wrs[i+1]) for i in range(4)]
-
-    for i, j, g in gaps:
-        hi = wrs[i]
-        # 硬违规：<5% 重罚
-        if g < 5:
-            score += (5 - g) * 20
-        # gap 上限：仅 Hard/SuperHard 有 >40% 处罚，Normal 不罚
-        if not is_normal and g > 40:
-            score += (g - 40) * 10
-        # 档差优先：gap<15 连续罚分，gap<10 额外加罚
-        if hi > 50:
-            if g < 15:
-                score += (15 - g) * 5  # 基本：每缺 1pp = 5 分
-            if g < 10:
-                score += (10 - g) * 10  # 额外：gap<10 再加一层
-            if g > 35: score += (g - 35) * 3
-        else:
-            if g < 5: pass  # 已在硬违规处理
-            if g < 10: score += (10 - g) * 3
-            if g > 25: score += (g - 25) * 3
-    return score
-
-
-def _source_penalty(source, games):
-    """按来源+局数计算优先级：越小越可靠。
-    局数分档: ≥400(0), 300-399(1), 200-299(2), <200(3)
-    来源排名: bot(0), summary(1), phase0(2), phase2(3), phase1(4)
-    """
-    tier = 0 if games >= 400 else (1 if games >= 300 else (2 if games >= 200 else 3))
-    rank = {'bot': 0, 'summary': 1, 'phase0': 2, 'phase2': 3, 'phase1': 4}.get(source, 5)
-    return tier * 5 + rank
-
-
-def _bucket(records, target, window=50, size=60):
-    """取目标窗口内的记录，按距离排序取前 size 条。"""
-    bucket = [r for r in records if abs(r['wr'] - target) <= window]
-    if not bucket:
-        return []
-    bucket.sort(key=lambda r: (abs(r['wr'] - target), _source_penalty(r.get('source',''), r.get('totalGames',0))))
-    return bucket[:size]
-
+# ─────────────────────────────────────────────────────────────
+# 组合搜索算法已拆分到 tools/find_best_combo.py（2026-08-05 重构）。
+# 本文件 pool.py 只保留「数据访问层」：读 stage-data JSON、去重、过滤。
+# find_best_combo.py 承载：find_best_monotonic / _gap_score / target_pen_seg /
+# _bucket / _find_monotonic_3tier，并作为独立 CLI 入口。
+#
+# 这里保留 find_best_monotonic 的延迟转发，保证 12 个调用方
+# （agent_analyze/judge_level/design_probes/reimport_batch 等）
+# 直接调 pool.find_best_monotonic 的行为不变（向后兼容）。
+# 延迟 import 避免加载时循环依赖（find_best_combo 顶部会 import pool）。
+# ─────────────────────────────────────────────────────────────
 
 def find_best_monotonic(records, targets, top_n=1, difficulty='hard'):
-    """找最佳单调组合。
-
-    Normal: 3-tier 窗口剪枝 O(k^3)
-    Hard/SuperHard: 5-tier 窗口剪枝 + 内层gap预剪 O(k^5)
-    """
-    if len(records) < 3:
-        return []
-
-    if difficulty == 'normal':
-        return _find_monotonic_3tier(records, targets, top_n)
-
-    sorted_recs = sorted(records, key=lambda x: -x['wr'])
-    WINDOW = 50
-
-    buckets = [_bucket(sorted_recs, t, WINDOW) for t in targets]
-    if any(not b for b in buckets):
-        return []
-
-    candidates = []
-    for r1 in buckets[0]:
-        for r2 in buckets[1]:
-            if r2['wr'] > r1['wr']: continue
-            g12 = r1['wr'] - r2['wr']
-            if g12 < 5 or g12 > 40: continue
-            for r3 in buckets[2]:
-                if r3['wr'] > r2['wr']: continue
-                g23 = r2['wr'] - r3['wr']
-                if g23 < 5 or g23 > 40: continue
-                for r4 in buckets[3]:
-                    if r4['wr'] > r3['wr']: continue
-                    g34 = r3['wr'] - r4['wr']
-                    if g34 < 5 or g34 > 40: continue
-                    for r5 in buckets[4]:
-                        if r5['wr'] > r4['wr']: continue
-                        g45 = r4['wr'] - r5['wr']
-                        if g45 < 5 or g45 > 40: continue
-                        recs5 = [r1, r2, r3, r4, r5]
-                        keys = [_config_key(r) for r in recs5]
-                        if len(set(keys)) < 5: continue
-                        wrs = [r['wr'] for r in recs5]
-                        target_score = sum(abs(wrs[i] - targets[i]) for i in range(5))
-                        source_score = sum(_source_penalty(r.get('source',''), r.get('totalGames',0)) for r in recs5) * 0.3
-                        gap_score = _gap_score(wrs, difficulty)
-                        # 死亡分布分散度
-                        dp = recs5[0].get('deathProfile')
-                        death_score = 0
-                        if dp:
-                            worst = max(dp['early'], dp['transition'], dp['mid'], dp['late'])
-                            if worst < 0.5:
-                                death_score = -2
-                            elif worst > 0.8:
-                                death_score = 3
-                        q = target_score + source_score + gap_score + death_score
-                        gs = [g12, g23, g34, g45]
-                        candidates.append((q, gs, recs5))
-    if candidates:
-        candidates.sort(key=lambda x: x[0])
-        return candidates[:top_n]
-    return []
-
-
-def _find_monotonic_3tier(records, targets, top_n=1):
-    """Normal 难度专用：T1=T2, T4=T5，窗口剪枝 O(k^3)。"""
-    sorted_recs = sorted(records, key=lambda x: -x['wr'])
-    t1, t3, t5 = targets[0], targets[2], targets[4]
-    WINDOW = 50
-
-    b1 = _bucket(sorted_recs, t1, WINDOW)
-    b3 = _bucket(sorted_recs, t3, WINDOW)
-    b5 = _bucket(sorted_recs, t5, WINDOW)
-    if not (b1 and b3 and b5):
-        return []
-
-    candidates = []
-    for r1 in b1:
-        for r3 in b3:
-            if r3['wr'] > r1['wr']: continue
-            g13 = r1['wr'] - r3['wr']
-            if g13 < 5: continue
-            for r5 in b5:
-                if r5['wr'] > r3['wr']: continue
-                g35 = r3['wr'] - r5['wr']
-                if g35 < 5: continue
-                recs5 = [r1, r1, r3, r5, r5]
-                wrs = [r1['wr'], r1['wr'], r3['wr'], r5['wr'], r5['wr']]
-                target_score = abs(wrs[0]-targets[0]) + abs(wrs[2]-targets[2]) + abs(wrs[4]-targets[4])
-                source_score = sum(_source_penalty(r.get('source',''), r.get('totalGames',0)) for r in [r1, r3, r5]) * 0.3
-                gap_score = _gap_score(wrs, 'normal')
-                q = target_score + source_score + gap_score
-                candidates.append((q, [g13, g35, 0, 0], recs5))
-    if candidates:
-        candidates.sort(key=lambda x: x[0])
-        return candidates[:top_n]
-    return []
+    from tools.find_best_combo import find_best_monotonic as _fbm
+    return _fbm(records, targets, top_n=top_n, difficulty=difficulty)

@@ -52,7 +52,7 @@ def plot_level(lv, output_html=False):
     # 按 tier 分组
     tiers = {}
     for r in rel:
-        t = r.get('tier', '').split('-')[0]
+        t = r.get('source_tier', r.get('tier', '')).split('-')[0]
         if t.startswith('T'):
             tiers.setdefault(t, []).append(r)
 

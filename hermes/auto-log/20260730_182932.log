@@ -1,0 +1,140 @@
+[18:29:32] ============================================================
+[18:29:32]  auto_loop.py — 全自动调优编排器
+[18:29:32] ============================================================
+[18:29:32]  Log:        D:\download\BlastGame\hermes\auto-log\20260730_182932.log
+[18:29:32]  Levels:     [136, 176, 178, 184]
+[18:29:32]  Tiers:      [1, 2, 3, 4, 5]
+[18:29:32]  Games/tier: 400
+[18:29:32]  Strategy:   scoring_opt_vg
+[18:29:32]  Max rounds: 6
+[18:29:32]  Unity EXE:  C:\Program Files\Unity\Hub\Editor\6000.0.60f1\Editor\Unity.exe
+[18:29:32]  Repo:       C:\Users\Administrator\Documents\BlastGame
+[18:29:32] 
+[18:29:32] 
+[18:29:32] ————————————————————————————————————————————————————————————
+[18:29:32]  ROUND 1/6
+[18:29:32]  Pending (4): 136, 176, 178, 184
+[18:29:32] ————————————————————————————————————————————————————————————
+[18:29:32] 
+[18:29:32] [Phase 1/5] agent_analyze → combo + design_probes
+[18:29:32]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\agent_analyze.py --levels 136,176,178,184 --filter-verified --output json
+[18:29:33]   L136: 5 probes, combo quality=60.8
+[18:29:33]   L136: 5/5 tiers configured
+[18:29:33]   L176: 5 probes, combo quality=44.0
+[18:29:33]   L176: 5/5 tiers configured
+[18:29:33]   L178: 5 probes, combo quality=58.2
+[18:29:33]   L178: 5/5 tiers configured
+[18:29:33]   L184: 5 probes, combo quality=24.7
+[18:29:33]   L184: 5/5 tiers configured
+[18:29:33] [Phase 2/5] apply_probes → write asset
+[18:29:33]   probe_configs.json updated: 4 levels
+[18:29:33]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176,178,184
+[18:29:34]     L136: ✅ 写入成功
+[18:29:34]     L176: ✅ 写入成功
+[18:29:34]     L178: ✅ 写入成功
+[18:29:34]     L184: ✅ 写入成功
+[18:29:34]     ✅ 全部完成
+[18:29:34] [Phase 3/5] submit_batch_unity → Unity bot batch
+[18:29:34]   Submitting Unity batch: 4 levels × 5 tiers, timeout=7200s (120min)
+[18:29:34]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
+[18:29:39]   FAIL (exit=1) attempt 1/2
+[18:29:39]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\scripts\submit_batch_unity.py", line 273, in <module>
+    (review_result.stdout.strip()[-200:] or 'check output'))
+     ^^^^^^^^^^^^^
+NameError: name 'review_result' is not defined
+
+[18:29:39]   Retrying in 5s...
+[18:29:44]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
+[18:29:50]   FAIL (exit=1) attempt 2/2
+[18:29:50]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\scripts\submit_batch_unity.py", line 273, in <module>
+    (review_result.stdout.strip()[-200:] or 'check output'))
+     ^^^^^^^^^^^^^
+NameError: name 'review_result' is not defined
+
+[18:29:50]   All retries exhausted — giving up
+[18:29:50]   Unity batch FAILED
+[18:29:50]   Unity batch failed — skipping this round
+[18:29:50] 
+[18:29:50] ————————————————————————————————————————————————————————————
+[18:29:50]  ROUND 2/6
+[18:29:50]  Pending (4): 136, 176, 178, 184
+[18:29:50] ————————————————————————————————————————————————————————————
+[18:29:50] 
+[18:29:50] [Phase 1/5] agent_analyze → combo + design_probes
+[18:29:50]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\agent_analyze.py --levels 136,176,178,184 --filter-verified --output json
+[18:29:51]   L136: 5 probes, combo quality=60.8
+[18:29:51]   L136: 5/5 tiers configured
+[18:29:51]   L176: 5 probes, combo quality=44.0
+[18:29:51]   L176: 5/5 tiers configured
+[18:29:51]   L178: 5 probes, combo quality=58.2
+[18:29:51]   L178: 5/5 tiers configured
+[18:29:51]   L184: 5 probes, combo quality=24.7
+[18:29:51]   L184: 5/5 tiers configured
+[18:29:51] [Phase 2/5] apply_probes → write asset
+[18:29:51]   probe_configs.json updated: 4 levels
+[18:29:51]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176,178,184
+[18:29:51]     L136: ✅ 写入成功
+[18:29:51]     L176: ✅ 写入成功
+[18:29:51]     L178: ✅ 写入成功
+[18:29:51]     L184: ✅ 写入成功
+[18:29:51]     ✅ 全部完成
+[18:29:51] [Phase 3/5] submit_batch_unity → Unity bot batch
+[18:29:51]   Submitting Unity batch: 4 levels × 5 tiers, timeout=7200s (120min)
+[18:29:51]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
+[18:29:57]   FAIL (exit=1) attempt 1/2
+[18:29:57]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\scripts\submit_batch_unity.py", line 273, in <module>
+    (review_result.stdout.strip()[-200:] or 'check output'))
+     ^^^^^^^^^^^^^
+NameError: name 'review_result' is not defined
+
+[18:29:57]   Retrying in 5s...
+[18:30:02]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
+[18:30:08]   FAIL (exit=1) attempt 2/2
+[18:30:08]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\scripts\submit_batch_unity.py", line 273, in <module>
+    (review_result.stdout.strip()[-200:] or 'check output'))
+     ^^^^^^^^^^^^^
+NameError: name 'review_result' is not defined
+
+[18:30:08]   All retries exhausted — giving up
+[18:30:08]   Unity batch FAILED
+[18:30:08]   Unity batch failed — skipping this round
+[18:30:08] 
+[18:30:08] ————————————————————————————————————————————————————————————
+[18:30:08]  ROUND 3/6
+[18:30:08]  Pending (4): 136, 176, 178, 184
+[18:30:08] ————————————————————————————————————————————————————————————
+[18:30:08] 
+[18:30:08] [Phase 1/5] agent_analyze → combo + design_probes
+[18:30:08]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\agent_analyze.py --levels 136,176,178,184 --filter-verified --output json
+[18:30:09]   L136: 5 probes, combo quality=60.8
+[18:30:09]   L136: 5/5 tiers configured
+[18:30:09]   L176: 5 probes, combo quality=44.0
+[18:30:09]   L176: 5/5 tiers configured
+[18:30:09]   L178: 5 probes, combo quality=58.2
+[18:30:09]   L178: 5/5 tiers configured
+[18:30:09]   L184: 5 probes, combo quality=24.7
+[18:30:09]   L184: 5/5 tiers configured
+[18:30:09] [Phase 2/5] apply_probes → write asset
+[18:30:09]   probe_configs.json updated: 4 levels
+[18:30:09]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\tools\apply_probes.py 136,176,178,184
+[18:30:10]     L136: ✅ 写入成功
+[18:30:10]     L176: ✅ 写入成功
+[18:30:10]     L178: ✅ 写入成功
+[18:30:10]     L184: ✅ 写入成功
+[18:30:10]     ✅ 全部完成
+[18:30:10] [Phase 3/5] submit_batch_unity → Unity bot batch
+[18:30:10]   Submitting Unity batch: 4 levels × 5 tiers, timeout=7200s (120min)
+[18:30:10]   CMD [attempt 1/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
+[18:30:17]   FAIL (exit=1) attempt 1/2
+[18:30:17]   stderr: Traceback (most recent call last):
+  File "D:\download\BlastGame\hermes\scripts\submit_batch_unity.py", line 273, in <module>
+    (review_result.stdout.strip()[-200:] or 'check output'))
+     ^^^^^^^^^^^^^
+NameError: name 'review_result' is not defined
+
+[18:30:17]   Retrying in 5s...
+[18:30:22]   CMD [attempt 2/2]: C:\Users\Administrator\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe -X utf8 D:\download\BlastGame\hermes\scripts\submit_batch_unity.py 136,176,178,184 --tiers 1,2,3,4,5 --games 400 --strategy scoring_opt_vg --yes
