@@ -1,6 +1,8 @@
-# BlastGame — 游戏难度自动调优
+# BlastGame — 关卡难度的全自动调优
 
-一个用程序代替人工手感做关卡难度调参的项目。关卡有 5 个难度档位（T1–T5），每个档位有目标胜率（如 normal 80/80/60/45/45）；配置参数和胜率之间是非线性、不可解析的关系，只能靠实测。本仓库是配套这套流程的工具链和数据。
+关卡难度调参是个麻烦事：每个关卡有 5 个难度档位（T1–T5），每个档位对应一个目标胜率（如 normal 80/80/60/45/45）。问题在于，配置参数（难度+洗牌参数）与最终胜率之间是非线性、不可解析的关系——改一个参数，胜率往哪走只能靠实测才知道。
+
+这个仓库做的，就是把这套"改参数 → 跑实测 → 看结果 → 再改"的循环完全自动化：探针怎么设计、谁该测什么、测完怎么入库、怎么判定达标、怎么保证数据可信，全程由程序接管，可以无人值守地一轮接一轮跑，直到关卡达标或轮数耗尽。已有 100+ 关卡通过这套流程完成调优入库，每关积累 400–1000 局真实 bot 实测数据。
 
 ## 流程
 
@@ -9,19 +11,19 @@
 → 数据入池(dump_level_pools) → 判定达标(judge_level) → 一致性验证(verify_asset_db_match)
 ```
 
-## 涉及的关键机制
+## 关键机制
 
 | 机制 | 说明 | 相关代码 |
 |---|---|---|
-| AI 介入边界 | LLM 每关每轮只选择 5 个合法探针候选；Warden/Unity/Judge/入库保持确定性 | `tools/llm_probe_pipeline.py` |
+| AI 介入边界 | LLM 每关每轮只选 5 个探针候选；Warden/Unity/Judge/入库全程确定性 | `tools/llm_probe_pipeline.py` |
 | 贝叶斯提前停 | 探针轮 400 局上限，adaptive-stop + min-runs=60；验证轮 400 局定终值 | `scripts/auto_loop.py --adaptive-stop` |
-| 数据可靠性 | 时间防线（逻辑改版旧数据整批作废）、四级数据分级、asset 指纹防漂移 | `tools/verify_pool_data.py` |
-| 探针缺口驱动 | 反推目标胜率 → 池子候选优先 → 邻近微调 → 才自设计 | `tools/design_probes.py` |
+| 数据可靠性 | 时间防线（逻辑改版后旧数据整批作废）、四级数据分级、asset 指纹防漂移 | `tools/verify_pool_data.py` |
+| 探针缺口驱动 | 反推目标胜率 → 池子候选优先 → 邻近微调 → 最后才自设计 | `tools/design_probes.py` |
 | 入库一致性 | asset = Excel = LevelDatabase 三方一致 | `tools/verify_asset_db_match.py` |
 
 ## LLM 参与范围
 
-LLM 只参与探针选择（`auto_loop.phase_analyze`），且选择范围被限定在确定性候选目录内：
+LLM 只参与探针选择（`auto_loop.phase_analyze`），选择被限定在确定性候选目录内：
 
 ```text
 Excel 目标 + verified/phase1/phase2 趋势 + 上轮实测 WR
@@ -44,7 +46,7 @@ python scripts/demo.py          # 用已有数据跑一遍选档→判定→一�
 ```text
 hermes/
 ├── tools/           # 分析工具（tools/README.md 按"想做什么"索引）
-├── scripts/         # auto_loop 全自动调优 / submit_batch 批跑 / smoke_test / demo
+├── scripts/         # auto_loop 全自动调优循环 / submit_batch 批跑 / smoke_test / demo
 ├── project-state/   # board.md 关卡状态 / rules.json 判定规则 / 运行记录
 ├── stage-data/      # 每关实测数据池（bot/summary/phase0/phase1/2 分级）
 ├── docs/            # 设计决策 / 调研（docs/INDEX.md 索引）

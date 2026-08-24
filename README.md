@@ -19,7 +19,7 @@ BlastGame/
     ├── tools/        ← 分析工具（tools/README.md 按"想做什么"索引）
     ├── scripts/      ← 自动化（auto_loop / submit_batch / smoke_test / demo）
     ├── tests/        ← 回归测试（判定规则、质量分、pipeline）
-    ├── docs/         ← 设计决策 / 调研 / 学习笔记（docs/INDEX.md 导航）
+    ├── docs/         ← 设计决策 / 调研（docs/INDEX.md 导航）
     ├── project-state ← 关卡状态 board.md / 判定规则 rules.json / 运行记录
     ├── stage-data/   ← 每关实测数据池（bot/summary/phase0/phase1/2 分级）
     ├── rag/          ← 双层检索学习项目（BM25 + 向量）

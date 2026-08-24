@@ -36,7 +36,7 @@
 6. 一周复盘触发率；若 <50% 症状场景先查了 RAG → 最高频 10 个案例摘要写回 SKILL.md，RAG 只留长尾。
 
 ## 不能放 RAG（边界清单）
-安全闸门（git 全禁/入库必须确认/禁碰 Unity 核心文件）；工具命令映射（tools/README）；当前标准/目标值（rules.json 真源）；数据可靠性硬约束（phase1/2 禁直接入库、filter_verified、时间防线、dedup 按配置不按档位、reimport 后回读 DB）；用户工作流偏好（展示→确认→执行、用户裁定权）；有副作用/时效敏感的精确指令（write_ddc/gen_payload/reimport 用法，08-14 事故即手写 payload 误传 50 关）；个人/隐私内容（面试叙事不入语料）。
+安全闸门（git 全禁/入库必须确认/禁碰 Unity 核心文件）；工具命令映射（tools/README）；当前标准/目标值（rules.json 真源）；数据可靠性硬约束（phase1/2 禁直接入库、filter_verified、时间防线、dedup 按配置不按档位、reimport 后回读 DB）；用户工作流偏好（展示→确认→执行、用户裁定权）；有副作用/时效敏感的精确指令（write_ddc/gen_payload/reimport 用法，08-14 事故即手写 payload 误传 50 关）；个人/隐私内容（个人叙事不入语料）。
 
 ## 清理（与 RAG 无关的杂物）
 hermes 根 30 个 `手动挑配置记录_before_*.bak`（1098KB）归档；references 超 2 周且被覆盖的移 `_archive/`（INDEX.md 规则 #3）；`hermes/memories/` 7-31 旧快照删除。

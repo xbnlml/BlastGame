@@ -105,7 +105,7 @@ SKILL 尾部 References 表与 references/INDEX.md 内容重复（INDEX 更新�
 ### 3.2 具体条目清点（74 条逐条归类，示例清单）
 
 - **删（D1，已入 references）**：#3 asset 分段、#13 DDA 公式（→dda-runtime）、#30 数据源优先级（→source-parity）、#38 探针设计（→probe-efficiency）、#50 leveldb 三坑、#56/#60 牌面校验/时间防线（→pool-board-filter-final/mtime-fence）、#62 auto_loop 铁则（→auto-loop 系）、#92 判定 15→10（→judgment-green-standard）、#96 局数标准（→probe-games-standard）、#100/#106 探针对准（→probe-target-derivation）、#108 工具第四课（→tool-design-agent-ceiling）、#112/#120 bot400 一致性（→bot400-vs-db-consistency）、#124 write_level_db payload（→leveldb-import-white-tier）、#128 RAG 项目（→rag-tool-20260812）、#140 优化器 vs bot400（→optimizer-vs-bot-neutral-tier-rootcause）、#142 DB 导入（→leveldb-import-white-tier）、#148 防塌缩（→tier-collapse-*）…约 30 条
-- **移（D2，→USER）**：#15 展示格式、#32 多 agent 协作、#64 工作流偏好、#70 根因分析、#98 用户关注点、#116/#118 学习偏好、#130 主动找文件、#134 面试素材分离…约 10 条
+- **移（D2，→USER）**：#15 展示格式、#32 多 agent 协作、#64 工作流偏好、#70 根因分析、#98 用户关注点、#116/#118 学习偏好、#130 主动找文件、#134 素材分离…约 10 条
 - **删（D3 单关/单事件）**：#80 08-07/08 综合、#86 08-09/10 细节、#88 备份偏好、#90 规范化、#110 L57 案例、#114 审美案例、#136 批次波动案例、#138 tool data 清空…约 12 条
 - **压缩合并（同主题并成一条）**：#26 Unity 检查 / #5 / #37 同类工具坑合并；#52/#54/#82 入库记录规则合并成一条
 - **保留**：#1 讨论模式、#5 来源时间、#7 Excel 真源、#11 全局权威、#19 git 规则、#24 Unity 核心文件、#28 phase1/2 禁入库、#44 多档 summary 例外、#48 Excel 位置、#74/#76 用户裁定权、#84 用户手动改 asset、#94 两套机制、#104 黄区禁改关卡、#112 一句"summary 会被证伪"、#126 课程位置、#144 目标胜率定稿、#146 hermes config 坑 → **约 18-20 条，~12-15KB**
