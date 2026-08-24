@@ -1,6 +1,6 @@
-# BlastGame 10 分钟演示指南
+# 本地快速体验（不用 Unity）
 
-> 目标：不用 Unity、不用 bot 批跑，用**仓库内已积累的真实数据**（100+ 关 × 每档 240-400 局 bot 实测）重放"数据闭环"的下半段：选档 → 判定 → 一致性验证。
+> 目标：不动 Unity、不跑 bot，直接用仓库里已有的数据（100+ 关 × 每档 240-400 局 bot 实测）把 选档 → 判定 → 一致性验证 这段流程跑一遍。
 > 30 秒速览：`python scripts/demo.py`
 
 ## 0. 环境准备（一次性）
@@ -29,9 +29,9 @@ python scripts/auto_loop.py --help
 
 看全自动闭环的参数（探针轮 400 局 + 贝叶斯提前停 + 验证轮 400 局）。**不实际运行**——真实运行需要 Unity 工程 + bot。
 
-## 3. 数据闭环 Demo（5 分钟）
+## 3. 跑一遍主流程（5 分钟）
 
-数据链：`stage-data/`（实测数据池）→ `tools/find_best_combo.py`（选最优五档组合）→ `tools/judge_level.py`（判定语义）→ `tools/state_snapshot.py`（全局状态）→ `tools/compare_level_db.py`（落库一致性）。
+数据链：`stage-data/`（实测数据池）→ `tools/find_best_combo.py`（选最优五档组合）→ `tools/judge_level.py`（判定）→ `tools/state_snapshot.py`（全局状态）→ `tools/compare_level_db.py`（落库一致性）。
 
 ```bash
 # ① 目标真源（Excel 是唯一权威）
