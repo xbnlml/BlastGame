@@ -1,0 +1,18 @@
+{
+  "run_id": "wrong-run",
+  "attempt_id": "wrong-attempt",
+  "batch_id": "batch-unrelated-newer",
+  "request_plan_hash": "bc4f39fa6e1ffb56ee9c7f56928a1c2933f16a264efe4aa4caa29f7979287745",
+  "executed_plan_hash": "bc4f39fa6e1ffb56ee9c7f56928a1c2933f16a264efe4aa4caa29f7979287745",
+  "logic_version": "old-logic",
+  "status": "completed",
+  "artifacts": [
+    {
+      "level": "999",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "0d7164d7230ebdceba7ccb40a45d9bf0e1ee20ff3ba03928f268554be9012347",
+      "deal_fingerprint": "47b5ad2b749b0d29b896fa8982f77dd88b188ae122f804abc5ed9eac788240e1"
+    }
+  ]
+}

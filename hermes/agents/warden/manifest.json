@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "warden",
+  "version": "warden-v1",
+  "mode": "deterministic",
+  "input_allowlist": ["rules_json", "asset_snapshot", "probe_request", "process_health"],
+  "output_schema": "WARDEN_VERDICT_V1",
+  "forbidden": ["llm_verdict", "memory_rule_override", "asset_write", "excel_write", "board_write", "db_write"],
+  "failure_policy": "fail_closed",
+  "memory_policy": "review_only",
+  "policy_refs": ["project-state/rules.json"]
+}

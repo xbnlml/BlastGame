@@ -1,1 +1,211 @@
-[]
+[
+  {
+    "wr": 91.33,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "1,1,1,1,1",
+    "of": "0.35",
+    "totalGames": 150,
+    "winGames": 137,
+    "source_tier": "T1",
+    "source": "bot",
+    "created_at": "2026-08-18T20:34:58",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.923,
+      "late": 0.077
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.154,0.231,0.538,0.077,0.000,0.000,0.000"
+  },
+  {
+    "wr": 89.38,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "1,1,10,1,1",
+    "of": "0.45",
+    "totalGames": 160,
+    "winGames": 143,
+    "source_tier": "T5",
+    "source": "bot",
+    "created_at": "2026-08-18T21:25:45",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.412,
+      "late": 0.588
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.294,0.000,0.118,0.294,0.235,0.059,0.000"
+  },
+  {
+    "wr": 88.82,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "10,1,1,1,1",
+    "of": "0.45",
+    "totalGames": 170,
+    "winGames": 151,
+    "source_tier": "T3",
+    "source": "bot",
+    "created_at": "2026-08-18T21:03:51",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.895,
+      "late": 0.106
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.421,0.211,0.263,0.000,0.053,0.053,0.000"
+  },
+  {
+    "wr": 87.78,
+    "sd": "20",
+    "sc": "5",
+    "ratios": "10,1,1,1,1",
+    "of": "0.1",
+    "totalGames": 180,
+    "winGames": 158,
+    "source_tier": "T2",
+    "source": "bot",
+    "created_at": "2026-08-18T21:43:07",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.863,
+      "late": 0.136
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.409,0.045,0.409,0.091,0.000,0.045,0.000"
+  },
+  {
+    "wr": 84.76,
+    "sd": "20",
+    "sc": "5",
+    "ratios": "1,10,1,1,1",
+    "of": "0.45",
+    "totalGames": 210,
+    "winGames": 178,
+    "source_tier": "T4",
+    "source": "bot",
+    "created_at": "2026-08-18T19:53:49",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.688,
+      "late": 0.312
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.125,0.125,0.438,0.250,0.031,0.031,0.000"
+  },
+  {
+    "wr": 84.76,
+    "sd": "32",
+    "sc": "5",
+    "ratios": "10,10,9,0,0",
+    "of": "0.4",
+    "totalGames": 210,
+    "winGames": 178,
+    "source_tier": "T5",
+    "source": "bot",
+    "created_at": "2026-08-18T20:19:37",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.938,
+      "late": 0.062
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.094,0.406,0.438,0.031,0.031,0.000,0.000"
+  },
+  {
+    "wr": 84.09,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "1,10,1,1,1",
+    "of": "0.35",
+    "totalGames": 220,
+    "winGames": 185,
+    "source_tier": "T3",
+    "source": "bot",
+    "created_at": "2026-08-18T21:52:41",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.771,
+      "late": 0.229
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.457,0.114,0.200,0.200,0.029,0.000,0.000"
+  },
+  {
+    "wr": 78.52,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "1,10,1,1,1",
+    "of": "0.25",
+    "totalGames": 270,
+    "winGames": 212,
+    "source_tier": "T4",
+    "source": "bot",
+    "created_at": "2026-08-18T21:15:49",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.742,
+      "late": 0.259
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.431,0.121,0.190,0.190,0.052,0.017,0.000"
+  },
+  {
+    "wr": 78.52,
+    "sd": "23",
+    "sc": "5",
+    "ratios": "0,0,0,10,10",
+    "of": "0.8",
+    "totalGames": 270,
+    "winGames": 212,
+    "source_tier": "T4",
+    "source": "bot",
+    "created_at": "2026-08-18T22:03:09",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.81,
+      "late": 0.189
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.138,0.069,0.603,0.172,0.017,0.000,0.000"
+  },
+  {
+    "wr": 64.32,
+    "sd": "21",
+    "sc": "5",
+    "ratios": "0,0,0,10,10",
+    "of": "0.6",
+    "totalGames": 370,
+    "winGames": 238,
+    "source_tier": "T3",
+    "source": "bot",
+    "created_at": "2026-08-18T19:23:31",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.94,
+      "late": 0.062
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.076,0.061,0.803,0.038,0.008,0.008,0.008"
+  },
+  {
+    "wr": 62.37,
+    "sd": "22",
+    "sc": "5",
+    "ratios": "0,0,0,10,10",
+    "of": "0.7",
+    "totalGames": 380,
+    "winGames": 237,
+    "source_tier": "T2",
+    "source": "bot",
+    "created_at": "2026-08-18T20:50:02",
+    "deathProfile": {
+      "early": 0.0,
+      "transition": 0.0,
+      "mid": 0.895,
+      "late": 0.105
+    },
+    "failBucketDistribution": "0.000,0.000,0.000,0.070,0.056,0.769,0.070,0.014,0.000,0.021"
+  }
+]

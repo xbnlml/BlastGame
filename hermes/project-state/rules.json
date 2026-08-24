@@ -19,6 +19,13 @@
         "severity": "block"
       },
       {
+        "id": "W09",
+        "name": "probe_quality",
+        "desc": "ratios非空且探针四元组不重复，防Unity dedup吃槽",
+        "check": "ratios_nonempty && distinct_config_keys",
+        "severity": "block"
+      },
+      {
         "id": "W04",
         "name": "unity_lock",
         "desc": "无Unity残留",
@@ -146,6 +153,7 @@
     "target_deviation": {
       "max": 5,
       "near": 10,
+      "db_green_max": 10,
       "severity": "hard"
     },
     "tolerance_pp": 2,

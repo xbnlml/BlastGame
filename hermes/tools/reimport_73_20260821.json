@@ -1,0 +1,16 @@
+{
+  "73": {
+    "diff": "normal",
+    "targets": [100, 100, 100, 100, 100],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；教学关optimizer p0 summary，五档100%",
+    "tiers": [
+      {"wr": 100.0, "sd": 10, "sc": 4, "ratios": "1,1,1,1", "of": 0.5, "note": "optimizer p0 summary 60局"},
+      {"wr": 100.0, "sd": 10, "sc": 4, "ratios": "1,1,1,1", "of": 0.5, "note": "optimizer p0 summary 60局"},
+      {"wr": 100.0, "sd": 10, "sc": 4, "ratios": "1,1,1,1", "of": 0.5, "note": "optimizer p0 summary 60局"},
+      {"wr": 100.0, "sd": 10, "sc": 4, "ratios": "1,1,1,1", "of": 0.5, "note": "optimizer p0 summary 60局"},
+      {"wr": 100.0, "sd": 10, "sc": 4, "ratios": "1,1,1,1", "of": 0.5, "note": "optimizer p0 summary 60局"}
+    ]
+  }
+}

@@ -12,7 +12,7 @@
 Asset 配置请通过 write_ddc 或 apply_probes.py 单独管理。
 """
 
-import csv, glob, os, re, subprocess, sys, time
+import csv, glob, json, os, re, subprocess, sys, time
 from datetime import datetime
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -84,13 +84,39 @@ if __name__ == '__main__':
                         help='验证 asset 完整性但不执行')
     parser.add_argument('--adaptive-stop', action='store_true',
                         help='开启贝叶斯自适应提前停止（默认关闭=跑满局数）')
+    parser.add_argument('--worker-count', type=int, default=0,
+                        help='Unity bot 并发 worker 数（0=用 EditorPrefs 默认4，建议 7 用满8核）')
+    parser.add_argument('--bayes-min-runs', type=int, default=0,
+                        help='贝叶斯提前停最小局数兜底（防极端配置过早停）')
     parser.add_argument('--skip-agent-pipeline', action='store_true',
                         help='跳过步骤4-6：agent_data/agent_analyze/agent_review（auto_loop 统筹时使用）')
+    parser.add_argument('--v3-request', default='',
+                        help='V3 request JSON：启用显式 run/attempt/batch identity 与 receipt 验收')
     args = parser.parse_args()
 
     LEVELS = parse_levels(args.levels)
     tier_str = args.tiers
     run_count = args.games
+    v3_request = None
+    if args.v3_request:
+        try:
+            with open(args.v3_request, encoding='utf-8') as _v3_f:
+                v3_request = json.load(_v3_f)
+            required_v3 = ('run_id', 'attempt_id', 'batch_id', 'request_plan_hash',
+                           'executed_plan_hash', 'logic_version', 'expected_artifacts')
+            missing_v3 = [k for k in required_v3 if not v3_request.get(k)]
+            if missing_v3:
+                raise ValueError('missing request fields: ' + ','.join(missing_v3))
+            if v3_request['request_plan_hash'] != v3_request['executed_plan_hash']:
+                raise ValueError('request/executed plan hash mismatch')
+            if sorted(int(x) for x in v3_request.get('levels', [])) != LEVELS:
+                raise ValueError('request levels differ from CLI levels')
+            if sorted(int(x) for x in v3_request.get('tiers', [])) != sorted(
+                    int(x) for x in tier_str.split(',') if x.strip()):
+                raise ValueError('request tiers differ from CLI tiers')
+        except (OSError, json.JSONDecodeError, ValueError, TypeError) as exc:
+            echo('❌ V3 request invalid: ' + str(exc))
+            sys.exit(2)
 
     if not args.yes:
         echo('=== 即将提交 ===')
@@ -159,9 +185,16 @@ if __name__ == '__main__':
         '-BlastBotBatchRecordReplay', 'false',
         '-BlastBotBatchDedupeEnabled', 'false',
         '-BlastBotBatchStrategy', args.strategy,
+        *(['-BlastBotV3RunId', str(v3_request['run_id']),
+           '-BlastBotV3AttemptId', str(v3_request['attempt_id']),
+           '-BlastBotV3BatchId', str(v3_request['batch_id']),
+           '-BlastBotV3RequestPlanHash', str(v3_request['request_plan_hash'])]
+          if v3_request else []),
                 '-BlastBotBatchAdaptiveStop', 'true' if args.adaptive_stop else 'false',
                 '-BlastBotBatchBayesStdThreshold', '0.025',
                 '-BlastBotBatchBayesBatchSize', '10',
+                '-BlastBotBatchMinRuns', str(args.bayes_min_runs),
+                '-BlastBotBatchWorkerCount', str(args.worker_count),
         '-logFile', '-',
         '-quit',
     ]
@@ -229,12 +262,15 @@ if __name__ == '__main__':
         fatal_reason = fatal_reason or 'unity_timeout'
 
     # 3. 读取剩余 stdout，获取 batch 目录（正常退出时 communicate 返回空——用循环内捕获的）
-    current_batch = seen_export_dir
+    # V3 never trusts a log line/mtime to select the batch. Unity must have
+    # written the explicitly requested root; legacy mode keeps old discovery
+    # solely for backwards-compatible non-V3 CLI calls.
+    current_batch = str(v3_request['batch_id']) if v3_request else seen_export_dir
     stdout, _ = proc.communicate(timeout=10) if proc.stdout else ('', '')
     for line in (stdout or '').split('\n'):
         if line.strip():
             tee(line.strip())
-        if '完成' in line and '导出目录' in line:
+        if not v3_request and '完成' in line and '导出目录' in line:
             m = re.search(r'bot[/\\]([^/\\]+)$', line.strip().replace('\\', '/'))
             if m:
                 current_batch = m.group(1)
@@ -280,6 +316,16 @@ if __name__ == '__main__':
             export_issues.append('batch 目录不存在: %s' % bp)
     else:
         export_issues.append('未捕获 batch 目录（日志: %s）' % log_path)
+
+    if v3_request:
+        try:
+            from tools.pipeline.unity_request import write_receipt_from_batch
+            receipt = write_receipt_from_batch(os.path.join(BOT_DIR, current_batch), v3_request)
+            echo('  ✅ V3 batch receipt: %s (%s)' % (receipt.get('status'), current_batch))
+        except Exception as exc:
+            echo('  ❌ V3 receipt 验收失败: ' + str(exc))
+            export_issues.append('V3 receipt: ' + str(exc))
+            sys.exit(1)
 
     # 4. Agent Data — 刷新池子 + 签名验证（skip-agent-pipeline 时跳过）
     if not args.skip_agent_pipeline:

@@ -14,6 +14,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'
 
 from tools.data import pool
 from tools.data.adapters import excel_target as et
+from tools.find_best_combo import (
+    QUALITY_TARGET_WEIGHT,
+    _gap_score,
+    _quality_target_score,
+)
 
 FORBIDDEN_CMDS = ['git ', 'rm -rf', 'del /', 'checkout', 'reset', 'clean', 'restore']
 
@@ -28,9 +33,9 @@ def _fallback_probes(pool_records, targets):
     # 按 WR 排序取 top 5
     candidates = sorted(pool_records, key=lambda r: r['wr'], reverse=True)
     probes = []
-    for r in candidates[:5]:
+    for index, r in enumerate(candidates[:5], start=1):
         probes.append({
-            'tier': 1, 'sd': int(r.get('sd', 0)), 'sc': int(r.get('sc', 5)),
+            'tier': index, 'sd': int(r.get('sd', 0)), 'sc': int(r.get('sc', 5)),
             'ratios': str(r.get('ratios', '')), 'of': float(r.get('of', 0.5)),
             'predicted_wr': round(r['wr'], 1),
         })
@@ -53,7 +58,7 @@ def _design_probes(level, targets, pool_records, difficulty):
 
 # ── 组合选取 ──
 
-def analyze_level(lv_str):
+def analyze_level(lv_str, include_probes=True):
     """分析单关：取 verified 数据 → find_best_monotonic → 探针"""
     t = et.get_target(lv_str)
     if not t:
@@ -91,16 +96,27 @@ def analyze_level(lv_str):
             'source': r.get('source', '?'), 'games': r.get('totalGames', 0),
         })
 
+    wrs = [float(r['wr']) for r in best]
     result['combo'] = {
-        'quality': round(q, 1), 'gaps': [round(g, 1) for g in gs],
+        'quality': round(q, 2),
+        'quality_components': {
+            'gap_distance': round(_gap_score(wrs, t['diff'], targets), 2),
+            'target_distance': round(_quality_target_score(wrs, targets, t['diff']), 2),
+            'target_weight': QUALITY_TARGET_WEIGHT,
+        },
+        'gaps': [round(g, 1) for g in gs],
         'tiers': tiers_out,
     }
 
-    # 设计探针（备选）
-    probes = _design_probes(lv_str, targets, verified, t['diff'])
-    result['probe_count'] = len(probes)
-    if probes:
-        result['probes'] = probes
+    # 设计探针（AI 正式模式由 auto_loop 外层选择；这里可只做组合分析）
+    if include_probes:
+        probes = _design_probes(lv_str, targets, verified, t['diff'])
+        result['probe_count'] = len(probes)
+        if probes:
+            result['probes'] = probes
+    else:
+        result['probe_count'] = 0
+        result['probe_source'] = 'skipped_for_ai_selector'
 
     return result
 
@@ -110,6 +126,8 @@ def main():
     parser.add_argument('--levels', required=True)
     parser.add_argument('--filter-verified', action='store_true', default=True)
     parser.add_argument('--output', choices=['json', 'text'], default='json')
+    parser.add_argument('--skip-probes', action='store_true',
+                        help='只做组合分析，由外层 AI selector 负责探针设计')
     args = parser.parse_args()
 
     levels = []
@@ -121,7 +139,7 @@ def main():
         else:
             levels.append(p)
 
-    results = [analyze_level(lv) for lv in levels]
+    results = [analyze_level(lv, include_probes=not args.skip_probes) for lv in levels]
 
     report = {
         'action': 'agent_analyze',

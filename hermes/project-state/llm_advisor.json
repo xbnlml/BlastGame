@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "model": "current",
+  "max_tokens": 500,
+  "max_calls_per_round": 4,
+  "daily_call_limit": 200,
+  "fail_open": true,
+  "retry_on_429": false,
+  "mode": "llm",
+  "reflect_every_n_rounds": 0,
+  "approved_lessons": {
+    "enabled": false,
+    "max_entries": 8
+  },
+  "notes": "2026-08-20：正式模式。enabled=false 或 mode=script 时走确定性脚本；mode=llm 时当前 Hermes 模型只选择合法 candidate_id，失败自动脚本兜底；approved_lessons 默认关闭，开启后只加载带证据且条件匹配的 planner lessons；不做 shadow/canary。"
+}

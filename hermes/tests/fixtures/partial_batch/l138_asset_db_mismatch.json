@@ -1,0 +1,5 @@
+{
+  "deprecated": true,
+  "canonical_fixture": "../asset_db_mismatch_l138/system_health.json",
+  "reason": "moved_to_avoid_mixing_batch_and_system_health_fixture"
+}

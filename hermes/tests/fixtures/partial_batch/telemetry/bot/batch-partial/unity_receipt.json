@@ -1,0 +1,32 @@
+{
+  "run_id": "run-fixture-partial",
+  "attempt_id": "attempt-002",
+  "batch_id": "batch-partial",
+  "request_plan_hash": "c1b8650499f9b2793d62f17e2d141ce337b2cbbdadadcfbff11e6b5bd2dab967",
+  "executed_plan_hash": "c1b8650499f9b2793d62f17e2d141ce337b2cbbdadadcfbff11e6b5bd2dab967",
+  "logic_version": "2026-08-13T14:36:00+08:00",
+  "status": "partial",
+  "artifacts": [
+    {
+      "level": "60",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "750130318c1542c5e68be9a874418b5a659c305ab7ecc0a28f898b579b84fbe8",
+      "deal_fingerprint": "26b5d021ea74bf4f839e62801cb0640f5e88b670fda37461a3f36b9d545041be"
+    }
+  ],
+  "missing_pairs": [
+    [
+      "60",
+      "T2"
+    ],
+    [
+      "62",
+      "T1"
+    ],
+    [
+      "62",
+      "T2"
+    ]
+  ]
+}

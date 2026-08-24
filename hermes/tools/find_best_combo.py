@@ -3,7 +3,7 @@
 
 本模块承载「找最优档位」的全部算法逻辑（2026-08-05 从 pool.py 拆分）：
   - find_best_monotonic      主入口：Normal 3-tier / Hard·SuperHard 5-tier
-  - _gap_score               档位差分段罚分（gap 达标是主要考量）
+  - _gap_score               目标体验档差距离（gap 是主要考量）
   - target_pen_seg           目标偏差分段罚分（绿1/黄3/红8，防离目标离谱）
   - _bucket                  目标窗口取候选
   - _find_monotonic_3tier    Normal 3-tier 枚举
@@ -17,7 +17,8 @@
   python tools/find_best_combo.py 200 --targets 50,40,30,20,10 --top 3
   python tools/find_best_combo.py 151,162,165
 """
-import sys, os, json
+import sys, os, json, math
+from functools import lru_cache
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from tools.data import pool
 from tools.data.adapters import excel_target as et
@@ -27,123 +28,203 @@ _config_key = pool._config_key
 _source_penalty = pool._source_penalty
 _norm_of = pool._norm_of
 
-
-def _load_bands(difficulty):
-    """从 rules.json 读档位差分档（单一真源），缺失用默认分档。"""
-    _bands = {'gap_bands': {'wr_ge_70': 20, 'wr_ge_50': 15, 'wr_ge_30': 10, 'wr_lt_30': 6},
-              'near_bands': {'wr_ge_70': 15, 'wr_ge_50': 10, 'wr_ge_30': 7, 'wr_lt_30': 4}}
-    _rules_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                               'project-state', 'rules.json')
-    if os.path.exists(_rules_path):
-        try:
-            _rules = json.load(open(_rules_path, encoding='utf-8'))
-            _jr = _rules.get('judge_rules', {}).get(difficulty, {})
-            if _jr:
-                _bands = _jr
-        except Exception:
-            pass
-    return _bands
+# Backward-compatible export for agent_analyze and external callers. The new
+# banded selector does not use this scalar weight for ranking.
+QUALITY_TARGET_WEIGHT = 0.5
 
 
-def _load_tolerances():
-    """读 rules.json 的 tolerance_pp / near_tolerance_pp（顶层，所有难度生效）。"""
-    tolerance, near_tolerance = 0, 0
-    _rules_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                               'project-state', 'rules.json')
-    try:
-        _rules = json.load(open(_rules_path, encoding='utf-8'))
-        tolerance = float(_rules.get('judge_rules', {}).get('tolerance_pp', 0))
-        near_tolerance = float(_rules.get('judge_rules', {}).get('near_tolerance_pp', 0))
-    except Exception:
-        pass
-    return tolerance, near_tolerance
+def _effective_pairs(difficulty):
+    """返回实际参与质量评价的档差对。
+
+    Normal 只有 T1/T3/T5 三个有效配置；Hard/SuperHard 使用四个相邻档差。
+    """
+    if difficulty == 'normal':
+        return [(0, 2), (2, 4)]
+    return [(i, i + 1) for i in range(4)]
+
+
+def _effective_indices(difficulty):
+    """返回实际配置索引，避免 Normal 的重复槽位重复计权。"""
+    if difficulty == 'normal':
+        return [0, 2, 4]
+    return list(range(5))
+
+
+def _target_penalty_value(distance, g=1.0, y=3.0, r=8.0):
+    """单档目标偏差罚分；q 中始终为非负距离。"""
+    if distance <= 10:
+        return g * distance
+    if distance <= 15:
+        return g * 10 + y * (distance - 10)
+    return g * 10 + y * 5 + r * (distance - 15)
+
+
+def _experience_gap_error(wr_hi, wr_lo, target_hi, target_lo):
+    """实际/目标体验档差的距离。
+
+    以 log2(预期尝试次数比)表达档差：
+      log2(E_low / E_high) = log2(wr_high / wr_low)
+    返回绝对误差，避免 gap 超过目标时继续获得奖励。
+    结果乘 100 与 pp 罚分保持同一数量级，仍由 q 的 gap 项主导。
+    """
+    floor = 5.0  # wr<5 是 Judge 硬违规；这里仅防止日志数值异常
+    actual_ratio = max(float(wr_hi), floor) / max(float(wr_lo), floor)
+    target_ratio = max(float(target_hi), floor) / max(float(target_lo), floor)
+    return abs(math.log2(actual_ratio / target_ratio)) * 100.0
 
 
 def _gap_score(wrs, difficulty='hard', targets=None):
-    """档差品质分：越低越好。
+    """目标体验档差距离：越低越好，且始终非负。
 
-    标准从 rules.json 读取（单一真源），消除与 judge_level 的漂移。
-    2026-08-03 修复：从 rules.json 动态读分档值，不再硬编码。
+    旧实现会奖励超过目标的 gap，导致「离目标更远」的组合可能 q 更低。
+    新实现比较实际档差与 Excel 目标档差的 log2 尝试次数比例：gap 不足和
+    gap 过大都产生距离，不再奖励过大的 gap。Judge 的 gap 硬/软边界仍由
+    judge_level.py 独立负责。
     """
-    score = 0
-    is_normal = difficulty == 'normal'
-    if is_normal:
-        gaps = [(0, 2, wrs[0] - wrs[2]), (2, 4, wrs[2] - wrs[4])]
-    else:
-        gaps = [(i, i+1, wrs[i] - wrs[i+1]) for i in range(4)]
-
-    _bands = _load_bands(difficulty)
-    tolerance, near_tolerance = _load_tolerances()
-
-    for i, j, g in gaps:
-        hi = wrs[i]
-        # 硬违规：<5% 重罚
-        if g < 5:
-            score += (5 - g) * 20
-        if not is_normal and g > 40:
-            score += (g - 40) * 10
-
-        ok_lo, near_lo = 6, 4
-        gb = _bands.get('gap_bands', {})
-        nb = _bands.get('near_bands', {})
-        if hi >= 70:
-            ok_lo = gb.get('wr_ge_70', 20)
-            near_lo = nb.get('wr_ge_70', 15)
-        elif hi >= 50:
-            ok_lo = gb.get('wr_ge_50', 15)
-            near_lo = nb.get('wr_ge_50', 10)
-        elif hi >= 30:
-            ok_lo = gb.get('wr_ge_30', 10)
-            near_lo = nb.get('wr_ge_30', 7)
-        else:
-            ok_lo = gb.get('wr_lt_30', 6)
-            near_lo = nb.get('wr_lt_30', 4)
-
-        if targets is not None:
-            ok_target = targets[i] - targets[j]
-            if ok_target != ok_lo:
-                ok_lo = ok_target
-                near_lo = int(ok_target * 0.7)
-
-        if g < near_lo - near_tolerance:
-            score += (ok_lo - g) * 5 + (near_lo - g) * 10
-        elif g < ok_lo:
-            if g < ok_lo - tolerance:  # 容差内不罚
-                score += (ok_lo - g) * 5
-        else:
-            # 档位差富余奖励——gap 超出合格线越多越优。
-            surplus = min(g - ok_lo, 35 - ok_lo)
-            if surplus > 0:
-                score -= surplus * 0.5
-
-        if g > 35:
-            score += (g - 35) * 3
-
-    return score
+    pairs = _effective_pairs(difficulty)
+    if targets is None:
+        # 兼容旧的直接调用：没有 Excel 目标时只返回 0，正式选档入口要求 targets。
+        return 0.0
+    return sum(
+        _experience_gap_error(wrs[i], wrs[j], targets[i], targets[j])
+        for i, j in pairs
+    )
 
 
 def target_pen_seg(wrs, targets, g=1.0, y=3.0, r=8.0):
-    """目标偏差分段罚分（2026-08-05 定稿：绿1/黄3/红8）。
+    """目标偏差分段罚分（绿1/黄3/红8），越低越好。
 
-    d = |wr - target|（pp），连续分段线性，处处正斜率，不硬淘汰不封顶：
-      🟢 绿  d≤10        : 1.0·d           （斜率 1）
-      🟡 黄  10<d≤15     : 10 + 3.0·(d-10)  （斜率 3）
-      🔴 红  d>15        : 25 + 8.0·(d-15)  （斜率 8）
-
-    关键：绿区斜率必须 >0（=1）——若为 0，gap 富余奖励(0.5/pp)会支配，
-    算法重新选出「gap 大但离目标」的组合。红区 8/pp 与 gap 惩罚同量级，
-    保证红档组合(>15pp)明显劣于绿/黄组合，但不硬淘汰。
+    d = |wr - target|（pp），连续分段线性，处处正斜率，不硬淘汰、不封顶。
+    该函数只表示目标偏差距离；档差质量由 `_gap_score` 单独计算。
     """
-    total = 0.0
-    for w, t in zip(wrs, targets):
-        d = abs(w - t)
-        if d <= 10:
-            total += g * d
-        elif d <= 15:
-            total += g * 10 + y * (d - 10)
-        else:
-            total += g * 10 + y * 5 + r * (d - 15)
-    return total
+    return sum(
+        _target_penalty_value(abs(w - t), g=g, y=y, r=r)
+        for w, t in zip(wrs, targets)
+    )
+
+
+def _quality_target_score(wrs, targets, difficulty):
+    """目标偏差质量分；Normal 按三个有效配置计权。"""
+    indices = _effective_indices(difficulty)
+    return sum(
+        _target_penalty_value(abs(wrs[i] - targets[i]))
+        for i in indices
+    )
+
+
+def _quality_score(wrs, targets, difficulty):
+    """分层质量分，越低越好。
+
+    Priority is deliberate rather than one tunable global weight:
+      1. keep every effective gap inside ``target_gap - slack``;
+      2. prefer DB-green target deviations (strictly <10pp);
+      3. prefer smaller target deviation;
+      4. finally prefer gaps nearer the Excel target gap, with no surplus bonus.
+
+    Slack is proportional to the target gap: 20→5, 15→4, 10→3, 6→2.
+    The existing 2pp measurement tolerance is applied only to the selection
+    band; Judge admission rules remain separate.
+    """
+    pairs = _effective_pairs(difficulty)
+    tolerance_pp, db_green_max = _selection_limits()
+    band_deficit = 0.0
+    gap_distance = 0.0
+    for i, j in pairs:
+        standard_gap = _standard_gap_target(wrs[i], difficulty)
+        actual_gap = float(wrs[i]) - float(wrs[j])
+        slack = max(2, min(5, math.ceil(max(0.0, standard_gap) * 0.25)))
+        lower = standard_gap - slack
+        band_deficit += max(0.0, lower - tolerance_pp - actual_gap)
+        # Once inside the acceptable band, compare closeness to the Excel
+        # target-gap difference; do not add a separate strict-gap penalty.
+        target_gap = float(targets[i]) - float(targets[j])
+        gap_distance += abs(actual_gap - target_gap)
+
+    non_green_count = sum(
+        1 for wr, target in zip(wrs, targets)
+        if abs(float(wr) - float(target)) >= db_green_max
+    )
+    target_penalty = _quality_target_score(wrs, targets, difficulty)
+    # Lexicographic bands encoded as a scalar: acceptable-band failure dominates
+    # color; non-green dominates target distance; gap closeness only breaks ties.
+    return (
+        band_deficit * 10000.0
+        + non_green_count * 1000.0
+        + target_penalty
+        + gap_distance * 0.01
+    )
+
+
+def _legacy_quality_score(wrs, targets, difficulty):
+    """Pre-banded score used only as a non-regression fallback."""
+    return _gap_score(wrs, difficulty, targets) + 0.5 * _quality_target_score(
+        wrs, targets, difficulty
+    )
+
+
+def _judgment_rank(records, targets, difficulty):
+    """Return Judge rank for candidate records without changing round state."""
+    try:
+        from tools.judge_level import check_judgment
+        wrs = [float(record['wr']) for record in records]
+        result, _ = check_judgment(
+            {f'T{i + 1}': wrs[i] for i in range(5)},
+            difficulty,
+            targets,
+        )
+        return {'合格': 3, '接近': 2, '不合格': 1}.get(result, 0)
+    except Exception:
+        return 0
+
+
+def _finalize_candidates(candidates, targets, difficulty, top_n):
+    """Apply new ranking, then prevent a selection-quality regression."""
+    candidates.sort(key=lambda item: item[0])
+    new_best = candidates[0]
+    legacy_best = min(candidates, key=lambda item: item[1])
+    if _judgment_rank(new_best[3], targets, difficulty) < _judgment_rank(
+        legacy_best[3], targets, difficulty
+    ):
+        ordered = [legacy_best] + [item for item in candidates if item is not legacy_best]
+    else:
+        ordered = candidates
+    return [(item[0], item[2], item[3]) for item in ordered[:top_n]]
+
+
+@lru_cache(maxsize=1)
+def _selection_limits():
+    """Read selection tolerances from the single project rules source."""
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        'project-state', 'rules.json')
+    try:
+        with open(path, encoding='utf-8') as fh:
+            rules = json.load(fh).get('judge_rules', {})
+        return (
+            float(rules.get('tolerance_pp', 2)),
+            float(rules.get('target_deviation', {}).get('db_green_max', 10)),
+        )
+    except Exception as exc:
+        raise RuntimeError(f'cannot load selection rules: {path}: {exc}') from exc
+
+
+@lru_cache(maxsize=8)
+def _standard_gap_target(wr_hi, difficulty):
+    """Return the WR-band gap standard (20/15/10/6) from rules.json."""
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        'project-state', 'rules.json')
+    try:
+        with open(path, encoding='utf-8') as fh:
+            rules = json.load(fh).get('judge_rules', {})
+        bands = rules.get(difficulty, {}).get('gap_bands', {})
+        if float(wr_hi) >= 70:
+            return float(bands.get('wr_ge_70', 20))
+        if float(wr_hi) >= 50:
+            return float(bands.get('wr_ge_50', 15))
+        if float(wr_hi) >= 30:
+            return float(bands.get('wr_ge_30', 10))
+        return float(bands.get('wr_lt_30', 6))
+    except Exception as exc:
+        raise RuntimeError(f'cannot load gap bands: {path}: {exc}') from exc
 
 
 def _bucket(records, target, window=50, size=60):
@@ -201,24 +282,14 @@ def find_best_monotonic(records, targets, top_n=1, difficulty='hard'):
                         keys = [_config_key(r) for r in recs5]
                         if len(set(keys)) < 5: continue
                         wrs = [r['wr'] for r in recs5]
-                        target_score = target_pen_seg(wrs, targets)
-                        source_score = sum(_source_penalty(r.get('source',''), r.get('totalGames',0)) for r in recs5) * 0.3
-                        gap_score = _gap_score(wrs, difficulty, targets)
-                        # 死亡分布分散度
-                        dp = recs5[0].get('deathProfile')
-                        death_score = 0
-                        if dp:
-                            worst = max(dp['early'], dp['transition'], dp['mid'], dp['late'])
-                            if worst < 0.5:
-                                death_score = -2
-                            elif worst > 0.8:
-                                death_score = 3
-                        q = target_score + source_score + gap_score + death_score
+                        # q 只表示档位质量：gap 主项 + 目标偏差次项。
+                        # 来源和死亡分布属于置信度/诊断信息，不污染质量排序。
+                        q = _quality_score(wrs, targets, difficulty)
+                        legacy_q = _legacy_quality_score(wrs, targets, difficulty)
                         gs = [g12, g23, g34, g45]
-                        candidates.append((q, gs, recs5))
+                        candidates.append((q, legacy_q, gs, recs5))
     if candidates:
-        candidates.sort(key=lambda x: x[0])
-        return candidates[:top_n]
+        return _finalize_candidates(candidates, targets, difficulty, top_n)
     return []
 
 
@@ -246,14 +317,12 @@ def _find_monotonic_3tier(records, targets, top_n=1):
                 if g35 < 4: continue
                 recs5 = [r1, r1, r3, r5, r5]
                 wrs = [r1['wr'], r1['wr'], r3['wr'], r5['wr'], r5['wr']]
-                target_score = target_pen_seg(wrs, targets)
-                source_score = sum(_source_penalty(r.get('source',''), r.get('totalGames',0)) for r in [r1, r3, r5]) * 0.3
-                gap_score = _gap_score(wrs, 'normal', targets)
-                q = target_score + source_score + gap_score
-                candidates.append((q, [g13, g35, 0, 0], recs5))
+                # Normal 只按 T1/T3/T5 三个有效配置计算质量分。
+                q = _quality_score(wrs, targets, 'normal')
+                legacy_q = _legacy_quality_score(wrs, targets, 'normal')
+                candidates.append((q, legacy_q, [g13, g35, 0, 0], recs5))
     if candidates:
-        candidates.sort(key=lambda x: x[0])
-        return candidates[:top_n]
+        return _finalize_candidates(candidates, targets, 'normal', top_n)
     return []
 
 
@@ -330,16 +399,23 @@ def main():
 
         for rank, (q, gs, recs) in enumerate(results):
             if top_n > 1:
-                print(f'  ── #{rank+1} 品质总分 {q:.1f} ──')
+                print(f'  ── #{rank+1} 品质总分 {q:.2f} ──')
             for i, (r, t) in enumerate(zip(recs, targets)):
                 label = 'T%d' % (i+1)
                 diff = r['wr'] - t
+                # 2026-08-18：sc 与 ratios 数量一致性告警（L70/103/115/137 抄配置踩坑根因）
+                sc_val = str(r.get('sc',''))
+                ratios_str = str(r.get('ratios',''))
+                n_ratios = len([x for x in ratios_str.split(',') if x.strip()]) if ratios_str else 0
+                n_sc = int(sc_val) if str(sc_val).isdigit() else 0
+                if n_ratios and n_sc and n_ratios != n_sc:
+                    print(f'  ⚠️  {label}: sc={sc_val} 但 ratios 有 {n_ratios} 个值 ({ratios_str})——配置不合法，抄写时注意!')
                 print('  %s %5.1f%% %+7.1fpp %4s %4s %20s %6s %5d %8s' % (
                     label, r['wr'], diff,
                     r.get('sd',''), r.get('sc',''),
-                    str(r.get('ratios','')), str(r.get('of','')),
+                    ratios_str, str(r.get('of','')),
                     r.get('totalGames',0), r.get('source','')))
-            print(f'  gaps: {gs[0]:.1f}/{gs[1]:.1f}/{gs[2]:.1f}/{gs[3]:.1f} 品质={q:.1f}')
+            print(f'  gaps: {gs[0]:.1f}/{gs[1]:.1f}/{gs[2]:.1f}/{gs[3]:.1f} 品质={q:.2f}')
 
             # 死亡分布分析 + 改关卡预判（只看 T1）
             t1_rec = recs[0]

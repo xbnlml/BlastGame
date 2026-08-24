@@ -14,6 +14,9 @@ TOOLS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file_
 
 
 def parse_levels(spec):
+    if spec in ('--help', '-h'):
+        print(__doc__)
+        sys.exit(0)
     levels = []
     for part in spec.split(','):
         part = part.strip()

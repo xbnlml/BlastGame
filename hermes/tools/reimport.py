@@ -197,16 +197,19 @@ def reimport(config, dry_run=False):
 
         # ④ 关卡数据库同步（2026-08-10 用户要求：DB 同步纳入入库标准流程）
         #    用 gen_payload.py 生成 payload → node write_level_db.mjs 写入
+        db_status = 'OK'
+        db_note = ''
         if not dry_run:
             db_ok = _sync_leveldb(lv, cfg, tiers5)
             if not db_ok:
-                results.append((lv, 'OK', 'asset/Excel/board 完成，但 DB 同步失败（需手动 write_level_db.mjs）'))
+                db_status = 'PARTIAL'
+                db_note = '；DB 同步失败（需手动 write_level_db.mjs）'
                 print(f'  ⚠ DB 同步失败——请手动 node tools/leveldb_sync/write_level_db.mjs')
             else:
                 print(f'  ✅ LevelDatabase 同步完成')
 
         wrs = [t['wr'] for t in tiers5]
-        results.append((lv, 'OK', ' / '.join(f'{w:.1f}' for w in wrs)))
+        results.append((lv, db_status, ' / '.join(f'{w:.1f}' for w in wrs) + db_note))
 
     return results
 

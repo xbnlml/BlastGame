@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "orchestrator",
+  "version": "orchestrator-v1",
+  "mode": "deterministic",
+  "input_allowlist": ["run_spec", "checkpoint", "phase_state"],
+  "output_schema": "ORCHESTRATOR_STATE_V1",
+  "forbidden": ["llm_verdict", "asset_write", "excel_write", "board_write", "db_write"],
+  "failure_policy": "fail_closed",
+  "memory_policy": "none",
+  "policy_refs": ["project-state/rules.json"]
+}

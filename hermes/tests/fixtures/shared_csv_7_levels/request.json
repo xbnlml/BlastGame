@@ -1,0 +1,255 @@
+{
+  "run_id": "run-fixture-shared-csv",
+  "attempt_id": "attempt-006",
+  "batch_id": "batch-expected",
+  "request_plan_hash": "63dcf571299f6ec89e8bea74c326e88c63ed7b184e6bbbd913b1f27340b0beff",
+  "executed_plan_hash": "63dcf571299f6ec89e8bea74c326e88c63ed7b184e6bbbd913b1f27340b0beff",
+  "logic_version": "2026-08-13T14:36:00+08:00",
+  "expected_artifacts": [
+    {
+      "level": "60",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "3378c34649ad0fb6b1a7020e149009495f628f956320de7777a137a719ace467",
+      "deal_fingerprint": "ee8d47b49c88db271e834fb10ac33e51d92d7b4454401f21e80e2c57986a9182"
+    },
+    {
+      "level": "60",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "3378c34649ad0fb6b1a7020e149009495f628f956320de7777a137a719ace467",
+      "deal_fingerprint": "6b80355ab2b462fd315d098d3c9e66cbcd9d2a76b6a0998213de1c1ad488ebb1"
+    },
+    {
+      "level": "60",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "3378c34649ad0fb6b1a7020e149009495f628f956320de7777a137a719ace467",
+      "deal_fingerprint": "de9b7cac2368ef61938cea6b16853f37273ac7010a608ba02b20e161800ec35a"
+    },
+    {
+      "level": "60",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "3378c34649ad0fb6b1a7020e149009495f628f956320de7777a137a719ace467",
+      "deal_fingerprint": "53a1bdbbc757090f2d9d2f62e521b92a9227aa510265724b8a8bfc89540c5305"
+    },
+    {
+      "level": "60",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "3378c34649ad0fb6b1a7020e149009495f628f956320de7777a137a719ace467",
+      "deal_fingerprint": "d3e63bc5ab265ba6b5e73401595091b8d966356d4088117ffbd69117abe6bd54"
+    },
+    {
+      "level": "62",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "e2033f2859960fdab643f2c3706a4b6e170a559eb8a6c067bf8b1ead9f6febd2",
+      "deal_fingerprint": "fcc01012a90bb40a5d16453c69ee33a12bde952e47c732740ef7a3e559c913d1"
+    },
+    {
+      "level": "62",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "e2033f2859960fdab643f2c3706a4b6e170a559eb8a6c067bf8b1ead9f6febd2",
+      "deal_fingerprint": "f8b56588c6b8b47e9f95aea8e711e8d2b49dbe7dba502a38e6323c2c1e651d17"
+    },
+    {
+      "level": "62",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "e2033f2859960fdab643f2c3706a4b6e170a559eb8a6c067bf8b1ead9f6febd2",
+      "deal_fingerprint": "9128b19b83d9264b7549806f479b3a32a32976e628160b7372c80f47a240bec4"
+    },
+    {
+      "level": "62",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "e2033f2859960fdab643f2c3706a4b6e170a559eb8a6c067bf8b1ead9f6febd2",
+      "deal_fingerprint": "5baa2927f166c3ac57d40cef68e32314d2455eab7b59af26ae8dbeeec6180da7"
+    },
+    {
+      "level": "62",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "e2033f2859960fdab643f2c3706a4b6e170a559eb8a6c067bf8b1ead9f6febd2",
+      "deal_fingerprint": "7e8b33dce1a8653468aeef8d1aea656ecd6d49487c0bbaf3a2a766c8daa55c41"
+    },
+    {
+      "level": "79",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "251222c80d5607dfbbb1f8e31e75868f6995fe6012413bb44d1b66004e812125",
+      "deal_fingerprint": "1623203eaf4fc5bfab7691ab93577d7e4b7ebc9a0f86f9f0304a91018cb37949"
+    },
+    {
+      "level": "79",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "251222c80d5607dfbbb1f8e31e75868f6995fe6012413bb44d1b66004e812125",
+      "deal_fingerprint": "9252e04df4d9c3af8910589aa66d8c27477082994f083b9f8f59c7f8f0d982c3"
+    },
+    {
+      "level": "79",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "251222c80d5607dfbbb1f8e31e75868f6995fe6012413bb44d1b66004e812125",
+      "deal_fingerprint": "8ca8d15e9083a10d254c36591fb771486f2b19c4dc5aee8c78517530ba34db9e"
+    },
+    {
+      "level": "79",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "251222c80d5607dfbbb1f8e31e75868f6995fe6012413bb44d1b66004e812125",
+      "deal_fingerprint": "2375adfeaa789ac88cdf613baff1054f46c56dc867e0541b25d6a11d24b8aaca"
+    },
+    {
+      "level": "79",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "251222c80d5607dfbbb1f8e31e75868f6995fe6012413bb44d1b66004e812125",
+      "deal_fingerprint": "1b141cef94ceba802e54cf0f289dc14d7f5d684c15135ff03438631b2189b83b"
+    },
+    {
+      "level": "84",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "7dac12c297642e854e52b772098ce3de7349239f9694a44356ccb243a3af01a8",
+      "deal_fingerprint": "dec70290b096e4c2d67be8e543b0e3fd4d8cfd862d50862eb80814bf5564794c"
+    },
+    {
+      "level": "84",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "7dac12c297642e854e52b772098ce3de7349239f9694a44356ccb243a3af01a8",
+      "deal_fingerprint": "f7923bc276584181ce96010539adc71a1eed0eb52177de020afcff6c68981625"
+    },
+    {
+      "level": "84",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "7dac12c297642e854e52b772098ce3de7349239f9694a44356ccb243a3af01a8",
+      "deal_fingerprint": "a0e1fb63ecd0ce80da4ab6d48317c4c72eed7f791b48a224831b02b6710604a5"
+    },
+    {
+      "level": "84",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "7dac12c297642e854e52b772098ce3de7349239f9694a44356ccb243a3af01a8",
+      "deal_fingerprint": "94b19e25835cb14b818a3875f03f68f58c1a4cfea582b9dce465422c2f773a25"
+    },
+    {
+      "level": "84",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "7dac12c297642e854e52b772098ce3de7349239f9694a44356ccb243a3af01a8",
+      "deal_fingerprint": "10131b5d8ab66de93b2a7f1b146ee1eb40758243457a0e3e276de7556d28634d"
+    },
+    {
+      "level": "85",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "d2e3782a08f3c2f62ea8f16e158cd8f63ea6c351a1a50cd077744a02a6a94b42",
+      "deal_fingerprint": "9bc8acc7a1f3d60f538a9055fa9a0d1a082715783af541e4c4496f59be6e4a45"
+    },
+    {
+      "level": "85",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "d2e3782a08f3c2f62ea8f16e158cd8f63ea6c351a1a50cd077744a02a6a94b42",
+      "deal_fingerprint": "5d7c6b5b7c97e7c20b9c56206f10bf622d859c967b21cae5b3ef1435e61655e0"
+    },
+    {
+      "level": "85",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "d2e3782a08f3c2f62ea8f16e158cd8f63ea6c351a1a50cd077744a02a6a94b42",
+      "deal_fingerprint": "f5523169d9e6846990be258b7f0b71fb682ec1d178ddc4e1929b4bec93769c91"
+    },
+    {
+      "level": "85",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "d2e3782a08f3c2f62ea8f16e158cd8f63ea6c351a1a50cd077744a02a6a94b42",
+      "deal_fingerprint": "70b5a2f165445a16ec122ffc7c0557dcf7fe58ef4d3b326ece5f766d4b45042a"
+    },
+    {
+      "level": "85",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "d2e3782a08f3c2f62ea8f16e158cd8f63ea6c351a1a50cd077744a02a6a94b42",
+      "deal_fingerprint": "3c12ee7672b049474ea7d59d2f6c471c7b24f026b16df47ce014d723669ee11d"
+    },
+    {
+      "level": "93",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "07b2acaebb98c23b89e5cbdbb82070f02766d77e514bf5cd5eba3190c165a9aa",
+      "deal_fingerprint": "394ef93fb05a4e7612bab3706ae809df7a5003f1c29c100db138aad6f306b681"
+    },
+    {
+      "level": "93",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "07b2acaebb98c23b89e5cbdbb82070f02766d77e514bf5cd5eba3190c165a9aa",
+      "deal_fingerprint": "30d9f3d9db5acd7c150810c631f102cf8c6fbfc1fe4ad4b44bc3165299342ae2"
+    },
+    {
+      "level": "93",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "07b2acaebb98c23b89e5cbdbb82070f02766d77e514bf5cd5eba3190c165a9aa",
+      "deal_fingerprint": "de0feba907bd44a36102e4f0fa6c96516973c6427d1d8b427a03698c5a77e7c1"
+    },
+    {
+      "level": "93",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "07b2acaebb98c23b89e5cbdbb82070f02766d77e514bf5cd5eba3190c165a9aa",
+      "deal_fingerprint": "690a4dad597d3a8392f14a474f31f26011dd5b5039d4aace83b6487f54812064"
+    },
+    {
+      "level": "93",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "07b2acaebb98c23b89e5cbdbb82070f02766d77e514bf5cd5eba3190c165a9aa",
+      "deal_fingerprint": "d9c6c3812775320970ef2fcd88d92fc42aa24d50a6b0108a2edace4dfe802ca1"
+    },
+    {
+      "level": "112",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "7ee74548e9a3386de950714ac958f55513b9aa7b4e4464598aa0a6e715d9a11c",
+      "deal_fingerprint": "dba1641de33d0a71c2c25fbc76532db382641eb63d69cefbe2b0d0304bc96fdf"
+    },
+    {
+      "level": "112",
+      "slot": "T2",
+      "tier": 2,
+      "board_fingerprint": "7ee74548e9a3386de950714ac958f55513b9aa7b4e4464598aa0a6e715d9a11c",
+      "deal_fingerprint": "065f307abf963dfd7ae7424083fce421a97fa6b392435c61c5e9551bcb50f120"
+    },
+    {
+      "level": "112",
+      "slot": "T3",
+      "tier": 3,
+      "board_fingerprint": "7ee74548e9a3386de950714ac958f55513b9aa7b4e4464598aa0a6e715d9a11c",
+      "deal_fingerprint": "ab63a620db7b22626340eedc4a38cf39e4c857e2e1decd96b4d7720399b26ee2"
+    },
+    {
+      "level": "112",
+      "slot": "T4",
+      "tier": 4,
+      "board_fingerprint": "7ee74548e9a3386de950714ac958f55513b9aa7b4e4464598aa0a6e715d9a11c",
+      "deal_fingerprint": "717ca1d46e416781534c9d80ca332760e65556c5a4a04c98c37404885c43cb86"
+    },
+    {
+      "level": "112",
+      "slot": "T5",
+      "tier": 5,
+      "board_fingerprint": "7ee74548e9a3386de950714ac958f55513b9aa7b4e4464598aa0a6e715d9a11c",
+      "deal_fingerprint": "e36b7d0aa815f1664ca2eb1320f612b9eb6a08b854f5847126c46ff782ec45cc"
+    }
+  ]
+}

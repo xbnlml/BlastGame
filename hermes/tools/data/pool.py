@@ -99,7 +99,15 @@ def load_stage_data(lv):
     fp = _lv_path(lv)
     if os.path.exists(fp):
         with open(fp) as f:
-            return json.load(f)
+            legacy = json.load(f)
+        if isinstance(legacy, dict):
+            return legacy
+        if isinstance(legacy, list):
+            # Historical stage-data/{lv}.json files used a bare list.  After
+            # the three-file refresh, empty bot/assist/ref files can still
+            # trigger this fallback for an untouched level.
+            return {'reliable': legacy, 'reference': []}
+        raise ValueError(f'unsupported legacy stage-data shape: {type(legacy).__name__}')
     return {'reliable': [], 'reference': []}
 
 

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "runner",
+  "version": "runner-v1",
+  "mode": "deterministic",
+  "input_allowlist": ["immutable_request", "preflight_result", "process_health", "artifact_root"],
+  "output_schema": "RUNNER_RECEIPT_V1",
+  "forbidden": ["probe_selection", "judge_verdict", "asset_write", "excel_write", "board_write", "db_write"],
+  "failure_policy": "fail_closed",
+  "memory_policy": "review_only",
+  "policy_refs": ["project-state/rules.json"]
+}

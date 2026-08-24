@@ -1,0 +1,79 @@
+{
+  "level": "138",
+  "asset_configs": [
+    {
+      "slot": "T1",
+      "sd": 20,
+      "sc": 5,
+      "ratios": "10,0,0,0,0",
+      "of": 0.5
+    },
+    {
+      "slot": "T2",
+      "sd": 20,
+      "sc": 5,
+      "ratios": "10,0,0,0,0",
+      "of": 0.5
+    },
+    {
+      "slot": "T3",
+      "sd": 40,
+      "sc": 5,
+      "ratios": "0,10,0,0,0",
+      "of": 1.0
+    },
+    {
+      "slot": "T4",
+      "sd": 0,
+      "sc": 5,
+      "ratios": "1,1,10,1,1",
+      "of": 0.0
+    },
+    {
+      "slot": "T5",
+      "sd": 0,
+      "sc": 5,
+      "ratios": "1,1,10,1,1",
+      "of": 0.0
+    }
+  ],
+  "database_configs": [
+    {
+      "slot": "T1",
+      "sd": 19,
+      "sc": 5,
+      "ratios": "10,0,0,0,0",
+      "of": 0.5
+    },
+    {
+      "slot": "T2",
+      "sd": 19,
+      "sc": 5,
+      "ratios": "10,0,0,0,0",
+      "of": 0.5
+    },
+    {
+      "slot": "T3",
+      "sd": 39,
+      "sc": 5,
+      "ratios": "0,10,0,0,0",
+      "of": 1.0
+    },
+    {
+      "slot": "T4",
+      "sd": -1,
+      "sc": 5,
+      "ratios": "1,1,10,1,1",
+      "of": 0.0
+    },
+    {
+      "slot": "T5",
+      "sd": -1,
+      "sc": 5,
+      "ratios": "1,1,10,1,1",
+      "of": 0.0
+    }
+  ],
+  "expected_health": "blocked",
+  "reason": "asset_db_fingerprint_mismatch"
+}

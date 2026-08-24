@@ -40,11 +40,12 @@
 - write_ddc 写后 os.utime 恢复 mtime（不污染时间防线）
 - 改 asset 前先算 fingerprint（DB 可能已自动匹配）
 
-## Gap 罚分公式（_gap_score，2026-08-05 target_pen_seg 落地后）
-- gap 分段：不合格(ok-g)*5+(near-g)*10、接近(ok-g)*5、合格富余奖励 -surplus*0.5
-- 目标偏差用 target_pen_seg 分段（绿1/黄3/红8），不再线性权重1.0
-- quality = target_pen_seg + source×0.3 + gap + death
-- gap_score 完全不动（gap 达标仍是主要）
+## 当前质量分（2026-08-20）
+- `q = gap_distance + 0.25 × target_distance`，越低越好。
+- `gap_distance` = 实际/Excel目标的 log₂ 尝试次数档差距离；gap 不足和过大都计距离，不奖励过大 gap。
+- Normal 目标偏差按 T1/T3/T5 三个有效配置计权；Hard/SuperHard 按五档。
+- source/death 属于置信度/诊断信息，不进入主质量分。
+- Judge 的合格/接近/不合格、DB颜色和硬规则不由 q 改变。
 
 ## 数据展示规则
 - 展示数据前必须确认来源时间

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "judge",
+  "version": "judge-v1",
+  "mode": "deterministic",
+  "input_allowlist": ["excel_targets", "accepted_receipt", "ingest_generation", "rules_json"],
+  "output_schema": "JUDGE_VERDICT_V1",
+  "forbidden": ["llm_verdict", "memory_rule_override", "asset_write", "excel_write", "board_write", "db_write"],
+  "failure_policy": "fail_closed",
+  "memory_policy": "review_only",
+  "policy_refs": ["project-state/rules.json", "Assets/LvEditorConfig/lv_win_config_test.xlsx"]
+}

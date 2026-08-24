@@ -19,6 +19,9 @@ STAGE_DIR = os.path.join(os.path.dirname(TOOL_DIR), 'stage-data')
 
 def parse_levels(arg):
     """Parse level spec: '82', '51,52,53', '51-100', or '--all'."""
+    if arg in ('--help', '-h'):
+        print(__doc__)
+        sys.exit(0)
     if arg == '--all':
         return list(range(51, 201))
     levels = []

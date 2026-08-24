@@ -1,0 +1,86 @@
+{
+  "59": {
+    "diff": "normal",
+    "targets": [85, 85, 65, 50, 50],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3累计6代summary，adaptive 60-400局",
+    "tiers": [
+      {"wr": 89.4, "sd": 38, "sc": 5, "ratios": "10,0,0,0,0", "of": 0.5, "note": "V3 summary 160局"},
+      {"wr": 89.4, "sd": 38, "sc": 5, "ratios": "10,0,0,0,0", "of": 0.5, "note": "V3 summary 160局"},
+      {"wr": 68.8, "sd": 40, "sc": 5, "ratios": "1,1,10,1,1", "of": 0.6, "note": "V3 summary 340局"},
+      {"wr": 42.3, "sd": 40, "sc": 5, "ratios": "10,1,1,1,1", "of": 0.6, "note": "V3 summary 390局"},
+      {"wr": 42.3, "sd": 40, "sc": 5, "ratios": "10,1,1,1,1", "of": 0.6, "note": "V3 summary 390局"}
+    ]
+  },
+  "74": {
+    "diff": "normal",
+    "targets": [85, 85, 65, 50, 50],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3累计6代summary，adaptive 60-400局",
+    "tiers": [
+      {"wr": 82.1, "sd": 30, "sc": 5, "ratios": "0,0,0,10,10", "of": 0.45, "note": "V3 summary 240局"},
+      {"wr": 82.1, "sd": 30, "sc": 5, "ratios": "0,0,0,10,10", "of": 0.45, "note": "V3 summary 240局"},
+      {"wr": 63.8, "sd": 30, "sc": 5, "ratios": "1,10,1,1,1", "of": 0.35, "note": "V3 summary 370局"},
+      {"wr": 50.0, "sd": 30, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.45, "note": "V3 summary 400局"},
+      {"wr": 50.0, "sd": 30, "sc": 5, "ratios": "1,1,1,10,1", "of": 0.45, "note": "V3 summary 400局"}
+    ]
+  },
+  "96": {
+    "diff": "hard",
+    "targets": [80, 65, 50, 40, 30],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3累计6代summary，adaptive 240-400局",
+    "tiers": [
+      {"wr": 82.1, "sd": 20, "sc": 5, "ratios": "0,0,0,10,10", "of": 0.5, "note": "V3 summary 240局"},
+      {"wr": 66.7, "sd": 38, "sc": 5, "ratios": "0,0,0,10,0", "of": 0.5, "note": "V3 summary 360局"},
+      {"wr": 51.5, "sd": 40, "sc": 5, "ratios": "0,0,0,10,0", "of": 1.0, "note": "V3 summary 400局"},
+      {"wr": 43.6, "sd": 10, "sc": 5, "ratios": "10,0,0,0,0", "of": 0.25, "note": "V3 summary 390局"},
+      {"wr": 31.7, "sd": 40, "sc": 5, "ratios": "10,10,0,10,10", "of": 1.0, "note": "V3 summary 350局"}
+    ]
+  },
+  "113": {
+    "diff": "normal",
+    "targets": [80, 80, 60, 45, 45],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3累计6代summary，adaptive 190-400局",
+    "tiers": [
+      {"wr": 87.4, "sd": 11, "sc": 3, "ratios": "0,0,10", "of": 0.1, "note": "V3 summary 190局"},
+      {"wr": 87.4, "sd": 11, "sc": 3, "ratios": "0,0,10", "of": 0.1, "note": "V3 summary 190局"},
+      {"wr": 66.4, "sd": 31, "sc": 5, "ratios": "0,10,0,10,0", "of": 0.75, "note": "V3 summary 360局"},
+      {"wr": 53.0, "sd": 11, "sc": 5, "ratios": "0,10,10,10,0", "of": 0.25, "note": "V3 summary 400局"},
+      {"wr": 53.0, "sd": 11, "sc": 5, "ratios": "0,10,10,10,0", "of": 0.25, "note": "V3 summary 400局"}
+    ]
+  },
+  "128": {
+    "diff": "superhard",
+    "targets": [50, 40, 30, 20, 10],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3累计5代summary，adaptive 130-400局",
+    "tiers": [
+      {"wr": 47.2, "sd": 34, "sc": 5, "ratios": "0,0,0,10,10", "of": 0.5, "note": "V3 summary 400局"},
+      {"wr": 37.0, "sd": 40, "sc": 5, "ratios": "10,0,10,0,10", "of": 1.0, "note": "V3 summary 370局"},
+      {"wr": 28.8, "sd": 40, "sc": 5, "ratios": "0,0,10,0,0", "of": 1.0, "note": "V3 summary 330局"},
+      {"wr": 18.8, "sd": 40, "sc": 5, "ratios": "10,1,1,1,1", "of": 0.45, "note": "V3 summary 250局"},
+      {"wr": 9.4, "sd": 30, "sc": 5, "ratios": "0,0,0,10,0", "of": 0.75, "note": "V3 summary 160局"}
+    ]
+  },
+  "148": {
+    "diff": "normal",
+    "targets": [80, 80, 60, 45, 45],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；V3首代summary，adaptive 220-400局",
+    "tiers": [
+      {"wr": 80.0, "sd": 10, "sc": 5, "ratios": "10,10,0,10,10", "of": 0.25, "note": "V3 summary 260局"},
+      {"wr": 80.0, "sd": 10, "sc": 5, "ratios": "10,10,0,10,10", "of": 0.25, "note": "V3 summary 260局"},
+      {"wr": 60.0, "sd": 30, "sc": 5, "ratios": "0,0,0,10,10", "of": 0.75, "note": "V3 summary 380局"},
+      {"wr": 46.8, "sd": 20, "sc": 5, "ratios": "0,10,0,10,0", "of": 0.5, "note": "V3 summary 400局"},
+      {"wr": 46.8, "sd": 20, "sc": 5, "ratios": "0,10,0,10,0", "of": 0.5, "note": "V3 summary 400局"}
+    ]
+  }
+}

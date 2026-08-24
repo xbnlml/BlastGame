@@ -177,15 +177,20 @@ def main():
         if db_wrs is None:
             conclusion = '⚠️ 需写入(DB无此配置)'
         else:
-            diff_cnt = 0
-            for i in range(5):
-                if our_wrs[i] and db_wrs[i] is not None:
-                    if abs(our_wrs[i][0] - db_wrs[i] * 100) > 3:
-                        diff_cnt += 1
-            if diff_cnt >= 2:
-                conclusion = f'🔄 {diff_cnt}档差>3pp,可对比'
+            # 池子无对应配置数据（全 None）时不能断言"一致"
+            our_have = [w for w in our_wrs if w is not None]
+            if not our_have:
+                conclusion = 'ℹ️ DB有数据，池子无同配置（教学关/未跑池，不作比对）'
             else:
-                conclusion = '✅ 基本一致'
+                diff_cnt = 0
+                for i in range(5):
+                    if our_wrs[i] and db_wrs[i] is not None:
+                        if abs(our_wrs[i][0] - db_wrs[i] * 100) > 3:
+                            diff_cnt += 1
+                if diff_cnt >= 2:
+                    conclusion = f'🔄 {diff_cnt}档差>3pp,可对比'
+                else:
+                    conclusion = '✅ 基本一致'
 
         print(f'{lv:>4} {diff_s:<9} {db_str:<32} {our_str:<32} {conclusion}')
 

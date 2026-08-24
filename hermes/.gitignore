@@ -2,3 +2,13 @@
 /_*.py
 /_*.json
 /_slim_draft/
+
+# 临时草稿目录（一次性脚本/实验文件放这里，不提交）
+/scratch/
+
+# 自动备份（reimport/入库生成，安全网保留但不上库）
+/backups/
+
+# Python 缓存
+__pycache__/
+*.pyc

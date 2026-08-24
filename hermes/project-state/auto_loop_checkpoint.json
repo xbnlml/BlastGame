@@ -1,14 +1,21 @@
 {
-  "round": 6,
-  "levels": [
-    "188"
+  "round": 4,
+  "campaign_levels": [
+    119
   ],
+  "levels": [],
   "passed": {
-    "158": 0
+    "119": 3
   },
-  "failed": {
-    "176": 6
-  },
+  "failed": {},
   "errors": {},
-  "saved_at": "2026-08-17T16:35:20"
+  "run_roots": [
+    "C:\\Users\\Administrator\\Documents\\BlastGame\\telemetry\\bot\\119-119-2026-08-22T15-12-35",
+    "C:\\Users\\Administrator\\Documents\\BlastGame\\telemetry\\bot\\119-119-2026-08-22T15-20-19",
+    "C:\\Users\\Administrator\\Documents\\BlastGame\\telemetry\\bot\\119-119-2026-08-22T15-28-20",
+    "C:\\Users\\Administrator\\Documents\\BlastGame\\telemetry\\bot\\119-119-2026-08-22T15-36-44"
+  ],
+  "planner_campaign_id": "auto-20260822_150951",
+  "planner_session_id": "20260822_150953_0655df",
+  "saved_at": "2026-08-22T15:43:13"
 }

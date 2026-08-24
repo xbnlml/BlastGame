@@ -80,6 +80,7 @@ if __name__ == '__main__':
         probe_configs = json.load(f)
 
     ok_all = True
+    failed_levels = []  # 2026-08-18：记录失败关，供 auto_loop 只跳过失败关
     for lv in levels:
         cfg = probe_configs.get(str(lv))
         if not cfg:
@@ -94,6 +95,7 @@ if __name__ == '__main__':
             else:
                 print(f'  L{lv}: ❌ design_probes 无法生成（数据不足），跳过')
                 ok_all = False
+                failed_levels.append(str(lv))
                 continue
 
         tiers = []
@@ -109,6 +111,7 @@ if __name__ == '__main__':
 
         if missing or len(tiers) != 5:
             ok_all = False
+            failed_levels.append(str(lv))
             continue
 
         # ── Warden 闸门：写入前强制检查 ──
@@ -118,6 +121,7 @@ if __name__ == '__main__':
             for f in warden_fails:
                 print(f'    - {f}')
             ok_all = False
+            failed_levels.append(str(lv))
             continue
         print(f'  L{lv}: ✅ Warden 通过 (5槽完整)')
 
@@ -169,5 +173,10 @@ if __name__ == '__main__':
     else:
         print()
         print('✅ 全部完成' if ok_all else '❌ 部分失败')
+    # 2026-08-18：失败关列表输出到 stdout（auto_loop 解析 FAILED_LEVELS 行）
+    if failed_levels:
+        print(f'FAILED_LEVELS: {",".join(failed_levels)}')
 
-    sys.exit(0 if ok_all else 1)
+    # 2026-08-18：部分失败时退出码仍为 0（FAILED_LEVELS 已记录失败关，调用方据此处理）——
+    # 否则 run_cmd 见非零退出码返回 None，auto_loop 拿不到 FAILED_LEVELS 判成"完全失败"。
+    sys.exit(0 if (ok_all or failed_levels) else 1)

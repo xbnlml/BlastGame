@@ -1,0 +1,18 @@
+{
+  "run_id": "run-fixture-stale-dir",
+  "attempt_id": "attempt-001",
+  "batch_id": "batch-requested",
+  "request_plan_hash": "d7f044e66e93b718039d8f7f498ff05656c48ac11a7675e6d2fc02a89bdcfa9b",
+  "executed_plan_hash": "d7f044e66e93b718039d8f7f498ff05656c48ac11a7675e6d2fc02a89bdcfa9b",
+  "logic_version": "2026-08-13T14:36:00+08:00",
+  "status": "completed",
+  "artifacts": [
+    {
+      "level": "60",
+      "slot": "T1",
+      "tier": 1,
+      "board_fingerprint": "fef38aba5dff77837f39393d98c477155a976650dc30236ce6bb7dce66f527e4",
+      "deal_fingerprint": "d3f75066255d81b88e0a2cc9a89b245df246bc72671186fb152b6da0969bbb15"
+    }
+  ]
+}

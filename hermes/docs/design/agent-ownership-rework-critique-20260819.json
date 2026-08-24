@@ -1,0 +1,39 @@
+{
+  "verdict": "方向正确可落地的部分只有 1/3：把 memory 无人消费的顽疾摆上台面、明确问题库结构、给环节分 owner 都是对的。但草案把『每个 agent 都要有监督/记录/迭代三件套+LLM 点』当成名符其实的标准，导致：①四分之三的 LLM 点是仪式感（judge 挑案例、warden 归类、curator 解读的检测对象全部确定性可得，批判评审已证）；②『人确认才落地』与无人值守以天计的运行模式直接冲突——迭代在唯一重要场景下永久冻结，proposals/ 目录就是新的 memory 坟场；③memory 消费者只在概念层解决，落到代码层（auto_loop 是纯 Python 进程、工具入口是 Hermes 手动行为）依然无消费者；④与已定稿的探针 LLM 化存在双重迭代者（planner 与 llm_probe_pipeline 同时迭代探针标准）和规则文件冲突（两方案都触碰 rules.json 的 judge_rules 段）。按本清单改造（LLM 点砍到 2 个真点、分级落地替代一刀切确认、规则变更统一治理+契约测试门禁）后可以进 S1；原样照做会在一轮落地后变成更贵的『多几个死目录』。",
+  "risks": [
+    "[环节划分] planner 与探针 LLM 化双重所有：探针设计/黑名单/教训库的实际 owner 已是 llm_probe_pipeline（三重校验、打回链、灰度四态、§6 教训库升级全在里面），planner 再『负责探针设计并按命中率微调铁则』=两个系统迭代同一套标准，planner memory 与 pipeline 教训库冲突时无仲裁者、无优先级。",
+    "[环节划分] judge『边界灰色地带挑案例给人看』是批判评审已砍掉的点的复活（critique §1.3）：边界检测完全是确定性的（gap∈容差带，judge_level 的 reasons 已打出），LLM 在『挑』上零增量；若 LLM 进一步暗示判态，就是在制造标准外个案裁决——恰是用户 20 天来最反感的漂移方向（L152/L54/L158 全部是用户裁定→变规则，不是 LLM 猜）。",
+    "[环节划分] curator『给各 agent 的 memory 更新建议，各 agent 下一轮直接读』复制了被证伪的假设：脚本读不了 markdown 自由文本，唯一能读 memory 的是 Hermes 主 agent 且只在手动 delegate_task 时读——这是手动行为不是流水线。四个 memory 文件均为无版本/无结构/无冲突处理的 md，planner 想降 sd 下限与 warden 想升下限的建议同时落地时无裁决规则。",
+    "[闭环] 『提案→人确认→落地』与无人值守现实结构性冲突：无人值守批次时长以天计，期间不存在『用户确认』，4 个 agent 的迭代全部冻结——本方案在唯一重要场景下退化成『problem_bank 只进不出 + <agent>_proposals/ 写文件等死』，比现状多花 token 地重演 memory 坟场。探针方案有灰度四态+权限内接管解这个问题，本方案没有任何无人确认时的可自动落地子集。",
+    "[闭环] S5 生效验证只有一句『标准落地且被遵守』：没有引用探针方案已有的契约测试（test_judgment_regression / warden 负例 / smoke_test）作为 rules.json 变更门禁。LLM 建议改阈值→人确认→直接写盘，历史判定可能被静默推翻且无人发现——这是规则唯一真源被破坏的实路径。",
+    "[闭环] 问题库没有消费 SLA：谁在哪个阶段写、多久没被读要告警、如何挂进批次简报全未定义；批次数>3 后问题库只增不减，复盘错过的问题永久错过；entry 无 schema（禁自由文本），重演 curator 空洞计数（『gap不足:16』无关卡无数值）与坏正则挂半个月误报无人在意的历史。",
+    "[记忆消费者] 草案第 3 条只写『auto_loop 或工具入口加载 memory 当上下文』：auto_loop 是纯脚本进程，加载 markdown『当上下文』无意义（除非每轮调 LLM，成本爆炸）；『工具入口』指 Hermes 的 delegate_task，是手动行为。必须二选一：memory 结构化（JSON+版本+round 元数据）给脚本吃，或消费点唯一化为批次参谋，否则记忆消费者条款仍是死的。",
+    "[破坏单一真源] 探针方案铁律 §9.3『LLM 不写 rules.json、不改判定结果』与本方案 judge/warden『自动建议调整 rules.json 阈值/增补检查』在原则上直接冲突；两个 agent 的迭代通道触碰同一 rules.json（judge_rules 段共管），无统一变更入口、无审计字段（谁改的/何时/依据哪个观察）。",
+    "[退化点] warden 自迭代是最危险的自动迭代：warden 是 fail-closed（Warden 检查失败必须 BLOCK），一条 LLM 建议的过宽新检查=整个批次被卡，直接落到 08-14 白跑事故级后果；同时『记录漏拦』在确定性上不可检——你不知道漏了什么直到损害可见，为凑监督指标记漏拦会制造伪阴性信号污染问题库。",
+    "[LLM 必要性] 4 个 AI 点里只有 planner 探针设计是用户裁定必须的；judge 挑案例=确定性可替代；warden 新模式归类=违规案例本就稀有，应先做确定性写盘白名单扫描（任何白名单外写盘=原样 diff 给用户）而不是 LLM 归类；curator 模式解读=只有做成批次简报才有消费者，否则是替主 agent 做它本来就会做的转述（critique 事实 3：主 agent 每轮读 round_report 展示用户）。",
+    "[成本] 草案对新增 LLM 点零预算：没有 frequency/cadence/token 上限，与探针方案『≤3K token/关轮、4 次硬上限、月度 1/10』的纪律脱节；judge/warden/curator 若按批次各 1 次×N 批，月度调用量翻 2-3 倍，且每处都要重写 fail-open/熔断/usage 记账——草案全未提，而配额 08-21 重置后这一段马上撞预算。",
+    "[与探针方案重叠] planner『监督本轮探针方案是否合理（对照缺口分析、历史轨迹）』与探针方案自带的 7.1 三维评估+§6 教训库+四层决策痕迹完全重叠：同一件事两套监督、两套记账，probe 方向正确率/收敛贡献 pipeline 已在算，planner 再算一遍是重复监控，且探针方案已覆盖『为什么这么设计』的问责（advisor），planner 无增量。",
+    "[退化点] memory 自动迭代=无版本无回滚的覆盖写：探针方案有『advisor 只追加+一键回退』，草案对 memory.md 的迭代没有快照/回滚；LLM 建议被确认后覆盖一条 20 天验证过的经验（如 07-31 用户纠正的探针理念），无快照可回；rules.json 变更同样只有一个手工备份目录（.bak），没有机械可回滚的序列号。",
+    "[时间尺度不一致] 记录按轮、分析按批、落地等用户，三段时间尺度错位：规则变更落地后新阈值会『倒灌』污染历史轮次的判定偏差统计（新规则审旧判定），judge 监督信号基线漂移，偏差率数据失真；草案未定义规则变更后历史记录的处理（重判/冻结/标注 legacy）。",
+    "[遗漏] 没有 agent 对 Phase3/Phase4（Unity 批次运行、池子刷新、数据入库）负责：apply_probes 写盘之外的过程（批次重试、Unity 失败、数据源可靠性、asset 同步）继续无人认领,正是现状最常出事故的地带（08-14 白跑、写盘后未同步 json 等教训都在这段）；批次简报本身也没有 owner，散落在各 agent，而它是批判评审认定的最高价值产出。",
+    "[roles.json] roles.json 自身无 schema 无校验无失败语义：无人值守下路径写错→该 agent 监督静默失效（fail-open 无声）或记录文件写失败直接卡批次，两种都是坏结局；需要明确加载失败=fail-closed 告警、写记录失败=fail-open 但告警、schema 单测。",
+    "[llm_client 集成缺失] 草案全文未提 tools/llm_client.py（已存在的唯一 LLM 入口，带 fail-open/429 不重试/usage 记账/一键开关）：新 LLM 点若不强制走它，会自动长出旁路入口，绕过探针方案刚建立的调用治理（开关、熔断、记账三样全丢）。",
+    "[与主 agent 重复] 所有 LLM 分析产出最终都经『主 agent 转述给用户』，而主 agent 本就每轮读 round_report 向用户转述：草案没有界定各 agent 分析的独有增量，4 个 LLM 点产出的 80% 会被主 agent 再讲一遍，等于花 4 倍 token 制造 1 份没人看得完的报告。",
+    "[代价错位] 目标里『每个 agent 监督环节运行』被方案实现为给每个 agent 挂一面新监控，但系统真正缺的监控（judge 偏差统计的可靠基线、warden 对写盘行为的确定性审计、curator 从 round_report 而非 log 正则取数）全是零 LLM 的确定性问题——先修这些再谈 AI，顺序反了就会在坏检测器上叠 LLM（critique §1.1 的原话）。"
+  ],
+  "fixes": [
+    "P0 砍 LLM 点到 2 个真点，其余改确定性产出（最高优先级）：保留 ① planner 探针设计（用户裁定，走既有 pipeline）② 批次参谋（简报+卡壳换思路+规则空白，每批≤2 次调用）。砍掉：judge 挑案例→改确定性边界报告（每轮自动收集容差带内案例：精确数值+现行规则+历史锚点 L152/L54/L158，随 round_report 给人看，用户裁定回流成规则——这是系统 20 天唯一验证有效的进化路径）；warden 归类→改确定性写盘白名单扫描（任何白名单外写盘=原样 diff 呈用户）；curator 解读→并入批次参谋段落。判据：检测确定性可得处 LLM 零增量，LLM 只留『策略建议』（卡壳换方向/规则空白）两个有真实决策链的点。",
+    "P0 改『人确认才落地』为分级落地（否则无人值守=永久冻结）：L0 自动（问题记录/审计痕迹，无需确认）；L1 待确认（规则/阈值变更，无人值守期间积累并预检冲突，用户返回时批量确认/回滚 backlog）；L2 自动+后验（仅低风险规则微调，写入同时打快照、附契约测试结果、保留下次批次回滚位）。明确『无人值守≠冻结迭代』，否则 proposals/ 目录照旧等死。",
+    "P0 记忆消费二选一写死进方案：方案 a（消费方=脚本）memory 改结构化 JSON（section/version/round 元数据），auto_loop 在对应 phase 边界由 Python 直接读并据其调参；方案 b（消费方=LLM）唯一消费点=批次参谋，每 agent 的 memory 作为该参谋 prompt 的一段注入。二选一，禁止『主 agent delegate_task 手动注入』作为兜底消费路径，禁止每轮为读 memory 调 LLM。",
+    "P0 rules.json 变更统一治理：所有规则变更（judge/warden 任一通道）走唯一 apply 入口，写入结构为 {变更内容, 提出 agent, 依据观察 id, 契约测试结果, 回滚快照}；强制门禁=test_judgment_regression + warden 负例 + smoke_test 全绿才允许写盘（直接复用探针方案 §9.5 交付门）；rules.json._meta 加变更序列号，支持机械回滚到任意历史版本。",
+    "P1 解决双重迭代者：探针标准/黑名单/教训库的唯一迭代 owner=llm_probe_pipeline（探针方案已定义其迭代闭环），planner 的迭代域收缩为『调优方向与优先级』（跨关资源分配、卡壳关换思路），禁止再写探针铁则区；planner memory 与 pipeline 教训库冲突时以 pipeline 为准并记录裁决进 advisor。",
+    "P1 warden 迭代域收窄为 fail-safe：新增检查必须先以『影子检查』跑 N 批只记账不拦截（误拦率=0 且命中≥2 个真实案例才允许升级为拦截）；每条新检查独立开关，单条可一键回滚；『漏拦』指标禁入监督清单（不可检），改监督『白名单外写盘是否被拦/被放过』这类可验证信号。",
+    "P1 补齐环节归属：Phase3/4（Unity 运行+数据入库）明确划给一个 owner（建议 warden 扩权或新增 runner 角色），覆盖批次重试、池子刷新、写盘后 asset/json 同步、数据源可靠性；批次简报指定唯一 owner=curator（从全批 round_report+边界报告+hitrate 聚合），主 agent 只做格式转发不做重复解读——把批判评审『按 agent 署名段落』正式采纳，替代每 agent 独立 LLM 点。",
+    "P1 问题库定义 schema 与消费 SLA：entry={环节, 轮次, 输入 hash, 异常, 结果, 严重度}，禁自由文本；写入点=各 phase 边界（零 LLM）；每批次复盘必须消费并打标记；≥2 个批次未被消费的问题进批次简报头部告警；detect_patterns 的有损问题按评审意见改为直接从 auto_loop_round_report.json 结构化提取（log 正则只留作兜底校验）。",
+    "P1 成本纪律强制继承：所有新 LLM 点必须走 tools/llm_client.py（fail-open/429 不重试/usage 记账/一键开关），llm_advisor.json 每 agent 一个 enabled 键（可单点关闭）；给出总预算：正常批 2 次+异常增量≤2 次/批，月度上限写入 usage 熔断；评估继续用 hitrate+采纳后验，LLM 点连续不达标即单点关停——与探针方案的配额纪律保持一致。",
+    "P1 迭代前快照+回滚：memory/rules/probe 标准每次迭代前自动快照（round 号+内容 hash），文件头写『提出 agent+轮次+依据观察 id』；提供一键回滚到上一快照；proposals 设立过期机制——与当前规则冲突或超过 N 批未处理的提案自动标记 stale 进简报，防止旧提案倒灌新规则。",
+    "P2 历史记录冻结策略：规则变更落地时，历史 round_report 的判定记录打 legacy 标签冻结，judge 偏差统计按规则版本做时间切分，禁止新阈值重审旧轮次——防止基线漂移污染监督信号。",
+    "P2 冲突仲裁规则写死：跨 agent 建议冲突（如 planner 降 sd 下限 vs warden 升）默认 warden 胜（安全优先）；同域冲突（planner vs pipeline 教训库）以 pipeline 为准；仲裁记录进 advisor，用户可查。",
+    "P2 roles.json 治理：定义 schema（每 agent: phases/监督点/记录文件/标准文件/开关），加载失败=fail-closed（打印+跳过该 agent 监督并写告警日志），记录文件写失败=fail-open 但告警，不卡主流程；schema 校验+加载路径单测。"
+  ]
+}

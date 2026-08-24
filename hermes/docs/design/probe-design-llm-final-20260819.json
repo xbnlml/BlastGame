@@ -1,0 +1,34 @@
+{
+  "version": "2026-08-20",
+  "status": "superseded-by-current-implementation",
+  "source_of_truth": "docs/design/probe-design-llm-final-20260819.md",
+  "goal": "让 AI 在现有全自动调优的探针设计节点参与，不增加额外 Unity 批跑。",
+  "model": {
+    "provider": "current Hermes configuration",
+    "model": "current Hermes configuration",
+    "reasoning_effort": "max",
+    "credentials": "Hermes CLI owns authentication; project code never reads secrets"
+  },
+  "ai_owner": "probe_design_only",
+  "ai_contract": {
+    "input": "Excel target + verified/phase2/phase1 context + previous receipt WR + deterministic candidate catalog",
+    "output": "exactly five candidate_id values with evidence_ids and hypotheses",
+    "forbidden": ["free-form four-tuples", "judge verdict", "asset/Excel/board/DB writes", "Unity retry", "level redesign"],
+    "fallback": "design_probes deterministic script"
+  },
+  "execution": {
+    "path": "auto_loop.phase_analyze -> llm_probe_pipeline -> candidate validation -> Warden -> apply_probes -> Unity -> receipt CSV -> Judge",
+    "mode": "llm",
+    "shadow": false,
+    "canary": false,
+    "runtime_override": false
+  },
+  "evidence": {
+    "decision_log": "project-state/ai_probe_metrics.jsonl",
+    "round_report": "project-state/auto_loop_round_report.json",
+    "actual_wr_source": "same accepted receipt artifacts",
+    "metrics": ["candidate novelty", "duplicate count", "actual WR", "judge result", "fallback count", "Unity games", "rounds to converge"]
+  },
+  "rollback": "set project-state/llm_advisor.json enabled=false or mode=script",
+  "note": "Do not reintroduce Shadow/Canary, Runtime Override, batch advisor, or a second execution chain without new measured business evidence."
+}

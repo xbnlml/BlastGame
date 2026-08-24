@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "planner",
+  "version": "planner-v1",
+  "mode": "llm_advisor",
+  "input_allowlist": ["excel_targets", "verified_pool", "phase_trends", "candidate_catalog", "previous_round_report", "approved_planner_lessons"],
+  "output_schema": "PROBE_DECISION_V3",
+  "forbidden": ["free_form_config", "asset_write", "excel_write", "board_write", "db_write", "judge_verdict"],
+  "failure_policy": "script_fallback",
+  "memory_policy": "approved_lessons_only",
+  "policy_refs": ["project-state/rules.json"]
+}

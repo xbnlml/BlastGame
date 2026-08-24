@@ -13,36 +13,33 @@ TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
 def get_board_levels():
-    """读取 board.md"""
+    """读取 board.md（每关一行表格格式）。
+
+    行格式: | 关 | 难度 | 状态 | 日期 | 目标 | 档位WR | 备注 |
+    状态列含"已入库"→done、"改关卡"→retired、"待调优"→pending。
+    """
     bp = os.path.join(TOOL_DIR, '..', 'project-state', 'board.md')
     if not os.path.exists(bp):
         return {}, {}, {}
     done, retired, pending = {}, {}, {}
-    section = None
     with open(bp, encoding='utf-8') as f:
         for line in f:
-            if '入库' in line:
-                section = 'done'
+            parts = line.split('|')
+            if len(parts) < 4:
                 continue
-            elif '改关卡' in line:
-                section = 'retired'
+            lv = parts[1].strip()
+            if not lv.isdigit():
                 continue
-            elif '空白' in line or '待选' in line or '待调优' in line:
-                section = 'pending'
+            lv = int(lv)
+            if not (51 <= lv <= 200):
                 continue
-            if section and line.strip() and '---' not in line and '#' not in line:
-                for w in line.replace(',', ' ').split():
-                    try:
-                        lv = int(w)
-                        if 51 <= lv <= 200:
-                            targets = {
-                                'done': done,
-                                'retired': retired,
-                                'pending': pending,
-                            }[section]
-                            targets[lv] = line.strip()
-                    except ValueError:
-                        pass
+            row_text = ' '.join(parts[2:])
+            if '已入库' in row_text:
+                done[lv] = line.strip()
+            elif '改关卡' in row_text:
+                retired[lv] = line.strip()
+            else:
+                pending[lv] = line.strip()
     return done, retired, pending
 
 

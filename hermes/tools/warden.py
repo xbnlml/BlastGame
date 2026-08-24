@@ -38,7 +38,9 @@ def check_pre_tune_backup(levels):
 
 def check_sd_span(tiers):
     """W01: sd 跨度 >=10pp + 单调非递减"""
-    sds = [int(t.get('sd', 0)) for t in tiers if str(t.get('sd', '')).isdigit()]
+    # 2026-08-17 修复：统一 dict/list 输入
+    tier_list = tiers.values() if isinstance(tiers, dict) else tiers
+    sds = [int(t.get('sd', 0)) for t in tier_list if str(t.get('sd', '')).isdigit()]
     if len(sds) < 3:
         return False, f'只有 {len(sds)} 个有效 sd 值，至少需要 3 个'
     if max(sds) - min(sds) < 10:
@@ -51,8 +53,10 @@ def check_sd_span(tiers):
 
 def check_5_slots(tiers):
     """W02: 5 槽位全部填入"""
-    if len(tiers) != 5:
-        return False, f'只有 {len(tiers)}/5 个槽位'
+    # 2026-08-17 修复：统一 dict/list 输入
+    n = len(tiers.values()) if isinstance(tiers, dict) else len(tiers)
+    if n != 5:
+        return False, f'只有 {n}/5 个槽位'
     return True, ''
 
 
@@ -64,7 +68,9 @@ def check_probe_quality(tiers):
     - ratios 空 → 配置非法
     """
     ratios = []
-    for i, t in enumerate(tiers):
+    # 2026-08-17 修复：tiers 可能是 {'T1':{...}} dict 或 list——统一取 values
+    tier_list = tiers.values() if isinstance(tiers, dict) else tiers
+    for i, t in enumerate(tier_list):
         r = str(t.get('ratios', '') or '').strip()
         if not r:
             return False, f'T{i+1}: ratios 为空'
@@ -75,18 +81,20 @@ def check_probe_quality(tiers):
     try:
         sys.path.insert(0, HERMES)
         from tools.data import pool
-        keys = [pool._config_key({k: t[k] for k in ('sd', 'sc', 'ratios', 'of')}) for t in tiers]
+        keys = [pool._config_key({k: t[k] for k in ('sd', 'sc', 'ratios', 'of')}) for t in tier_list]
         if len(keys) != len(set(keys)):
             return False, f'存在完全相同的配置（四元组重复）——会被 Unity dedup 吃掉'
-    except Exception:
-        pass  # config_key 不可用时跳过（ratios 检查已覆盖主要问题）
+    except Exception as e:
+        # 2026-08-17 fail-closed：去重检查自身异常 = BLOCK（不能静默放行）
+        return False, f'W02 检查自身异常（config_key 计算失败）: {e}'
     return True, ''
 
 
 def check_ratios_diversity(tiers):
     """W03: ratios 至少 3 种不同模式"""
     patterns = set()
-    for t in tiers:
+    tier_list = tiers.values() if isinstance(tiers, dict) else tiers
+    for t in tier_list:
         r = str(t.get('ratios', '')).strip()
         if r:
             patterns.add(r)
@@ -104,7 +112,8 @@ def check_unity_lock():
             return False, 'Unity.exe 仍在运行，先关闭'
         return True, ''
     except Exception as e:
-        return True, f'无法检查 Unity 进程 (跳过: {e})'
+        # 2026-08-17 fail-closed：进程检查失败 = 无法确认无 Unity = BLOCK
+        return False, f'无法检查 Unity 进程（检查自身异常）: {e}'
 
 
 def check_no_git():
@@ -247,18 +256,21 @@ def check_probe_direction(tiers_map):
     issues = []
     if not tiers_map:
         return True, ''
+    # 2026-08-17 fail-closed：import 失败 = 检查无法执行 = BLOCK（不能静默放行）
     try:
         sys.path.insert(0, HERMES)
         from tools.data.adapters import excel_target as et
-    except Exception:
-        return True, ''
+    except Exception as e:
+        return False, f'W10 检查自身异常（import excel_target 失败）: {e}'
 
     for lv, tiers in (tiers_map or {}).items():
         # 目标
         try:
             info = et.get_target(lv)
             targets = [int(t) for t in info['tiers']]
-        except Exception:
+        except Exception as e:
+            # 2026-08-17 fail-closed：目标读不到 = 该关无法检查 = 报错（不能 continue 静默跳过）
+            issues.append(f'L{lv}: 目标读取失败——检查自身异常: {e}')
             continue
         distinct_tg = [t for i, t in enumerate(targets) if t not in targets[:i]]
 
@@ -333,6 +345,13 @@ def run_warden(levels, tiers_map=None):
     warnings = []
     checks = rules['warden_checks']['pre_batch']
 
+    requested_levels = {str(level) for level in levels}
+    provided_levels = {str(level) for level in (tiers_map or {})}
+    if requested_levels != provided_levels:
+        missing = sorted(requested_levels - provided_levels)
+        extra = sorted(provided_levels - requested_levels)
+        failures.append('[W02] probe_level_coverage — missing={} extra={}'.format(missing, extra))
+
     for check in checks:
         cid = check['id']
         name = check['name']
@@ -347,6 +366,11 @@ def run_warden(levels, tiers_map=None):
             elif cid == 'W02':
                 for lv, tiers in (tiers_map or {}).items():
                     ok, msg = check_5_slots(tiers)
+                    if not ok:
+                        failures.append(f'[{cid}] L{lv}: {name} — {msg}')
+            elif cid == 'W09':
+                for lv, tiers in (tiers_map or {}).items():
+                    ok, msg = check_probe_quality(tiers)
                     if not ok:
                         failures.append(f'[{cid}] L{lv}: {name} — {msg}')
             elif cid == 'W04':

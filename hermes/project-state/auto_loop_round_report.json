@@ -1,0 +1,211 @@
+{
+  "round": 4,
+  "saved_at": "2026-08-22T15:43:13",
+  "batch_identity": {
+    "mode": "legacy",
+    "batch_dir": "C:\\Users\\Administrator\\Documents\\BlastGame\\telemetry\\bot\\119-119-2026-08-22T15-36-44",
+    "artifact_count": 5
+  },
+  "receipt_status": "legacy_artifacts_verified",
+  "batch_wrs_source": "legacy_campaign_summary_artifacts",
+  "levels": {
+    "119": {
+      "probes": {
+        "T1": {
+          "sd": 33,
+          "sc": 5,
+          "ratios": "0,0,0,0,10",
+          "of": 0.6
+        },
+        "T2": {
+          "sd": 32,
+          "sc": 5,
+          "ratios": "1,2,10,1,1",
+          "of": 0.5
+        },
+        "T3": {
+          "sd": 32,
+          "sc": 5,
+          "ratios": "10,1,1,1,1",
+          "of": 0.5
+        },
+        "T4": {
+          "sd": 39,
+          "sc": 5,
+          "ratios": "0,0,0,10,0",
+          "of": 0.5
+        },
+        "T5": {
+          "sd": 40,
+          "sc": 5,
+          "ratios": "10,0,0,0,0",
+          "of": 1.0
+        }
+      },
+      "batch_wrs": {
+        "T1": 78.8889,
+        "T2": 51.75,
+        "T3": 49.5,
+        "T4": 68.8235,
+        "T5": 84.5455
+      },
+      "batch_games": {
+        "T1": 270,
+        "T2": 400,
+        "T3": 400,
+        "T4": 340,
+        "T5": 220
+      },
+      "judge": {
+        "level": "119",
+        "result": "合格",
+        "difficulty": "normal",
+        "round": 3,
+        "max_rounds": 6,
+        "action": "入库",
+        "reasons": [],
+        "wrs": "84.5% → 84.5% → 63.8% → 49.5% → 49.5%"
+      }
+    }
+  },
+  "ai_decisions": {
+    "119": {
+      "status": "llm_original",
+      "designer": "llm",
+      "decision_source": "llm_original",
+      "selected_candidate_ids": [
+        "C119-132ae3ba6718",
+        "C119-165d12b94c91",
+        "C119-dd5e1d0e3e68",
+        "C119-ca20a44d955d",
+        "C119-0f8cf01836d6"
+      ],
+      "candidate_to_execution_slot": {
+        "C119-132ae3ba6718": "T1",
+        "C119-165d12b94c91": "T2",
+        "C119-dd5e1d0e3e68": "T3",
+        "C119-ca20a44d955d": "T4",
+        "C119-0f8cf01836d6": "T5"
+      },
+      "decision_id": "DEC-416567feda66e87e667f",
+      "snapshot_hash": "SNAP-31e5f8a9683daa11",
+      "context_hash": "CTX-4d9797e0620f4119",
+      "catalog_id": "CAT-f5b04c1ad2d4896f",
+      "manifest_version": "planner-v1",
+      "manifest_hash": "MAN-797d78c54f3f6b31",
+      "memory_snapshot_hash": "LES-c0d9ba77f320977b",
+      "prompt_version": "probe-design-v3",
+      "actual_llm_calls": 1,
+      "errors": [],
+      "decision": {
+        "version": "PROBE_DECISION_V3",
+        "designer": "llm",
+        "level": "119",
+        "snapshot_hash": "SNAP-31e5f8a9683daa11",
+        "catalog_id": "CAT-f5b04c1ad2d4896f",
+        "revision": 1,
+        "selected": [
+          {
+            "execution_slot": "P1",
+            "candidate_id": "C119-132ae3ba6718",
+            "objective_id": "t4t5_floor_break",
+            "role": "主破下限探针:floor pattern 的 sd33/of0.6 外推",
+            "evidence_ids": [
+              "Escript-candidate-2"
+            ],
+            "hypothesis": "0,0,0,0,10 族已验证单调下降(78@sd19→60@sd30→51@sd32),本候选 sd33/of0.6 是该族唯一外推点,of 0.6 介于 0.5/0.75 之间增加难度压力。若验证 ≤46.8,配合 T3=60.0(dev0)直接满足 T3→T5 gap≥15 且 T4 dev≤1.8,组合即全绿;若落 47-50 则仍差 gap 但逼近改关卡判定线。",
+            "deal_fingerprint": "catalog-config-a0f3ef0b386765c7b82ae50c13ad90f1be765b5b571da65ce9285fcc0506ccca"
+          },
+          {
+            "execution_slot": "P2",
+            "candidate_id": "C119-165d12b94c91",
+            "objective_id": "t4t5_floor_point_variants",
+            "role": "floor 点(sd32/of0.5)新 pattern:10 在 slot3",
+            "evidence_ids": [
+              "Escript-candidate-5"
+            ],
+            "hypothesis": "floor 点已产出 51.0/52.25/56.67 三个低值,说明该 sd/of 是关卡最难点;1,2,10,1,1 是 10 位 slot3 的软比值变体(参考 sd40/1.0 的 0,0,10,0,0=61.84),利用已验证的强非单调性赌同点降值,若落 45-55 即为 T4 直接候选。",
+            "deal_fingerprint": "catalog-config-bcb034517ca6817dbf591729e8a50e383a4bea986cc78a183dd19e55c5af3085"
+          },
+          {
+            "execution_slot": "P3",
+            "candidate_id": "C119-dd5e1d0e3e68",
+            "objective_id": "t4t5_floor_point_variants",
+            "role": "floor 点新 pattern:10 在 slot1(1-heavy 族高 sd 首验)",
+            "evidence_ids": [
+              "Escript-candidate-3"
+            ],
+            "hypothesis": "1-heavy 族只在低 sd 验证过(均 95%),sd32/of0.5 的 10,1,1,1,1 是该族高 sd 首点;若意外降入 46-55 区间即 T4 候选,若验证 70+ 则确认 1-heavy 族与低段无关,排除该方向。",
+            "deal_fingerprint": "catalog-config-8ae4665f40ef0e0efd86f3200b550da70475b1c78873dd6a9632ed90a42da564"
+          },
+          {
+            "execution_slot": "P4",
+            "candidate_id": "C119-ca20a44d955d",
+            "objective_id": "t4t5_anomaly_map",
+            "role": "0,0,0,10,0 族非单调跳变区诊断点",
+            "evidence_ids": [
+              "E65bc7bc2ce24e161"
+            ],
+            "hypothesis": "该族已验证 sd37/of0.5=60.5→sd40/of1.0=54.8→sd41/of1.0=93.3(跳变!),sd39/of0.5(P2 71.0)是定位跳变源的关键缺失点:若验证 ~58-62 说明 sd 维平滑、93.3 是 of/sd41 异常;若验证 65+ 则该族存在强非单调,为 round5 探针方向提供依据。",
+            "deal_fingerprint": "catalog-config-5801201842a4146b8b4b52120fc2543388c44f16250edb60eb1b1594b4b305ec"
+          },
+          {
+            "execution_slot": "P5",
+            "candidate_id": "C119-0f8cf01836d6",
+            "objective_id": "t4t5_corner_map",
+            "role": "sd40/of1.0 角落 slot1 位置补齐",
+            "evidence_ids": [
+              "E0836530abf190501"
+            ],
+            "hypothesis": "sd40/of1.0 角落已验 slot2=61.6/slot3=61.8/slot4=54.8,本候选(P2 74.5)补齐 slot1;该角落是本关最难配置聚集区,若验证意外 <51 即为新下限,否则完成角落地图,确认 sd40/1.0 无更低点。",
+            "deal_fingerprint": "catalog-config-5e78acede5ec5c56bc6580b919d23126a4d2e6534d6c7cde4a75f4a0f5967080"
+          }
+        ],
+        "design_note": "第 4 轮:round3 假设兑现——0,0,0,0,10@sd32/of0.5 验证 51.0%(400局)刷新下限;T1/T2=81.2、T3=60.0 全绿,T1→T3 gap=21.2 ✓,唯一剩余问题=T4/T5=51.0(dev6.0)与 T3→T5 gap=9.0<15,数学上需要 T4≤46.84(T3 取 61.84)或 ≤45(T3 取 60.0),即还需下压 4-6pp。5 槽布局:1 个主破下限点(floor pattern sd33/of0.6,族内单调趋势最强)、2 个 floor 点(sd32/of0.5)新 pattern 变体(该点已出 3 个 51-57 低值,是非单调性下最值得赌的点)、1 个非单调跳变区诊断(sd39,定位 54.8→93.3 跳变源)、1 个极限角落补齐。若本轮仍无 ≤46.8 配置,51.0/52.25/56.15/56.67 四点将坐实低段物理下限,组合数学上不可达全绿,本轮数据即为改关卡判定的完整证据链。",
+        "validated": true,
+        "decision_id": "DEC-416567feda66e87e667f",
+        "candidate_to_execution_slot": {
+          "C119-132ae3ba6718": "T1",
+          "C119-165d12b94c91": "T2",
+          "C119-dd5e1d0e3e68": "T3",
+          "C119-ca20a44d955d": "T4",
+          "C119-0f8cf01836d6": "T5"
+        }
+      },
+      "decision_provenance": {
+        "version": "DECISION_PROVENANCE_V1",
+        "level": "119",
+        "round": 4,
+        "decision_source": "llm_original",
+        "designer": "llm",
+        "catalog_id": "CAT-f5b04c1ad2d4896f",
+        "snapshot_hash": "SNAP-31e5f8a9683daa11",
+        "context_hash": "CTX-4d9797e0620f4119",
+        "memory_snapshot_hash": "LES-c0d9ba77f320977b",
+        "manifest_version": "planner-v1",
+        "manifest_hash": "MAN-797d78c54f3f6b31",
+        "prompt_version": "probe-design-v3",
+        "selected_candidate_ids": [
+          "C119-132ae3ba6718",
+          "C119-165d12b94c91",
+          "C119-dd5e1d0e3e68",
+          "C119-ca20a44d955d",
+          "C119-0f8cf01836d6"
+        ],
+        "candidate_to_execution_slot": {
+          "C119-132ae3ba6718": "T1",
+          "C119-165d12b94c91": "T2",
+          "C119-dd5e1d0e3e68": "T3",
+          "C119-ca20a44d955d": "T4",
+          "C119-0f8cf01836d6": "T5"
+        },
+        "probe_config_hash": "CFG-42688263f23875ba",
+        "actual_llm_calls": 1,
+        "fallback_reason": [],
+        "model_selection": "current",
+        "resolved_model": null,
+        "decision_id": "DEC-416567feda66e87e667f"
+      }
+    }
+  }
+}

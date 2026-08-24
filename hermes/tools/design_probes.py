@@ -4,15 +4,67 @@
 逻辑: 遍历 phase2 候选，逐一加入 bot400 池，看哪个对整体 5 档结构提升最大。
 不盯档位，只看池子整体。phase2 无候选时查经验知识库 (param_knowledge)。
 
+【验证局数标准 2026-08-18 用户定稿】探针固定 400 局（不再 200）——
+  次数少才需要验证，验证必须跑满 400；贝叶斯提前停(--adaptive-stop)默认开启。
+  本工具设计的探针由 auto_loop 以 --probe-games 400 执行验证。
+
 用法:
   python design_probes.py 77
   python design_probes.py 77 --write
 """
-import json, os, sys
+import json, os, sys, time
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
 PROBE_CFG = os.path.join(TOOLS_DIR, 'probe_configs.json')
+# 2026-08-19：跨轮黑名单（已验证无效/被W09拦截/重复设计过的配置）——防止每轮重新设计同质探针
+PROBE_BLACKLIST = os.path.join(TOOLS_DIR, 'probe_blacklist.json')
+
+def _load_blacklist():
+    """加载跨轮黑名单 {lv: {config_key: {reason, direction, ts, sd, sc, ratios, of}}}"""
+    try:
+        with open(PROBE_BLACKLIST, encoding='utf-8') as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+def _save_blacklist(bl):
+    try:
+        with open(PROBE_BLACKLIST, 'w', encoding='utf-8') as f:
+            json.dump(bl, f, ensure_ascii=False, indent=1)
+    except Exception:
+        pass
+
+def _config_key_str(rec):
+    """稳定字符串 config key（黑名单 JSON 持久化用——tuple 不能当 JSON key）"""
+    return '|'.join((str(rec.get('sd', '')), str(rec.get('sc', '')),
+                     str(rec.get('ratios', '')), str(rec.get('of', ''))))
+
+def blacklist_add(lv, rec, reason='validated_fail', direction=None):
+    """把一条配置加入黑名单（避免后续轮次重复设计/验证）"""
+    bl = _load_blacklist()
+    lv_bl = bl.setdefault(str(lv), {})
+    key = _config_key_str(rec)
+    if key not in lv_bl:
+        lv_bl[key] = {
+            'reason': reason, 'direction': direction,
+            'ts': time.strftime('%Y-%m-%dT%H:%M:%S'),
+            'sd': str(rec.get('sd', '')), 'sc': str(rec.get('sc', '')),
+            'ratios': str(rec.get('ratios', '')), 'of': str(rec.get('of', '')),
+        }
+        _save_blacklist(bl)
+        return True
+    return False
+
+def _blacklist_keys(lv):
+    """某关黑名单的 config_key 字符串集合（并入 used_keys 防重复——需转 tuple 对比）"""
+    bl = _load_blacklist()
+    out = set()
+    for k in bl.get(str(lv), {}).keys():
+        parts = k.split('|')
+        if len(parts) == 4:
+            out.add((parts[0], parts[1], parts[2], parts[3]))
+    return out
 
 # ── 安静模式 ──
 _QUIET = os.environ.get('DESIGN_PROBES_QUIET') == '1'
@@ -77,13 +129,13 @@ def analyze_gaps(base_wrs, targets, diff):
         gaps.append({'pair': (i, j), 'gap': g, 'ok_lo': ok_lo, 'near_lo': near_lo,
                      'severity': sev, 'shortfall': shortfall})
 
-    # 硬违规 → 缺口规格（优先级最高）
+    # 硬违规 → 缺口规格（优先级最高）。T3 锚点已从判定标准移除，
+    # 这里只处理仍存在于 rules/judge 的通用硬违规，禁止重新引入旧 T3 下限。
     hard_specs = []
     for i in range(5):
         if base_wrs[i] < 5:
             hard_specs.append({'tier': i, 'direction': 'raise', 'need': 5.0})
-    if diff == 'normal' and base_wrs[2] < 60:  # Normal T3<60
-        hard_specs.append({'tier': 2, 'direction': 'raise', 'need': 60.0})
+
     if diff in ('hard', 'superhard'):
         for i in range(4):
             g = base_wrs[i] - base_wrs[i + 1]
@@ -182,8 +234,6 @@ def _derive_needs(targets, diff, rules, pool_records, tol=5):
         # 组目标 = 组内各档目标的最大值（共享配置要满足所有共享档）
         need = max(targets[m] for m in group)
         # 硬违规下限
-        if is_normal and 2 in group:
-            need = max(need, 60.0)  # Normal T3≥60
         if need < 5:
             need = 5.0  # wr<5 硬违规
         # gap 约束：该组是某判定对的高档时，需求 ≥ 低档组值 + ok_lo
@@ -736,19 +786,48 @@ def design(lv, force_unreachable=False):
                 and r.get('totalGames', 0) >= 10]
     phase12 = [r for r in uniq if r.get('source') in ('phase1', 'phase2') and r.get('wr', 0) >= 5]
     verified_keys = {pool._config_key(r) for r in verified}
+    # 2026-08-19：跨轮黑名单并入——已验证无效/重复设计过的配置不再设计/验证
+    blacklist = _blacklist_keys(str(lv))
+    if blacklist:
+        verified_keys |= blacklist
+        _print(f'  ⚠ 黑名单 {len(blacklist)} 条（跨轮跳过已无效配置）')
 
     # 2026-08-10 可达性预检：verified 天花板 vs 目标——目标远超天花板（>15pp）直接标记建议改关卡
     # （L85/L119 教训：目标 90/85 但 verified 最高 72.5/61.8，6 轮探针全白跑）
+    # 2026-08-19 补下限：目标低档远低于 verified 地板（>15pp）同样不可达（关卡太简单压不下去）
     # 仅在 verified 数据足够（>=5 条）时判断——数据太少说明采样不足而非关卡不可达
     # 2026-08-10 P1 修复：默认阻断（返回 None 标记 unreachable），--force 参数可绕过
     unreachable_info = None
     if len(verified) >= 5:
         ceiling = max(r['wr'] for r in verified)
+        floor = min(r['wr'] for r in verified)
         unreachable = [i + 1 for i, tg in enumerate(targets) if tg - ceiling > 15]
-        if unreachable:
-            _print(f'L{lv}: ⚠ 可达性预检——verified 天花板 {ceiling:.1f}%，'
-                   f'目标档位 {unreachable} 距天花板 >15pp，探针大概率无效，建议改关卡')
-            unreachable_info = {'ceiling': ceiling, 'unreachable_tiers': unreachable}
+        # 下限：目标低档低于地板 >15pp（关卡太简单，参数到极限也压不到）
+        too_low = [i + 1 for i, tg in enumerate(targets) if floor - tg > 15]
+        # 2026-08-19 死亡分布信号（用户明确记得的机制）：T1 目标≥60 且初期死亡超阈值——
+        # 初期死亡占比反映关卡开局是否物理过难，与 WR 上限独立（L124 教训）
+        early_death_flag = None
+        if targets[0] >= 60:
+            t1_recs = [r for r in verified if r.get('wr', 0) >= targets[0] - 5]
+            if t1_recs:
+                # 取 T1 附近配置里 early 死亡占比最高的（最坏开局）
+                dp = max((r.get('deathProfile') for r in t1_recs
+                          if isinstance(r.get('deathProfile'), dict)),
+                         key=lambda d: d.get('early', 0),
+                         default={'early': 0})
+                threshold = (1 - targets[0] / 100) * 0.8
+                if dp.get('early', 0) > threshold:
+                    early_death_flag = {'early_death': round(dp.get('early', 0) * 100, 1),
+                                        'threshold': round(threshold * 100, 1)}
+        if unreachable or too_low or early_death_flag:
+            _print(f'L{lv}: ⚠ 可达性预检——verified 范围 {floor:.1f}%~{ceiling:.1f}%，'
+                   f'目标档位 {unreachable} 距天花板 >15pp / {too_low} 低于地板 >15pp'
+                   + (f' / 初期死亡 {early_death_flag["early_death"]}% > 阈值 {early_death_flag["threshold"]}%'
+                      if early_death_flag else '')
+                   + '，探针大概率无效，建议改关卡')
+            unreachable_info = {'ceiling': ceiling, 'floor': floor,
+                                'unreachable_tiers': unreachable, 'too_low_tiers': too_low,
+                                'early_death': early_death_flag}
             if not force_unreachable:
                 return None
 

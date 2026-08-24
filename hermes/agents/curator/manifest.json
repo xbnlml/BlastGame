@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "role": "curator",
+  "version": "curator-v1",
+  "mode": "deterministic",
+  "input_allowlist": ["runstore_events", "round_report", "ai_metrics"],
+  "output_schema": "CURATOR_OBSERVATION_V1",
+  "forbidden": ["rule_write", "asset_write", "excel_write", "board_write", "db_write", "judge_verdict"],
+  "failure_policy": "proposal_only",
+  "memory_policy": "review_only",
+  "policy_refs": ["project-state/rules.json"]
+}

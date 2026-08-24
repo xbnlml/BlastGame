@@ -9,7 +9,23 @@ import json, os, subprocess, sys
 TOOLS = os.path.dirname(os.path.abspath(__file__))
 
 
-def analyze_level(lv):
+def action_for_judgment(judge_result, round_num, max_rounds=6):
+    """Map the authoritative three-state verdict to the next action.
+
+    ``接近`` is a tuning state, never an import state.  Keep this mapping
+    small and deterministic; the authoritative verdict still comes from
+    ``judge_level``.
+    """
+    if judge_result == '合格':
+        return '待确认入库'
+    if judge_result == '接近':
+        return '继续调优(接近)'
+    if judge_result == '不合格':
+        return '改关卡' if round_num >= max_rounds - 1 else f'下一轮({round_num + 1}/{max_rounds})'
+    return '待定'
+
+
+def analyze_level(lv, include_probes=True):
     """分析单关：组合 → 判定 → 探针"""
     # 确保 tools 在 sys.path 中（被 subprocess 调用时）
     import sys
@@ -22,8 +38,11 @@ def analyze_level(lv):
     aa = os.path.join(TOOLS, 'agent_analyze.py')
     env = os.environ.copy()
     env['DESIGN_PROBES_QUIET'] = '1'
+    command = [sys.executable, aa, '--levels', str(lv), '--filter-verified', '--output', 'json']
+    if not include_probes:
+        command.append('--skip-probes')
     r = subprocess.run(
-        [sys.executable, aa, '--levels', str(lv), '--filter-verified', '--output', 'json'],
+        command,
         capture_output=True, text=True, timeout=300, env=env
     )
     rc = r.returncode
@@ -59,20 +78,16 @@ def analyze_level(lv):
         rnd = get_round(lv)
         result['round'] = rnd
         result['max_rounds'] = 6
-        if judge_result == '合格' or judge_result == '接近':
-            result['action'] = '入库'
-        elif judge_result == '不合格':
-            if rnd >= 5:
-                result['action'] = '改关卡'
-            else:
-                result['action'] = f'下一轮({rnd+1}/6)'
-        else:
-            result['action'] = '待定'
+        result['action'] = action_for_judgment(judge_result, rnd, result['max_rounds'])
     else:
         result['judge'] = 'no_combo'
 
-    # 3. 探针设计（仅当 agent_analyze 未返回探针时）
-    if result.get('probes') and len(result['probes']) >= 5:
+    # 3. 探针设计（AI 正式模式由 auto_loop 外层负责）
+    if not include_probes:
+        result['probes'] = []
+        result['probe_count'] = 0
+        result['probe_source'] = 'skipped_for_ai_selector'
+    elif result.get('probes') and len(result['probes']) >= 5:
         result['probe_count'] = len(result['probes'])
         result['probe_source'] = 'agent_analyze'
     else:
@@ -96,6 +111,8 @@ def main():
     parser = argparse.ArgumentParser(description='Planner — 决策编排 Agent')
     parser.add_argument('--levels', required=True, help='关卡列表')
     parser.add_argument('--output', choices=['json', 'text'], default='json')
+    parser.add_argument('--skip-probes', action='store_true',
+                        help='只做组合分析，由外层 AI selector 负责探针设计')
     args = parser.parse_args()
 
     levels = []
@@ -109,7 +126,7 @@ def main():
 
     results = {}
     for lv in levels:
-        results[lv] = analyze_level(lv)
+        results[lv] = analyze_level(lv, include_probes=not args.skip_probes)
 
     if args.output == 'json':
         print(json.dumps(results, ensure_ascii=False, indent=2))

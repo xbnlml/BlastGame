@@ -14,6 +14,7 @@
 | **写 asset 配置**（DDC 四元组 sd/sc/ratios/of）| `asset_patcher.py::write_ddc` | `write_ddc(lv, tiers)` + `verify_asset` |
 | **写 Excel 入库记录**（就地更新，小数格式）| `project-state/_archive/write_excel.py::write_tiers` | `write_tiers(lv, tiers)` |
 | **清空 Excel 数据列**（保留行结构）| `clear_excel_data.py` | `--levels X [--dry-run]` |
+| **按 cutoff 清理 DB 过期 entry**（保留新 entry，自动备份）| `leveldb_sync/clear_expired_entries.mjs` | `--levels X [--dry-run / --apply]` |
 | **生成关卡数据库 payload** | `gen_payload.py` | `--levels X --source <批次名> [--override]` |
 | **写关卡数据库**（读 `_write_payload.json`）| `leveldb_sync/write_level_db.mjs` | 先 dryrun 再正式 |
 | **改关卡数据隔离**（设时间防线）| `retire_level.py` | `--levels X` |
@@ -23,7 +24,7 @@
 
 | 你想做什么 | 用哪个工具 |
 |---|---|
-| **查单关完整现状**（池子/组合/判定/asset/轮次）| `level_status.py`（[注] 需从 skill 复制或 PYTHONPATH）|
+| **查单关完整现状**（池子/组合/判定/asset/轮次）| `state_snapshot.py` |
 | **重选最优档位 vs Excel 对比** | `compare_imported.py` |
 | **已入库关三方审计**（Excel vs asset vs 池子）| `audit_imported.py` |
 | **数据可靠性核验**（池子三查）| `verify_pool_data.py` |
@@ -50,14 +51,17 @@
 | 你想做什么 | 用哪个工具 |
 |---|---|
 | **提交 bot 批跑** | `scripts/submit_batch_unity.py` |
-| **全自动调优循环**（探针轮 `--probe-games` 默认 200 + 贝叶斯；验证轮 `--games` 400）| `scripts/auto_loop.py` |
+| **全自动调优循环**（探针轮 `--probe-games` 默认 400 + 贝叶斯；验证轮 `--games` 400）| `scripts/auto_loop.py` |
 
-**局数标准（2026-08-10）：** 探针批 `--games 200 --adaptive-stop`（筛选方向）；验证批 `--games 400`（入库前精测跑满）。
+**局数标准（2026-08-20）：** 探针批 `--games 400 --adaptive-stop`（`min-runs=60`）；验证批 `--games 400`（入库前精测跑满）。BayesStdThreshold `0.025` 不改。
+
+**当前全自动主流程（2026-08-21）：** `auto_loop.py` 默认走 legacy 单 Unity 串行批跑，不传 `--v3-request`，使用可读的“关卡列表+时间”批次目录。批前仍做 preflight/Warden/asset 四元组检查；批后必须核对 Unity 实际 asset 快照、campaign-summary CSV 完整性，再刷新池子和 Judge。V3 receipt/generation 仅保留作历史/手动实验，不作为默认入口，也不修改 Unity Bot/Workbench 模块。
 | **批后分析** | `post_batch_review.py` |
 | **监控 bot 完成** | `monitor_bot.py` |
 | **提交前验证** | `preflight.py` |
 | **操作后自检** | `postcheck.py` |
 | **刷新数据池缓存** | `dump_level_pools.py` |
+| **按 cutoff 清理 stage-data 派生记录**（原始批次不动）| `purge_expired_stage_data.py` | `--levels X [--apply]` |
 
 ## 五、Agent / 安全
 

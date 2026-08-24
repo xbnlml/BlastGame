@@ -1,0 +1,16 @@
+{
+  "124": {
+    "diff": "hard",
+    "targets": [70, 55, 40, 30, 20],
+    "status": "✅已入库",
+    "date": "2026-08-21",
+    "note": "用户确认入库；当前牌面多档位optimizer summary，Judge接近但按用户裁定入库",
+    "tiers": [
+      {"wr": 63.24, "sd": 38, "sc": 5, "ratios": "10,10,0,0,0", "of": 1.0, "note": "optimizer p3 summary 370局"},
+      {"wr": 51.00, "sd": 40, "sc": 5, "ratios": "10,10,0,10,10", "of": 1.0, "note": "optimizer p3 summary 400局"},
+      {"wr": 41.54, "sd": 38, "sc": 5, "ratios": "10,10,10,0,0", "of": 1.0, "note": "optimizer p3 summary 390局"},
+      {"wr": 34.72, "sd": 20, "sc": 5, "ratios": "0,0,10,0,0", "of": 0.5, "note": "optimizer p3 summary 360局"},
+      {"wr": 20.38, "sd": 26, "sc": 5, "ratios": "10,1,1,1,10", "of": 0.5, "note": "optimizer p0 summary 260局"}
+    ]
+  }
+}

@@ -24,13 +24,12 @@ Normal 查 T1→T3（按T1分档）、T3→T5（按T3分档）；Hard/SH 查相�
 
 ## 硬性违规清单
 - 倒挂>1%, gap>40%(Hard/SH), WR<5%, <10%档>1个
-- Normal T3<60%
+- T3 锚点限制已从当前 Judge 判定中移除（2026-08-18 定稿）
 - 注：gap<5% 已删除（新 <30% 段接近带下限为 4，gap 红线由分档覆盖）
 
-## 目标偏差约束（2026-08-05 改硬）
-- rules.json target_deviation = {max:15, severity:hard}
-- 每档 |WR-目标| >15pp（关卡数据库红字）→ 硬性违规 → 不合格
-- 绿(≤10)/黄(≤15)不判；红(>15)判不合格
+## 目标偏差约束（2026-08-20 当前）
+- rules.json target_deviation = {max:5, near:10, db_green_max:10, severity:hard}
+- 每档 |WR-目标|≤5pp → 合格；5~10pp 且 DB 全绿 → 接近；>10pp → DB 非绿，不得接近
 - check_judgment(combo, diff, targets) 传 targets 才启用
 
 
@@ -53,9 +52,11 @@ Normal 查 T1→T3（按T1分档）、T3→T5（按T3分档）；Hard/SH 查相�
 - 合格/接近→重置
 - 已入库关不挂轮次（2026-08-05 清理 L176/L153）
 
-### 选最优档位硬性约束（2026-08-05）
+### 选最优档位质量分（2026-08-20）
 - 任何档位 WR<5% 硬性过滤（_bucket 共用），L162 T5=0 案例
-- 评分 target_pen_seg 分段罚分（绿1/黄3/红8）+ gap_score 不动
+- 当前 `q = gap_distance + 0.25 × target_distance`，越低越好。
+- gap_distance 使用实际/Excel目标的 log₂ 尝试次数档差距离，gap 过大不再奖励。
+- Judge 规则独立负责合格/接近/不合格，q 只负责候选排序。
 
 ## 边界案例
 (Curator 自动填充)
@@ -73,3 +74,15 @@ Normal 查 T1→T3（按T1分档）、T3→T5（按T3分档）；Hard/SH 查相�
 
 ### 2026-08-17 16:35
 - 本轮出现 6 次 gap不足: gap不足
+
+### 2026-08-19 00:48
+- 本轮出现 16 次 gap不足: gap不足
+
+### 2026-08-21 02:42
+- 本轮出现 18 次 gap不足: gap不足
+
+### 2026-08-21 06:42
+- 本轮出现 25 次 gap不足: gap不足
+
+### 2026-08-21 19:20
+- 本轮出现 8 次 gap不足: gap不足

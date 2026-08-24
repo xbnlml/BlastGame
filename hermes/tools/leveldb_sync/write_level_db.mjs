@@ -33,12 +33,12 @@ console.log('加载成功: levels=', Object.keys(store.levels).length);
 // 3. upsert 全部 payload 关卡（逐档单档 entry）
 const results = [];
 for (const [lv, item] of Object.entries(payload)) {
-  // 2026-08-17 修：先清掉该关所有 hermes-import 旧 entry，再写新的——
-  // 否则新旧混杂，runStore 的 pruneOldEntries(maxEntries=8) 会把新 entry
-  // 当旧挤掉（L186 补一档丢一档根因）。清完写 5 档，正好 <=8 不触发 prune。
+  // 2026-08-18 修：写前清掉该关全部旧 entry（不只 hermes-import，含探针/老数据残留）——
+  // 否则非 import 残留也占位，runStore 的 pruneOldEntries(maxEntries=8) 会把新 entry
+  // 当旧挤掉（L54/72/134 补一档丢一档根因，L186 案例同因）。清空后写 5 档不触发 prune。
   const levelNode = store.levels[String(lv)];
   if (levelNode?.entries?.length) {
-    levelNode.entries = levelNode.entries.filter(e => e.identitySource !== 'hermes-import');
+    levelNode.entries = [];
   }
   const tiers = item.tierConfigs;
   const winRates = item.tierWinRates;
