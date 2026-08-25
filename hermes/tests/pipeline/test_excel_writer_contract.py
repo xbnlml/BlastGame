@@ -55,6 +55,11 @@ class ExcelWriterContractTest(unittest.TestCase):
         self.assertNotIn("_import_write_excel", source)
         self.assertIn("from tools.data.excel_writer import write_tiers", source)
 
+    def test_reimport_db_sync_uses_write_tool_payload_contract(self):
+        source = (Path(__file__).resolve().parents[2] / "tools" / "reimport.py").read_text(encoding="utf-8")
+        self.assertIn("'_write_payload.json'", source)
+        self.assertNotIn("'_reimport_payload.json'", source)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

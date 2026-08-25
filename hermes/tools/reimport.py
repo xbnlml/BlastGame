@@ -223,7 +223,9 @@ def _sync_leveldb(lv, cfg, tiers5):
             'sourceFileName': f'reimport-{time.strftime("%Y%m%d")}-{lv}.json',
         }
     }
-    payload_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'leveldb_sync', '_reimport_payload.json')
+    # write_level_db.mjs 的正式入口固定读取 _write_payload.json；使用同一
+    # 中转文件名，避免 reimport 显示“DB同步失败”但实际 Node 根本没读到 payload。
+    payload_path = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'leveldb_sync', '_write_payload.json')
     with open(payload_path, 'w', encoding='utf-8') as f:
         _json.dump(payload, f, ensure_ascii=False)
     wl = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), 'leveldb_sync', 'write_level_db.mjs')
@@ -235,8 +237,8 @@ def _sync_leveldb(lv, cfg, tiers5):
     # 2026-08-10 P0 修复：不能只看 node 退出码（write_level_db 输出
     # "部分验证失败" 时退出码仍 0，导致 DB 漏写被当成成功——L163 案例）。
     # 必须回读 test.json 确认该关 reimport entry 存在且 winRate 匹配。
-    if r.returncode != 0:
-        return False
+    # Node 写入器历史上可能因 Normal 去重把 5 档回读报成 3/5；最终
+    # 是否成功以当前 DB 的配置 fingerprint + winRate 回读为准，而不是只信退出码。
     try:
         run_path = _os.path.join(_os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame')),
                                  'LevelDatabase', 'Run', 'test.json')

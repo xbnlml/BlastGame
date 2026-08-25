@@ -98,11 +98,12 @@ for (const [lv, item] of Object.entries(payload)) {
       tier: tierLabels[i] || ('T' + (i + 1)),
       ok: before !== after && !!active,
       fp: dealFingerprint.slice(0, 8),
+      dealFingerprint,
       wr: winRates[i] !== undefined ? Math.round(winRates[i] * 100) + '%' : '—'
     });
   }
   const allOk = lvResults.every(r => r.ok);
-  results.push({ lv, ok: allOk, tiers: lvResults });
+  results.push({ lv, ok: allOk, boardFingerprint, tiers: lvResults });
 }
 
 // 4. 保存（官方: 备份+原子写+稳定排序）
@@ -117,7 +118,9 @@ for (const r of results) {
   const node = verify.levels[String(r.lv)];
   let tierOk = 0;
   for (const t of r.tiers) {
-    const e = node?.entries?.find(x => x.sourceTierLabels?.[0] === t.tier);
+    // Normal 的 T1=T2/T4=T5 是合法的配置去重，不能按 sourceTierLabels
+    // 要求五条独立 entry；按官方活动 fingerprint 逐档回读。
+    const e = resolveActiveRun(verify, String(r.lv), r.boardFingerprint, t.dealFingerprint);
     if (e && e.winRate !== undefined) tierOk++;
   }
   if (tierOk >= 5) {
