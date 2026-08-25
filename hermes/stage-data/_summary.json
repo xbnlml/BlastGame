@@ -1,8 +1,8 @@
 {
-  "updated_at": "2026-08-24T18:05:31",
+  "updated_at": "2026-08-25T17:16:58",
   "levels_covered": 150,
-  "total_reliable": 3909,
-  "total_reference": 4525,
+  "total_reliable": 4050,
+  "total_reference": 4625,
   "levels": {
     "51": {
       "reliable_count": 55,
@@ -96,17 +96,17 @@
       "wr_span": 51.83
     },
     "58": {
-      "reliable_count": 0,
-      "reference_count": 0,
+      "reliable_count": 72,
+      "reference_count": 25,
       "sources": {
-        "bot": 0,
-        "summary": 0,
-        "phase2": 0,
-        "phase1": 0
+        "bot": 26,
+        "summary": 3,
+        "phase2": 42,
+        "phase1": 25
       },
-      "wr_min": null,
-      "wr_max": null,
-      "wr_span": null
+      "wr_min": 18.8,
+      "wr_max": 81.6,
+      "wr_span": 62.8
     },
     "59": {
       "reliable_count": 38,
@@ -369,17 +369,17 @@
       "wr_span": 54.33
     },
     "79": {
-      "reliable_count": 0,
-      "reference_count": 0,
+      "reliable_count": 23,
+      "reference_count": 49,
       "sources": {
         "bot": 0,
-        "summary": 0,
-        "phase2": 0,
-        "phase1": 0
+        "summary": 3,
+        "phase2": 19,
+        "phase1": 49
       },
-      "wr_min": null,
-      "wr_max": null,
-      "wr_span": null
+      "wr_min": 29.5,
+      "wr_max": 96.0,
+      "wr_span": 66.5
     },
     "80": {
       "reliable_count": 28,
@@ -902,17 +902,17 @@
       "wr_span": 45.5
     },
     "120": {
-      "reliable_count": 0,
-      "reference_count": 0,
+      "reliable_count": 46,
+      "reference_count": 26,
       "sources": {
         "bot": 0,
-        "summary": 0,
-        "phase2": 0,
-        "phase1": 0
+        "summary": 3,
+        "phase2": 41,
+        "phase1": 26
       },
-      "wr_min": null,
-      "wr_max": null,
-      "wr_span": null
+      "wr_min": 45.0,
+      "wr_max": 85.0,
+      "wr_span": 40.0
     },
     "121": {
       "reliable_count": 23,
