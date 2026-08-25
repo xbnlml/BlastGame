@@ -1,6 +1,6 @@
 import os, re, json, shutil, hashlib
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 ASSET_DIR = os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test')
 BACKUP_DIR = os.path.join(os.path.dirname(__file__), '..', 'assets_backup')
 BACKUP_DIR = os.path.normpath(BACKUP_DIR)

@@ -6,7 +6,7 @@
 import os, csv, re
 from collections import defaultdict
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 OPT_DIR = os.path.join(REPO, 'telemetry', 'multi-tier-opt')
 
 

@@ -1,7 +1,10 @@
 // Emit the official asset execution plan used by V3 Python request builder.
 // Usage: node asset_execution_plan.mjs <asset-path> [<asset-path> ...]
-import { readAssetSnapshot } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/assetSnapshot.mjs';
-import { computeDealConfigFingerprint } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/tierConfigMatch.mjs';
+import { repoModuleUrl, resolveRepo } from '../leveldb_sync/repo_paths.mjs';
+
+const repo = resolveRepo();
+const { readAssetSnapshot } = await import(repoModuleUrl(repo, 'Tools/level-editor/launcher/leveldb/assetSnapshot.mjs'));
+const { computeDealConfigFingerprint } = await import(repoModuleUrl(repo, 'Tools/level-editor/launcher/leveldb/tierConfigMatch.mjs'));
 
 const assets = process.argv.slice(2);
 if (!assets.length) {

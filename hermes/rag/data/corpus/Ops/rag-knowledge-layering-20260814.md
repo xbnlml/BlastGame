@@ -28,7 +28,7 @@
 - MEMORY.md 33.7KB/147 条：**同一主题跨日期重复 3-5 次**（探针铁则 5+、局数标准 4、判定标准 3、bot400 一致性 3）→ 压缩合并到 ~70 条/~20KB；叙事细节挪 Ops 语料；旧版本归档**不删**（压缩后 MEMORY=现行真源）。
 
 ## 落地路径（改造成本低，现有 build_index 已支持 CORPUS_SUBDIRS）
-1. 建 `C:\...\BlastGame\Doc\Ops\` **快照语料**：从 skill references 拷贝 96 个日期文件，头部加一行 `> ⚠️ 已被 <新标准> 取代（日期），仅供历史参考`；**不直接索引 skill 目录**（防漂移/INDEX 噪声/个人内容）。
+1. 建 `<BLASTGAME_REPO>/Doc\Ops\` **快照语料**：从 skill references 拷贝 96 个日期文件，头部加一行 `> ⚠️ 已被 <新标准> 取代（日期），仅供历史参考`；**不直接索引 skill 目录**（防漂移/INDEX 噪声/个人内容）。
 2. `build_index.py` metadata 加 `domain` 字段（~10 行）；`rag_query.py` 可选 `--domain` 过滤。
 3. 重建：`RAG_CORPUS_SUBDIRS="MainGame,Bot,Tools,Ops" python -m rag.build_index`（928→~1450 chunk）。
 4. 新建 `rag/data/golden_qa_ops.json`（20-30 条，expected_source 指向 Ops/ 文件名）+ 双域评估；**design 回归掉 >3pp → 切双索引**（ops 复盘文可试更大 chunk）。

@@ -11,7 +11,7 @@ import os, sys, json, subprocess, glob, re, csv
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 STAGE_DIR = os.path.join(TOOL_DIR, '..', 'stage-data')
 BOARD_FILE = os.path.join(TOOL_DIR, '..', 'project-state', 'board.md')
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 
 def get_asset_path(lv):
     for root, dirs, files in os.walk(os.path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test')):

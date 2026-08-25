@@ -10,19 +10,9 @@ TOOLS = os.path.dirname(os.path.abspath(__file__))
 
 
 def action_for_judgment(judge_result, round_num, max_rounds=6):
-    """Map the authoritative three-state verdict to the next action.
-
-    ``接近`` is a tuning state, never an import state.  Keep this mapping
-    small and deterministic; the authoritative verdict still comes from
-    ``judge_level``.
-    """
-    if judge_result == '合格':
-        return '待确认入库'
-    if judge_result == '接近':
-        return '继续调优(接近)'
-    if judge_result == '不合格':
-        return '改关卡' if round_num >= max_rounds - 1 else f'下一轮({round_num + 1}/{max_rounds})'
-    return '待定'
+    """Compatibility export of Judge's authoritative action mapping."""
+    from tools.judge_level import action_for_judgment as _judge_action
+    return _judge_action(judge_result, round_num, max_rounds)
 
 
 def analyze_level(lv, include_probes=True):
@@ -66,7 +56,7 @@ def analyze_level(lv, include_probes=True):
 
     # 2. 判定（judge_level 三态 + 轮次管理）
     if result.get('combo'):
-        from tools.judge_level import check_judgment, get_round
+        from tools.judge_level import MAX_ROUNDS, check_judgment, get_round
         from tools.data.adapters import excel_target as et
         t = et.get_target(lv)
         targets = t['tiers'] if t else None
@@ -77,7 +67,7 @@ def analyze_level(lv, include_probes=True):
         # 轮次管理
         rnd = get_round(lv)
         result['round'] = rnd
-        result['max_rounds'] = 6
+        result['max_rounds'] = MAX_ROUNDS
         result['action'] = action_for_judgment(judge_result, rnd, result['max_rounds'])
     else:
         result['judge'] = 'no_combo'

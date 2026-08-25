@@ -2,7 +2,7 @@
 
 > 审查对象：`BlastMultiTierPhase1AdaptiveSampler.cs`（532 行）+ `BlastMultiTierOptimizer.cs`（4168 行）
 > 本文件先校准机制（源码为准），再评估用户两例，再给落地方案，最后反主 agent 的网格化方案。
-> 工作路径：`C:\Users\Administrator\Documents\BlastGame`
+> 工作路径：`<BLASTGAME_REPO>`
 
 ---
 

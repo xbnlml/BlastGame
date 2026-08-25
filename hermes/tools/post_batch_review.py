@@ -11,7 +11,7 @@ from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 BOT_DIR = os.path.join(REPO, 'telemetry', 'bot')
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 TARGETS = {

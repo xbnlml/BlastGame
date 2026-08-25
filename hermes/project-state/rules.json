@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "version": "1.0.0",
-    "source": "merged from wrongbook.md + judgment-rules.md",
-    "updated": "2026-08-05"
+    "version": "1.1.0",
+    "source": "executable rules in this file; history in wrongbook.md and docs/design-decisions.md",
+    "updated": "2026-08-25"
   },
   "warden_checks": {
     "pre_batch": [
@@ -84,15 +84,11 @@
         "wr_ge_30": 7,
         "wr_lt_30": 4
       },
-      "anchor": {
-        "t3_min": 50
-      },
+      "_note": "Normal uses T1/T3/T5 effective gaps; no T3 anchor.",
       "hard_violations": [
         "inverted>1",
         "wr<5",
-        "t3<50",
-        "low_count>1",
-        "gap>40"
+        "low_count>1"
       ]
     },
     "hard": {
@@ -108,16 +104,10 @@
         "wr_ge_30": 7,
         "wr_lt_30": 4
       },
-      "anchor": {
-        "t3_range": [
-          30,
-          50
-        ]
-      },
+      "_note": "Hard has no T3 anchor; other hard violations remain active.",
       "hard_violations": [
         "inverted>1",
         "wr<5",
-        "t3<30 or>50",
         "low_count>1",
         "gap>40"
       ]
@@ -135,13 +125,10 @@
         "wr_ge_30": 7,
         "wr_lt_30": 4
       },
-      "anchor": {
-        "t3_max": 50
-      },
+      "_note": "SuperHard has no T3 anchor; other hard violations remain active.",
       "hard_violations": [
         "inverted>1",
         "wr<5",
-        "t3>50",
         "low_count>1",
         "gap>40"
       ]

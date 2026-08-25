@@ -9,18 +9,41 @@
 异常时输出报警信息（供 cron/手动检查），正常输出 OK。
 """
 import subprocess, sys, os, json, time
+from pathlib import Path
 
-HERMES = r"D:\download\BlastGame\hermes"
+HERMES = str(Path(__file__).resolve().parents[1])
+if HERMES not in sys.path:
+    sys.path.insert(0, HERMES)
+from tools.auto_log_summary import parse_final_summary
+
 AUTOLOG = os.path.join(HERMES, "auto-log")
 ROUNDS = os.path.join(HERMES, "project-state", "_rounds.json")
+
+
+def final_summary_messages(log_text):
+    """Format a complete final summary without treating zero errors as failure."""
+    summary = parse_final_summary(log_text)
+    if summary is None:
+        return []
+    messages = [
+        "ℹ auto_loop 已结束: "
+        f"待确认入库={summary['passed']}, 改关卡={summary['failed']}, 错误={summary['errors']}"
+    ]
+    if summary['errors'] > 0:
+        messages.append(f"⚠ auto_loop 结束但有错误: {summary['errors']} levels")
+    return messages
 
 def check():
     issues = []
     # 1. auto_loop 进程
     # 通过日志文件判断 auto_loop 是否活跃（进程名不可靠，多个 python）
+    if not os.path.isdir(AUTOLOG):
+        print("⚠ 无 auto_loop 日志")
+        return
     logs = sorted([f for f in os.listdir(AUTOLOG) if f.endswith('.log')], reverse=True)
     if not logs:
-        return "⚠ 无 auto_loop 日志"
+        print("⚠ 无 auto_loop 日志")
+        return
     latest = os.path.join(AUTOLOG, logs[0])
     mtime = os.path.getmtime(latest)
     age_min = (time.time() - mtime) / 60
@@ -34,19 +57,14 @@ def check():
     if age_min > 30:
         issues.append(f"⚠ auto_loop 日志 {age_min:.0f} 分钟未更新（{logs[0]}）")
 
-    # 4. 日志内容快照（尾部）
+    # 4. 日志内容。此前先读取全文再截取 3000 字符，会漏掉大批次
+    # FINAL SUMMARY 开头；既然全文已经在内存中，就直接按完整协议解析。
     with open(latest, encoding='utf-8', errors='ignore') as f:
-        tail = f.read()[-3000:]
+        log_text = f.read()
     # 检测关键状态
-    if 'FINAL SUMMARY' in tail:
-        # 看最终结果
-        if 'Passed (入库)' in tail:
-            passed_line = [l for l in tail.split('\n') if 'Passed' in l]
-            issues.append(f"ℹ auto_loop 已结束: {passed_line[0].strip() if passed_line else '?'}")
-        if 'Errors' in tail:
-            err_lines = [l for l in tail.split('\n') if '⚠ Errors' in l or 'L85:' in l or 'L119:' in l or 'L120:' in l]
-            issues.append(f"⚠ auto_loop 结束但有错误: {'; '.join(e.strip() for e in err_lines[:5])}")
-    elif 'Unity batch FAILED' in tail or 'planner FAILED' in tail:
+    if 'FINAL SUMMARY' in log_text:
+        issues.extend(final_summary_messages(log_text))
+    elif 'Unity batch FAILED' in log_text or 'planner FAILED' in log_text:
         issues.append("⚠ auto_loop 内部 FAIL 出现（查看日志）")
 
     # 5. 轮数推进检测（2026-08-10 升级：_rounds.json 半小时无变化 + 日志 30 分钟无更新 = 卡住）

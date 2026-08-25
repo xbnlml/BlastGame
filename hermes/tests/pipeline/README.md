@@ -6,23 +6,14 @@ Run from `hermes/`:
 python -m unittest discover -s tests/pipeline -p 'test_*.py' -v
 ```
 
-## P0.1 expected red state
+## Current baseline
 
-The `tools.pipeline` package now exists only as a signature skeleton. Before the
-P0.2–P0.4 green slices are implemented, the behavior tests must fail with one
-of these explicit diagnostics:
-
-- `V3 contract not implemented: EVENT_REDUCER_V1`
-- `V3 contract not implemented: RUN_STORE_INITIALIZE_V1`
-- `V3 contract not implemented: RUN_STORE_APPEND_V1`
-- `V3 contract not implemented: BATCH_RECEIPT_V1`
-- `V3 contract not implemented: COORDINATOR_RUN_V1`
-- `V3 contract not implemented: COORDINATOR_RESUME_V1`
-- `V3 contract not implemented: PRODUCTION_COORDINATOR_WIRING_V1`
-
-`test_fixture_integrity.py` must stay green. Syntax errors, unreadable fixtures,
-unexpected imports, absolute production paths, or an unrelated exception are
-**not** acceptable red states.
+All tests are expected to pass. The suite covers both the V3 contract layer and
+the active legacy acceptance adapter; a contract test is not evidence that V3
+is the default Unity path. `test_fixture_integrity.py` keeps checked-in evidence
+free of production paths and credentials. `test_demo_replay.py` proves the
+public replay works without a Unity workspace. `test_tool_smoke.py` runs against the
+configured live workspace when present and reports an explicit skip otherwise.
 
 ## Public seams under test
 

@@ -47,7 +47,7 @@ parser.add_argument('--adaptive-stop', action='store_true',
 
 ## 4. Excel 位置事故（坑 98，严重）
 
-**事故**：入库记录 Excel 误写 `C:\Users\Administrator\Documents\BlastGame\Doc\手动挑配置记录.xlsx`（BlastGame 项目里），正确位置是 `D:\download\BlastGame\hermes\手动挑配置记录.xlsx`（hermes 工作区）。用户暴怒："让你写的excel是BlastGame里的excel？？？？？？？？？？？？？？？？？？？？？？？"
+**事故**：入库记录 Excel 误写 `<BLASTGAME_REPO>\Doc\手动挑配置记录.xlsx`（BlastGame 项目里），正确位置是 `<HERMES_ROOT>\手动挑配置记录.xlsx`（hermes 工作区）。用户暴怒："让你写的excel是BlastGame里的excel？？？？？？？？？？？？？？？？？？？？？？？"
 
 **根因**：memory 里"手动挑配置记录.xlsx"没写路径，之前会话一直用 BlastGame Doc 的路径，惯性延续。
 
@@ -56,7 +56,7 @@ parser.add_argument('--adaptive-stop', action='store_true',
 2. 把 BlastGame 版完整复制到 hermes 版（用户历史 + 我们的入库记录都在）
 3. 用户用 SourceTree 还原 BlastGame 里的
 
-**铁则**：BlastGame 项目目录（`C:\...\BlastGame\`）内任何文件禁止写。写入前确认路径前缀是 `D:\download\BlastGame\hermes\`。
+**铁则**：BlastGame 项目目录（`<BLASTGAME_REPO>/`）内任何文件禁止写。写入前确认路径前缀是 `<HERMES_ROOT>\`。
 
 ## 5. 池子 dedup 埋新批次数据（坑 89/96/100）
 

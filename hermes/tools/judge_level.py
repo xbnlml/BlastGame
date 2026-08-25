@@ -1,21 +1,67 @@
 #!/usr/bin/env python3
-"""评判关卡现有数据能否满足档位差要求。
-
-标准: blastgame-judgment skill (judgment-rules.md)
-  - ② 合格判定表按 WR 分档
-  - ③ 硬性违规清单
-  - ⑤ 结果三分级 + 6轮上限
-"""
+"""按 project-state/rules.json 评判档位差、目标偏差和轮次动作。"""
 import os, sys, json
 
-ROOT = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, os.path.dirname(sys.path[0]))
+TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
+HERMES = os.path.dirname(TOOL_DIR)
+sys.path.insert(0, HERMES)
+
+from tools.project_paths import resolve_unity_repo
+
+ROOT = str(resolve_unity_repo(HERMES))
+os.environ.setdefault('BLASTGAME_REPO', ROOT)
 
 from tools.data.adapters import excel_target as et
 
 # ── 加载判定规则 ──
 _rules_cache = None
+_BAND_KEYS = ('wr_ge_70', 'wr_ge_50', 'wr_ge_30', 'wr_lt_30')
+_HARD_VIOLATIONS = {
+    'normal': {'inverted>1', 'wr<5', 'low_count>1'},
+    'hard': {'inverted>1', 'wr<5', 'low_count>1', 'gap>40'},
+    'superhard': {'inverted>1', 'wr<5', 'low_count>1', 'gap>40'},
+}
+
+
+def _validate_rules(judge_rules):
+    if not isinstance(judge_rules, dict):
+        raise ValueError('rules.json judge_rules 必须是 object')
+    for diff in ('normal', 'hard', 'superhard'):
+        rules = judge_rules.get(diff)
+        if not isinstance(rules, dict):
+            raise ValueError(f'rules.json 缺少 judge_rules.{diff}')
+        if 'anchor' in rules:
+            raise ValueError(f'rules.json judge_rules.{diff}.anchor 已废弃')
+        violations = rules.get('hard_violations')
+        if not isinstance(violations, list):
+            raise ValueError(f'rules.json judge_rules.{diff}.hard_violations 缺失')
+        if not all(isinstance(item, str) for item in violations) or set(violations) != _HARD_VIOLATIONS[diff]:
+            raise ValueError(
+                f'rules.json judge_rules.{diff}.hard_violations 与当前 Judge 实现不一致'
+            )
+        for section in ('gap_bands', 'near_bands'):
+            bands = rules.get(section)
+            if not isinstance(bands, dict):
+                raise ValueError(f'rules.json judge_rules.{diff}.{section} 缺失')
+            missing = [key for key in _BAND_KEYS if key not in bands]
+            if missing:
+                raise ValueError(f'rules.json judge_rules.{diff}.{section} 缺少 {missing}')
+            if any(not isinstance(bands[key], (int, float)) for key in _BAND_KEYS):
+                raise ValueError(f'rules.json judge_rules.{diff}.{section} 必须是数值')
+    target = judge_rules.get('target_deviation')
+    if not isinstance(target, dict) or any(key not in target for key in ('max', 'near', 'db_green_max', 'severity')):
+        raise ValueError('rules.json target_deviation 不完整')
+    if any(not isinstance(target[key], (int, float)) for key in ('max', 'near', 'db_green_max')):
+        raise ValueError('rules.json target_deviation 阈值必须是数值')
+    if target['severity'] != 'hard':
+        raise ValueError('rules.json target_deviation.severity 当前只支持 hard')
+    for key in ('tolerance_pp', 'near_tolerance_pp'):
+        if not isinstance(judge_rules.get(key), (int, float)):
+            raise ValueError(f'rules.json {key} 缺失或非数值')
+    rounds = judge_rules.get('rounds')
+    if not isinstance(rounds, dict) or not isinstance(rounds.get('max'), int) or rounds['max'] < 1:
+        raise ValueError('rules.json rounds.max 缺失或非法')
+    return judge_rules
 
 def _load_rules():
     global _rules_cache
@@ -31,10 +77,10 @@ def _load_rules():
             _rules_cache = json.load(f)
         if 'judge_rules' not in _rules_cache:
             raise ValueError(f'rules.json 缺少 judge_rules 段——标准配置不完整，禁止静默 fallback')
-    return _rules_cache.get('judge_rules', {})
+    return _validate_rules(_rules_cache.get('judge_rules'))
 
 ROUNDS_FILE = os.path.join(os.path.dirname(__file__), '..', 'project-state', '_rounds.json')
-MAX_ROUNDS = 6
+MAX_ROUNDS = int(_load_rules()['rounds']['max'])
 
 
 def _load_rounds():
@@ -53,7 +99,7 @@ def get_round(lv): return _load_rounds().get(str(lv), 0)
 
 def inc_round(lv):
     d = _load_rounds()
-    d[str(lv)] = d.get(str(lv), 0) + 1
+    d[str(lv)] = min(MAX_ROUNDS, d.get(str(lv), 0) + 1)
     _save_rounds(d)
     return d[str(lv)]
 
@@ -78,32 +124,17 @@ def load_stage_data(levels):
 def check_judgment(combo, diff, targets=None):
     """按 rules.json（judgment-rules）判定。返回 (result, reasons)。
 
-    阈值从 rules.json 读取，缺失时用内置默认（保持向后兼容）。
+    阈值只从 rules.json 读取；字段缺失或类型错误时显式报错。
     targets 可选：传入时启用目标偏差软约束（target_deviation）。
     """
-    rules = _load_rules().get(diff, {})
+    rules = _load_rules()[diff]
     # 2026-08-05：tolerance_pp 在 judge_rules 顶层（所有难度生效），不是难度层
     _jr_all = _load_rules()
-    tolerance_pp = float(_jr_all.get('tolerance_pp', 0))
-    near_tolerance_pp = float(_jr_all.get('near_tolerance_pp', 0))
+    tolerance_pp = float(_jr_all['tolerance_pp'])
+    near_tolerance_pp = float(_jr_all['near_tolerance_pp'])
     # 新分档标准（2026-07-31）：按较高档 WR 分档 20/15/10/6
-    gap_bands = rules.get('gap_bands', {'wr_ge_70': 20, 'wr_ge_50': 15, 'wr_ge_30': 10, 'wr_lt_30': 6})
-    near_bands = rules.get('near_bands', {'wr_ge_70': 15, 'wr_ge_50': 10, 'wr_ge_30': 7, 'wr_lt_30': 4})
-    anchor = rules.get('anchor', {})
-    # 2026-08-17 fail-loud：锚点缺失 = 标准不完整 = 报错，禁止静默 fallback 旧值
-    # （旧代码 t3_min 默认 60 与 rules.json 的 50 不同步——rules.json 加载失败时
-    #  静默用旧标准判定，这就是"第二真源"）
-    # 按难度区分锚点要求：normal 需 t3_min、hard 需 t3_range、superhard 只需 t3_max
-    if diff == 'normal' and 't3_min' not in anchor:
-        raise ValueError(f'rules.json [normal].anchor 缺失 t3_min——标准不完整，禁止静默 fallback')
-    if diff == 'hard' and 't3_range' not in anchor:
-        raise ValueError(f'rules.json [hard].anchor 缺失 t3_range——标准不完整，禁止静默 fallback')
-    if diff == 'superhard' and 't3_max' not in anchor:
-        raise ValueError(f'rules.json [superhard].anchor 缺失 t3_max——标准不完整，禁止静默 fallback')
-    t3_min = anchor.get('t3_min')
-    t3_range = anchor.get('t3_range')
-    t3_max = anchor.get('t3_max', 50)
-
+    gap_bands = rules['gap_bands']
+    near_bands = rules['near_bands']
     wrs = [combo[f'T{i}'] for i in range(1, 6)]
     gaps = [wrs[i] - wrs[i+1] for i in range(4)]
     reasons = []
@@ -171,10 +202,10 @@ def check_judgment(combo, diff, targets=None):
     # 即使仍在 target_deviation 的容差范围内，也不能判为接近。
     # 仅当调用方传入 targets 时启用（正常流程 judge_with_rounds/planner 均传）
     if targets is not None:
-        td = _load_rules().get('target_deviation', {'max': 5, 'near': 10, 'severity': 'hard'})
-        td_ok = float(td.get('max', 5))      # 完全接受线（<=5 合格）
-        td_near = float(td.get('near', 10))  # 接近目标线（仅用于记录/边界）
-        db_green_max = float(td.get('db_green_max', 10))
+        td = _load_rules()['target_deviation']
+        td_ok = float(td['max'])      # 完全接受线（<=5 合格）
+        td_near = float(td['near'])  # 接近目标线（仅用于记录/边界）
+        db_green_max = float(td['db_green_max'])
         # 2026-08-18 用户裁定：目标偏差也套用容错（tolerance_pp）——超阈值零点几的
         # 不算超（L54 T4 超 10.2、L72 T3 超 0.5 之类应容错），与 gap 容错同一套参数。
         dev_tiers = []
@@ -253,6 +284,18 @@ def _load_board_imported():
     return imported
 
 
+def action_for_judgment(judge_result, completed_rounds, max_rounds=MAX_ROUNDS):
+    """Map a verdict and completed-round count to the authoritative next action."""
+    if judge_result == '合格':
+        return '待确认入库'
+    if judge_result == '接近':
+        return '改关卡' if completed_rounds >= max_rounds else '继续调优(接近)'
+    if judge_result == '不合格':
+        return ('改关卡' if completed_rounds >= max_rounds
+                else f'下一轮({completed_rounds + 1}/{max_rounds})')
+    return '待定'
+
+
 def judge_with_rounds(lv, records_override=None):
     # Excel is the only target truth.  Never fall back to difficulty defaults:
     # a missing target must not consume an attempt or write _rounds.json.
@@ -288,26 +331,28 @@ def judge_with_rounds(lv, records_override=None):
     rnd = get_round(lv)
     if result == '合格':
         reset_round(lv)
-        action = '入库'
+        action = action_for_judgment(result, rnd, MAX_ROUNDS)
     elif result == '接近':
         # 2026-08-17 用户定稿：接近 = 继续调优，不入库（L158 T4/T5 差 10pp 贴线被误判入库教训）
-        rnd = inc_round(lv)
-        action = '改关卡' if rnd >= MAX_ROUNDS else '继续调优(接近)'
+        if rnd < MAX_ROUNDS:
+            rnd = inc_round(lv)
+        else:
+            rnd = MAX_ROUNDS
+        action = action_for_judgment(result, rnd, MAX_ROUNDS)
         # 接近继续下一轮并消耗一次有效 attempt
     elif result == '不合格':
-        if rnd >= MAX_ROUNDS - 1:
-            rnd = inc_round(lv)  # 2026-08-08 修复：返回值必须赋给 rnd，否则返回旧轮数导致 MAX ROUNDS 检查失效
-            action = '改关卡'
-        else:
+        if rnd < MAX_ROUNDS:
             rnd = inc_round(lv)
-            action = f'下一轮({rnd}/{MAX_ROUNDS})'
+        else:
+            rnd = MAX_ROUNDS
+        action = action_for_judgment(result, rnd, MAX_ROUNDS)
 
     return combo, result, reasons, {'round': rnd, 'max': MAX_ROUNDS, 'action': action}
 
 
 def scan_mode(levels):
     print("=" * 75)
-    print(" Level Status Scan (judgment-rules.md)")
+    print(" Level Status Scan (project-state/rules.json)")
     print("=" * 75)
     for lv_s in levels:
         combo, result, reasons, ri = judge_with_rounds(int(lv_s))
@@ -348,7 +393,7 @@ def main():
 
     levels = parse_levels(sys.argv[1])
     print("=" * 70)
-    print(" 多档位判定 (judgment-rules.md)")
+    print(" 多档位判定 (project-state/rules.json)")
     print("=" * 70)
     for lv_s in levels:
         combo, result, reasons, ri = judge_with_rounds(int(lv_s))

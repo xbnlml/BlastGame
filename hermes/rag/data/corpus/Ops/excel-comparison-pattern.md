@@ -2,8 +2,8 @@
 
 ## 数据源
 
-- Excel: `C:/Users/Administrator/Documents/BlastGame/Doc/手动挑配置记录.xlsx` — 入库记录
-- 外部 Bot: `C:/Users/Administrator/Documents/BlastGame/telemetry/bot/101-200-2026-07-20T17-34-01/` — 每档 400 局
+- Excel: `<BLASTGAME_REPO>/Doc/手动挑配置记录.xlsx` — 入库记录
+- 外部 Bot: `<BLASTGAME_REPO>/telemetry/bot/101-200-2026-07-20T17-34-01/` — 每档 400 局
 
 ## 对比步骤
 

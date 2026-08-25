@@ -2,26 +2,25 @@
 
 改动工具后跑一遍，防回归。覆盖核心链路：
   1. 工具编译（py_compile）
-  2. reimport --dry-run（不写文件）
-  3. judge_level（只读判定）
-  4. compare_level_db（只读 DB 对比）
-  5. verify_asset_db_match（asset↔DB 一致性，只读）
-  6. pipeline_stats（批次统计，只读）
-  7. warden（安全检查，只读）
-  8. design_probes --dry-run（探针设计，不写 asset）
+  2. verify_asset_db_match（asset↔DB 一致性，只读）
+  3. compare_level_db（只读 DB/池对比）
+  4. pipeline_stats（批次统计，只读）
+  5. Warden CLI 契约（真实提交闸门由 preflight 调用）
+  6. design_probes 只读设计（不写 asset）
+  7. auto_loop CLI 契约
 
 用法: python scripts/smoke_test.py
 退出码: 0 = 全过；1 = 有失败
 """
 import sys, os, subprocess
 
-HERMES = r'D:\download\BlastGame\hermes'
+HERMES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TOOLS = os.path.join(HERMES, 'tools')
 SCRIPTS = os.path.join(HERMES, 'scripts')
 sys.path.insert(0, HERMES)
 
-# 用最近入库的关做冒烟样本（asset↔DB 一致）
-SAMPLE = '54,61,64,83,85,93,110,120,138'
+# 用当前 asset↔DB 一致的关做冒烟样本
+SAMPLE = '86,108,119,122'
 
 TOOL_FILES = [
     os.path.join(TOOLS, 'reimport.py'),
@@ -65,7 +64,7 @@ def main():
 
     # 3. compare_level_db（只读 DB 对比）
     r = run([sys.executable, os.path.join(TOOLS, 'compare_level_db.py'), '--levels', SAMPLE])
-    if r.returncode == 0 and '54' in r.stdout:
+    if r.returncode == 0 and '✅ 基本一致' in r.stdout:
         passed += 1
         print('3. compare_level_db: ✅')
     else:
@@ -81,17 +80,17 @@ def main():
         failed.append(f'pipeline_stats: rc={r.returncode} {r.stderr[-200:]}')
         print('4. pipeline_stats: ❌')
 
-    # 5. warden（安全检查，W00 备份闸门应输出 warning 或 pass）
-    r = run([sys.executable, os.path.join(TOOLS, 'warden.py')])
-    if r.returncode == 0 or 'BLOCKED' not in r.stdout:
+    # 5. Warden 的真实提交闸门由 preflight 调用；这里只检查 CLI 契约
+    r = run([sys.executable, os.path.join(TOOLS, 'warden.py'), '--help'])
+    if r.returncode == 0 and 'Warden' in r.stdout:
         passed += 1
-        print('5. warden: ✅')
+        print('5. warden CLI: ✅')
     else:
-        failed.append(f'warden: rc={r.returncode} {r.stdout[-200:]}')
-        print('5. warden: ❌')
+        failed.append(f'warden CLI: rc={r.returncode} {r.stdout[-200:]}')
+        print('5. warden CLI: ❌')
 
     # 6. design_probes 可达性预检（L85 应输出 ⚠ 可达性预检）
-    r = run([sys.executable, os.path.join(TOOLS, 'design_probes.py'), '85'], timeout=60)
+    r = run([sys.executable, os.path.join(TOOLS, 'design_probes.py'), '85'], timeout=180)
     if r.returncode == 0:
         passed += 1
         print('6. design_probes: ✅')

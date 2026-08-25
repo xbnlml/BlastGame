@@ -2,7 +2,7 @@
 
 关卡难度调参是个麻烦事：每个关卡有 5 个难度档位（T1–T5），每个档位对应一个目标胜率（如 normal 80/80/60/45/45）。问题在于，配置参数（难度+洗牌参数）与最终胜率之间是非线性、不可解析的关系——改一个参数，胜率往哪走只能靠实测才知道。
 
-这个仓库做的，就是把这套"改参数 → 跑实测 → 看结果 → 再改"的循环完全自动化：探针怎么设计、谁该测什么、测完怎么入库、怎么判定达标、怎么保证数据可信，全程由程序接管，可以无人值守地一轮接一轮跑，直到关卡达标或轮数耗尽。已有 100+ 关卡通过这套流程完成调优入库，每关积累 400–1000 局真实 bot 实测数据。
+这个仓库把"改参数 → 跑实测 → 看结果 → 再改"做成可重复执行的自动循环：程序设计探针、写入配置、调用 Unity Bot、刷新数据池并判定是否达标；合格后停在“待确认入库”，最终落盘仍由人确认。`stage-data/` 保存 L51–200 的状态快照及现有可靠/探索数据，并记录来源、局数与时间。
 
 ## 流程
 
@@ -16,8 +16,8 @@
 | 机制 | 说明 | 相关代码 |
 |---|---|---|
 | AI 介入边界 | LLM 每关每轮只选 5 个探针候选；Warden/Unity/Judge/入库全程确定性 | `tools/llm_probe_pipeline.py` |
-| 贝叶斯提前停 | 探针轮 400 局上限，adaptive-stop + min-runs=60；验证轮 400 局定终值 | `scripts/auto_loop.py --adaptive-stop` |
-| 数据可靠性 | 时间防线（逻辑改版后旧数据整批作废）、四级数据分级、asset 指纹防漂移 | `tools/verify_pool_data.py` |
+| 贝叶斯提前停 | 每轮默认 400 局且可由 CLI 调整；第 1–5 轮可早停，第 6 轮跑满配置的 `--games` | `scripts/auto_loop.py --adaptive-stop` |
+| 数据可靠性 | 同牌面历史批次可累积复用；有快照比牌面，无快照走时间防线，并按来源区分可靠/参考数据 | `tools/verify_pool_data.py` |
 | 探针缺口驱动 | 反推目标胜率 → 池子候选优先 → 邻近微调 → 最后才自设计 | `tools/design_probes.py` |
 | 入库一致性 | asset = Excel = LevelDatabase 三方一致 | `tools/verify_asset_db_match.py` |
 
@@ -37,8 +37,10 @@ Excel 目标 + verified/phase1/phase2 趋势 + 上轮实测 WR
 ## 快速验证
 
 ```bash
-python scripts/smoke_test.py    # 冒烟测试：工具可跑、数据可读、判定可用
-python scripts/demo.py          # 用已有数据跑一遍选档→判定→一致性（只读）
+python -m pip install openpyxl
+python scripts/demo.py           # 离线 Replay：真实证据→选档→判定，不依赖 Unity
+python scripts/smoke_test.py      # Live Smoke：本机 asset/DB/数据与只读 CLI 检查
+python -m unittest discover -s tests/pipeline -p 'test_*.py' -q
 ```
 
 ## 目录
@@ -46,7 +48,7 @@ python scripts/demo.py          # 用已有数据跑一遍选档→判定→一�
 ```text
 hermes/
 ├── tools/           # 分析工具（tools/README.md 按"想做什么"索引）
-├── scripts/         # auto_loop 全自动调优循环 / submit_batch 批跑 / smoke_test / demo
+├── scripts/         # auto_loop / submit_batch / offline replay / live smoke
 ├── project-state/   # board.md 关卡状态 / rules.json 判定规则 / 运行记录
 ├── stage-data/      # 每关实测数据池（bot/summary/phase0/phase1/2 分级）
 ├── docs/            # 设计决策 / 调研（docs/INDEX.md 索引）
@@ -61,6 +63,8 @@ hermes/
 
 ```bash
 python scripts/auto_loop.py --levels 136,176 --tiers 1,2,3,4,5 --adaptive-stop   # 全自动调优
+python scripts/demo.py                                                              # 离线证据重放
+python scripts/smoke_test.py                                                        # 本机工具链冒烟
 python tools/stage_status.py 172                                                 # 汇总
 python tools/state_snapshot.py --levels 172                                      # 单关快照
 python tools/find_best_combo.py 172                                              # 最优组合

@@ -7,8 +7,9 @@
   python tools/check_unity.py
 """
 import os, subprocess
+from pathlib import Path
 
-PROJECT_PATH = r'C:\Users\Administrator\Documents\BlastGame'
+PROJECT_PATH = os.environ.get('BLASTGAME_REPO', str(Path.home() / 'Documents' / 'BlastGame'))
 
 def get_version():
     try:

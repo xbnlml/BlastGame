@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import re
 import unittest
@@ -18,9 +19,90 @@ HEADER = [
     "winkate", "V2BoardFingerprint",
 ]
 HASH = re.compile(r"^[0-9a-f]{64}$")
+DEMO_SHA256 = "78118aee52e0571177f5df459bb4e64d87cef320283521037b1ac9c5aa9505be"
+from rag.safety import sensitive_kind
 
 
 class FixtureIntegrityTest(unittest.TestCase):
+    def test_all_text_fixtures_are_free_of_paths_and_credentials(self):
+        offenders = []
+        for path in FIXTURES.rglob("*"):
+            if not path.is_file() or path.suffix.lower() not in {".json", ".csv", ".md", ".txt"}:
+                continue
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if sensitive_kind(text):
+                offenders.append(str(path.relative_to(FIXTURES)))
+        self.assertEqual([], offenders)
+
+    def test_sensitive_scanner_rejects_common_path_and_secret_forms(self):
+        samples = [
+            r"C:\Users\person\file.txt",
+            r"\\server\share\file.txt",
+            "/Users/person/file.txt",
+            "/home/person/file.txt",
+            "/tmp/file.txt",
+            "/etc/config",
+            "api_key=abcdefgh",
+            "sk-abcdefgh12345678",
+            "ghp_abcdefgh12345678",
+            "AKIAABCDEFGHIJKLMNOP",
+            "eyJheader.payload.signature",
+            "-----BEGIN PRIVATE KEY-----",
+        ]
+        for sample in samples:
+            with self.subTest(sample=sample):
+                self.assertIsNotNone(sensitive_kind(sample))
+
+    def test_demo_replay_matches_declared_stage_snapshot(self):
+        fixture_path = FIXTURES / "demo_replay.json"
+        self.assertEqual(DEMO_SHA256, hashlib.sha256(fixture_path.read_bytes()).hexdigest())
+        fixture = json.loads(fixture_path.read_text(encoding="utf-8"))
+        self.assertEqual([86, 108, 119, 122], [item["level"] for item in fixture["levels"]])
+        self.assertEqual(117, sum(len(item["records"]) for item in fixture["levels"]))
+        self.assertEqual(35100, sum(r["totalGames"] for item in fixture["levels"] for r in item["records"]))
+        self.assertEqual(12, len(fixture["source_files"]))
+        for relative, expected_hash in fixture["source_files"].items():
+            source = HERMES / relative
+            self.assertTrue(source.is_file(), relative)
+            self.assertEqual(expected_hash, hashlib.sha256(source.read_bytes()).hexdigest(), relative)
+
+        def normalized(record):
+            return {
+                "wr": round(float(record["wr"]), 4),
+                "sd": str(record.get("sd", "")),
+                "sc": int(float(record.get("sc", 0))),
+                "ratios": str(record.get("ratios", "")),
+                "of": round(float(record.get("of", 0)), 4),
+                "totalGames": int(record.get("totalGames", 0)),
+                "source": str(record.get("source", "")),
+                "created_at": str(record.get("created_at", "")),
+            }
+
+        for entry in fixture["levels"]:
+            raw = []
+            prefix = f"stage-data/{entry['level']}/"
+            for relative in fixture["source_files"]:
+                if relative.startswith(prefix):
+                    raw.extend(json.loads((HERMES / relative).read_text(encoding="utf-8")))
+            reliable = [record for record in raw if record.get("source") in {"bot", "summary", "phase0"}]
+            seen = {}
+            for record in reliable:
+                key = (
+                    str(record.get("sd", "")),
+                    str(record.get("sc", "")),
+                    str(record.get("ratios", "")),
+                    str(float(record.get("of", 0))),
+                )
+                if key not in seen or record.get("created_at", "") > seen[key].get("created_at", ""):
+                    seen[key] = record
+            current = [normalized(record) for record in seen.values()]
+            expected = entry["records"]
+            self.assertCountEqual(
+                [json.dumps(item, sort_keys=True) for item in expected],
+                [json.dumps(item, sort_keys=True) for item in current],
+                f"L{entry['level']}",
+            )
+
     def test_shared_csv_schema_identity_and_35_artifacts_are_exact(self):
         root = FIXTURES / "shared_csv_7_levels"
         request = json.loads((root / "request.json").read_text(encoding="utf-8"))

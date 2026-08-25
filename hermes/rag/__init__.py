@@ -10,7 +10,5 @@ rag 包 — 本地 RAG 工具（BlastGame 文档语义检索）
   query.py        检索问答（带来源）
 """
 
-from . import config, chunker, embedder, build_index, query
-
 __all__ = ["config", "chunker", "embedder", "build_index", "query"]
 __version__ = "0.1.0"

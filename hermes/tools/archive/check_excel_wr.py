@@ -1,6 +1,7 @@
 import csv, os, glob, openpyxl, sys
 
-base = 'C:/Users/Administrator/Documents/BlastGame/telemetry/bot/101-200-2026-07-20T17-34-01'
+repo = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
+base = os.path.join(repo, 'telemetry', 'bot', '101-200-2026-07-20T17-34-01')
 ext_data = {}
 for tier in range(1, 6):
     files = glob.glob(os.path.join(base, f'L101-200-T{tier}-*', f'campaign-summary-L101-200-T{tier}.csv'))
@@ -17,7 +18,7 @@ for tier in range(1, 6):
                 'of': str(float(row['shuffleOverflowFactor'])),
             }
 
-excel_path = 'C:/Users/Administrator/Documents/BlastGame/Doc/手动挑配置记录.xlsx'
+excel_path = os.path.join(repo, 'Doc', '手动挑配置记录.xlsx')
 wb = openpyxl.load_workbook(excel_path, data_only=True)
 ws = wb.active
 row_lv = {}

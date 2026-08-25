@@ -1,0 +1,1283 @@
+{
+  "captured_at": "2026-08-25",
+  "levels": [
+    {
+      "difficulty": "normal",
+      "expected": {
+        "verdict": "接近",
+        "wrs": [
+          81.67,
+          81.67,
+          62.7,
+          51.5,
+          51.5
+        ]
+      },
+      "level": 86,
+      "records": [
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 1.0,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "38",
+          "source": "summary",
+          "totalGames": 240,
+          "wr": 81.67
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.5,
+          "ratios": "1,10,1,10,1",
+          "sc": 5,
+          "sd": "20",
+          "source": "phase0",
+          "totalGames": 310,
+          "wr": 74.19
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.75,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "summary",
+          "totalGames": 370,
+          "wr": 62.7
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.5,
+          "ratios": "10,0,0,0,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "summary",
+          "totalGames": 400,
+          "wr": 51.5
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.75,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "31",
+          "source": "phase0",
+          "totalGames": 270,
+          "wr": 21.48
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.75,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "31",
+          "source": "phase0",
+          "totalGames": 240,
+          "wr": 18.33
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.25,
+          "ratios": "10,0,0,0,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "phase0",
+          "totalGames": 150,
+          "wr": 9.33
+        },
+        {
+          "created_at": "2026-08-21T17:30:35",
+          "of": 0.5,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "17",
+          "source": "phase0",
+          "totalGames": 110,
+          "wr": 5.45
+        }
+      ],
+      "targets": [
+        85.0,
+        85.0,
+        65.0,
+        50.0,
+        50.0
+      ]
+    },
+    {
+      "difficulty": "hard",
+      "expected": {
+        "verdict": "接近",
+        "wrs": [
+          70.0,
+          56.92,
+          44.25,
+          29.41,
+          20.0
+        ]
+      },
+      "level": 108,
+      "records": [
+        {
+          "created_at": "2026-08-21T19:10:35",
+          "of": 0.5,
+          "ratios": "10,10,1,10,10",
+          "sc": 5,
+          "sd": "0",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 87.25
+        },
+        {
+          "created_at": "2026-08-21T19:12:50",
+          "of": 1.0,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "38",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 84.5
+        },
+        {
+          "created_at": "2026-08-21T18:22:38",
+          "of": 0.0,
+          "ratios": "10,0,0,0,10",
+          "sc": 5,
+          "sd": "1",
+          "source": "bot",
+          "totalGames": 240,
+          "wr": 82.5
+        },
+        {
+          "created_at": "2026-08-21T18:25:08",
+          "of": 0.25,
+          "ratios": "10,0,0,0,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 240,
+          "wr": 82.5
+        },
+        {
+          "created_at": "2026-08-21T18:14:10",
+          "of": 0.25,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 240,
+          "wr": 82.08
+        },
+        {
+          "created_at": "2026-08-21T19:19:58",
+          "of": 0.25,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 81.25
+        },
+        {
+          "created_at": "2026-08-21T19:15:10",
+          "of": 0.25,
+          "ratios": "10,0,10,0,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 81.25
+        },
+        {
+          "created_at": "2026-08-21T01:37:54",
+          "of": 0.0,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "1",
+          "source": "bot",
+          "totalGames": 250,
+          "wr": 80.8
+        },
+        {
+          "created_at": "2026-08-21T02:08:25",
+          "of": 0.0,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "1",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 80.0
+        },
+        {
+          "created_at": "2026-08-21T00:53:45",
+          "of": 0.25,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 260,
+          "wr": 80.0
+        },
+        {
+          "created_at": "2026-08-21T19:17:21",
+          "of": 0.25,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 79.75
+        },
+        {
+          "created_at": "2026-08-21T18:33:04",
+          "of": 1.0,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 79.26
+        },
+        {
+          "created_at": "2026-08-20T22:58:49",
+          "of": 0.25,
+          "ratios": "0,10,10,10,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 79.26
+        },
+        {
+          "created_at": "2026-08-20T23:34:01",
+          "of": 0.0,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "1",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 79.26
+        },
+        {
+          "created_at": "2026-08-20T20:35:51",
+          "of": 0.0,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "0",
+          "source": "bot",
+          "totalGames": 300,
+          "wr": 76.33
+        },
+        {
+          "created_at": "2026-08-21T00:00:38",
+          "of": 0.25,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "11",
+          "source": "bot",
+          "totalGames": 300,
+          "wr": 76.33
+        },
+        {
+          "created_at": "2026-08-20T21:52:35",
+          "of": 0.5,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 71.82
+        },
+        {
+          "created_at": "2026-08-21T18:30:20",
+          "of": 0.0,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "0",
+          "source": "bot",
+          "totalGames": 340,
+          "wr": 70.0
+        },
+        {
+          "created_at": "2026-08-20T22:49:16",
+          "of": 0.75,
+          "ratios": "10,0,0,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 360,
+          "wr": 66.39
+        },
+        {
+          "created_at": "2026-08-21T00:06:40",
+          "of": 1.0,
+          "ratios": "10,0,10,0,10",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 360,
+          "wr": 65.56
+        },
+        {
+          "created_at": "2026-08-21T02:19:57",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 63.25
+        },
+        {
+          "created_at": "2026-08-20T22:12:50",
+          "of": 1.0,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "38",
+          "source": "bot",
+          "totalGames": 370,
+          "wr": 62.97
+        },
+        {
+          "created_at": "2026-08-20T22:02:04",
+          "of": 0.75,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 52.75
+        },
+        {
+          "created_at": "2026-08-20T23:09:49",
+          "of": 0.75,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 50.75
+        },
+        {
+          "created_at": "2026-08-20T23:18:46",
+          "of": 1.0,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 47.25
+        },
+        {
+          "created_at": "2026-08-20T20:55:58",
+          "of": 0.75,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 360,
+          "wr": 33.06
+        },
+        {
+          "created_at": "2026-08-21T02:30:12",
+          "of": 0.5,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 27.25
+        },
+        {
+          "created_at": "2026-08-20T22:20:58",
+          "of": 0.5,
+          "ratios": "10,9,0,0,0",
+          "sc": 5,
+          "sd": "39",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 20.0
+        },
+        {
+          "created_at": "2026-08-21T02:40:24",
+          "of": 1.0,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "38",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 9.0
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 0.0,
+          "ratios": "0,1,1,1,0,0",
+          "sc": 6,
+          "sd": "6",
+          "source": "phase0",
+          "totalGames": 390,
+          "wr": 56.92
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 0.75,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "summary",
+          "totalGames": 400,
+          "wr": 52.75
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 1.0,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "summary",
+          "totalGames": 400,
+          "wr": 44.25
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 0.5,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "33",
+          "source": "phase0",
+          "totalGames": 340,
+          "wr": 30.88
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 0.5,
+          "ratios": "1,10,1,1,1",
+          "sc": 5,
+          "sd": "25",
+          "source": "summary",
+          "totalGames": 340,
+          "wr": 29.41
+        },
+        {
+          "created_at": "2026-08-19T14:40:00",
+          "of": 1.0,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "summary",
+          "totalGames": 240,
+          "wr": 17.08
+        }
+      ],
+      "targets": [
+        70.0,
+        55.0,
+        40.0,
+        30.0,
+        20.0
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "expected": {
+        "verdict": "合格",
+        "wrs": [
+          84.55,
+          84.55,
+          63.78,
+          49.5,
+          49.5
+        ]
+      },
+      "level": 119,
+      "records": [
+        {
+          "created_at": "2026-08-22T15:20:48",
+          "of": 1.0,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "41",
+          "source": "bot",
+          "totalGames": 120,
+          "wr": 93.33
+        },
+        {
+          "created_at": "2026-08-22T15:18:40",
+          "of": 0.75,
+          "ratios": "10,0,0,0,10",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 200,
+          "wr": 87.0
+        },
+        {
+          "created_at": "2026-08-22T15:42:58",
+          "of": 1.0,
+          "ratios": "10,0,0,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 220,
+          "wr": 84.55
+        },
+        {
+          "created_at": "2026-08-22T15:17:52",
+          "of": 0.25,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "11",
+          "source": "bot",
+          "totalGames": 250,
+          "wr": 81.2
+        },
+        {
+          "created_at": "2026-08-22T15:24:36",
+          "of": 0.5,
+          "ratios": "0,0,0,10",
+          "sc": 4,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 250,
+          "wr": 81.2
+        },
+        {
+          "created_at": "2026-08-22T15:33:22",
+          "of": 0.5,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 250,
+          "wr": 81.2
+        },
+        {
+          "created_at": "2026-08-22T15:37:54",
+          "of": 0.6,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "33",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 78.89
+        },
+        {
+          "created_at": "2026-08-22T15:15:25",
+          "of": 0.5,
+          "ratios": "0,0,0,10",
+          "sc": 4,
+          "sd": "37",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 72.42
+        },
+        {
+          "created_at": "2026-08-22T15:32:21",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "38",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 70.91
+        },
+        {
+          "created_at": "2026-08-22T15:42:04",
+          "of": 0.5,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "39",
+          "source": "bot",
+          "totalGames": 340,
+          "wr": 68.82
+        },
+        {
+          "created_at": "2026-08-22T15:16:50",
+          "of": 0.75,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 370,
+          "wr": 63.78
+        },
+        {
+          "created_at": "2026-08-22T15:26:06",
+          "of": 1.0,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 380,
+          "wr": 61.84
+        },
+        {
+          "created_at": "2026-08-22T15:34:52",
+          "of": 1.0,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 380,
+          "wr": 61.58
+        },
+        {
+          "created_at": "2026-08-22T15:23:37",
+          "of": 0.5,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "37",
+          "source": "bot",
+          "totalGames": 380,
+          "wr": 60.53
+        },
+        {
+          "created_at": "2026-08-22T15:31:09",
+          "of": 0.5,
+          "ratios": "0,0,0,10",
+          "sc": 4,
+          "sd": "32",
+          "source": "bot",
+          "totalGames": 390,
+          "wr": 56.67
+        },
+        {
+          "created_at": "2026-08-22T15:14:08",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "37",
+          "source": "bot",
+          "totalGames": 390,
+          "wr": 56.15
+        },
+        {
+          "created_at": "2026-08-22T15:22:12",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "32",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 52.25
+        },
+        {
+          "created_at": "2026-08-22T15:39:19",
+          "of": 0.5,
+          "ratios": "1,2,10,1,1",
+          "sc": 5,
+          "sd": "32",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 51.75
+        },
+        {
+          "created_at": "2026-08-22T15:29:47",
+          "of": 0.5,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "32",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 51.0
+        },
+        {
+          "created_at": "2026-08-22T15:40:46",
+          "of": 0.5,
+          "ratios": "10,1,1,1,1",
+          "sc": 5,
+          "sd": "32",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 49.5
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 0.5,
+          "ratios": "10,0,1,0,0",
+          "sc": 5,
+          "sd": "6",
+          "source": "phase0",
+          "totalGames": 100,
+          "wr": 95.0
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 0.0,
+          "ratios": "1,1,1,1,10",
+          "sc": 5,
+          "sd": "0",
+          "source": "phase0",
+          "totalGames": 100,
+          "wr": 95.0
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 0.1,
+          "ratios": "1,10,1,1,1",
+          "sc": 5,
+          "sd": "2",
+          "source": "phase0",
+          "totalGames": 100,
+          "wr": 95.0
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 0.5,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "summary",
+          "totalGames": 290,
+          "wr": 77.24
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 0.75,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "30",
+          "source": "summary",
+          "totalGames": 380,
+          "wr": 60.0
+        },
+        {
+          "created_at": "2026-08-21T18:08:07",
+          "of": 1.0,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "summary",
+          "totalGames": 400,
+          "wr": 54.75
+        }
+      ],
+      "targets": [
+        80.0,
+        80.0,
+        60.0,
+        45.0,
+        45.0
+      ]
+    },
+    {
+      "difficulty": "normal",
+      "expected": {
+        "verdict": "合格",
+        "wrs": [
+          80.0,
+          80.0,
+          57.44,
+          44.25,
+          44.25
+        ]
+      },
+      "level": 122,
+      "records": [
+        {
+          "created_at": "2026-08-19T11:56:55",
+          "of": 0.35,
+          "ratios": "1,1,1,1,1",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 60,
+          "wr": 100.0
+        },
+        {
+          "created_at": "2026-08-21T18:11:00",
+          "of": 0.85,
+          "ratios": "10,1,1,1,1",
+          "sc": 5,
+          "sd": "31",
+          "source": "bot",
+          "totalGames": 80,
+          "wr": 97.5
+        },
+        {
+          "created_at": "2026-08-21T18:30:20",
+          "of": 0.5,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 120,
+          "wr": 93.33
+        },
+        {
+          "created_at": "2026-08-21T03:54:29",
+          "of": 0.5,
+          "ratios": "10,0,10,0,10",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 140,
+          "wr": 91.43
+        },
+        {
+          "created_at": "2026-08-21T03:12:56",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 160,
+          "wr": 89.38
+        },
+        {
+          "created_at": "2026-08-21T06:16:53",
+          "of": 0.25,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 88.5
+        },
+        {
+          "created_at": "2026-08-21T18:06:36",
+          "of": 0.5,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 180,
+          "wr": 88.33
+        },
+        {
+          "created_at": "2026-08-21T16:22:45",
+          "of": 0.5,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 190,
+          "wr": 87.89
+        },
+        {
+          "created_at": "2026-08-21T16:15:55",
+          "of": 0.25,
+          "ratios": "0,10,10,10,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 200,
+          "wr": 86.5
+        },
+        {
+          "created_at": "2026-08-21T03:20:32",
+          "of": 0.5,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 200,
+          "wr": 86.0
+        },
+        {
+          "created_at": "2026-08-21T18:04:00",
+          "of": 0.25,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 210,
+          "wr": 85.24
+        },
+        {
+          "created_at": "2026-08-21T04:07:44",
+          "of": 1.0,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 210,
+          "wr": 84.76
+        },
+        {
+          "created_at": "2026-08-21T06:23:22",
+          "of": 0.25,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 84.25
+        },
+        {
+          "created_at": "2026-08-21T04:36:33",
+          "of": 0.5,
+          "ratios": "0,0,0,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 230,
+          "wr": 83.91
+        },
+        {
+          "created_at": "2026-08-21T06:41:54",
+          "of": 0.5,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 80.75
+        },
+        {
+          "created_at": "2026-08-21T06:29:41",
+          "of": 0.5,
+          "ratios": "0,0,10,10,10",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 80.5
+        },
+        {
+          "created_at": "2026-08-21T05:12:04",
+          "of": 0.5,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "17",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 80.0
+        },
+        {
+          "created_at": "2026-08-21T04:30:19",
+          "of": 0.5,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 79.26
+        },
+        {
+          "created_at": "2026-08-21T04:00:47",
+          "of": 0.75,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 270,
+          "wr": 78.52
+        },
+        {
+          "created_at": "2026-08-21T18:27:39",
+          "of": 0.5,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 290,
+          "wr": 77.59
+        },
+        {
+          "created_at": "2026-08-21T04:43:42",
+          "of": 0.5,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 290,
+          "wr": 76.55
+        },
+        {
+          "created_at": "2026-08-21T18:22:38",
+          "of": 0.5,
+          "ratios": "0,10,10,10,0",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 290,
+          "wr": 76.21
+        },
+        {
+          "created_at": "2026-08-21T16:31:48",
+          "of": 0.75,
+          "ratios": "10,0,0,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 290,
+          "wr": 76.21
+        },
+        {
+          "created_at": "2026-08-21T06:35:40",
+          "of": 0.5,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "13",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 75.25
+        },
+        {
+          "created_at": "2026-08-21T05:52:33",
+          "of": 0.75,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 310,
+          "wr": 74.84
+        },
+        {
+          "created_at": "2026-08-21T05:47:23",
+          "of": 0.75,
+          "ratios": "0,0,10,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 310,
+          "wr": 73.55
+        },
+        {
+          "created_at": "2026-08-21T18:25:08",
+          "of": 0.5,
+          "ratios": "0,10,10,10,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 320,
+          "wr": 73.44
+        },
+        {
+          "created_at": "2026-08-21T05:05:53",
+          "of": 0.25,
+          "ratios": "10,10,10,0,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 71.82
+        },
+        {
+          "created_at": "2026-08-21T18:09:16",
+          "of": 0.5,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "20",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 71.52
+        },
+        {
+          "created_at": "2026-08-21T05:18:12",
+          "of": 0.5,
+          "ratios": "10,10,0,10,10",
+          "sc": 5,
+          "sd": "21",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 71.52
+        },
+        {
+          "created_at": "2026-08-21T04:48:58",
+          "of": 1.0,
+          "ratios": "0,0,0,10,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 70.91
+        },
+        {
+          "created_at": "2026-08-21T18:14:10",
+          "of": 0.5,
+          "ratios": "1,1,10,1,1",
+          "sc": 5,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 330,
+          "wr": 70.61
+        },
+        {
+          "created_at": "2026-08-21T03:05:37",
+          "of": 0.25,
+          "ratios": "10,10,0,0,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 350,
+          "wr": 67.71
+        },
+        {
+          "created_at": "2026-08-21T03:28:26",
+          "of": 1.0,
+          "ratios": "10,0,0,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 350,
+          "wr": 67.71
+        },
+        {
+          "created_at": "2026-08-21T04:13:56",
+          "of": 1.0,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 360,
+          "wr": 67.5
+        },
+        {
+          "created_at": "2026-08-21T05:41:05",
+          "of": 0.25,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "10",
+          "source": "bot",
+          "totalGames": 370,
+          "wr": 64.32
+        },
+        {
+          "created_at": "2026-08-21T04:54:16",
+          "of": 0.85,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "31",
+          "source": "bot",
+          "totalGames": 390,
+          "wr": 57.44
+        },
+        {
+          "created_at": "2026-08-21T03:36:04",
+          "of": 1.0,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 55.0
+        },
+        {
+          "created_at": "2026-08-21T18:33:04",
+          "of": 0.35,
+          "ratios": "10",
+          "sc": 1,
+          "sd": "31",
+          "source": "bot",
+          "totalGames": 400,
+          "wr": 44.25
+        },
+        {
+          "created_at": "2026-08-21T05:30:01",
+          "of": 0.5,
+          "ratios": "0,0,0,10",
+          "sc": 4,
+          "sd": "30",
+          "source": "bot",
+          "totalGames": 370,
+          "wr": 35.68
+        },
+        {
+          "created_at": "2026-08-21T05:57:50",
+          "of": 0.5,
+          "ratios": "0,0,0,0,10",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 100,
+          "wr": 5.0
+        },
+        {
+          "created_at": "2026-08-21T04:18:16",
+          "of": 0.5,
+          "ratios": "0,0,0,0,9",
+          "sc": 5,
+          "sd": "40",
+          "source": "bot",
+          "totalGames": 70,
+          "wr": 1.43
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.6,
+          "ratios": "0,10,10,10,0",
+          "sc": 5,
+          "sd": "22",
+          "source": "phase0",
+          "totalGames": 100,
+          "wr": 95.0
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.0,
+          "ratios": "10",
+          "sc": 1,
+          "sd": "29",
+          "source": "phase0",
+          "totalGames": 140,
+          "wr": 91.43
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.5,
+          "ratios": "0,10,0,10,0",
+          "sc": 5,
+          "sd": "19",
+          "source": "summary",
+          "totalGames": 280,
+          "wr": 77.86
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.1,
+          "ratios": "1,1,1,1,1",
+          "sc": 5,
+          "sd": "30",
+          "source": "phase0",
+          "totalGames": 300,
+          "wr": 75.33
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.5,
+          "ratios": "1,10,1,1,1",
+          "sc": 5,
+          "sd": "21",
+          "source": "phase0",
+          "totalGames": 330,
+          "wr": 70.91
+        },
+        {
+          "created_at": "2026-08-19T20:30:43",
+          "of": 0.75,
+          "ratios": "0,10,0,0,0",
+          "sc": 5,
+          "sd": "30",
+          "source": "summary",
+          "totalGames": 400,
+          "wr": 53.75
+        }
+      ],
+      "targets": [
+        80.0,
+        80.0,
+        60.0,
+        45.0,
+        45.0
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "source": "real verified BlastGame pool snapshot",
+  "source_files": {
+    "stage-data/108/108.assist.json": "f2a368447137938be794c94bad48894510c2275718b786ecf88e1cfaad6d82f2",
+    "stage-data/108/108.bot.json": "5e0c13434f053e247cd2752deddc8113ce449fe39648eac4e3f6e8345de934ba",
+    "stage-data/108/108.ref.json": "488187fd2a62638ed81c333e33dc9f0bae29438b92b0320b91efac0cfa1baf31",
+    "stage-data/119/119.assist.json": "07396321b79329d08abb58b46c744b36e0d7f3a3c968f9caa86af9e3446d9b65",
+    "stage-data/119/119.bot.json": "d40171956defffcacd5b8dbdae7cc0cac93232e664c71ddee5a93493765c30de",
+    "stage-data/119/119.ref.json": "7147b9bd8cc50d392de864e0e87d1d5dd3a7ff3ba35f8d71f854ede3f7c61d8a",
+    "stage-data/122/122.assist.json": "2aa801e8cf8f29fbc1e1f09cddac881976a6ca1e4a2f5e6704ad31079598caf2",
+    "stage-data/122/122.bot.json": "e8f6b6eca40818c980cc4df16b9c3502fa002fdf5c7544dfbb54f3946c7fe27c",
+    "stage-data/122/122.ref.json": "07fd951bbd273711ce786aa64de62ba5519c606de35c6ef231aeaf3b11db4ec0",
+    "stage-data/86/86.assist.json": "ac80b984c3255d63152f35714ba7beaf498ee6038ef040e653dd9c6038488251",
+    "stage-data/86/86.bot.json": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stage-data/86/86.ref.json": "66184a2657bf46eb03986edfd0486efee28c162485b917681ac3c6af49191b2f"
+  }
+}

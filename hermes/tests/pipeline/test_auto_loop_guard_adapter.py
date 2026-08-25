@@ -5,6 +5,7 @@ from __future__ import annotations
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 HERMES = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(HERMES))
@@ -47,12 +48,23 @@ def probes(duplicate=False):
 class AutoLoopGuardAdapterTest(unittest.TestCase):
     def invoke(self, *, preflight, warden, probe_map, runner, decision_metadata=None):
         from scripts.auto_loop import phase_submit_guarded
-        return phase_submit_guarded(
-            Log(), ["60"], [1, 2, 3, 4, 5], probe_map,
-            games=400, strategy="scoring_opt_vg", adaptive_stop=False,
-            round_num=1, preflight_fn=preflight, warden_fn=warden,
-            runner=runner, run_id="test-run", decision_metadata=decision_metadata,
-        )
+        asset_plan = [
+            {
+                "level": "60",
+                "slot": f"T{tier}",
+                "tier": tier,
+                "board_fingerprint": "board-60",
+                "deal_fingerprint": f"deal-60-{tier}",
+            }
+            for tier in range(1, 6)
+        ]
+        with patch("tools.pipeline.unity_request._official_asset_plan", return_value=asset_plan):
+            return phase_submit_guarded(
+                Log(), ["60"], [1, 2, 3, 4, 5], probe_map,
+                games=400, strategy="scoring_opt_vg", adaptive_stop=False,
+                round_num=1, preflight_fn=preflight, warden_fn=warden,
+                runner=runner, run_id="test-run", decision_metadata=decision_metadata,
+            )
 
     def test_preflight_failure_starts_unity_zero_times(self):
         runner = RecordingRunner()

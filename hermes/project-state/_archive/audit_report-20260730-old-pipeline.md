@@ -1,7 +1,7 @@
 # BlastGame Hermes 项目全面审计报告
 
 **日期：** 2026-07-30  
-**审计范围：** `D:\download\BlastGame\hermes` 全部 tools/、scripts/、skills/、project-state/
+**审计范围：** `<HERMES_ROOT>` 全部 tools/、scripts/、skills/、project-state/
 
 ---
 

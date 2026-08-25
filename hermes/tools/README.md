@@ -12,7 +12,7 @@
 | **统一入库落盘**（asset+Excel+board 三动作）| `reimport.py` | `--config <json> [--dry-run]` |
 | **入库批次全流程**（重选→落盘→DB）| `reimport_batch.py` | `--levels X --dry-run / --apply` |
 | **写 asset 配置**（DDC 四元组 sd/sc/ratios/of）| `asset_patcher.py::write_ddc` | `write_ddc(lv, tiers)` + `verify_asset` |
-| **写 Excel 入库记录**（就地更新，小数格式）| `project-state/_archive/write_excel.py::write_tiers` | `write_tiers(lv, tiers)` |
+| **写 Excel 入库记录**（就地更新，小数格式）| `data/excel_writer.py::write_tiers` | `write_tiers(lv, tiers)` |
 | **清空 Excel 数据列**（保留行结构）| `clear_excel_data.py` | `--levels X [--dry-run]` |
 | **按 cutoff 清理 DB 过期 entry**（保留新 entry，自动备份）| `leveldb_sync/clear_expired_entries.mjs` | `--levels X [--dry-run / --apply]` |
 | **生成关卡数据库 payload** | `gen_payload.py` | `--levels X --source <批次名> [--override]` |
@@ -51,9 +51,9 @@
 | 你想做什么 | 用哪个工具 |
 |---|---|
 | **提交 bot 批跑** | `scripts/submit_batch_unity.py` |
-| **全自动调优循环**（探针轮 `--probe-games` 默认 400 + 贝叶斯；验证轮 `--games` 400）| `scripts/auto_loop.py` |
+| **全自动调优循环**（`--probe-games/--games` 默认 400 且可调；前 5 轮可显式开启早停，第 6 轮跑满配置值）| `scripts/auto_loop.py` |
 
-**局数标准（2026-08-20）：** 探针批 `--games 400 --adaptive-stop`（`min-runs=60`）；验证批 `--games 400`（入库前精测跑满）。BayesStdThreshold `0.025` 不改。
+**局数配置：** `--probe-games/--games` 默认 400；传 `--adaptive-stop` 时第 1–5 轮可在 `min-runs=60` 后早停，第 6 轮关闭早停并跑满配置值。提前合格后停在待确认入库，不自动补验证轮。BayesStdThreshold `0.025` 不改。
 
 **当前全自动主流程（2026-08-21）：** `auto_loop.py` 默认走 legacy 单 Unity 串行批跑，不传 `--v3-request`，使用可读的“关卡列表+时间”批次目录。批前仍做 preflight/Warden/asset 四元组检查；批后必须核对 Unity 实际 asset 快照、campaign-summary CSV 完整性，再刷新池子和 Judge。V3 receipt/generation 仅保留作历史/手动实验，不作为默认入口，也不修改 Unity Bot/Workbench 模块。
 | **批后分析** | `post_batch_review.py` |

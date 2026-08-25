@@ -6,8 +6,11 @@
 
 ```bash
 cd hermes/
-python scripts/smoke_test.py    # 冒烟验证：工具可跑、数据可读、判定可用
+python -m pip install openpyxl
+python scripts/demo.py          # 离线重放真实证据，不需要 Unity/密钥/外部文件
 ```
+
+成功时输出 `OFFLINE REPLAY PASS: 4/4 levels`。本机同时有 Unity 工作区时，可运行 `python scripts/smoke_test.py` 检查 Excel、asset、数据库、Warden 和批跑入口。
 
 ## 项目结构
 
@@ -17,7 +20,7 @@ BlastGame/
 └── hermes/           ← 全部工程内容（工具链 / 文档 / 数据 / 测试）
     ├── README.md     ← 主文档：流程、机制、LLM 参与范围（先读这个）
     ├── tools/        ← 分析工具（tools/README.md 按"想做什么"索引）
-    ├── scripts/      ← 自动化（auto_loop / submit_batch / smoke_test / demo）
+    ├── scripts/      ← 自动化（auto_loop / submit_batch / offline replay / live smoke）
     ├── tests/        ← 回归测试（判定规则、质量分、pipeline）
     ├── docs/         ← 设计决策 / 调研（docs/INDEX.md 导航）
     ├── project-state ← 关卡状态 board.md / 判定规则 rules.json / 运行记录
@@ -31,6 +34,7 @@ BlastGame/
 1. **想理解系统怎么运作** → `hermes/README.md`
 2. **想查"某个操作用什么工具"** → `hermes/tools/README.md`
 3. **想查"为什么这么设计"** → `hermes/docs/design-decisions.md`
-4. **想跑任何工具** → 从 `hermes/` 目录执行 `python tools/<工具>.py <参数>`
+4. **想直接验证核心算法** → `cd hermes && python scripts/demo.py`
+5. **想跑任何工具** → 从 `hermes/` 目录执行 `python tools/<工具>.py <参数>`
 
 仓库不包含 Unity 客户端源码；工具通过 Unity Batch Mode 调 bot 实测，Unity 工程在独立目录。

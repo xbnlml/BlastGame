@@ -34,25 +34,28 @@ import traceback  # 2026-08-07 修复：第191行用 traceback.print_exc() 但�
 from collections.abc import Mapping
 from datetime import datetime
 
-# ── 入库工具 ──
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from tools.data.pool import get_all_records, dedup_records, filter_verified, find_best_monotonic
-from tools.data.adapters import excel_target as et
-from tools.asset_patcher import write_ddc, verify_asset
-
 # ── Paths (mirror submit_batch_unity.py layout) ──
-
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 HERMES = os.path.dirname(SCRIPT_DIR)
 TOOLS = os.path.join(HERMES, 'tools')
 SCRIPTS = SCRIPT_DIR
+sys.path.insert(0, HERMES)
+
+from tools.project_paths import resolve_unity_repo
+
+REPO = str(resolve_unity_repo(HERMES))
+os.environ.setdefault('BLASTGAME_REPO', REPO)
+
+# ── 入库工具（路径解析后再导入，确保适配器读取同一 workspace）──
+from tools.data.pool import get_all_records, dedup_records, filter_verified, find_best_monotonic
+from tools.data.adapters import excel_target as et
+from tools.asset_patcher import write_ddc, verify_asset
+from tools.judge_level import MAX_ROUNDS as JUDGE_MAX_ROUNDS
 
 # Unity invocation — 版本从 ProjectVersion.txt 动态读取（不硬编码）
 def _find_unity_exe():
     """从 ProjectSettings/ProjectVersion.txt 读取版本，拼 Hub 路径。"""
-    pv_file = os.path.join(
-        os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame'),
-        'ProjectSettings', 'ProjectVersion.txt')
+    pv_file = os.path.join(REPO, 'ProjectSettings', 'ProjectVersion.txt')
     try:
         with open(pv_file, encoding='utf-8') as f:
             for line in f:
@@ -68,13 +71,11 @@ def _find_unity_exe():
 
 
 UNITY_EXE = _find_unity_exe()
-REPO = os.environ.get('BLASTGAME_REPO',
-                      r'C:\Users\Administrator\Documents\BlastGame')
 UNITY_EXECUTE_METHOD = 'BlastGame.Editor.BlastBotJenkinsBatchEntry.RunFromCommandLine'
 
 PROBE_CONFIG = os.path.join(TOOLS, 'probe_configs.json')
 AUTO_LOG_DIR = os.path.join(HERMES, 'auto-log')
-MAX_ROUNDS = 6
+MAX_ROUNDS = JUDGE_MAX_ROUNDS
 
 # ── Safety ──
 
@@ -1011,7 +1012,7 @@ def phase_review(log, levels, v3_context=None):
         # Log result
         wrs_str = status.get('wrs', 'N/A')
         action_str = ri['action']
-        verdict_icon = {'合格': '✅', '不合格': '🔄', '无数据': '⚠'}.get(result, '❓')
+        verdict_icon = {'合格': '✅', '接近': '🟡', '不合格': '🔄', '无数据': '⚠'}.get(result, '❓')
         log.log(
             f'  {verdict_icon} L{lv} [{diff}] r{ri["round"]}/{ri["max"]}: '
             f'{result} — {action_str} — {wrs_str}'
@@ -1072,18 +1073,18 @@ def main():
         help='档位列表 (e.g. 1,2,3,4,5)')
     parser.add_argument(
         '--games', type=int, default=400,
-        help='验证轮每档局数 (default: 400)')
+        help='第6轮/非早停批次的每档配置局数 (default: 400)')
     parser.add_argument(
         '--probe-games', type=int, default=400,
-        help='探针轮每档局数 (default: 400)；adaptive-stop 开启时仍受 '
-             '--bayes-min-runs=60 保护，验证轮默认 400 局')
+        help='第1-5轮每档配置局数 (default: 400)；adaptive-stop 开启时仍受 '
+             '--bayes-min-runs=60 保护')
     parser.add_argument(
         '--strategy', default='scoring_opt_vg',
         choices=['visible_greedy', 'scoring_opt_vg'],
         help='Bot 策略 (default: scoring_opt_vg)')
     parser.add_argument(
         '--adaptive-stop', action='store_true',
-        help='探针轮开贝叶斯提前停（提速）；入库前验证仍跑满 --games')
+        help='第1-5轮开贝叶斯提前停；第6轮跑满 --games，不自动追加入库验证轮')
     parser.add_argument(
         '--resume', action='store_true',
         help='从 checkpoint 续跑（project-state/auto_loop_checkpoint.json），'
@@ -1425,9 +1426,8 @@ def main():
             if status['result'] == '合格':
                 passed[lv] = status
                 pending.discard(lv)
-                tag = '已入库'
                 rnd = status["round"]
-                log.log(f'  ✅ L{lv} PASSED → {tag} (round {rnd})')
+                log.log(f'  ✅ L{lv} PASSED → 合格待确认入库 (round {rnd})')
                 # ── 2026-08-05 修复：全自动不自动入库 ──
                 # 用户明确「全自动的情况下不能入库！只能标记合格然后等待我确认」。
                 # 不自动 write_ddc 写 asset、不自动写 Excel/board、不自动跑 bot 400 验证。
@@ -1538,7 +1538,7 @@ def main():
     log.log(' FINAL SUMMARY')
     log.log('=' * 60)
 
-    log.log(f' ✅ Passed (入库):  {len(passed)} levels')
+    log.log(f' ✅ Passed (待确认入库):  {len(passed)} levels')
     for lv in sorted(passed.keys(), key=int):
         s = passed[lv]
         log.log(f'    L{lv} [{s["difficulty"]}] r{s["round"]}  {s.get("wrs", "")}')

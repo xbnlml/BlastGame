@@ -6,13 +6,14 @@
 //
 // 用法: node tools/leveldb_sync/verify_packaging.mjs [--levels 54,61]
 // 退出码: 0 = 全部解析成功；1 = 有缺失/异常
-import { readAssetSnapshot } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/assetSnapshot.mjs';
-import { loadRunStore, resolveActiveRun } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/runStore.mjs';
-import { computeDealFingerprint, normalizeDealConfig } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/boardFingerprint.mjs';
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
+import { repoModuleUrl, resolveRepo } from './repo_paths.mjs';
 
-const REPO = 'C:/Users/Administrator/Documents/BlastGame';
+const REPO = resolveRepo();
+const { readAssetSnapshot } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/assetSnapshot.mjs'));
+const { loadRunStore, resolveActiveRun } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/runStore.mjs'));
+const { computeDealFingerprint, normalizeDealConfig } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/boardFingerprint.mjs'));
 const ASSET_ROOT = path.join(REPO, 'Assets/GameModule/GameMain/ConfigSo/Generated_enum/test');
 const store = loadRunStore(REPO, 'test');
 

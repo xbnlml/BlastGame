@@ -8,9 +8,16 @@
 """
 import sys, os, json
 from collections import defaultdict
+from pathlib import Path
 
-STAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'stage-data')
-TARGETS = r'C:\Users\Administrator\Documents\BlastGame\Assets\LvEditorConfig\lv_win_config_test.xlsx'
+HERMES = Path(__file__).resolve().parents[1]
+if str(HERMES) not in sys.path:
+    sys.path.insert(0, str(HERMES))
+from tools.project_paths import resolve_unity_repo
+
+REPO = resolve_unity_repo(HERMES)
+STAGE_DIR = str(HERMES / 'stage-data')
+TARGETS = str(REPO / 'Assets' / 'LvEditorConfig' / 'lv_win_config_test.xlsx')
 from openpyxl import load_workbook
 import re
 

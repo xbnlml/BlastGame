@@ -1,5 +1,7 @@
 # 轻量级标准保障机制设计（2026-08-17）
 
+> **历史设计记录。** 本文的 T3 anchor 漂移示例已退役。当前标准保障由 `../project-state/rules.json` 的 fail-loud schema 和 `tests/pipeline/test_process_standards.py` 执行。
+
 > 目标：个人项目 + agent 协作场景下，用最小成本保证标准不漂移、被破坏时能及时发现。
 > 约束：无 CI/CD、不引入复杂框架、标准更新频繁（用户经常纠正）、agent 是主要执行者。
 > 结论先行：**推荐「候选 A：金样回归套件」+ 配套变更仪式**，单文件、零框架、秒级运行。
@@ -64,4 +66,4 @@
 ## 五、验证方式
 
 - 用 2026-08-17 审查清单的"实测违规样例能被打回"方法：故意构造 W10 违规探针 + L152 边界判定，check_standards 必须报 FAIL
-- 破坏性测试：临时把 rules.json 的 t3_min 改回 60 → 文档漂移扫描必须报"文档/rules 不一致"（对照 skill 中"已下调 50"的记录）
+- 破坏性测试：临时加入已退役的 `anchor`，或删改一项 `hard_violations` → schema 校验必须 fail-loud

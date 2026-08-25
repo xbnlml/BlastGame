@@ -2,15 +2,176 @@
 """P0 process-standard regression tests."""
 from __future__ import annotations
 
+import copy
+import contextlib
+import io
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 HERMES = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(HERMES))
 
 
 class ProcessStandardsTest(unittest.TestCase):
+    def test_removed_t3_anchor_is_not_required_by_judge(self):
+        from tools import judge_level
+        from tools.judge_level import check_judgment
+
+        rules = json.loads(
+            (HERMES / "project-state" / "rules.json").read_text(encoding="utf-8")
+        )["judge_rules"]
+        for difficulty in ("normal", "hard", "superhard"):
+            self.assertNotIn("anchor", rules[difficulty])
+            self.assertIn("hard_violations", rules[difficulty])
+            self.assertFalse(any("t3" in item.lower() for item in rules[difficulty]["hard_violations"]))
+
+        cases = [
+            ("normal", {"T1": 70, "T2": 70, "T3": 45, "T4": 30, "T5": 30}, [70, 70, 45, 30, 30]),
+            ("hard", {"T1": 75, "T2": 65, "T3": 55, "T4": 45, "T5": 35}, [75, 65, 55, 45, 35]),
+            ("superhard", {"T1": 75, "T2": 65, "T3": 55, "T4": 45, "T5": 35}, [75, 65, 55, 45, 35]),
+        ]
+        for difficulty, combo, targets in cases:
+            result, reasons = check_judgment(combo, difficulty, targets)
+            self.assertEqual("合格", result, reasons)
+
+        original = judge_level._rules_cache
+        try:
+            judge_level._rules_cache = {"judge_rules": {}}
+            with self.assertRaises(ValueError):
+                check_judgment(cases[0][1], "normal", cases[0][2])
+
+            invalid = copy.deepcopy(rules)
+            invalid["normal"]["hard_violations"] = ["inverted>1"]
+            judge_level._rules_cache = {"judge_rules": invalid}
+            with self.assertRaises(ValueError):
+                check_judgment(cases[0][1], "normal", cases[0][2])
+        finally:
+            judge_level._rules_cache = original
+
+    def test_curator_calls_qualified_results_pending_import(self):
+        from unittest.mock import patch
+        from tools import curator
+
+        cases = [(0, 0, 0), (1, 1, 1), (2, 4, 3)]
+        for passed, failed, errors in cases:
+            log = (
+                f"✅ Passed (待确认入库): {passed} levels\n"
+                f"❌ Failed (改关卡): {failed} levels\n"
+                f"⚠ Errors: {errors} levels\n"
+            )
+            with self.subTest(passed=passed, failed=failed, errors=errors), patch.object(
+                curator, "update_memory"
+            ) as update:
+                curator.update_curator_stats(log, "auto-log/example.log")
+                content = update.call_args.args[2]
+                self.assertIn(f"合格待确认入库: {passed}", content)
+                self.assertIn(f"改关卡: {failed}", content)
+                self.assertIn(f"错误: {errors}", content)
+                self.assertNotIn("通过入库", content)
+
+    def test_planner_round_boundary_matches_judge(self):
+        from tools.judge_level import action_for_judgment as judge_action
+        from tools.planner import action_for_judgment as planner_action
+
+        cases = [
+            ("合格", 5, "待确认入库"),
+            ("接近", 1, "继续调优(接近)"),
+            ("接近", 5, "继续调优(接近)"),
+            ("接近", 6, "改关卡"),
+            ("不合格", 1, "下一轮(2/6)"),
+            ("不合格", 5, "下一轮(6/6)"),
+            ("不合格", 6, "改关卡"),
+        ]
+        for result, completed, expected in cases:
+            with self.subTest(result=result, completed=completed):
+                self.assertEqual(expected, judge_action(result, completed, 6))
+                self.assertEqual(expected, planner_action(result, completed, 6))
+
+    def test_curator_accepts_close_and_repeated_round_sequences(self):
+        from tools.curator import supervise
+
+        for rounds in (1, 2, 6):
+            chunks = []
+            for round_number in range(1, rounds + 1):
+                chunks.append(
+                    f"=== ROUND {round_number}/6 ===\n"
+                    "Phase 1: planner.py\n"
+                    "Phase 2: apply probes\n"
+                    "Phase 3: Warden 通过\n"
+                    "Phase 4: refresh\n"
+                    "Phase 5: Judge\n"
+                    f"L79 r{round_number}/6: 接近 — 继续调优(接近)"
+                )
+            with self.subTest(rounds=rounds):
+                self.assertEqual([], supervise("\n".join(chunks)))
+
+    def test_final_summary_parser_and_watchdog_zero_error_contract(self):
+        from scripts.auto_loop_watchdog import final_summary_messages
+        from tools.auto_log_summary import parse_final_summary
+
+        cases = [(0, 0, 0), (1, 2, 0), (7, 4, 3)]
+        for passed, failed, errors in cases:
+            text = (
+                "=== FINAL SUMMARY ===\n"
+                f"✅ Passed (待确认入库): {passed} levels\n"
+                f"❌ Failed (改关卡): {failed} levels\n"
+                f"⚠ Errors: {errors} levels\n"
+            )
+            with self.subTest(passed=passed, failed=failed, errors=errors):
+                summary = parse_final_summary(text)
+                self.assertEqual(
+                    {"passed": passed, "failed": failed, "errors": errors},
+                    summary,
+                )
+                messages = final_summary_messages(text)
+                self.assertTrue(any("auto_loop 已结束" in item for item in messages))
+                self.assertEqual(errors > 0, any("有错误" in item for item in messages))
+
+    def test_watchdog_handles_checkout_without_auto_logs(self):
+        from unittest.mock import patch
+        from scripts import auto_loop_watchdog
+
+        with tempfile.TemporaryDirectory() as tmp, patch.object(
+            auto_loop_watchdog, "AUTOLOG", str(Path(tmp) / "missing-auto-log")
+        ):
+            output = io.StringIO()
+            with contextlib.redirect_stdout(output):
+                auto_loop_watchdog.check()
+        self.assertIn("无 auto_loop 日志", output.getvalue())
+
+    def test_watchdog_detects_final_summary_larger_than_old_tail_window(self):
+        from unittest.mock import patch
+        from scripts import auto_loop_watchdog
+
+        summary = (
+            "=== FINAL SUMMARY ===\n"
+            "✅ Passed (待确认入库): 42 levels\n"
+            "❌ Failed (改关卡): 3 levels\n"
+            "⚠ Errors: 0 levels\n"
+            + "".join(f"L{level}: detail {'x' * 80}\n" for level in range(1, 151))
+        )
+        self.assertGreater(len(summary), 3000)
+        with tempfile.TemporaryDirectory() as tmp:
+            log_dir = Path(tmp) / "auto-log"
+            log_dir.mkdir()
+            (log_dir / "latest.log").write_text(summary, encoding="utf-8")
+            with patch.object(auto_loop_watchdog, "AUTOLOG", str(log_dir)), patch.object(
+                auto_loop_watchdog, "ROUNDS", str(Path(tmp) / "missing-rounds.json")
+            ), patch.object(
+                auto_loop_watchdog.subprocess,
+                "run",
+                return_value=SimpleNamespace(stdout=b"INFO: No tasks are running"),
+            ):
+                output = io.StringIO()
+                with contextlib.redirect_stdout(output):
+                    auto_loop_watchdog.check()
+        self.assertIn("auto_loop 已结束", output.getvalue())
+        self.assertNotIn("有错误", output.getvalue())
+
     def test_probe_gap_analysis_does_not_reintroduce_removed_t3_anchor(self):
         from tools.design_probes import analyze_gaps
 

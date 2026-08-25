@@ -36,7 +36,7 @@
 
 ## ⚠️ 最大陷阱：项目内 skills/game-design/ 是过期副本
 
-`D:\download\BlastGame\hermes\skills\game-design\` 下 6 个目录是合并进系统 `blastgame` skill **之前**的历史副本，Hermes 运行时不加载。内容多处与现行体系矛盾：
+`<HERMES_ROOT>\skills\game-design\` 下 6 个目录是合并进系统 `blastgame` skill **之前**的历史副本，Hermes 运行时不加载。内容多处与现行体系矛盾：
 - `blastgame-level-optimizer` 仍写"三批流程（批A/批B/批C）"、引用已删的 `write_excel.py`、scripts/ 里躺着旧版 `submit_batch.py`（MEMORY.md 明确"已删除"）
 - `blastgame-auto-pipeline` 无 SKILL.md，README 说"moved to _archive"但目录里没有 _archive（悬空）
 - `blastgame-multi-tier-designer` 引用 8 个不存在的 reference 文件、仍写"4 轮上限"（现 6 轮）

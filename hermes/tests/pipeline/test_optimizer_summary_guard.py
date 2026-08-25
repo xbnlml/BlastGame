@@ -7,6 +7,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from tools.pipeline.optimizer_summary import evaluate_optimizer_summary, find_latest_optimizer_summary
 
@@ -39,11 +40,15 @@ class OptimizerSummaryGuardTest(unittest.TestCase):
     def test_current_board_summary_is_found_and_judged_separately(self):
         with tempfile.TemporaryDirectory() as tmp:
             path = self.write_summary(Path(tmp))
-            evidence = evaluate_optimizer_summary(
-                124,
-                current_board_fingerprint=BOARD_FP,
-                opt_root=tmp,
-            )
+            with patch(
+                "tools.pipeline.optimizer_summary.et.get_target",
+                return_value={"diff": "hard", "tiers": [70, 55, 40, 30, 20]},
+            ):
+                evidence = evaluate_optimizer_summary(
+                    124,
+                    current_board_fingerprint=BOARD_FP,
+                    opt_root=tmp,
+                )
             self.assertIsNotNone(evidence)
             self.assertEqual(str(path), evidence["source_path"])
             self.assertEqual("接近", evidence["judge_result"])

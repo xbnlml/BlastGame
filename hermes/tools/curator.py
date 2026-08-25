@@ -16,6 +16,10 @@ from collections import Counter
 from datetime import datetime
 
 HERMES_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if HERMES_DIR not in sys.path:
+    sys.path.insert(0, HERMES_DIR)
+from tools.auto_log_summary import invalid_phase_sequences, parse_final_summary
+
 AGENTS_DIR = os.path.join(HERMES_DIR, 'agents')
 LOG_DIR = os.path.join(HERMES_DIR, 'auto-log')
 
@@ -74,13 +78,12 @@ AUTO_SECTIONS = {
 
 def update_curator_stats(log_text, log_path):
     """在 curator memory 中追加本轮统计"""
-    passed = len(re.findall(r'✅.*Passed', log_text))
-    failed = len(re.findall(r'❌.*MAX ROUNDS', log_text))
-    errors = len(re.findall(r'⚠ Errors:', log_text))
-    rounds = re.findall(r'Round (\d+) done:', log_text)
-    last_round = rounds[-1] if rounds else '?'
+    summary = parse_final_summary(log_text) or {'passed': 0, 'failed': 0, 'errors': 0}
+    passed = summary['passed']
+    failed = summary['failed']
+    errors = summary['errors']
     update_memory('curator', '',
-                  f'### 本轮结果\n- 通过入库: {passed}\n- 改关卡: {failed}\n- 错误: {errors}\n- 日志: {os.path.basename(log_path)}')
+                  f'### 本轮结果\n- 合格待确认入库: {passed}\n- 改关卡: {failed}\n- 错误: {errors}\n- 日志: {os.path.basename(log_path)}')
 
 
 # ── 监督检查 ──
@@ -107,20 +110,17 @@ def supervise(log_text):
         violations.append('Warden 检查无通过记录')
 
     # 3. 判定三态（Phase 5 应有 合格/接近/不合格）
-    if '合格' not in log_text and '不合格' not in log_text:
-        violations.append('未发现判定结果（合格/不合格）')
+    if not any(state in log_text for state in ('合格', '接近', '不合格')):
+        violations.append('未发现判定结果（合格/接近/不合格）')
 
     # 4. apply_probes Warden 闸门（写入前）
     if 'Warden BLOCKED' in log_text:
         violations.append('本轮有探针被 Warden 打回（探针质量不合格）')
 
     # 5. 阶段时序验证（Phase 1→3→5 顺序）
-    phases = re.findall(r'Phase (\d)', log_text)
-    if phases:
-        expected = ['1', '3', '5']
-        actual = [p for p in phases if p in expected]
-        if actual and actual != ['1', '3', '5'] and actual != ['1', '2', '3', '4', '5']:
-            violations.append(f'阶段顺序异常: {actual}')
+    invalid_phases = invalid_phase_sequences(log_text)
+    if invalid_phases:
+        violations.append(f'阶段顺序异常: {invalid_phases}')
     
     # 6. Curator 自己（memory 更新）
     if 'MAX ROUNDS' in log_text and '改关卡' not in log_text:

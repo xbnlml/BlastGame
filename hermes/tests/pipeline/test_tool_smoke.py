@@ -14,6 +14,11 @@ import sys
 import unittest
 
 HERMES = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, HERMES)
+from tools.project_paths import resolve_unity_repo
+
+LIVE_REPO = resolve_unity_repo(HERMES)
+LIVE_TARGET = LIVE_REPO / 'Assets' / 'LvEditorConfig' / 'lv_win_config_test.xlsx'
 
 TOOLS = [
     # (文件名, 参数) —— 只读、最小参数、用真实关卡 86（已入库关）
@@ -28,6 +33,7 @@ TOOLS = [
 ]
 
 
+@unittest.skipUnless(LIVE_TARGET.is_file(), 'live Unity workspace is not configured')
 class ToolSmokeTest(unittest.TestCase):
     def test_tools_run_and_output(self):
         failed = []
@@ -36,7 +42,11 @@ class ToolSmokeTest(unittest.TestCase):
                 [sys.executable, os.path.join(HERMES, tool)] + args,
                 capture_output=True, text=True, timeout=120,
                 cwd=HERMES,
-                env={**os.environ, 'PYTHONDONTWRITEBYTECODE': '1'},
+                env={
+                    **os.environ,
+                    'PYTHONDONTWRITEBYTECODE': '1',
+                    'BLASTGAME_REPO': str(LIVE_REPO),
+                },
             )
             out = (proc.stdout or '').strip()
             if proc.returncode != 0 or not out:

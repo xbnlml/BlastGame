@@ -1,10 +1,13 @@
 """BlastGame 关卡配置-胜率数据池检索工具
 
 从 telemetry/bot/ 和 telemetry/multi-tier-opt/ 遍历数据，
-按可信度分两个池输出：
+按历史兼容结构分两个采集池输出：
 
-  可靠池 (reliable):  Bot 400局+ 聚合 + Opt Summary + Opt Phase2
-  参考池 (reference): Opt Phase1 探索数据
+  reliable: bot / summary 等候选记录（局数写入 totalGames，低样本只降优先级）
+  reference: phase1/phase2 等探索记录
+
+这里的 reliable 是旧接口名，不代表可直接用于判定或入库。最终决策必须再经
+tools.data.pool.filter_verified()，只保留当前牌面有效的 bot/summary/phase0。
 
 每条记录 = (wr, sd, sc, ratios, of, totalGames, source_tier, source)
 同一 (sd,sc,ratios,of) 只在最高优先级的池里保留一条。
@@ -23,10 +26,10 @@ from collections import defaultdict
 from datetime import datetime
 from tools.asset_patcher import level_sig
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 
 # ===== 参数 =====
-MIN_GAMES_RELIABLE = 400  # bot 最少总局数才算可靠
+MIN_GAMES_RELIABLE = 400  # 仅用于历史 _priority 分档，不是准入门槛
 
 # ===== 机器人逻辑版本防线（2026-08-14 新增）=====
 # 2026-08-13 14:36（北京时间）机器人（bot 批跑 + 多档位优化器共用引擎）逻辑改动，

@@ -40,7 +40,7 @@
 
 2026-08-13 16:33:29 发生 Unity Editor 崩溃。崩溃报告：
 
-`/Users/zhaokang/Library/Logs/DiagnosticReports/Unity-2026-08-13-163329.ips`
+`<USER_LOG_DIR>/Unity-2026-08-13-163329.ips`
 
 报告特征：
 

@@ -37,7 +37,7 @@ JSON：`{lv: {diff, targets, date, note, tiers: [{wr(百分数), sd, sc, ratios,
 
 内部调用现有工具（不重复造轮子）：
 - `write_ddc`/`verify_asset`（tools/asset_patcher.py）
-- `write_tiers`（project-state/_archive/write_excel.py）——**导入后必须覆盖 `mod.XL_PATH`**：write_excel.py 的 XL_PATH=TOOL_DIR/../ 会算到 project-state/ 下（工具在 _archive/ 子目录），实际 Excel 在 hermes 根
+- `write_tiers`（tools/data/excel_writer.py）——当前正式模块使用显式 `xlsx_path` 或 hermes 根默认路径；历史 `_archive/write_excel.py` 路径问题已随迁移消失
 - board 整行替换：固定 7 列 `| lv | diff | 状态 | 日期 | 目标 | 5档WR | 备注 |`，**Normal 也显示 5 档 WR**（T1=T2 同值重复显示），不用泛化正则重排
 
 ### dry-run 抓出的 3 个 bug（先 dry-run 再真实跑是铁则）

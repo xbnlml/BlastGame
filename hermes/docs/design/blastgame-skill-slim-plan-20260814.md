@@ -1,5 +1,7 @@
 # blastgame SKILL.md 瘦身方案（163KB → ~50KB）— 2026-08-14
 
+> **历史治理方案。** RAG 语料和评估已经演进；当前构建只认 `../../rag/README.md`、`../../rag/index/build_manifest.json` 与 `../../rag/index/evaluation.json`。本文的体量和 80% 指标只记录当时决策背景。
+
 > 现状实测：`SKILL.md` = **166,039B（162KB）**，已超 skill_manage 100KB 硬限。
 > 本方案全部数字为**实测**（`scripts/slim_blastgame_skill.py` dry-run 已跑通，产物见 `hermes/_slim_draft/`）。
 
@@ -25,7 +27,7 @@
 **答案：新建单一 reference `references/pitfalls.md`（完整条目 + 域锚点），主文件只留 ~6KB 症状索引。不进 RAG。**
 
 理由（三选一的决策逻辑）：
-1. **不进 RAG**：坑表是"确定检索"（已知症状 → 查已知修复），不是"开放检索"（不知道该怎么问）。RAG 混合检索 recall@1≈80%，对**排障必须命中**的场景不够可靠——查不到坑 = 重走老路。且当前 RAG 语料是 BlastGame Doc（游戏设计文档），混入排障知识会污染语义空间、需要重建索引+扩 golden QA，成本高收益低。
+1. **当时不进 RAG**：坑表是"确定检索"（已知症状 → 查已知修复），不是"开放检索"。当时基线约 80% 且语料以游戏文档为主；现行已经加入带历史标记的 Ops 语料，真实严格指标见当前 evaluation。
 2. **不拆成 90 个文件**：INDEX.md 自己已承认"84 个 reference 导致检索失效（有记录但没被触发）"。拆越多越难触发。**一个坑表文件 + 主文件症状索引**是最短触发链。
 3. **代价可控**：`skill_view(pitfalls.md)` 全文 69KB ≈ 1.7 万 token，只在"遇坑时"付一次；而塞在 SKILL.md 里是**每个 session 每次触发都付 67KB**。
 
@@ -122,7 +124,7 @@
 
 **执行方式**（脚本已就绪）：
 ```bash
-cd D:/download/BlastGame/hermes
+cd <HERMES_ROOT>
 python scripts/slim_blastgame_skill.py          # dry-run：产物在 _slim_draft/
 # 人工补 6 个 stub 摘要 + pitfalls.md 分域锚点（机械切割已完成）
 python scripts/slim_blastgame_skill.py --apply  # 备份 SKILL.md.bak-<ts> 后落盘

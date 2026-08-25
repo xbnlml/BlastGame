@@ -9,7 +9,7 @@ import os, sys, json, subprocess
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 TOOL_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def get_asset_path(lv):

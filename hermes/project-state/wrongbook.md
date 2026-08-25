@@ -49,6 +49,6 @@ Agent 层面的错题本。记录 BlastGame 调优/探针/判级过程中的错�
 ## WB-010（已修正）: 工作目录以 Hermes 为准
 
 - **原记录日期**: 2026-07-10（修正于 2026-07-17，再修正 2026-08-05）
-- **正确认知**: `D:\download\BlastGame\hermes` 是当前工作目录。reasonix 是其他 AI 工程目录，与本项目无关。所有工具/配置/规则以 `D:\download\BlastGame\hermes` 为准。
-- **工具路径**: tools/probe_configs.json、tools/**/.py、scripts/submit_batch_unity.py 均在 `D:\download\BlastGame\hermes` 下
+- **正确认知**: 当前 checkout 的 `<PROJECT_ROOT>/hermes` 是工作目录。其他 AI 工程目录与本项目无关。所有工具/配置/规则以 `<HERMES_ROOT>` 为准。
+- **工具路径**: tools/probe_configs.json、tools/**/.py、scripts/submit_batch_unity.py 均在 `<HERMES_ROOT>` 下
 

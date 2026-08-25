@@ -10,8 +10,15 @@
 """
 import csv, os, sys, json
 from datetime import datetime
+from pathlib import Path
 
-OPT_ROOT = r'C:\Users\Administrator\Documents\BlastGame\telemetry\multi-tier-opt'
+HERMES = Path(__file__).resolve().parents[1]
+if str(HERMES) not in sys.path:
+    sys.path.insert(0, str(HERMES))
+from tools.project_paths import resolve_unity_repo
+
+REPO = resolve_unity_repo(HERMES)
+OPT_ROOT = str(REPO / 'telemetry' / 'multi-tier-opt')
 
 def parse_batch_name(name):
     """批次目录名: '54_57_61_64_72_79_82-83_85_93_102-2026-08-07T10-34-05' → (levels, ts)"""

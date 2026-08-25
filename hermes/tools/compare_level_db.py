@@ -10,15 +10,22 @@
 用法：python tools/compare_level_db.py [--levels 151,152,153]（默认全扫 1-200）
 """
 import sys, json, subprocess, argparse, os
-sys.path.insert(0, r'D:\download\BlastGame\hermes')
-sys.path.insert(0, r'D:\download\BlastGame\hermes\tools')
+from pathlib import Path
+
+HERMES = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERMES))
+
+from tools.project_paths import resolve_unity_repo
+
+REPO = resolve_unity_repo(HERMES)
+os.environ.setdefault('BLASTGAME_REPO', str(REPO))
 
 from tools.asset_patcher import read_ddc
 from tools.data.pool import get_all_records, dedup_records
 
-RUN_PATH = r'C:\Users\Administrator\Documents\BlastGame\LevelDatabase\Run\test.json'
-ASSET_ROOT = r'C:\Users\Administrator\Documents\BlastGame\Assets\GameModule\GameMain\ConfigSo\Generated_enum'
-FP_HELPER = r'D:\download\BlastGame\hermes\tools\leveldb_sync\get_asset_board_fp.mjs'
+RUN_PATH = str(REPO / 'LevelDatabase' / 'Run' / 'test.json')
+ASSET_ROOT = str(REPO / 'Assets' / 'GameModule' / 'GameMain' / 'ConfigSo' / 'Generated_enum')
+FP_HELPER = str(HERMES / 'tools' / 'leveldb_sync' / 'get_asset_board_fp.mjs')
 
 def norm_ratios(r):
     """归一化 ratios：DB 存数组 [10,1,1,1,10]，asset/池子存字符串 '10,1,1,1,10'。"""
@@ -68,8 +75,7 @@ def find_asset_path(lv):
         if os.path.exists(p):
             return p
     # 兜底 walk Assets 找
-    import pathlib
-    root = r'C:\Users\Administrator\Documents\BlastGame\Assets'
+    root = str(REPO / 'Assets')
     for dirpath, dirs, files in os.walk(root):
         if f'{lv}.asset' in files:
             return os.path.join(dirpath, f'{lv}.asset')

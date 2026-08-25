@@ -17,7 +17,11 @@ def _get_model() -> SentenceTransformer:
     global _model
     if _model is None:
         print(f"[embedder] 加载模型 {config.EMBED_MODEL_NAME} ...")
-        _model = SentenceTransformer(config.EMBED_MODEL_NAME, device=config.DEVICE)
+        _model = SentenceTransformer(
+            config.EMBED_MODEL_NAME,
+            revision=config.EMBED_MODEL_REVISION,
+            device=config.DEVICE,
+        )
     return _model
 
 def _normalize(vec: np.ndarray) -> np.ndarray:
@@ -47,7 +51,11 @@ def encode_passages(texts: list[str]) -> np.ndarray:
 
 def get_dim() -> int:
     """返回向量维度（bge-small-zh-v1.5 = 512）。"""
-    return _get_model().get_sentence_embedding_dimension()
+    model = _get_model()
+    current = getattr(model, "get_embedding_dimension", None)
+    if callable(current):
+        return int(current())
+    return int(model.get_sentence_embedding_dimension())
 
 if __name__ == "__main__":
     # 自测：python -m rag.embedder

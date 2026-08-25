@@ -1,8 +1,9 @@
 import sys; sys.path.insert(0, '.')
 from tools.data import pool
-import openpyxl
+import openpyxl, os
 
-wb = openpyxl.load_workbook('C:/Users/Administrator/Documents/BlastGame/Assets/LvEditorConfig/lv_win_config_test.xlsx', data_only=True)
+repo = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
+wb = openpyxl.load_workbook(os.path.join(repo, 'Assets', 'LvEditorConfig', 'lv_win_config_test.xlsx'), data_only=True)
 ws = wb.active
 targets = {}
 for r in range(2, ws.max_row + 1):

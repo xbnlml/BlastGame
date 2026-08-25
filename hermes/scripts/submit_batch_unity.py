@@ -5,9 +5,8 @@
   python scripts/submit_batch_unity.py "172" --tiers "1,3,5"
   python scripts/submit_batch_unity.py "170-185" --tiers "1,2,3,4,5" --games 400
 
-局数标准（2026-08-10）:
-  探针批（筛选方向）: --games 200 --adaptive-stop   # 200 局足够看出方向
-  验证批（入库前）:   --games 400                    # 400 局精测，跑满
+局数由 --games 配置（默认 400）；--adaptive-stop 开启时可提前结束。
+该脚本只执行批跑，不承诺或触发入库前验证轮。
 
 Asset 配置请通过 write_ddc 或 apply_probes.py 单独管理。
 """
@@ -20,12 +19,15 @@ HERMES = os.path.dirname(SCRIPT_DIR)
 TOOLS = os.path.join(HERMES, 'tools')
 SCRIPTS = SCRIPT_DIR
 BATCH_LOG_DIR = os.path.join(HERMES, 'batch-logs')
+sys.path.insert(0, HERMES)
+from tools.project_paths import resolve_unity_repo
+
+REPO = str(resolve_unity_repo(HERMES))
+os.environ.setdefault('BLASTGAME_REPO', REPO)
 
 def _find_unity_exe():
     """从 ProjectSettings/ProjectVersion.txt 读取版本，拼 Hub 路径。"""
-    pv_file = os.path.join(
-        os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame'),
-        'ProjectSettings', 'ProjectVersion.txt')
+    pv_file = os.path.join(REPO, 'ProjectSettings', 'ProjectVersion.txt')
     try:
         with open(pv_file, encoding='utf-8') as f:
             for line in f:
@@ -41,8 +43,6 @@ def _find_unity_exe():
 
 
 UNITY_EXE = _find_unity_exe()
-REPO = os.environ.get('BLASTGAME_REPO',
-    r'C:\Users\Administrator\Documents\BlastGame')
 BOT_DIR = os.path.join(REPO, 'telemetry', 'bot')
 
 EXECUTE_METHOD = 'BlastGame.Editor.BlastBotJenkinsBatchEntry.RunFromCommandLine'

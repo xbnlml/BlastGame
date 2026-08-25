@@ -7,7 +7,7 @@
 
 | 行号 | 问题 | 严重度 | 修复 |
 |------|------|--------|------|
-| L51+L62 | **真实崩溃 bug**：`read_ddc` 失败返回错误字符串（`'missing C:\...'` / `'找不到 DynamicDifficultyConfigs'` / `'找不到结束标记'`），`if not asset:` 拦不住（字符串 truthy）→ `enumerate(asset)` 逐字符迭代 → `cfg['sd']` 抛 `TypeError: string indices must be integers`。实测 `--levels 999` 复现 | **高** | `if not isinstance(asset, list) or not asset:` |
+| L51+L62 | **真实崩溃 bug**：`read_ddc` 失败返回错误字符串（`'missing <ABSOLUTE_PATH>'` / `'找不到 DynamicDifficultyConfigs'` / `'找不到结束标记'`），`if not asset:` 拦不住（字符串 truthy）→ `enumerate(asset)` 逐字符迭代 → `cfg['sd']` 抛 `TypeError: string indices must be integers`。实测 `--levels 999` 复现 | **高** | `if not isinstance(asset, list) or not asset:` |
 | L69-72 | OVERRIDE 值无范围校验：误传百分数 83.3（应为 0.833）会写 8330% 进 DB，dryrun 只验 upsert 不拦 | 中 | `if not (0 < wr <= 1): 报错退出` |
 | L69 | OVERRIDE 优先级在池子匹配之前且无覆盖警告——override 键写错档位时静默替换好数据 | 低 | 先算 match，命中时打印 `(OVERRIDE 覆盖: 池子原为 X%)` |
 | L69 | override 值非 dict（如 `{"155": 0.833}`）→ `str(i) in 0.833` 抛 TypeError | 低 | `isinstance(override[str(lv)], dict)` 校验 |
@@ -41,11 +41,11 @@
 
 ```bash
 # gen_payload asset 缺失崩溃（修复前）
-python tools/gen_payload.py --levels 999 --source t.csv --out /tmp/x.json
+python tools/gen_payload.py --levels 999 --source t.csv --out <TEMP_DIR>/x.json
 # → TypeError: string indices must be integers（L62）
 
 # OVERRIDE 正常路径（L155 实测：T1/T2=83.30% OVERRIDE，T3-T5 池子匹配）
-python tools/gen_payload.py --levels 155 --source t.csv --override '{"155": {"0": 0.833, "1": 0.833}}' --out /tmp/x.json
+python tools/gen_payload.py --levels 155 --source t.csv --override '{"155": {"0": 0.833, "1": 0.833}}' --out <TEMP_DIR>/x.json
 
 # clear_excel_data dry-run（零写入，102/110 各 5 行结构验证通过）
 python tools/clear_excel_data.py --levels 102,110 --dry-run

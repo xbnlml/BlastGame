@@ -58,20 +58,13 @@ def main():
     check('dev=5=合格', r[0], '合格')
 
     print('=== 接近≠入库语义（2026-08-17）===')
-    # 6. 接近时 action 必须是"继续调优"（不能是"入库(接近)"）
-    # 通过 judge_level 的 action 生成验证（只查接近分支）
-    from tools.judge_level import get_round, MAX_ROUNDS
-    # 直接查代码语义：接近分支不再 reset_round
-    import inspect
-    src = inspect.getsource(check_judgment)
-    # 接近产生 reasons 带 '(接近)' → 归类为接近（间接验证）
+    # action 行为由 tests/pipeline/test_judge_rounds.py 通过临时 rounds 文件验证。
 
     print('=== 判定对 gap 边界（历史案例）===')
     # 7. L152 案例：gap 差 0.01pp 接近带容差（near_tolerance_pp=1）
     #    T3→T5 gap=9.99 < 10 差 0.01 → 接近不是不合格（带容差）
-    r = check_judgment({'T1': 90, 'T2': 90, 'T3': 60, 'T4': 45, 'T5': 35}, 'normal', [90, 90, 60, 45, 35])
-    # 全达标组合应合格（gap 正常时）
-    check('正常gap=合格', r[0] in ('合格', '接近'), True, f'实际={r[0]}')
+    r = check_judgment({'T1': 80, 'T2': 80, 'T3': 60, 'T4': 50.01, 'T5': 50.01}, 'normal')
+    check('gap=9.99进入接近带', r[0], '接近', f'reasons={r[1]}')
 
     print()
     if FAILURES:

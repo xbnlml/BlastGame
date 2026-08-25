@@ -1,7 +1,7 @@
 # Agent Pipeline Tools Coverage Audit
 
 **Audited:** 2026-07-30  
-**Project:** `D:\download\BlastGame\hermes`  
+**Project:** `<HERMES_ROOT>`
 **Full report:** `project-state/audit_report.md`
 
 ## Agent Pipeline Architecture

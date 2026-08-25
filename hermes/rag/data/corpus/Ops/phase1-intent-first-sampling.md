@@ -1,7 +1,7 @@
 # BlastGame phase1 候选生成：intent-first（意图优先）而非参数网格
 
 > 来源：2026-08 审查多档位优化器 phase1 采样设计的结论。源码实读为准。
-> 产出完整方案备份：`D:\download\BlastGame\hermes\phase1_intent_first_redesign.md`
+> 产出完整方案备份：`<HERMES_ROOT>\phase1_intent_first_redesign.md`
 
 ## 机制校准（源码为准，四维参数的"玩法效果"）
 

@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
-"""启动或重启 Unity (只操作，不检测)
+"""历史归档：旧 Unity 重启工具，不再使用。
 
 用法:
   python tools/restart_unity.py --start  # 启动 Unity（未运行才启动）
-  python tools/restart_unity.py --force  # 杀进程+重启（仅无响应时）
+  当前流程禁止自动结束 Unity 进程；请使用现行 preflight/批跑入口。
 
 注意: 优先使用 submit_batch.py 触发编译，不需要重启 Unity。
       重启会导致 Unity 关闭，请先保存工作。
       检查状态请用 check_unity.py
 """
 import os, subprocess, time, glob, sys
+from pathlib import Path
 
-PROJECT_PATH = 'C:\\Users\\Administrator\\Documents\\BlastGame'
+PROJECT_PATH = os.environ.get('BLASTGAME_REPO', str(Path.home() / 'Documents' / 'BlastGame'))
 
 def get_project_unity_version():
     try:

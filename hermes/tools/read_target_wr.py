@@ -11,7 +11,7 @@
 import sys, os, json
 from openpyxl import load_workbook
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 XLSX = os.path.join(REPO, 'Assets/LvEditorConfig/lv_win_config_test.xlsx')
 
 

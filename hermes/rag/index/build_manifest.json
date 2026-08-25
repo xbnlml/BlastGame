@@ -1,0 +1,538 @@
+{
+  "build_id": "07ed05dbdeeebc26",
+  "built_at": "2026-08-25 12:20:59",
+  "chunk_count": 1205,
+  "chunking": {
+    "max_tokens": 768,
+    "overlap_tokens": 0,
+    "subdirs": [
+      "MainGame",
+      "Ops"
+    ]
+  },
+  "corpus_files": [
+    {
+      "sha256": "4eba8915d967b877fd38d920fd10eee5cc75ca03f84b2e218a01f6f355ff812d",
+      "source": "MainGame/Blast_DynamicDifficulty.md"
+    },
+    {
+      "sha256": "ada3200db9570eb4e4cf5d562382cf2ebc4138029828581c809f31efe8ebe76c",
+      "source": "MainGame/Blast_MainGame.md"
+    },
+    {
+      "sha256": "ba9bfe9ed910513b2d0c71ef2278c32bd26aba972f8341dedb19d4df44f03e75",
+      "source": "MainGame/Blast_Replay.md"
+    },
+    {
+      "sha256": "525b5a76c3ccb93bad37cc068e1579595f6a9967f7ff2772346e6e298f7101a7",
+      "source": "MainGame/BottomUIView_Refactor.md"
+    },
+    {
+      "sha256": "a889f4bd0007718d883cd1a8bfe0cfbb0e0d7fed9cc7191839d17ac525af5632",
+      "source": "MainGame/Class_Function_Location_Template.md"
+    },
+    {
+      "sha256": "42ee4e63c22795eb7f9ce0f590ad117d88b5fe1eeca18c190c677c797f73bfcb",
+      "source": "MainGame/Coin_Economy_Logic.md"
+    },
+    {
+      "sha256": "0791ab78d1c3a5a8373ca4e50e5dae41bbbe65c0f2dca661d8690fb9090d5cfd",
+      "source": "MainGame/Color_Attack_Forecast_Stability_Plan.md"
+    },
+    {
+      "sha256": "8ce781bed50541f88871498939b3aba263080ca3a5422c1de8ca82e6032dfa4c",
+      "source": "MainGame/Common_Runtime_Infrastructure.md"
+    },
+    {
+      "sha256": "9d4787b73c7210aa5d63c1810c3843f9fda17cc38844dc87e82d6287efd927c4",
+      "source": "MainGame/Daily_Delivery_Logic.md"
+    },
+    {
+      "sha256": "d06aa69b6256328527c4f36c7998b60056cb31e36c4b26b096bb91d92e548d93",
+      "source": "MainGame/DynamicDifficulty_FE_Requirement.md"
+    },
+    {
+      "sha256": "72f54fee6092589f23be1d42621f774ad495b650269c0f6618365e232033ecec",
+      "source": "MainGame/Fail_Revive_Logic.md"
+    },
+    {
+      "sha256": "90a90635d060272177bd52b21d6b61008f9e4fde9cc5ec6cb5e1d5e9240be9aa",
+      "source": "MainGame/Game_Analysis_Logic.md"
+    },
+    {
+      "sha256": "694efa7aae71bfe878e7314f9972c0321c8bcdd5f2787227ba51d2ba022acb95",
+      "source": "MainGame/Game_BI_Logic.md"
+    },
+    {
+      "sha256": "2c3c9f268897cd79b85b9055e65add50719c837e96252f0016837d9f0464fa7f",
+      "source": "MainGame/Game_Model_Logic.md"
+    },
+    {
+      "sha256": "5505e33da68928c13b0521a792f187fafcabf6bab56e170d8ad58b8fb59eae0e",
+      "source": "MainGame/Game_Pass_Logic.md"
+    },
+    {
+      "sha256": "114de459f4fc3b1363b4a670c5c6da4ce0849d0cde731aa4fd3d3781c083b887",
+      "source": "MainGame/Game_Score_Logic.md"
+    },
+    {
+      "sha256": "dbf76886f4951ce235b6b8bdb4e39ebf9244bae1a657fd9d421e29483e0c4ff7",
+      "source": "MainGame/gamemain-class-function-index.md"
+    },
+    {
+      "sha256": "e1c19397c1105437169d4ac76418a074d3f06841deab9e2f915adb862cd0780c",
+      "source": "MainGame/Gameplay_Flow_Logic.md"
+    },
+    {
+      "sha256": "af7422053abde9c19bb9dde866d9445986413a81e6771498025dbc13e891422e",
+      "source": "MainGame/Gameplay_Rules_Logic.md"
+    },
+    {
+      "sha256": "00c5cb34652c6dc6e41a084411047b709933a1ed8f648295c530ce05ccfff17c",
+      "source": "MainGame/GM_Board_Flow.md"
+    },
+    {
+      "sha256": "04565aca160f27f088a15f53a402c6578ea7cff4b92f786fa764dfc3e4b3b2f6",
+      "source": "MainGame/GM_Board_Stage_Flow.md"
+    },
+    {
+      "sha256": "f83554c25f2876136422f90e66e32c8a339b9a80be75cc511c4173b0868f4628",
+      "source": "MainGame/Level_Entry_Init_Logic.md"
+    },
+    {
+      "sha256": "807e2b7b73b0ce5b4bdbe645214ca6b11d137f870033e3e85eef783c51b8a532",
+      "source": "MainGame/module-index/buildpackage-tools.md"
+    },
+    {
+      "sha256": "d7f5fbd2820c673d5bc3356b6cf187e69204d97f1f1352a0a209598d7d52acac",
+      "source": "MainGame/module-index/career-module.md"
+    },
+    {
+      "sha256": "8d4bda6dbfb3c53516f547d3cde94c80381f54d34767e6e0151a5b6274996629",
+      "source": "MainGame/module-index/collect-module.md"
+    },
+    {
+      "sha256": "cde9dfab3987080126a027f9d65a1db7624d12d09c34be22e14015dffdf04f5f",
+      "source": "MainGame/module-index/common.md"
+    },
+    {
+      "sha256": "2cc2e5386f2bc540faa49c5306f0442bcb6ec4d2621df30cc1dca40f133b8300",
+      "source": "MainGame/module-index/daily-delivery-module.md"
+    },
+    {
+      "sha256": "1617754eedcb6f60f71c9358d684eaca4e57a53205a4d8852d4324218627b6a9",
+      "source": "MainGame/module-index/editor.md"
+    },
+    {
+      "sha256": "4426e74ce2a9e2031e144882de4e5b783065f60c86d001d783d08d5f12b3603a",
+      "source": "MainGame/module-index/game-main-agent-index.md"
+    },
+    {
+      "sha256": "90876d2fb30160b5d7859f35ae8b852e2ad2a5e58994d2d8f3fefaae71a3fa3d",
+      "source": "MainGame/module-index/game-main-level-core.md"
+    },
+    {
+      "sha256": "4ef29994941ebd38745f626735eb39d1cd7860c2f03d05b907fdbb769068f734",
+      "source": "MainGame/module-index/game-main-runtime.md"
+    },
+    {
+      "sha256": "c6b37c204c697e5d8d046aba7a0595b1686d3af5c4974f5604590ea883e3ac22",
+      "source": "MainGame/module-index/game-main-sim.md"
+    },
+    {
+      "sha256": "09757c3975f99fcfc23eb6065d2979819f896ca035b9e9ad115a54a52682402f",
+      "source": "MainGame/module-index/game-main-ui.md"
+    },
+    {
+      "sha256": "642045ec639b5f209f89e2e060f1ac8184eb6b93f14f3dd8f174b4217fb6b50c",
+      "source": "MainGame/module-index/game-main.md"
+    },
+    {
+      "sha256": "8508878b9def0dcf2eb62c73f3405f16b945ee650fde5eab01774ad8eaa69fd8",
+      "source": "MainGame/module-index/game-pass-module.md"
+    },
+    {
+      "sha256": "aa0b3e4b67a539f1d233c804496885950f913ef36fa704998c7abbba94c24942",
+      "source": "MainGame/module-index/grand-opening-week-module.md"
+    },
+    {
+      "sha256": "4d3fcb1271c259075e0b383181716192bd8d1d1fa1a8c44b3d7314598a0b75f5",
+      "source": "MainGame/module-index/guide-module.md"
+    },
+    {
+      "sha256": "2f5572e2621c23156cb4e28c7afa7595cb9c92082c811a55a071f9e8c36e0347",
+      "source": "MainGame/module-index/home-module.md"
+    },
+    {
+      "sha256": "992b7d0cf6475c26f9b268c7ddb4321d6d8f08f8fc5afa8161ddbeb39074dce4",
+      "source": "MainGame/module-index/keyword-map.md"
+    },
+    {
+      "sha256": "3c36943d12f2c359ba4a6dc7a180c8dc1dc0babf425d84aa6e4d879e66d53bac",
+      "source": "MainGame/module-index/level-module.md"
+    },
+    {
+      "sha256": "27b2194fdc574cef0e640cd9abcd90e988ed5e02b2b9cd5c2bc4e98f086d3655",
+      "source": "MainGame/module-index/rank-module.md"
+    },
+    {
+      "sha256": "34a1143868f5791b1b99e5aae4d1a7a0876b774903c87a846b3b4adb96d86d02",
+      "source": "MainGame/module-index/scenes.md"
+    },
+    {
+      "sha256": "92404c27a8d52e0a6758b13542b5c37b49130977dd6aa04cc50f7ed9bc0d7a21",
+      "source": "MainGame/module-index/shop-module.md"
+    },
+    {
+      "sha256": "9690e3bdc4a780aac8047b30d9aa14d141505384cd04cf458dc1d79fd197278d",
+      "source": "MainGame/module-index/skill-mapping.md"
+    },
+    {
+      "sha256": "cdf1fdab982ed91fcf0db099846d965b69f24150152a6cde09c3a07a698f8321",
+      "source": "MainGame/module-index/task-module.md"
+    },
+    {
+      "sha256": "9b2f7eee2fc06122acb5ec2412215e92a26244bd951d436dce7e301fcfabd055",
+      "source": "MainGame/module-index/test.md"
+    },
+    {
+      "sha256": "b42ec923554408b044c19180ccdfb894af7f3af3292fce162c0157f085ae1661",
+      "source": "MainGame/module-index/user-module.md"
+    },
+    {
+      "sha256": "49d8ad44c464228695c9c1b4570f57d7c83810b8c2baef4048bb847ace8cc88c",
+      "source": "MainGame/Nice_Vibrations_Haptic_Logic.md"
+    },
+    {
+      "sha256": "136eb3d5ad93a7747bbedaa51246546b77525eaedf696d54318cd591fe2f2ebd",
+      "source": "MainGame/Nice_Vibrations_Haptic_Plan.md"
+    },
+    {
+      "sha256": "8ace63d6b97f05859ac7dc9340395cc49e347813abe18b0b9e15a5e87a7e92f0",
+      "source": "MainGame/Player_Data_Logic.md"
+    },
+    {
+      "sha256": "dc4ef282188a2e1332d4f69861616e20227050c1186fc5f54da2b0aa7b410728",
+      "source": "MainGame/PlayOn_Offer_Logic.md"
+    },
+    {
+      "sha256": "40edf6adfd2645f939146c90a3a6f1419c4bc4699c6248230c60f2ae083f1e2b",
+      "source": "MainGame/POWERUP-SYSTEM-Unity.md"
+    },
+    {
+      "sha256": "9d3f030bf4c01138ec4eb1675dfba8128a624fe1dcd21d60b617aea87d394423",
+      "source": "MainGame/Runtime_UI_Refresh_Coalescing_Plan.md"
+    },
+    {
+      "sha256": "fb6c441ecdd25d1d8009fe04d604df488d216671c50d1bb2afbf0e312221ffe3",
+      "source": "MainGame/Scene_And_UI_Transition.md"
+    },
+    {
+      "sha256": "0847b86ebd2915e45db0adac72464fec30e2e62fd12772e524aca00114ec73b4",
+      "source": "MainGame/Slot_Area_Logic.md"
+    },
+    {
+      "sha256": "9148f2bc99a95729cd494f8c7bfc1b3640d4daa56b22cd46558b87e6ad12b2bd",
+      "source": "MainGame/Slot_Piece_RuntimeId_Refactor_Plan.md"
+    },
+    {
+      "sha256": "a7e07154dcce419e8229f603e53ef01978d0192eb47115da261b42892f2853da",
+      "source": "MainGame/Stage_Animal_Animation_Playback.md"
+    },
+    {
+      "sha256": "3ba831ff30022341b026784ab498c7c29e728852b4e58d31c60996ee33053f0d",
+      "source": "MainGame/StepDelaySequencer_Usage.md"
+    },
+    {
+      "sha256": "943f47d034e64401714b69d32c9103c1ae8ce5b343b2acf07f55a119ef7c3bb9",
+      "source": "MainGame/UI_Alpha_Linear_Workflow.md"
+    },
+    {
+      "sha256": "9cad237095495e8be0b074cb23ffc40c263240726fb269b984b17fd2053b71ef",
+      "source": "MainGame/Win_Settlement_UI.md"
+    },
+    {
+      "sha256": "ffd6984161e1cd53678111fc48c5455ca42b6cc7325675c036466d67e9274fb3",
+      "source": "Ops/audit-coverage.md"
+    },
+    {
+      "sha256": "baaa9bc177de9d0ad42297ef03b4c6383c6e082c735e05a26bf4b66c34ceae2e",
+      "source": "Ops/auto-loop-extract-json-watchdog-20260808.md"
+    },
+    {
+      "sha256": "4994c7ac64f1f430c2e151fc018be5b8b6f6f1abf8d1dfa82a5af2325d32d9d6",
+      "source": "Ops/auto-loop-planner-json-20260808.md"
+    },
+    {
+      "sha256": "a11d6bcc7fce90ea338cc1545ea824df3e8f9b970f5655d3f0c5d0eb30fb8d6d",
+      "source": "Ops/auto-loop-reliability-fixes-20260808.md"
+    },
+    {
+      "sha256": "08f6594f6e337ba0695402862995cbfce873a21c057cd5d65da93be718fc9953",
+      "source": "Ops/auto-loop-rounds-judge-bug-20260808.md"
+    },
+    {
+      "sha256": "1fd68e238ddba45a047b3bdebaf2e05e4a7ffbe2e1a1e6a9cc9ae4af0f6dccab",
+      "source": "Ops/auto-loop-tiers-pollution-20260805.md"
+    },
+    {
+      "sha256": "c0490680b0e9b07a15eeae1eb84940c06ebbbdfaedcc2cc067eeb49460c38a80",
+      "source": "Ops/auto-loop-timeout-chain-20260804.md"
+    },
+    {
+      "sha256": "18772d339d306b69963a7d22334c8a5c4e3e86e50a384fd5292664a1e030e051",
+      "source": "Ops/batch-reimport-20260805.md"
+    },
+    {
+      "sha256": "2d15c79d98560fe61449ca82d043826a789bc5ec0e3880ce0591af91ddf107da",
+      "source": "Ops/bot-submit-guard.md"
+    },
+    {
+      "sha256": "0ab46f0e39adfad7787d3272165c8661c28305d0387387c1d8d56ce003a0516f",
+      "source": "Ops/bot400-audit-extreme-levels-20260811.md"
+    },
+    {
+      "sha256": "570830936f6fa93c6a7737452e39c9b9284ec0ffef1bb8730dc84e4fef0cb09a",
+      "source": "Ops/bot400-vs-db-consistency-20260810.md"
+    },
+    {
+      "sha256": "e894d07ffecdbb8911e6dd722164b7b5a2b8a2444aa715207eec8815f7b79e7f",
+      "source": "Ops/combo-search-refactor-20260805.md"
+    },
+    {
+      "sha256": "799cc62bad27ef932892842d3cabfc7584986e72dca01b70262f27de25c168cb",
+      "source": "Ops/data-reading-and-tool-pitfalls-20260810.md"
+    },
+    {
+      "sha256": "b459c02f96799c6a9f2c0c8b29cf3934983476a434387ce0a9279d41e30df4e1",
+      "source": "Ops/db-status-and-pool-full-data-20260807.md"
+    },
+    {
+      "sha256": "114c496dd6b87390404991d823d66071fb24741a92273dd3e9bc56a47216d40b",
+      "source": "Ops/debug-log-20260730.md"
+    },
+    {
+      "sha256": "c736bc7a396969676fd537529455e9a1b76de2672fd61cd897b42d3cc64760c8",
+      "source": "Ops/excel-comparison-pattern.md"
+    },
+    {
+      "sha256": "4dec9dbde1b75e3c5fb1ab6b7f789de9cc89bdf687184b005a92e3cc8b154983",
+      "source": "Ops/final-gate-best-available-20260807.md"
+    },
+    {
+      "sha256": "3f4619b9da8000b6a8de0a244eaaf761bd43d6f960d3abf675a3bafd35c40d09",
+      "source": "Ops/fixes-20260803-batch2.md"
+    },
+    {
+      "sha256": "2ac0a7973c24bf7d6ab7a40afc234f178d8305b6c3576dc1bfcc5f012ff03a97",
+      "source": "Ops/fixes-20260803-batch3.md"
+    },
+    {
+      "sha256": "3f2e619572f4f02068ecc7ed21b9e66ce15099ef39b66890e1fdcff251944249",
+      "source": "Ops/fixes-20260803.md"
+    },
+    {
+      "sha256": "5dfd9a7f6c170d813f920f9b9ebffc55044ccf3727602de9b3060fe585b7220a",
+      "source": "Ops/fixes-20260804-batch3.md"
+    },
+    {
+      "sha256": "8af9430d217e68966c8ab188f9ad4d2c81ce97e827b72e08dfacba149d874187",
+      "source": "Ops/gap-surplus-scoring-20260805.md"
+    },
+    {
+      "sha256": "c8fa6d94a144fb01657cd504498f934b28dbeea80d900f50cf7408786b3982c0",
+      "source": "Ops/imported-level-audit-20260805.md"
+    },
+    {
+      "sha256": "31afd6f00387339b7c1c4a1b15b8f79ec46c48c2880b94f5d17e161a95011de7",
+      "source": "Ops/judgment-green-standard-20260810.md"
+    },
+    {
+      "sha256": "7edbc70bbf7e4c5c4fdb259f950008952fee6394c1570d3fdfe9002291fb1bfa",
+      "source": "Ops/judgment-vs-db-color-conflict-20260810.md"
+    },
+    {
+      "sha256": "7578f78a8c61ede5317c1fea76aba476f6e0b997763cd2942d204748a272af38",
+      "source": "Ops/l124-optimizer-case.md"
+    },
+    {
+      "sha256": "156e2700611666d90aea74e20cf975eae80d23176e9b0d28555a9fac07e1bd6f",
+      "source": "Ops/l136-l176-low-wr-gap-20260731.md"
+    },
+    {
+      "sha256": "24403cb223254950c5cff532917ae629de715572ddd5c5f3460293dc272ef4a1",
+      "source": "Ops/l136-l176-skeleton-reverse-20260731.md"
+    },
+    {
+      "sha256": "14f05d22655c077d0560d9ea9ca6bacb6ef4933629013b43b7fe6697610f359b",
+      "source": "Ops/L172-pool-contamination-case.md"
+    },
+    {
+      "sha256": "c84a956b44f0fbd4a22373bbf9516152b5d04394f7868f7e630efbbea21b3adb",
+      "source": "Ops/L172-probe-config-lesson.md"
+    },
+    {
+      "sha256": "1e1b74d53284e70c327eba0390ae4d62d9ce4282be95b234df9842f57b157314",
+      "source": "Ops/l57-probe-exhaustion-case-20260810.md"
+    },
+    {
+      "sha256": "c81015b988f999085be28b2f28c5c642ca274c62bb8fe6572c9c36eef33a6efe",
+      "source": "Ops/level-db-color-check-20260807.md"
+    },
+    {
+      "sha256": "92283a48cbbf73b198e02fa40de0d8a00f688c463dca5677d2f29e14bd4dfb45",
+      "source": "Ops/leveldb-write-board-excel-20260804.md"
+    },
+    {
+      "sha256": "77c683e4d8d4a5a793d7a25d884553cf4f9212a7911978642c0b12c98208f271",
+      "source": "Ops/multi-agent-workflow-20260730.md"
+    },
+    {
+      "sha256": "ed6059d806fa430cd1cc4f78f0297c90e8f560feb7ed4dcb21ae272ef1846f88",
+      "source": "Ops/multi-agent-workflow-audit-20260730.md"
+    },
+    {
+      "sha256": "f28e988a388c189c16391223c92f87b7fc1f6364d521a22c7d8880ce21f614f3",
+      "source": "Ops/multi-tier-final-diagnostics-20260808.md"
+    },
+    {
+      "sha256": "8ef7bd1cc58ba22c02f687f00de752c7d17d987021c7ec60af00d86af4be6ae2",
+      "source": "Ops/multi-tier-optimizer-review-20260807.md"
+    },
+    {
+      "sha256": "515986c184a7a76eff399480beaedaa1f25581421a3db355a6b761c7ab32157c",
+      "source": "Ops/multi-tier-phase1-cost-diagnosis-20260807.md"
+    },
+    {
+      "sha256": "25236a2fc6cdd4e9e8e8213fdd063ac6e90ea10c141504c63dc2883717e62bef",
+      "source": "Ops/multitier-slowness-diagnosis-20260807.md"
+    },
+    {
+      "sha256": "5792f366f0d2d1af663cd1966752e6f48d13c2f63e227c22114e2e0d6c6650f9",
+      "source": "Ops/near-tolerance-reimport-clear-20260805.md"
+    },
+    {
+      "sha256": "3a06c2080755f5e0480c75ce9fefb1b7c4cf7d771efbd1c75df69d7755362cc3",
+      "source": "Ops/optimizer-vs-bot-comparison-20260728.md"
+    },
+    {
+      "sha256": "37c6e2c7cf1eed238d0f9336ceed793208c01fe631590b78fc25437b28617ee6",
+      "source": "Ops/optimizer-vs-bot-neutral-tier-rootcause-20260812.md"
+    },
+    {
+      "sha256": "58dd35c36c62e0972611b43ec6c91c7883b217189f8691f38af2041e9de99fd5",
+      "source": "Ops/p1-fixes-20260731.md"
+    },
+    {
+      "sha256": "b8ff72e814a11ed24eee2a53810e74b6907f84c95dc7773a362aaa12dec5ed38",
+      "source": "Ops/packaging-consistency-20260810.md"
+    },
+    {
+      "sha256": "6e65ba41f630d2c18677f0fc912fb58f15e2fd7a029fd4edc4cbed17de94496d",
+      "source": "Ops/packaging-consistency-verify-20260810.md"
+    },
+    {
+      "sha256": "c6cc742d8cc2d09070ff7f4be5ff2acc66c9b441a723b6f1d83b5ffb4a8fb853",
+      "source": "Ops/param-knowledge-20260803.md"
+    },
+    {
+      "sha256": "c8aa629a232dff06d5affab7091aa397cae957af52ec93f9dbcbf5025ae36f5d",
+      "source": "Ops/phase1-intent-first-sampling.md"
+    },
+    {
+      "sha256": "5dcdf4edacc2a5558eeb8ed26c41d4c58b2fdecd9fc867f7c0350dc0ee7ff4c2",
+      "source": "Ops/phase1-ratios-template-design.md"
+    },
+    {
+      "sha256": "154a904fab10c2a6ae29f5fbe4fdb1d35e4189cc0b95f7990f2d39078342e9c8",
+      "source": "Ops/phase1-sampler-mechanics.md"
+    },
+    {
+      "sha256": "a04955ec95fbed26f18a8bfb51a71830884744e8afdc2848798c98755420eec1",
+      "source": "Ops/pitfalls.md"
+    },
+    {
+      "sha256": "b7df1716db23a358538cda54f4ee1e27d672f54dc143162f4928fa94be357172",
+      "source": "Ops/project-audit-20260731.md"
+    },
+    {
+      "sha256": "8384bb9a97e98b66f33707a684f5a5928543ca64f8a7e4d5c4063ff8862ffee5",
+      "source": "Ops/rag-knowledge-layering-20260814.md"
+    },
+    {
+      "sha256": "343984d5760a995ab63189ecb1bcb99ef1336dd1bee1cab9dc5d9bf5c14f8c63",
+      "source": "Ops/readonly-audit-scripts-review-20260805.md"
+    },
+    {
+      "sha256": "c40145a1236815f04f2b4fc4f04359420b8a132f38d5ad75ebc5de89d80c6654",
+      "source": "Ops/redesign-screening-20260803.md"
+    },
+    {
+      "sha256": "030b3c342c73c3d63c265f4241c30ac19c7e190ebf75c9c9209517266aa37f30",
+      "source": "Ops/reimport-batch-review-20260805.md"
+    },
+    {
+      "sha256": "7d43355466d3c9d6695794bc7142b2107114f2e6acdab1ada5da9298f0b77f10",
+      "source": "Ops/source-parity-20260731.md"
+    },
+    {
+      "sha256": "4e355227f5e4a32dff682ee29353c50a5b2c126c7396d2507b97af97a38f93af",
+      "source": "Ops/time-fence-dual-20260814.md"
+    },
+    {
+      "sha256": "4f60588a5e6c3cd000bac949a2c221676c03ac41764dce62f78bb43e2b7f2f3f",
+      "source": "Ops/tool-design-agent-ceiling-20260810.md"
+    },
+    {
+      "sha256": "d6cd587757cd853581b3c1315e1e0f715758290af57c54d162f8be425e1cf630",
+      "source": "Ops/tool-reuse-loop-20260805.md"
+    },
+    {
+      "sha256": "6518ab82c4bc270826dfb3043a1cfb5efbb2ddc4b6c1a17822a19607384a1491",
+      "source": "Ops/tool-reuse-system-20260805.md"
+    },
+    {
+      "sha256": "0fada67326a1124c2786d8e1fbb9a34218601b4515d53261b3e0a93e4d06267c",
+      "source": "Ops/toolchain-audit-2026-08.md"
+    },
+    {
+      "sha256": "79f9155d8bf601e214ffdbe98e8023e28d4dcdb5fe6f53e7a5663400a6e57239",
+      "source": "Ops/toolchain-audit-20260807.md"
+    },
+    {
+      "sha256": "daa8f3b1a3603be57bce433083ab91f7b9f91b48754f4eac6fbfdbf766833dd3",
+      "source": "Ops/toolchain-review-20260805.md"
+    },
+    {
+      "sha256": "8928ad1a377b780f5a750e1a50ca424b7939042a8eda8b4c4ab63e9eb0082b4e",
+      "source": "Ops/unity-batch-failure-debug-20260729.md"
+    },
+    {
+      "sha256": "d35058bc67d9e2a19f5a0454cfd8dd00136fab068e1f1db7b1026f907a6190f0",
+      "source": "Ops/unity-package-resolution-diagnosis.md"
+    },
+    {
+      "sha256": "acfbcf74646449dc511d71885ab5424c10d8257a5940c71a57a4a1892b090dbf",
+      "source": "Ops/unity-version-mismatch-case.md"
+    },
+    {
+      "sha256": "0a9ab26cd714b295354409d2f62b167743b26d4b4f4760394a7f8185c409b50e",
+      "source": "Ops/workflow-audit-20260731.md"
+    }
+  ],
+  "corpus_sha256": "76ae3cec00918ded5f026dfc0653d629db269c9065296f9d7124edb3c2d6bbae",
+  "dependencies": {
+    "faiss-cpu": "1.15.0",
+    "numpy": "2.4.3",
+    "python": "3.11.15",
+    "sentence-transformers": "5.6.0"
+  },
+  "dimension": 512,
+  "index_sha256": "a063327677c0d9aaad354a9be2850b0ac2ef019edc3baae826b123672672e69b",
+  "metadata_sha256": "be75d526c49b052520a65b0f7de0d38ea02211bfc3c186d3b6332dce961abd39",
+  "model": {
+    "name": "BAAI/bge-small-zh-v1.5",
+    "revision": "7999e1d3359715c523056ef9478215996d62a620"
+  },
+  "schema_version": 1
+}

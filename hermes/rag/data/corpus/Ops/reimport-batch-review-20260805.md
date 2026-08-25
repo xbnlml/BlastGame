@@ -26,7 +26,7 @@
 - 硬编码 'python' 而非 sys.executable（实测解析到 hermes venv 3.11.15；用户用 python3 3.13.2 启动时子进程换解释器，依赖混装有风险）。
 - gen_payload `imported_at` 硬编码 '2026-08-05T16:00:00.000Z'、`--source` 默认同名 'hermes-import-20260805.csv'——每批同标识，DB 批次难区分（坑 93 的 sourceFileName 匹配验证会混淆）。
 - parse_levels 遇 '158-'（缺右端）/ 'a-b' 抛裸 ValueError；r 缺 'totalGames' 键时备注变 'None局'。
-- 两个 mjs 内 REPO 硬编码 `C:/Users/Administrator/Documents/BlastGame`（项目现状，非本脚本引入，REPO 移动即断）。
+- 两个 mjs 内 REPO 硬编码 `<BLASTGAME_REPO>`（项目现状，非本脚本引入，REPO 移动即断）。
 
 ## 实测命令（可复现）
 

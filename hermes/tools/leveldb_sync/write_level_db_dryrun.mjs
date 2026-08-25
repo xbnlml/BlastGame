@@ -3,14 +3,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { repoModuleUrl, resolveRepo } from './repo_paths.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPO = 'C:/Users/Administrator/Documents/BlastGame';
+const REPO = resolveRepo();
 
-// 官方模块（绝对路径 import，ESM 相对依赖基于模块自身位置，OK）
-import { loadRunStore, upsertRunEntry, resolveActiveRun } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/runStore.mjs';
-import { computeDealConfigFingerprint } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/tierConfigMatch.mjs';
-import { readAssetSnapshot } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/assetSnapshot.mjs';
+const { loadRunStore, upsertRunEntry, resolveActiveRun } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/runStore.mjs'));
+const { computeDealConfigFingerprint } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/tierConfigMatch.mjs'));
+const { readAssetSnapshot } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/assetSnapshot.mjs'));
 
 // 读取我们 pool 的配置+胜率（从 python 生成的中转 json）
 const payload = JSON.parse(fs.readFileSync(path.join(__dirname, '_write_payload.json'), 'utf8'));

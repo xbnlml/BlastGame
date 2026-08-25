@@ -4,14 +4,15 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { repoModuleUrl, resolveRepo } from './repo_paths.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const REPO = 'C:/Users/Administrator/Documents/BlastGame';
+const REPO = resolveRepo();
 const RUN_PATH = path.join(REPO, 'LevelDatabase', 'Run', 'test.json');
 const BACKUP_DIR = path.join(REPO, 'LevelDatabase', 'Backups');
 const DEFAULT_CUTOFF = '2026-08-13T06:36:00Z'; // 2026-08-13 14:36 +08:00
 
-import { loadRunStore, saveRunStore } from 'file:///C:/Users/Administrator/Documents/BlastGame/Tools/level-editor/launcher/leveldb/runStore.mjs';
+const { loadRunStore, saveRunStore } = await import(repoModuleUrl(REPO, 'Tools/level-editor/launcher/leveldb/runStore.mjs'));
 
 function parseArgs(argv) {
   const out = { levels: null, cutoff: DEFAULT_CUTOFF, apply: false };

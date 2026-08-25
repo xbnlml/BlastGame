@@ -23,7 +23,7 @@ Matt Van Horn 22 条至理核心：CLAUDE.md 是"**持续编译的知识**"—�
 Hermes 支持项目上下文文件 `.hermes.md` / `HERMES.md`，**每次会话自动注入**（不依赖 agent 主动 skill_view）。
 - 源码：`prompt_builder.py` `_HERMES_MD_NAMES = (".hermes.md", "HERMES.md")`，`_find_hermes_md(cwd)` 从 cwd 向上到 git root 找第一个。
 - 上限 **20,000 字符**，超了 head+tail 截断。
-- git root = `D:\download\BlastGame\`（含 hermes/ 与 README.md），所以 `D:\download\BlastGame\hermes\.hermes.md` 会被自动加载。
+- git root = `<PROJECT_ROOT>\`（含 hermes/ 与 README.md），所以 `<HERMES_ROOT>\.hermes.md` 会被自动加载。
 - 用户纠正：**不要拿 Claude Code 的名字生搬硬套**——Hermes 有自己的 `.hermes.md` 机制。
 
 ## 触发要"按操作类型"，不是"每次会话/每个动作都看同一堆"
@@ -35,7 +35,7 @@ Hermes 支持项目上下文文件 `.hermes.md` / `HERMES.md`，**每次会话�
 ## 落地铁则（动手前 3 秒，宁可多花 30 秒查工具不写一行手写脚本）
 1. `ls tools/` + `ls project-state/` + `ls scripts/` —— 先看现成脚本，禁止一上来手写。
 2. 读对应类别工具：DB payload `tools/gen_payload.py --levels/--source/--override/--out`；
-   Excel `write_excel.write_tiers`；board 固定 7 列整行；全流程 `reimport.py`/`reimport_batch.py`；
+   Excel `tools/data/excel_writer.py::write_tiers`；board 固定 7 列整行；全流程 `reimport.py`/`reimport_batch.py`；
    只读审计 `compare_imported.py`/`verify_pool_data.py`/`audit_imported.py`/`compare_level_db.py`。
 3. 生成 payload **千万别手写硬编码关卡列表的脚本**（2026-08-05 教训：gen_payload_7lv_white.py 被用户质问"工具是通用的你为什么不直接用"）。
 4. 判定/组合/探针分析先跑现成只读脚本（`level_status.py`/`param_knowledge.py`/`find_best_combo.py`），别从零算。
@@ -45,7 +45,7 @@ Hermes 支持项目上下文文件 `.hermes.md` / `HERMES.md`，**每次会话�
 - **实际用的** blastgame skill + 注入的 system-prompt memory 在全局 `~/AppData/Local/hermes/`（实时更新）。
 - 项目根 `hermes/memories/` 是 **7-31 旧快照**（40 条 vs 全局 50 条，含已废弃规则）；`hermes/project-state/_archive/skills-old/` 是归档旧 skill。
 - 用户问"项目文件夹里也有 memory/skill 你没读取吗？"→ 答案是**那些是旧副本，实际用的是全局那份**，别被旧文件误导。
-- 用户要求："BlastGame 相关的一切（memory/skill/工具/数据）最终都在 `D:\download\BlastGame\hermes\` 一拷就走，
+- 用户要求："BlastGame 相关的一切（memory/skill/工具/数据）最终都在 `<HERMES_ROOT>\` 一拷就走，
   通用型 Hermes skill/memory 可留默认位置"；当前是"平时用全局、拷贝时才临时复制"的过渡方案。
 - 活跃 agent 记忆 = `hermes/agents/{warden,planner,judge,curator}/memory.md`（在项目内，随项目走）。
 - 主 skill 是唯一活跃的 BlastGame skill（合并了 9 个模块 skill），`.archive/` 里 10 个旧模块 skill 是历史参考，拷贝时只带主 skill 即可。

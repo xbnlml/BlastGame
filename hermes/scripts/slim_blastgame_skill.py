@@ -18,8 +18,11 @@ slim_blastgame_skill.py — blastgame SKILL.md 瘦身迁移工具（安全：默
   --apply:  直接写回 skill 目录（先备份 SKILL.md.bak-<date>）
 """
 import os, re, shutil, sys, datetime
+from pathlib import Path
 
-SKILL_DIR = r"C:/Users/Administrator/AppData/Local/hermes/skills/game-design/blastgame"
+_local_app_data = Path(os.environ.get('LOCALAPPDATA', Path.home() / 'AppData' / 'Local'))
+_hermes_home = Path(os.environ.get('HERMES_HOME', _local_app_data / 'hermes'))
+SKILL_DIR = str(_hermes_home / 'skills' / 'game-design' / 'blastgame')
 SKILL = os.path.join(SKILL_DIR, "SKILL.md")
 REFS  = os.path.join(SKILL_DIR, "references")
 

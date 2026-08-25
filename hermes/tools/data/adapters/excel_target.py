@@ -5,7 +5,7 @@
 import os
 from openpyxl import load_workbook
 
-REPO = os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame')
+REPO = os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 XLSX = os.path.join(REPO, 'Assets/LvEditorConfig/lv_win_config_test.xlsx')
 
 _CACHE = None  # 2026-08-06: 模块级缓存——150 关循环每关 load_workbook 是性能瓶颈（~135s）

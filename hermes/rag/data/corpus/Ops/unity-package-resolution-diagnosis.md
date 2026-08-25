@@ -36,13 +36,13 @@ UNITY_EXE = os.path.expandvars(
 
 Unity 2022.3 内置：
 ```bash
-cat "C:/Program Files/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/package.json"
+cat "%ProgramFiles%/Unity/Hub/Editor/2022.3.62f2/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/package.json"
 # version: 1.0.0
 ```
 
 Unity 6000 内置：
 ```bash
-cat "C:/Program Files/Unity/Hub/Editor/6000.0.60f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/package.json"
+cat "%ProgramFiles%/Unity/Hub/Editor/6000.0.60f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/package.json"
 # version: 2.0.0
 ```
 

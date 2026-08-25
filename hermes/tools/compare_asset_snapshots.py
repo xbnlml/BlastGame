@@ -3,11 +3,18 @@
 """
 import os, re, sys, glob, difflib
 from datetime import datetime
+from pathlib import Path
 
-sys.path.insert(0, r'D:\download\BlastGame\hermes')
+HERMES = Path(__file__).resolve().parents[1]
+if str(HERMES) not in sys.path:
+    sys.path.insert(0, str(HERMES))
+from tools.project_paths import resolve_unity_repo
+
+REPO = resolve_unity_repo(HERMES)
+os.environ.setdefault('BLASTGAME_REPO', str(REPO))
 from tools.asset_patcher import _asset_path
 
-OPT_DIR = r'C:\Users\Administrator\Documents\BlastGame\telemetry\multi-tier-opt'
+OPT_DIR = str(REPO / 'telemetry' / 'multi-tier-opt')
 
 def dir_timestamp(name):
     m = re.findall(r'(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2})', name)

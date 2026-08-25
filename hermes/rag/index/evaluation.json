@@ -1,0 +1,22 @@
+{
+  "build_id": "07ed05dbdeeebc26",
+  "evaluated_at": "2026-08-25 12:43:53",
+  "metric_definition": {
+    "negative": "__NONE__ cases use the configured threshold and are reported separately",
+    "positive_hit": "expected current source is required; archive and keyword-only matches do not count"
+  },
+  "mrr": 0.6295454545454544,
+  "n": 44,
+  "negative": {
+    "n": 5,
+    "rejected": 0,
+    "rejection_rate": 0.0
+  },
+  "qa_sha256": "dd2c378f0e035c0b5979df046fb7b70cb24e7e9966224fafa67b43aa28ae20c9",
+  "recall": {
+    "1": 0.5227272727272727,
+    "3": 0.75,
+    "5": 0.7727272727272727
+  },
+  "schema_version": 1
+}

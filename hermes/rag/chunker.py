@@ -143,9 +143,22 @@ def chunk_corpus(corpus_root: Path, subdirs: list[str]) -> list[Chunk]:
         for f in sorted(base.rglob("*")):
             if f.suffix.lower() not in config.FILE_SUFFIXES:
                 continue
+            relative_parts = f.relative_to(corpus_root).parts
+            if any(part.lower() == "archive" for part in relative_parts):
+                continue
+            if f.stem.lower().endswith("_archive"):
+                continue
             rel = f.relative_to(corpus_root).as_posix()
             try:
-                all_chunks.extend(chunk_markdown_file(f, rel))
+                chunks = chunk_markdown_file(f, rel)
+                if rel.startswith("Ops/"):
+                    prefix = (
+                        "[历史复盘] 本片段记录当时状态，可能已被后续实现替代；"
+                        "当前判定以 project-state/rules.json 和现行代码为准。\n"
+                    )
+                    for chunk in chunks:
+                        chunk.text = prefix + chunk.text
+                all_chunks.extend(chunks)
             except Exception as e:  # 单个文件失败不拖垮整体
                 print(f"[chunker] 跳过 {f}: {e}")
     return all_chunks

@@ -4,11 +4,15 @@ import csv
 import json
 import os
 import sys
+from pathlib import Path
 
-sys.path.insert(0, r'D:\download\BlastGame\hermes\tools')
-from data import pool
+HERMES = Path(__file__).resolve().parents[2]
+if str(HERMES) not in sys.path:
+    sys.path.insert(0, str(HERMES))
+from tools.data import pool
 
-EXTERNAL_DIR = r'C:\Users\Administrator\Documents\BlastGame\telemetry\bot\51-100-2026-07-24T11-40-09'
+REPO = Path(os.environ.get('BLASTGAME_REPO', Path.home() / 'Documents' / 'BlastGame'))
+EXTERNAL_DIR = str(REPO / 'telemetry' / 'bot' / '51-100-2026-07-24T11-40-09')
 CSV_PATH = os.path.join(EXTERNAL_DIR, 'summary-51-100.csv')
 STATUS_CSV_PATH = os.path.join(EXTERNAL_DIR, 'summary-level-status-51-100.csv')
 

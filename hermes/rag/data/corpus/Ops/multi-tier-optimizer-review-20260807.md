@@ -1,6 +1,6 @@
 # 多档位优化器（BlastMultiTierOptimizer.cs）设计审查 2026-08-07
 
-> 独立审查（deleg_32110f03，逐行核对，未改文件）。源码 `C:\Users\Administrator\Documents\BlastGame\Assets\GameModule\Editor\Bot\BlastMultiTierOptimizer.cs`（4168 行）+ `BlastMultiTierPhase1AdaptiveSampler.cs`。
+> 独立审查（deleg_32110f03，逐行核对，未改文件）。源码 `<BLASTGAME_REPO>\Assets\GameModule\Editor\Bot\BlastMultiTierOptimizer.cs`（4168 行）+ `BlastMultiTierPhase1AdaptiveSampler.cs`。
 
 ## 流程（已确认）
 ```

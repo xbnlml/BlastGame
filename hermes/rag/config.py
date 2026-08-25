@@ -11,20 +11,23 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # 路径配置
 # ---------------------------------------------------------------------------
+RAG_DIR = Path(__file__).resolve().parent
 # 语料根目录：BlastGame 游戏设计文档（MainGame 为核心，Bot/Tools 为辅助）
-# 2026-08-14：语料已复制到项目内 rag/data/corpus/（一拷就走），外部路径仅作环境变量覆盖兜底。
+# 默认使用项目内语料；环境变量只用于显式覆盖。
 CORPUS_ROOT = Path(os.environ.get(
     "RAG_CORPUS_ROOT",
-    r"D:\download\BlastGame\hermes\rag\data\corpus",
+    str(RAG_DIR / "data" / "corpus"),
 ))
 
 # 索引输出目录（index.faiss + metadata.jsonl 都放这里）
 INDEX_DIR = Path(os.environ.get(
     "RAG_INDEX_DIR",
-    r"D:\download\BlastGame\hermes\rag\index",
+    str(RAG_DIR / "index"),
 ))
 INDEX_FILE = INDEX_DIR / "index.faiss"
 METADATA_FILE = INDEX_DIR / "metadata.jsonl"
+MANIFEST_FILE = INDEX_DIR / "build_manifest.json"
+EVALUATION_FILE = INDEX_DIR / "evaluation.json"
 
 # 检索相关（2026-08-14 保留原值：TOP_K=5, SIMILARITY_THRESHOLD=0.3）
 TOP_K = 5
@@ -48,6 +51,10 @@ FILE_SUFFIXES = {".md", ".markdown"}
 # ---------------------------------------------------------------------------
 # BGE small zh v1.5：中文小模型，512 向量维度，3072 token 上限，内存小、够快。
 EMBED_MODEL_NAME = os.environ.get("RAG_EMBED_MODEL", "BAAI/bge-small-zh-v1.5")
+EMBED_MODEL_REVISION = os.environ.get(
+    "RAG_EMBED_REVISION",
+    "7999e1d3359715c523056ef9478215996d62a620",
+)
 
 # BGE 系列官方推荐的 query 指令（关键！query 加前缀，passage 不加，否则检索效果差）
 QUERY_INSTRUCTION = "为这个句子生成表示以用于检索相关文章："
@@ -89,5 +96,5 @@ HYBRID_ALPHA = 0.5
 # golden QA 路径（评估用）
 GOLDEN_QA_PATH = Path(os.environ.get(
     "RAG_GOLDEN_QA",
-    r"D:\download\BlastGame\hermes\rag\data\golden_qa.json",
+    str(RAG_DIR / "data" / "golden_qa.json"),
 ))

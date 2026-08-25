@@ -19,7 +19,7 @@ from tools.data.adapters import excel_target as et
 from tools.judge_level import check_judgment
 
 
-DEFAULT_REPO = os.environ.get("BLASTGAME_REPO", r"C:\Users\Administrator\Documents\BlastGame")
+DEFAULT_REPO = os.environ.get("BLASTGAME_REPO", os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame'))
 DEFAULT_OPT_ROOT = os.path.join(DEFAULT_REPO, "telemetry", "multi-tier-opt")
 LOCAL_TZ = timezone(timedelta(hours=8))
 LOGIC_VERSION_SINCE = "2026-08-13T14:36:00+08:00"

@@ -14,13 +14,21 @@ asset 这套参数对应的胜率，一一对应。
 退出码：0 = 全部一致；1 = 有不一致（asset 参数在 DB 无同参数 entry 或 winRate 无效）
 """
 import sys, json, subprocess, os, argparse
-sys.path.insert(0, r'D:\download\BlastGame\hermes')
+from pathlib import Path
+
+HERMES = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(HERMES))
+
+from tools.project_paths import resolve_unity_repo
+
+REPO = resolve_unity_repo(HERMES)
+os.environ.setdefault('BLASTGAME_REPO', str(REPO))
 
 from tools.asset_patcher import read_ddc
 
-RUN_PATH = r'C:\Users\Administrator\Documents\BlastGame\LevelDatabase\Run\test.json'
-FP_HELPER = r'D:\download\BlastGame\hermes\tools\leveldb_sync\get_asset_board_fp.mjs'
-ASSET_ROOT = r'C:\Users\Administrator\Documents\BlastGame\Assets\GameModule\GameMain\ConfigSo\Generated_enum\test'
+RUN_PATH = str(REPO / 'LevelDatabase' / 'Run' / 'test.json')
+FP_HELPER = str(HERMES / 'tools' / 'leveldb_sync' / 'get_asset_board_fp.mjs')
+ASSET_ROOT = str(REPO / 'Assets' / 'GameModule' / 'GameMain' / 'ConfigSo' / 'Generated_enum' / 'test')
 
 def find_asset(lv):
     n = int(lv)

@@ -3,7 +3,7 @@
 
 入库 = 落盘三动作（用户定义：选数据/判定是上游流程，与入库无关）：
   ① write_ddc + verify_asset（写 asset）
-  ② write_tiers（Excel 就地更新，用现有工具 project-state/_archive/write_excel.py）
+  ② write_tiers（Excel 就地更新，tools.data.excel_writer）
   ③ board.md 行更新（固定 7 列整行替换，禁止内联正则重排）
 
 用法：
@@ -41,9 +41,11 @@ from datetime import datetime
 HERMES = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, HERMES)
 
+from tools.data.excel_writer import write_tiers
+
 XL_PATH = os.path.join(HERMES, '手动挑配置记录.xlsx')
 BOARD_PATH = os.path.join(HERMES, 'project-state', 'board.md')
-WRITE_EXCEL = os.path.join(HERMES, 'project-state', '_archive', 'write_excel.py')
+
 
 
 def _load_config(path):
@@ -120,22 +122,8 @@ def _backup_excel(dry_run):
     return bak
 
 
-def _import_write_excel():
-    """从 _archive 导入 write_tiers（现有工具，禁止内联重写）。
-    注意：write_excel.py 的 XL_PATH = TOOL_DIR/../手动挑配置记录.xlsx 会算到
-    project-state/ 下（工具所在目录的上一级）——必须覆盖为 hermes 根的正确路径。
-    """
-    import importlib.util
-    spec = importlib.util.spec_from_file_location('write_excel', WRITE_EXCEL)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    mod.XL_PATH = XL_PATH  # 覆盖错误路径（2026-08-05 修复）
-    return mod.write_tiers
-
-
 def reimport(config, dry_run=False):
     """执行入库落盘。config = {lv: {diff, targets, tiers[], ...}}"""
-    write_tiers = _import_write_excel()
     from tools.asset_patcher import write_ddc, verify_asset
 
     results = []
@@ -250,7 +238,7 @@ def _sync_leveldb(lv, cfg, tiers5):
     if r.returncode != 0:
         return False
     try:
-        run_path = _os.path.join(_os.environ.get('BLASTGAME_REPO', r'C:\Users\Administrator\Documents\BlastGame'),
+        run_path = _os.path.join(_os.environ.get('BLASTGAME_REPO', os.path.join(os.path.expanduser('~'), 'Documents', 'BlastGame')),
                                  'LevelDatabase', 'Run', 'test.json')
         db = _json.load(open(run_path, encoding='utf-8'))
         entries = db.get('levels', {}).get(str(lv), {}).get('entries', [])

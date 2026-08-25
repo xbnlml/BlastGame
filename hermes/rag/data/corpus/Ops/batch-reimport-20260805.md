@@ -50,7 +50,7 @@ l = f'| {lv} | {diff} | {st} | {date} | {tgt} | {wr} | {note} |'
 
 1. **asset**：`write_ddc(lv, tiers)` + `verify_asset(lv, tiers)`（Normal 用 idx=[0,0,2,4,4]）
    — 本次 6 关 asset 未同步（151/157/178/179/181/190），write_ddc 后 verify 全过；177/193 asset 已是新配置
-2. **Excel**：`project-state/_archive/write_excel.py::write_tiers(lv, tiers, targets)`（现有工具！）
+2. **Excel**：`tools/data/excel_writer.py::write_tiers(lv, tiers, targets)`（当前正式工具；原 `_archive/write_excel.py` 已迁移）
    — 就地更新 5 行、保留格式、备注标 `重新入库 2026-08-05 <src> <games>局`
    — 备份：`手动挑配置记录_before_reimport8_143713.bak`
 3. **board**：整行替换，备注标 `2026-08-05重录`

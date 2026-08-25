@@ -1,7 +1,9 @@
 # BlastGame 知识分层架构方案（知识架构师输出）
 
+> **历史架构快照。** 本文中的 812 chunks / Recall@1 80% 是早期 MainGame-only 数据。当前构建与严格评估结果以 `../../rag/README.md` 和 `../../rag/index/evaluation.json` 为准。
+
 > 日期：2026-08-14 · 用途：解决"知识文件分层混乱"（SKILL 166KB 超限、MEMORY 96% 满、references 有记录但检索不到、RAG 与 memory/skill 边界不清）
-> 适用范围：全局权威位置 `C:\Users\Administrator\AppData\Local\hermes\`（skill+memory）+ 项目 `D:\download\BlastGame\hermes\`（tools/agents/RAG）
+> 适用范围：全局 Hermes 目录 `~/AppData/Local/hermes/`（skill+memory）+ 项目 `<PROJECT_ROOT>/hermes/`（tools/agents/RAG）
 
 ---
 
