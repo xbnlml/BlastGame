@@ -9,7 +9,7 @@
 
 | 你想做什么 | 用哪个工具 | 关键参数 |
 |---|---|---|
-| **统一入库落盘**（asset+Excel+board 三动作）| `reimport.py` | `--config <json> [--dry-run]` |
+| **统一入库落盘**（asset+Excel+board+LevelDatabase 四动作）| `reimport.py` | `--config <json> [--dry-run]` |
 | **入库批次全流程**（重选→落盘→DB）| `reimport_batch.py` | `--levels X --dry-run / --apply` |
 | **写 asset 配置**（DDC 四元组 sd/sc/ratios/of）| `asset_patcher.py::write_ddc` | `write_ddc(lv, tiers)` + `verify_asset` |
 | **写 Excel 入库记录**（就地更新，小数格式）| `data/excel_writer.py::write_tiers` | `write_tiers(lv, tiers)` |

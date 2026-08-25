@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """统一入库落盘工具（2026-08-05 新建，坑 118 教训落地）。
 
-入库 = 落盘三动作（用户定义：选数据/判定是上游流程，与入库无关）：
+入库 = 落盘四动作（用户定义：选数据/判定是上游流程，与入库无关）：
   ① write_ddc + verify_asset（写 asset）
   ② write_tiers（Excel 就地更新，tools.data.excel_writer）
   ③ board.md 行更新（固定 7 列整行替换，禁止内联正则重排）
+  ④ LevelDatabase 同步 + asset↔DB 回读验证
 
 用法：
   python tools/reimport.py --config <json> [--dry-run]
@@ -270,7 +271,7 @@ def _sync_leveldb(lv, cfg, tiers5):
 
 
 def main():
-    ap = argparse.ArgumentParser(description='统一入库落盘（asset+Excel+board）')
+    ap = argparse.ArgumentParser(description='统一入库落盘（asset+Excel+board+LevelDatabase）')
     ap.add_argument('--config', required=True, help='JSON 配置文件路径')
     ap.add_argument('--dry-run', action='store_true', help='只打印不写文件')
     args = ap.parse_args()

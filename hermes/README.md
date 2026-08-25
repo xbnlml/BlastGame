@@ -4,6 +4,18 @@
 
 这个仓库把"改参数 → 跑实测 → 看结果 → 再改"做成可重复执行的自动循环：程序设计探针、写入配置、调用 Unity Bot、刷新数据池并判定是否达标；合格后停在“待确认入库”，最终落盘仍由人确认。`stage-data/` 保存 L51–200 的状态快照及现有可靠/探索数据，并记录来源、局数与时间。
 
+## 当前验证快照（2026-08-25）
+
+以下状态已由 asset、Excel、board、LevelDatabase 回读确认：
+
+| 关卡 | 难度 | 状态 | 目标 WR | 当前 WR |
+|---:|---|---|---|---|
+| L58 | superhard | ✅已入库 | 70/55/40/25/15 | 68.8/54.2/39.7/28.8/18.8 |
+| L79 | normal | ✅已入库 | 85/85/65/50/50 | 87.8/87.8/72.5/52.0/52.0 |
+| L120 | normal | ✅已入库 | 80/80/60/45/45 | 80.4/80.4/58.5/45.2/45.2 |
+
+当前完整状态看 `project-state/board.md`，配置记录看 `手动挑配置记录.xlsx`，原始可靠/参考数据看 `stage-data/`。
+
 ## 流程
 
 ```text
@@ -19,7 +31,7 @@
 | 贝叶斯提前停 | 每轮默认 400 局且可由 CLI 调整；第 1–5 轮可早停，第 6 轮跑满配置的 `--games` | `scripts/auto_loop.py --adaptive-stop` |
 | 数据可靠性 | 同牌面历史批次可累积复用；有快照比牌面，无快照走时间防线，并按来源区分可靠/参考数据 | `tools/verify_pool_data.py` |
 | 探针缺口驱动 | 反推目标胜率 → 池子候选优先 → 邻近微调 → 最后才自设计 | `tools/design_probes.py` |
-| 入库一致性 | asset = Excel = LevelDatabase 三方一致 | `tools/verify_asset_db_match.py` |
+| 入库一致性 | 正式入库同步 asset、Excel、board、LevelDatabase，并通过 asset↔DB 回读核验 | `tools/verify_asset_db_match.py` |
 
 ## LLM 参与范围
 

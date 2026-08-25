@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""④ 入库批次全流程编排：重选 → 落盘(asset+Excel+board) → 关卡数据库。
+"""④ 入库批次全流程编排：重选 → 落盘(asset+Excel+board+LevelDatabase)。
 
 把分散步骤串成一条命令（2026-08-05 用户要求"哪些步骤能脚本化"）：
   1. 重选最优档位（filter_verified，find_best_monotonic）
   2. 生成 reimport JSON（tools/reimport.py 消费）
-  3. reimport.py 落盘（write_ddc + write_tiers + board）—— 用户确认后加 --apply
+  3. reimport.py 落盘（write_ddc + write_tiers + board + LevelDatabase）—— 用户确认后加 --apply
   4. gen_payload.py 生成 DB payload（只含落盘成功的关）
   5. leveldb_sync dryrun + write_level_db.mjs 写入（dryrun FAIL 阻断写入）
 
@@ -176,7 +176,7 @@ def main():
         return
 
     # 落盘
-    print('\n=== 步骤2: reimport 落盘（asset+Excel+board）===')
+    print('\n=== 步骤2: reimport 落盘（asset+Excel+board+LevelDatabase）===')
     out = run([sys.executable, 'tools/reimport.py', '--config', tmp_json])
     # 缺陷 A（审查 P1）：reimport 部分关 FAIL → 中止，不写 DB（防旧 asset 配置入库）
     if 'FAIL' in out or '失败' in out:

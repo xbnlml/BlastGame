@@ -12,6 +12,18 @@ python scripts/demo.py          # 离线重放真实证据，不需要 Unity/密
 
 成功时输出 `OFFLINE REPLAY PASS: 4/4 levels`。本机同时有 Unity 工作区时，可运行 `python scripts/smoke_test.py` 检查 Excel、asset、数据库、Warden 和批跑入口。
 
+## 当前验证快照（2026-08-25）
+
+以下关卡的当前配置已经完成 asset、Excel、board、LevelDatabase 回读核验：
+
+| 关卡 | 难度 | 状态 | 目标 WR | 当前 WR |
+|---:|---|---|---|---|
+| L58 | superhard | ✅已入库 | 70/55/40/25/15 | 68.8/54.2/39.7/28.8/18.8 |
+| L79 | normal | ✅已入库 | 85/85/65/50/50 | 87.8/87.8/72.5/52.0/52.0 |
+| L120 | normal | ✅已入库 | 80/80/60/45/45 | 80.4/80.4/58.5/45.2/45.2 |
+
+完整状态以 [`hermes/project-state/board.md`](hermes/project-state/board.md) 为准；配置记录在 [`hermes/手动挑配置记录.xlsx`](hermes/手动挑配置记录.xlsx)，可复核数据在 [`hermes/stage-data/`](hermes/stage-data/)。
+
 ## 项目结构
 
 ```

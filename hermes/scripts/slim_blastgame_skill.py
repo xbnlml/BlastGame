@@ -35,7 +35,7 @@ SECTIONS = [
     (422, 440, "stub", "DDA 运行时参数（概要）",       "references/dda-runtime.md"),
     (441, 450, "drop", "工具链修复精华（指向 tool-fixes.md）", "references/tool-fixes.md"),
     (451, 589, "move", "常见坑速查",                  "references/pitfalls.md"),
-    (590, 628, "stub", "入库落盘（asset+Excel+board）", "references/reimport-write-down-20260814.md"),
+    (590, 628, "stub", "入库落盘（asset+Excel+board+LevelDatabase）", "references/reimport-write-down-20260814.md"),
     (629, 644, "stub", "只读现状查询",                "scripts/level_status.py"),
 ]
 
